@@ -8,6 +8,7 @@ let home = (req,res)  => {
 
 let saveuser = async (req,res) => {
     let {name , lastname , password , email} = req.body;
+    if (!name || !lastname || !password || !email) return res.status(404).send({message : 'Faltan datos'});
     password = await bcrypt.hash(password,10);
     connection.query('SELECT correo FROM Usuarios where correo = ?',[email],(err,result) => {
         if (err) return res.status(500).send({message: err});
@@ -53,10 +54,20 @@ let updateUser = (req,res) => {
         return res.status(200).send({result});   
     })
 }
+
+let deleteUser = (req,res) => {
+    let { id } = req.params;
+    connection.query('DELETE  FROM Usuarios Where id_usuarios = ?',[id],(err,result) => {
+        if (err) return res.status(500).send({message : err});
+        if (result.affectedRows === 0) return res.status(404).send({message : 'el Usuario no existe'});
+        return res.status(200).send({result});
+    });
+}
 module.exports= {
     home,
     saveuser,
     listUsers,
     listUser,
-    updateUser
+    updateUser,
+    deleteUser
 }

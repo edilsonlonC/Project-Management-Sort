@@ -8,6 +8,7 @@ router.post('/save-user', controllerUser.saveuser);
 router.get('/list-users',Auth.isAuth,controllerUser.listUsers);
 router.get('/list-users/:id',controllerUser.listUser);
 router.put('/update-user/:id',controllerUser.updateUser);
+router.delete('/delete-user/:id',controllerUser.deleteUser)
 
 
 module .exports = {
