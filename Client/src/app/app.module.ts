@@ -9,11 +9,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ResourcesComponent } from './components/resources/resources.component';
-<<<<<<< HEAD
 import { RegisterProjectComponent } from './components/projects/register-project/register-project.component';
 import { RegisterResourcesComponent } from './components/resources/register-resources/register-resources.component';
-=======
->>>>>>> 4ccf56664803f4248c927463513aec1f5c2fe19b
 
 
 @NgModule({
@@ -24,13 +21,9 @@ import { RegisterResourcesComponent } from './components/resources/register-reso
     RegisterComponent,
     UsersComponent,
     ProjectsComponent,
-<<<<<<< HEAD
     ResourcesComponent,
     RegisterProjectComponent,
     RegisterResourcesComponent
-=======
-    ResourcesComponent
->>>>>>> 4ccf56664803f4248c927463513aec1f5c2fe19b
   ],
   imports: [
     BrowserModule,
