@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ResourcesComponent } from './components/resources/resources.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterProjectComponent } from './components/projects/register-project/register-project.component';
 import { RegisterResourcesComponent } from './components/resources/register-resources/register-resources.component';
 import { RegisterUsersComponent } from './components/users/register-users/register-users.component';
@@ -24,7 +25,8 @@ const routes: Routes = [
       { path: 'resources', component: ResourcesComponent, children: [
           { path: '', component: RegisterResourcesComponent }
         ]
-      }
+      },
+      { path: '', component: ProfileComponent }
     ]
   },
   { path: 'register', component: RegisterComponent },

@@ -12,6 +12,7 @@ import { ResourcesComponent } from './components/resources/resources.component';
 import { RegisterProjectComponent } from './components/projects/register-project/register-project.component';
 import { RegisterResourcesComponent } from './components/resources/register-resources/register-resources.component';
 import { RegisterUsersComponent } from './components/users/register-users/register-users.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RegisterUsersComponent } from './components/users/register-users/regist
     ResourcesComponent,
     RegisterProjectComponent,
     RegisterResourcesComponent,
-    RegisterUsersComponent
+    RegisterUsersComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
