@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-resources',
@@ -7,9 +8,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterResourcesComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    this.recurso = this.createFormGroup();
+   }
 
-  ngOnInit() {
+  get namer() {
+    return this.recurso.get('namer');
+  }
+
+  get descripcion() {
+    return this.recurso.get('descripcion');
+  }
+
+  recurso: FormGroup;
+
+  createFormGroup() {
+    return new FormGroup({
+      namer: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      descripcion: new FormControl('', [Validators.maxLength(500)])
+    });
+  }
+
+  ngOnInit() {}
+
+  onResetForm() {
+    this.recurso.reset();
+  }
+
+  onSaveForm() {
+    if (this.recurso.valid) {
+      this.onResetForm();
+      console.log('Valid');
+    } else {
+      console.log('Not Valid');
+    }
   }
 
 }

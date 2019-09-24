@@ -8,8 +8,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  constructor() {
+    this.login = this.createFormGroup();
+   }
+
+  get name() {
+    return this.login.get('name');
+  }
+
+  get email() {
+    return this.login.get('email');
+  }
+
+  get pass() {
+    return this.login.get('pass');
+  }
+
   // tslint:disable-next-line: max-line-length
   emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  login: FormGroup;
 
   createFormGroup() {
     return new FormGroup({
@@ -17,12 +35,6 @@ export class LoginComponent implements OnInit {
       pass: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)])
     });
   }
-
-  login: FormGroup;
-
-  constructor() {
-    this.login = this.createFormGroup();
-   }
 
   ngOnInit() {}
 
@@ -37,18 +49,6 @@ export class LoginComponent implements OnInit {
     } else {
       console.log('Not Valid');
     }
-  }
-
-  get name() {
-    return this.login.get('name');
-  }
-
-  get email() {
-    return this.login.get('email');
-  }
-
-  get pass() {
-    return this.login.get('pass');
   }
 
 }

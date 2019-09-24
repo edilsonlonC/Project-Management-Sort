@@ -3,13 +3,20 @@
     <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4 mt-5">
         <div class="card text-center border-secondary">
             <div class="card-body">
-                <form class="mt-3">
+                <form class="mt-3" [formGroup]="recurso" (ngSubmit)="onSaveForm()">
                     <h5 class="card-title text-warning mt-3 ">Registrar Recurso</h5>
                     <div class="form-group mt-3">
-                        <input type="text" class="form-control mt-auto " placeholder="Nombre del Recurso">
+                      <input type="text" class="form-control mt-auto " placeholder="Nombre del recurso" formControlName="namer" [ngClass]="{ 'is-invalid': namer.invalid && (namer.dirty || namer.touched) }"/>
+                      <div *ngIf="namer.invalid && (namer.dirty || namer.touched)" class="invalid-feedback">
+                        <div *ngIf="namer.errors.required">Ingrese nombre del recurso.</div>
+                        <div *ngIf="namer.errors.minlength">Nombre del recurso muy corto.</div>
+                      </div>
                     </div>
                     <div class="form-group mt-3">
-                      <textarea class="form-control text-secondary" rows="3" placeholder="Descripción"></textarea>
+                      <textarea class="form-control text-secondary" rows="3" placeholder="Descripción" formControlName="descripcion" [ngClass]="{ 'is-invalid': descripcion.invalid && (descripcion.dirty || descripcion.touched) }"></textarea>
+                      <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="invalid-feedback">
+                        <div *ngIf="descripcion.errors.maxlength">Descripcion muy larga.</div>
+                      </div>
                     </div>
                     <div class="form-group mt-3">
                       <select class="form-control" placeholder="Proyecto">
@@ -31,7 +38,9 @@
                     <div class="form-group mt-3">
                       <input type="date" class="form-control mt-auto text-secondary">
                     </div>
-                    <button type="submit" class="btn btn-warning btn-block">Registrar Recurso</button>
+                    <div class="form-group mt-3">
+                      <button [disabled]="!recurso.valid" class="btn btn-warning btn-block">Registar Proyecto</button>
+                    </div>
                     <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
                 </form>
             </div>
