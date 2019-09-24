@@ -16,16 +16,46 @@ export class RegisterResourcesComponent implements OnInit {
     return this.recurso.get('namer');
   }
 
-  get descripcion() {
-    return this.recurso.get('descripcion');
+  get descripcionr() {
+    return this.recurso.get('descripcionr');
+  }
+
+  get proyector() {
+    return this.recurso.get('proyector');
+  }
+
+  get responsabler() {
+    return this.recurso.get('responsabler');
+  }
+
+  get estador() {
+    return this.recurso.get('estador');
+  }
+
+  get prioridadr() {
+    return this.recurso.get('prioridadr');
+  }
+
+  get dependenciar() {
+    return this.recurso.get('dependenciar');
+  }
+
+  get dater() {
+    return this.recurso.get('dater');
   }
 
   recurso: FormGroup;
 
   createFormGroup() {
     return new FormGroup({
-      namer: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      descripcion: new FormControl('', [Validators.maxLength(500)])
+      namer: new FormControl('', [Validators.required]),
+      descripcionr: new FormControl('', [Validators.maxLength(500)]),
+      proyector: new FormControl('', [Validators.required]),
+      responsabler: new FormControl('', [Validators.required]),
+      estador: new FormControl('', [Validators.required]),
+      prioridadr: new FormControl('', [Validators.required]),
+      dependenciar: new FormControl('', [Validators.required]),
+      dater: new FormControl('', [Validators.required])
     });
   }
 
