@@ -133,74 +133,130 @@
     <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4 mt-5">
         <div class="card text-center border-secondary">
             <div class="card-body">
-                <form class="mt-3">
-                    <h5 class="card-title text-warning mt-3 ">Registrar Funcionalidad</h5>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control mt-auto " placeholder="Nombre de la Funcionalidad">
-                    </div>
-                    <div class="form-group mt-3">
-                      <textarea class="form-control text-secondary" rows="3" placeholder="Descripción"></textarea>
-                    </div>
-                    <div class="form-group mt-3">
-                      <select class="form-control" placeholder="Proyecto">
-                        <option></option>
-                      </select>
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Responsable">
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Estado">
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Prioridad">
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Dependencia">
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="date" class="form-control mt-auto text-secondary">
-                    </div>
-                    <button type="submit" class="btn btn-warning btn-block">Registrar Funcionalidad</button>
-                    <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
-                </form>
+              <form class=" mt-3" [formGroup]="funcionalidad" (ngSubmit)="onSaveFormF()">
+                <h5 class="card-title text-warning mt-3 ">Registrar Funcionalidad</h5>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control mt-auto " placeholder="Nombre de la funcionalidad" formControlName="namef" [ngClass]="{ 'is-invalid': namef.invalid && (namef.dirty || namef.touched) }"/>
+                  <div *ngIf="namef.invalid && (namef.dirty || namef.touched)" class="invalid-feedback">
+                    <div *ngIf="namef.errors.required">Ingrese nombre de la funcionalidad.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control text-secondary" rows="3" placeholder="Descripción" formControlName="descripcionf" [ngClass]="{ 'is-invalid': descripcionf.invalid && (descripcionf.dirty || descripcionf.touched) }"></textarea>
+                  <div *ngIf="descripcionf.invalid && (descripcionf.dirty || descripcionf.touched)" class="invalid-feedback">
+                    <div *ngIf="descripcionf.errors.maxlength">Descripcion muy larga.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <select class="form-control" placeholder="Proyecto" formControlName="proyectof" [ngClass]="{ 'is-invalid': proyectof.invalid && (proyectof.dirty || proyectof.touched) }">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                  <div *ngIf="proyectof.invalid && (proyectof.dirty || proyectof.touched)" class="invalid-feedback">
+                    <div *ngIf="proyectof.errors.required">Seleccione proyecto.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="" class="form-control mt-auto " placeholder="Responsable" formControlName="responsablef" [ngClass]="{ 'is-invalid': responsablef.invalid && (responsablef.dirty || responsablef.touched) }"/>
+                  <div *ngIf="responsablef.invalid && (responsablef.dirty || responsablef.touched)" class="invalid-feedback">
+                    <div *ngIf="responsablef.errors.required">Ingrese nombre del responsable.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="" class="form-control mt-auto " placeholder="Estado" formControlName="estadof" [ngClass]="{ 'is-invalid': estadof.invalid && (estadof.dirty || estadof.touched) }"/>
+                  <div *ngIf="estadof.invalid && (estadof.dirty || estadof.touched)" class="invalid-feedback">
+                    <div *ngIf="estadof.errors.required">Ingrese estado.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="" class="form-control mt-auto " placeholder="Prioridad" formControlName="prioridadf" [ngClass]="{ 'is-invalid': prioridadf.invalid && (prioridadf.dirty || prioridadf.touched) }"/>
+                  <div *ngIf="prioridadf.invalid && (prioridadf.dirty || prioridadf.touched)" class="invalid-feedback">
+                    <div *ngIf="prioridadf.errors.required">Ingrese prioridad.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="" class="form-control mt-auto " placeholder="Dependencia" formControlName="dependenciaf" [ngClass]="{ 'is-invalid': dependenciaf.invalid && (dependenciaf.dirty || dependenciaf.touched) }"/>
+                  <div *ngIf="dependenciaf.invalid && (dependenciaf.dirty || dependenciaf.touched)" class="invalid-feedback">
+                    <div *ngIf="dependenciaf.errors.required">Ingrese prioridad.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="date" class="form-control mt-auto text-secondary" formControlName="datef" [ngClass]="{ 'is-invalid': datef.invalid && (datef.dirty || datef.touched) }"/>
+                  <div *ngIf="datef.invalid && (datef.dirty || datef.touched)" class="invalid-feedback">
+                    <div *ngIf="datef.errors.required">Ingrese fecha.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <button [disabled]="!funcionalidad.valid" class="btn btn-warning btn-block">Registrar Funcionalidad</button>
+                </div>
+                <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+            </form>
             </div>
         </div>
     </div>
     <div class="col-9 col-sm-9 col-md-6 col-lg-4 col-xl-4 mt-5 mb-5 offset-md-1">
         <div class="card text-center border-secondary">
             <div class="card-body">
-                <form class="mt-3">
-                    <h5 class="card-title text-warning mt-3 ">Registrar Tarea</h5>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control mt-auto " placeholder="Nombre de la Tarea">
-                    </div>
-                    <div class="form-group mt-3">
-                      <textarea class="form-control text-secondary" rows="3" placeholder="Descripción"></textarea>
-                    </div>
-                    <div class="form-group mt-3">
-                      <select class="form-control" placeholder="Proyecto">
-                        <option></option>
-                      </select>
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Responsable">
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Estado">
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Prioridad">
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Dependencia">
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="date" class="form-control mt-auto text-secondary">
-                    </div>
-                    <button type="submit" class="btn btn-warning btn-block">Registrar Tarea</button>
-                    <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
-                </form>
+              <form class=" mt-3" [formGroup]="tarea" (ngSubmit)="onSaveFormT()">
+                <h5 class="card-title text-warning mt-3 ">Registrar Tarea</h5>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control mt-auto " placeholder="Nombre de la tarea" formControlName="namet" [ngClass]="{ 'is-invalid': namet.invalid && (namet.dirty || namet.touched) }"/>
+                  <div *ngIf="namet.invalid && (namet.dirty || namet.touched)" class="invalid-feedback">
+                    <div *ngIf="namet.errors.required">Ingrese nombre de la tarea.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control text-secondary" rows="3" placeholder="Descripción" formControlName="descripciont" [ngClass]="{ 'is-invalid': descripciont.invalid && (descripciont.dirty || descripciont.touched) }"></textarea>
+                  <div *ngIf="descripciont.invalid && (descripciont.dirty || descripciont.touched)" class="invalid-feedback">
+                    <div *ngIf="descripciont.errors.maxlength">Descripcion muy larga.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <select class="form-control" placeholder="Proyecto" formControlName="proyectot" [ngClass]="{ 'is-invalid': proyectot.invalid && (proyectot.dirty || proyectot.touched) }">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                  <div *ngIf="proyectot.invalid && (proyectot.dirty || proyectot.touched)" class="invalid-feedback">
+                    <div *ngIf="proyectot.errors.required">Seleccione proyecto.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="" class="form-control mt-auto " placeholder="Responsable" formControlName="responsablet" [ngClass]="{ 'is-invalid': responsablet.invalid && (responsablet.dirty || responsablet.touched) }"/>
+                  <div *ngIf="responsablet.invalid && (responsablet.dirty || responsablet.touched)" class="invalid-feedback">
+                    <div *ngIf="responsablet.errors.required">Ingrese nombre del responsable.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="" class="form-control mt-auto " placeholder="Estado" formControlName="estadot" [ngClass]="{ 'is-invalid': estadot.invalid && (estadot.dirty || estadot.touched) }"/>
+                  <div *ngIf="estadot.invalid && (estadot.dirty || estadot.touched)" class="invalid-feedback">
+                    <div *ngIf="estadot.errors.required">Ingrese estado.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="" class="form-control mt-auto " placeholder="Prioridad" formControlName="prioridadt" [ngClass]="{ 'is-invalid': prioridadt.invalid && (prioridadt.dirty || prioridadt.touched) }"/>
+                  <div *ngIf="prioridadt.invalid && (prioridadt.dirty || prioridadt.touched)" class="invalid-feedback">
+                    <div *ngIf="prioridadt.errors.required">Ingrese prioridad.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="" class="form-control mt-auto " placeholder="Dependencia" formControlName="dependenciat" [ngClass]="{ 'is-invalid': dependenciat.invalid && (dependenciat.dirty || dependenciat.touched) }"/>
+                  <div *ngIf="dependenciat.invalid && (dependenciat.dirty || dependenciat.touched)" class="invalid-feedback">
+                    <div *ngIf="dependenciat.errors.required">Ingrese prioridad.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="date" class="form-control mt-auto text-secondary" formControlName="datet" [ngClass]="{ 'is-invalid': datet.invalid && (datet.dirty || datet.touched) }"/>
+                  <div *ngIf="datet.invalid && (datet.dirty || datet.touched)" class="invalid-feedback">
+                    <div *ngIf="datet.errors.required">Ingrese fecha.</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <button [disabled]="!tarea.valid" class="btn btn-warning btn-block">Registrar Tarea</button>
+                </div>
+                <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+              </form>
             </div>
         </div>
     </div>
