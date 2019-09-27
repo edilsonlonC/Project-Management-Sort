@@ -9,25 +9,32 @@
                     </a>
                     <h5 class="card-title text-warning mt-3 ">Registrar Usuario</h5>
                     <div class="form-group mt-3">
-                        <input type="text" class="form-control mt-auto " placeholder="Nombre de Usuario" formControlName="name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }"/>
+                        <input type="text" class="form-control mt-auto" placeholder="Nombre" formControlName="name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }"/>
                         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
-                          <div *ngIf="name.errors.required">Ingrese nombre de usuario.</div>
-                          <div *ngIf="name.errors.minlength">Nombre de usuario  muy corto.</div>
+                          <div *ngIf="name.errors.required">Ingrese nombre.</div>
+                          <div *ngIf="name.errors.minlength">Nombre muy corto.</div>
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <input type="email" class="form-control mt-auto " placeholder="Correo Electrónico" formControlName="email" [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }"/>
+                      <input type="text" class="form-control mt-auto" placeholder="Apellido" formControlName="lastname" [ngClass]="{ 'is-invalid': lastname.invalid && (lastname.dirty || lastname.touched) }"/>
+                      <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="invalid-feedback">
+                        <div *ngIf="lastname.errors.required">Ingrese apellido.</div>
+                        <div *ngIf="lastname.errors.minlength">Apellido muy corto.</div>
+                      </div>
+                    </div>
+                    <div class="form-group mt-3">
+                      <input type="password" class="form-control mt-auto" placeholder="Contraseña" formControlName="pass" [ngClass]="{ 'is-invalid': pass.invalid && (pass.dirty || pass.touched) }"/>
+                      <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="invalid-feedback">
+                          <div *ngIf="pass.errors.required">Ingrese contraseña.</div>
+                          <div *ngIf="pass.errors.minlength">Contraseña muy corta.</div>
+                          <div *ngIf="pass.errors.maxlength">Contraseña muy larga.</div>
+                      </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="email" class="form-control mt-auto" placeholder="Correo Electrónico" formControlName="email" [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }"/>
                         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
                             <div *ngIf="email.errors.required">Ingrese correo electronico.</div>
                             <div *ngIf="email.errors.pattern">Ingrese correo electronico verdadero.</div>
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="password" class="form-control mt-auto " placeholder="Contraseña" formControlName="pass" [ngClass]="{ 'is-invalid': pass.invalid && (pass.dirty || pass.touched) }"/>
-                        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="invalid-feedback">
-                            <div *ngIf="pass.errors.required">Ingrese contraseña.</div>
-                            <div *ngIf="pass.errors.minlength">Contraseña muy corta.</div>
-                            <div *ngIf="pass.errors.maxlength">Contraseña muy larga.</div>
                         </div>
                     </div>
                     <div class="form-group mt-3">
