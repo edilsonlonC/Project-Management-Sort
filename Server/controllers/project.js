@@ -30,13 +30,25 @@ let projects = async (req, res) => {
 
 }
 
-let updateProject = async (req, res) => {
-    let {id} = req.params;
-    let {projectName,type} = req.body;
+let listProject = async (req, res) => {
+    let { id } = req.params;
     try {
-        let queryUpdateProject = await connection.query('UPDATE Proyecto SET Nombre_Proyecto = ? , Tipo_Proyecto_id_Tipo = ? WHERE id_proyecto = ? ',[projectName,type,id])
-        if (queryUpdateProject[0].affectedRows === 0) return res.status(404).send({message : 'El proyecto no existe '});
-        return res.status(200).send({message : 'El proyecto ha sido modificado '})
+        let queryProject = await connection.query('SELECT * FROM Proyecto WHERE id_proyecto = ? ', [id])
+        let project = queryProject[0];
+        if (project.length === 0) return res.status(404).send({ message: 'El proyecto no existe' });
+        return res.status(200).send({ project });
+
+    } catch (error) {
+        return res.status(500).send({ error })
+    }
+}
+let updateProject = async (req, res) => {
+    let { id } = req.params;
+    let { projectName, type } = req.body;
+    try {
+        let queryUpdateProject = await connection.query('UPDATE Proyecto SET Nombre_Proyecto = ? , Tipo_Proyecto_id_Tipo = ? WHERE id_proyecto = ? ', [projectName, type, id])
+        if (queryUpdateProject[0].affectedRows === 0) return res.status(404).send({ message: 'El proyecto no existe ' });
+        return res.status(200).send({ message: 'El proyecto ha sido modificado ' })
     } catch (error) {
         return res.status(500).send({ error })
 
@@ -45,10 +57,10 @@ let updateProject = async (req, res) => {
 }
 
 let deleteProject = async (req, res) => {
-    let {id} = req.params;
-    let queryDeleteProject = await connection.query('DELETE FROM Proyecto WHERE id_proyecto = ? ',[id]);
-    if(queryDeleteProject[0].affectedRows === 0) return res.status(404).send({message : 'El proyecto no existe '});
-    return res.status(200).send({message : 'proyecto elminado'});
+    let { id } = req.params;
+    let queryDeleteProject = await connection.query('DELETE FROM Proyecto WHERE id_proyecto = ? ', [id]);
+    if (queryDeleteProject[0].affectedRows === 0) return res.status(404).send({ message: 'El proyecto no existe ' });
+    return res.status(200).send({ message: 'proyecto elminado' });
 }
 
 
@@ -56,5 +68,6 @@ module.exports = {
     projects,
     saveProject,
     updateProject,
-    deleteProject
+    deleteProject,
+    listProject
 }
