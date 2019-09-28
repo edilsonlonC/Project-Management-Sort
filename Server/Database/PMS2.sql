@@ -50,12 +50,15 @@ CREATE TABLE `Proyecto` (
   `Nombre_Proyecto` varchar(45) DEFAULT NULL,
   `Tipo_Proyecto_id_Tipo` int(11) DEFAULT NULL,
   `Recursos_id_recursos` int(11) DEFAULT NULL,
+  `Usuarios_id_usuarios` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_proyecto`),
   KEY `fk_Proyecto_Tipo_Proyecto1_idx` (`Tipo_Proyecto_id_Tipo`),
   KEY `fk_Proyecto_Recursos1_idx` (`Recursos_id_recursos`),
+  KEY `fk_Proyecto_Usuarios1_idx` (`Usuarios_id_usuarios`),
   CONSTRAINT `fk_Proyecto_Recursos1` FOREIGN KEY (`Recursos_id_recursos`) REFERENCES `Recursos` (`id_recursos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Proyecto_Tipo_Proyecto1` FOREIGN KEY (`Tipo_Proyecto_id_Tipo`) REFERENCES `Tipo_Proyecto` (`id_Tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_Proyecto_Tipo_Proyecto1` FOREIGN KEY (`Tipo_Proyecto_id_Tipo`) REFERENCES `Tipo_Proyecto` (`id_Tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Proyecto_Usuarios1` FOREIGN KEY (`Usuarios_id_usuarios`) REFERENCES `Usuarios` (`id_usuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +67,6 @@ CREATE TABLE `Proyecto` (
 
 LOCK TABLES `Proyecto` WRITE;
 /*!40000 ALTER TABLE `Proyecto` DISABLE KEYS */;
-INSERT INTO `Proyecto` VALUES (1,'proyecto',NULL,NULL),(2,'proyecto',NULL,NULL),(3,'proyecto',NULL,NULL),(4,'proyecto',NULL,NULL),(5,'proyecto',NULL,NULL),(6,'proyecto2',NULL,NULL),(7,'otro proyecto',NULL,NULL),(8,'otro proyecto1',NULL,NULL),(9,'otro proyecto2',NULL,NULL),(10,'otro proyecto3',NULL,NULL),(11,'otro proyecto4',NULL,NULL),(12,'otro proyecto9',NULL,NULL),(13,'otro proyecto10',NULL,NULL),(14,'otro proyecto20',NULL,NULL),(15,'otro proyecto21',NULL,NULL),(16,'otro proyecto212',NULL,NULL),(17,'otro proyecto213',NULL,NULL),(18,'otro proyecto2123',NULL,NULL);
 /*!40000 ALTER TABLE `Proyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +112,7 @@ CREATE TABLE `Rol_Usuario` (
   `id_Rol_Usuario` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_Rol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_Rol_Usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +121,6 @@ CREATE TABLE `Rol_Usuario` (
 
 LOCK TABLES `Rol_Usuario` WRITE;
 /*!40000 ALTER TABLE `Rol_Usuario` DISABLE KEYS */;
-INSERT INTO `Rol_Usuario` VALUES (1,'Administrador'),(2,'Usuario');
 /*!40000 ALTER TABLE `Rol_Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,13 +186,10 @@ CREATE TABLE `Usuarios` (
   `Correo` varchar(45) DEFAULT NULL,
   `Apellido_usuario` varchar(45) DEFAULT NULL,
   `Rol_Usuario_id_Rol_Usuario` int(11) DEFAULT NULL,
-  `Proyecto_id_proyecto` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_usuarios`),
   KEY `fk_Usuarios_Rol_Usuario_idx` (`Rol_Usuario_id_Rol_Usuario`),
-  KEY `fk_Usuarios_Proyecto1_idx` (`Proyecto_id_proyecto`),
-  CONSTRAINT `fk_Usuarios_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Usuarios_Rol_Usuario` FOREIGN KEY (`Rol_Usuario_id_Rol_Usuario`) REFERENCES `Rol_Usuario` (`id_Rol_Usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +198,7 @@ CREATE TABLE `Usuarios` (
 
 LOCK TABLES `Usuarios` WRITE;
 /*!40000 ALTER TABLE `Usuarios` DISABLE KEYS */;
-INSERT INTO `Usuarios` VALUES (11,NULL,'Edilson','$2b$10$B8kcn4EcqFURW5Xl.VGZSe8EA8WoQ7ALGMOoi9zgm7yuHMrbpnbRK','eddylson.londonio@gmail.com','Londoño Castañeda',NULL,17),(12,NULL,'Edilson','$2b$10$.jNErNNSjneZM9/GcwQtD.oQG6vG3EqA6hc2eMyy3odsTppBJWz0a','eddylson.londonio2@gmail.com','Londoño Castañeda',NULL,NULL);
+INSERT INTO `Usuarios` VALUES (1,NULL,'Edilson','$2b$10$2FNQseGCJuz.HIchh8UUIOhFMCxoYb9edcGSXzcdjRPS1WmuO.Ygq','eddylson.londonio@gmail.com','Londoño Castañeda',NULL);
 /*!40000 ALTER TABLE `Usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -213,4 +211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-25 19:15:52
+-- Dump completed on 2019-09-28  1:34:33
