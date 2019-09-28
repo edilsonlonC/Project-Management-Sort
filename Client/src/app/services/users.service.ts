@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
 
@@ -9,10 +9,17 @@ import { Observable } from 'rxjs';
 export class UsersService {
 
   API_URI = 'http://localhost:3000/api';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  identidad: any;
+  token: string;
   constructor(private http: HttpClient) { }
 
+  Auth = {
+    Authorization: 'Bearer' + ' ' + this.getToken()
+  };
+
   getUsers() {
+    /*let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let params = new HttpParams().set('requestData', JSON.stringify(this.Auth)).set('authenticationType', this.authType);*/
     return this.http.get(`${this.API_URI}/list-users`);
   }
 
@@ -34,5 +41,25 @@ export class UsersService {
 
   signUp(user: User, gettoken = null): Observable<any> {
     return this.http.post(`${this.API_URI}/login`, user);
+  }
+
+  getIdentidad() {
+    const identidad = JSON.parse(localStorage.getItem('identidad'));
+    if (identidad && identidad != null && identidad !== undefined && identidad !== 'udenfined') {
+        this.identidad = identidad;
+    } else {
+        this.identidad = null;
+    }
+    return this.identidad;
+  }
+
+  getToken() {
+    const token = localStorage.getItem('token');
+    if (token && token != null && token !== undefined && token !== 'udenfined') {
+        this.token = token;
+    } else {
+        this.token = null;
+    }
+    return this.token;
   }
 }

@@ -13,3 +13,7 @@
       height: 600px;
   }
 }
+
+.pointer {
+  cursor: pointer;
+}

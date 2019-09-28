@@ -40,9 +40,7 @@ import { UsersService } from './services/users.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [
-    UsersService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

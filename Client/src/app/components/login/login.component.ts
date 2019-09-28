@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { User } from '../../models/user';
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
      });
    }
 
-  constructor(private usersService: UsersService, private router: Router) {
+  constructor(private usersService: UsersService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.login = this.createFormGroup();
    }
 
@@ -58,10 +58,14 @@ export class LoginComponent implements OnInit {
       this.onForm();
       this.usersService.signUp(this.user).subscribe(
         res => {
-          console.log(res);
+          this.identidad = res.user;
+          this.token = res.token;
+          localStorage.setItem('identidad', JSON.stringify(this.identidad));
+          localStorage.setItem('token', this.token);
           this.router.navigate(['/home']);
         },
         err => {
+          alert('Error: Inicio de sesión');
           console.log(err);
       });
       this.onResetForm();

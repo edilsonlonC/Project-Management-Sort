@@ -9,13 +9,23 @@ import { UsersService } from '../../services/users.service';
 
 export class UsersComponent implements OnInit {
 
-  constructor(private usersService: UsersService) { }
+  identidad: any;
+  token: string;
+
+  users: any = {};
+
+  constructor(private usersService: UsersService) {
+    this.identidad = this.usersService.getIdentidad();
+    this.token = this.usersService.getToken();
+   }
 
   ngOnInit() {
-    /*this.usersService.getUsers().subscribe(
-      res => console.log(res),
+      this.usersService.getUsers().subscribe(
+      res => {
+        this.users = res;
+        console.log(this.users);
+      },
       err => console.log(err)
-    );*/
+    );
   }
-
 }

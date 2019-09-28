@@ -77,18 +77,18 @@
                               <li class="nav-item dropdown no-arrow">
                                   <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"
                                       href="#">
-                                      <span class="d-none d-lg-inline mr-2 text-gray-600 small">Nombre Apellido</span>
+                                      <span class="d-none d-lg-inline mr-2 text-gray-600 small">{{identidad.Nombre_usuario}}</span>
                                       <i class="fas fa-user"></i>
                                   </a>
                                   <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
-                                      <a class="dropdown-item" role="presentation" [routerLink]="['/home']">
+                                      <a class="dropdown-item pointer" role="presentation" [routerLink]="['/home']">
                                           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil
                                       </a>
-                                      <a class="dropdown-item" role="presentation">
+                                      <a class="dropdown-item pointer" role="presentation">
                                           <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Configuracion
                                       </a>
                                       <div class="dropdown-divider"></div>
-                                      <a class="dropdown-item" role="presentation" [routerLink]="['/']">
+                                      <a class="dropdown-item pointer" role="presentation" (click)="logOut()" >
                                           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Cerrar Sesión
                                       </a>
                                   </div>
