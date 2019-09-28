@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `Recursos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Recursos` (
-  `id_recursos` int(11) NOT NULL,
+  `id_recursos` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre_actividad` varchar(45) DEFAULT NULL,
   `Descripcion` varchar(45) DEFAULT NULL,
   `Responsable` varchar(45) DEFAULT NULL,
