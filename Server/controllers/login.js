@@ -8,12 +8,12 @@ let login = async (req, res) => {
     let { email, password } = req.body;
     if (!email || !password) return res.status({ message: 'faltan datos' });
     try {
-        let queryUser = await connection.query('SELECT Nombre_usuario , Correo , contrasenia , rol , Apellido_usuario  FROM Usuarios WHERE Correo = ? ', [email])
+        let queryUser = await connection.query('SELECT *  FROM Usuarios WHERE Correo = ? ', [email])
         let userData = queryUser[0];
         if (userData.length === 0) return res.status(403).send({ message: `El usuario con el correo ${email} no existe ` })
         console.log(userData[0]);
         // payload for token jwt
-        let { Nombre_usuario, Correo, rol, Apellido_usuario } = userData[0]
+        let { Nombre_usuario, Correo, rol, Apellido_usuario , id_usuarios} = userData[0]
         let payload = {
             expire: Date.now() + (1000 * 60 * 60), //1 hour
             username: Nombre_usuario,
@@ -29,7 +29,8 @@ let login = async (req, res) => {
                     Nombre_usuario,
                     rol,
                     Correo,
-                    Apellido_usuario
+                    Apellido_usuario,
+                    id_usuarios
                 }
             })
 
