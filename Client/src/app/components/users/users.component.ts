@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +15,7 @@ export class UsersComponent implements OnInit {
 
   users: any = {};
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService, private homeComponent: HomeComponent) {
     this.identidad = this.usersService.getIdentidad();
     this.token = this.usersService.getToken();
    }
@@ -41,5 +42,9 @@ export class UsersComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  updateUser(user: any) {
+    this.homeComponent.setUser(user);
   }
 }

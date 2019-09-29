@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterProjectComponent } from './components/projects/register-project/register-project.component';
 import { RegisterResourcesComponent } from './components/resources/register-resources/register-resources.component';
 import { RegisterUsersComponent } from './components/users/register-users/register-users.component';
+import { UpdateUsersComponent } from './components/users/update-users/update-users.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
           { path: '', component: RegisterResourcesComponent }
         ]
       },
+      { path: 'users-update', component: UpdateUsersComponent},
       { path: '', component: ProfileComponent }
     ]
   },

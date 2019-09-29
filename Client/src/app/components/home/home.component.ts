@@ -10,20 +10,28 @@ import { UsersService } from '../../services/users.service';
 export class HomeComponent implements OnInit {
   identidad: any;
   token: string;
+  user: any;
 
   constructor(private usersService: UsersService, private router: Router) {
     this.identidad = this.usersService.getIdentidad();
     this.token = this.usersService.getToken();
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   logOut() {
     localStorage.clear();
     this.identidad = null;
     this.token = null;
     this.router.navigate(['/']);
+  }
+
+  setUser(user: any) {
+    this.user = user;
+  }
+
+  getUser() {
+    return this.user;
   }
 
 }

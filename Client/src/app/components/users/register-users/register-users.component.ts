@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../models/user';
-import { Location } from '@angular/common';
 import { UsersComponent } from '../users.component';
 
 @Component({
@@ -61,12 +60,11 @@ export class RegisterUsersComponent implements OnInit {
         res => {
           console.log(res);
           alert('Usuario Registrado');
-          location.reload();
+          this.usersComponent.getUsers();
         },
         err => console.log(err)
       );
       this.onResetForm();
-      this.usersComponent.getUsers();
       console.log('Valid');
     } else {
       console.log('Not Valid');
