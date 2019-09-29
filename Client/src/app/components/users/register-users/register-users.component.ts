@@ -14,7 +14,7 @@ export class RegisterUsersComponent implements OnInit {
 
   user: User = {
     id: 0,
-    rol: 'administrador',
+    rol: 'empleado',
     name: '',
     lastname: '',
     password: '',

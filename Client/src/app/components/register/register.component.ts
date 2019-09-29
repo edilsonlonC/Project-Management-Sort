@@ -50,6 +50,7 @@ export class RegisterComponent implements OnInit {
     this.user.password = this.register.get('pass').value;
     delete this.user.id;
     delete this.user.rol;
+
   }
 
   onSaveForm() {
