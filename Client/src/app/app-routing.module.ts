@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -14,7 +15,7 @@ import { UpdateUsersComponent } from './components/users/update-users/update-use
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent, children: [
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] , children: [
       { path: 'users', component: UsersComponent, children: [
         { path: '', component: RegisterUsersComponent }
         ]

@@ -14,12 +14,12 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   Auth = {
-    Authorization: 'Bearer' + ' ' + this.getToken()
+    Authorization: 'Bearer' + ' ' + this.token
   };
 
   getUsers() {
-    /*let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    let params = new HttpParams().set('requestData', JSON.stringify(this.Auth)).set('authenticationType', this.authType);*/
+    /*const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const params = new HttpParams().set('requestData', JSON.stringify(this.Auth));*/
     return this.http.get(`${this.API_URI}/list-users`);
   }
 
