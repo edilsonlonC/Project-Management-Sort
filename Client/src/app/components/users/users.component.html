@@ -29,7 +29,7 @@
                         <td>{{user.Apellido_usuario}}</td>
                         <td>{{user.Correo}}</td>
                         <td><a [routerLink]="['/home']"><i class="fas fa-paperclip text-warning"></i></a></td>
-                        <td><a [routerLink]="['/home']"><i class="fas fa-times text-warning"></i></a></td>
+                        <td><a [routerLink]="[]"(click)="deleteUser(user.id_usuarios)"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                     </tbody>
                   </table>

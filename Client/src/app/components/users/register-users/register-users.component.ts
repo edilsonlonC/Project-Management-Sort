@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../models/user';
 import { Location } from '@angular/common';
+import { UsersComponent } from '../users.component';
 
 @Component({
   selector: 'app-register-users',
@@ -34,7 +35,7 @@ export class RegisterUsersComponent implements OnInit {
     });
   }
 
-  constructor(private usersService: UsersService, private location: Location) {
+  constructor(private usersService: UsersService, private usersComponent: UsersComponent ) {
     this.register = this.createFormGroup();
   }
 
@@ -65,6 +66,7 @@ export class RegisterUsersComponent implements OnInit {
         err => console.log(err)
       );
       this.onResetForm();
+      this.usersComponent.getUsers();
       console.log('Valid');
     } else {
       console.log('Not Valid');
