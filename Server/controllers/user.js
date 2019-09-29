@@ -30,7 +30,7 @@ let saveuser = async (req, res) => {
 let listUsers = async (req, res) => {
 
     try {
-        let queryUsers = await connection.query('SELECT Nombre_usuario , Apellido_usuario , Correo , id_usuarios , rol from Usuarios ')
+        let queryUsers = await connection.query('SELECT Nombre_usuario , Apellido_usuario , Correo , id_usuarios , Rol_Usuario_id_Rol_Usuario from Usuarios ')
         if (queryUsers[0].length <= 0) return res.status(200).send({ message: 'No se encuentran usuarios' })
         let listUsers = queryUsers[0];
         return res.status(200).send({ listUsers });
@@ -45,7 +45,7 @@ let listUser = async (req, res) => {
     console.log(req.params);
     console.log(id);
     try {
-        let queryuser = await connection.query('SELECT Nombre_usuario , Apellido_usuario , Correo , Correo , id_usuarios , rol from Usuarios WHERE id_usuarios = ?', id)
+        let queryuser = await connection.query('SELECT Nombre_usuario , Apellido_usuario , Correo , Correo , id_usuarios , Rol_Usuario_id_Rol_Usuario from Usuarios WHERE id_usuarios = ?', id)
         let User = queryuser[0]
         if (User.length <= 0) return res.status(404).send({ message: 'El usuario no existe' })
         return res.status(200).send({ User })

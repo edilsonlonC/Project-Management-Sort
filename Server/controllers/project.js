@@ -3,7 +3,7 @@ const { connection } = require('../Database/DB');
 
 /// modificar, validar primero si el usuario existe
 let saveProject = async (req, res) => {
-    let { id } = req.params;
+    let { id } = req.params; // User id for relational project 
     let { projectName, type } = req.body;
 
     if (!projectName || !type) return res.status(404).send({ message: 'Datos incompletos' })
@@ -37,7 +37,6 @@ let listProject = async (req, res) => {
         let project = queryProject[0];
         if (project.length === 0) return res.status(404).send({ message: 'El proyecto no existe' });
         return res.status(200).send({ project });
-
     } catch (error) {
         return res.status(500).send({ error })
     }
