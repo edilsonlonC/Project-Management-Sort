@@ -28,10 +28,24 @@ let nameResourceExist = async (req, res, next) => {
 
 }
 
+let activityNameExist = async (req,res,next) => {
+
+    let { activityName } = req.body
+    if (!activityName) return res.status(404).send({ message: 'faltan datos ' })
+    try {
+        let queryExistActivityName = await connection.query('SELECT * FROM Actividades WHERE nombre_actividad = ?', [activityName]);
+        if (queryExistActivityName[0].length > 0) return res.status(404).send({ message: `El nombre ${activityName} ya se encuentra en uso` })
+        next()
+    } catch (error) {
+        return res.status(500).send({ error });
+
+    }
+}
+
 
 let existPriority = async (req, res, next) => {
     let { priority } = req.body
-    if (!priority) return res.status(404).send({message : 'faltan datos'})
+    if (!priority) return res.status(404).send({message : 'faltan datos prioridad '})
     try {
         let queryExistPriority = await connection.query('SELECT * FROM  Prioridad WHERE id_prioridad = ? ', [priority]);
         if (queryExistPriority[0].length === 0) return res.status(404).send({ message: ' verificar la  prioridad ' })
@@ -43,7 +57,7 @@ let existPriority = async (req, res, next) => {
 
 let existState = async (req,res,next) => {
     let { stateType } = req.body
-    if (!stateType) return res.status(404).send({message : 'faltan datos'})
+    if (!stateType) return res.status(404).send({message : 'faltan datos estado '})
     try {
         let queryExistState = await connection.query('SELECT * FROM  Tipo_estado WHERE id_estado = ? ', [stateType]);
         if (queryExistState[0].length === 0) return res.status(404).send({ message: ' verificar el estado ' })
@@ -59,5 +73,6 @@ module.exports = {
     projectExist,
     nameResourceExist,
     existPriority,
-    existState
+    existState,
+    activityNameExist
 }
