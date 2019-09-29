@@ -17,6 +17,7 @@ import { RegisterResourcesComponent } from './components/resources/register-reso
 import { RegisterUsersComponent } from './components/users/register-users/register-users.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UpdateUsersComponent } from './components/users/update-users/update-users.component';
+import { UpdateProjectsComponent } from './components/projects/update-projects/update-projects.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UpdateUsersComponent } from './components/users/update-users/update-use
     RegisterResourcesComponent,
     RegisterUsersComponent,
     ProfileComponent,
-    UpdateUsersComponent
+    UpdateUsersComponent,
+    UpdateProjectsComponent
   ],
   imports: [
     BrowserModule,

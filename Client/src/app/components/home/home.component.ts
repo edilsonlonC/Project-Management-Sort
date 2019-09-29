@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   identidad: any;
   token: string;
   user: any;
+  project: any;
 
   constructor(private usersService: UsersService, private router: Router) {
     this.identidad = this.usersService.getIdentidad();
@@ -32,6 +33,14 @@ export class HomeComponent implements OnInit {
 
   getUser() {
     return this.user;
+  }
+
+  setProject(project: any) {
+    this.project = project;
+  }
+
+  getProject() {
+    return this.project;
   }
 
 }

@@ -2,7 +2,7 @@ const DBconfig = {
     host : 'localhost',
     user : 'root',
     password : 'root',
-    database : 'PMS2'
+    database : 'PMS'
 }
 
 module.exports = {

@@ -9,34 +9,34 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="container p-5">
-          <div class="row justify-content-center">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <table class="table table-warning  text-center">
-                    <thead>
-                      <tr class="bg-warning text-white">
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Correo Electronico</th>
-                        <th scope="col">Actualizar</th>
-                        <th scope="col">Eliminar</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let user of users.listUsers" class="text-warning">
-                        <td>{{user.Nombre_usuario}}</td>
-                        <td>{{user.Apellido_usuario}}</td>
-                        <td>{{user.Correo}}</td>
-                        <td><a [routerLink]="['../users-update']" (click)="updateUser(user)"><i class="fas fa-paperclip text-warning"></i></a></td>
-                        <td><a [routerLink]="[]" (click)="deleteUser(user.id_usuarios)"><i class="fas fa-times text-warning"></i></a></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-            </div>
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <table class="table table-warning  text-center">
+                  <thead>
+                    <tr class="bg-warning text-white">
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Apellido</th>
+                      <th scope="col">Correo Electronico</th>
+                      <th scope="col">Actualizar</th>
+                      <th scope="col">Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of users.listUsers" class="text-warning">
+                      <td>{{user.Nombre_usuario}}</td>
+                      <td>{{user.Apellido_usuario}}</td>
+                      <td>{{user.Correo}}</td>
+                      <td><a [routerLink]="['../users-update']" (click)="updateUser(user)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                      <td><a [routerLink]="[]" (click)="deleteUser(user.id_usuarios)"><i class="fas fa-times text-warning"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
           </div>
         </div>
+      </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <router-outlet></router-outlet>

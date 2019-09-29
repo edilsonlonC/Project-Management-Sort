@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectsService } from '../../services/projects.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-projects',
@@ -7,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  projects: any = {};
+  constructor(private projectsService: ProjectsService, private homeComponent: HomeComponent) { }
 
   ngOnInit() {
+    this.getProjects();
   }
 
+  getProjects() {
+    this.projectsService.getProjects().subscribe(
+      res => {
+        this.projects = res;
+        console.log(this.projects);
+      },
+      err => console.log(err)
+    );
+  }
+
+  deleteProject(id: string) {
+    this.projectsService.deleteProject(id).subscribe(
+      res => {
+        console.log(res);
+        this.getProjects();
+      },
+      err => console.log(err)
+    );
+  }
+
+  updateProject(project: any) {
+    this.homeComponent.setProject(project);
+  }
 }

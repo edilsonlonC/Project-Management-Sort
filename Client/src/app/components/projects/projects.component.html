@@ -9,7 +9,32 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
+        <div class="container p-5">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <table class="table table-warning  text-center">
+                    <thead>
+                      <tr class="bg-warning text-white">
+                        <th scope="col">Nombre del Proyecto</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Actualizar</th>
+                        <th scope="col">Eliminar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let project of projects.projects" class="text-warning">
+                        <td>{{project.Nombre_Proyecto}}</td>
+                        <td>{{project.Tipo_Proyecto_id_Tipo}}</td>
+                        <td><a [routerLink]="['../projects-update']" (click)="updateProject(project)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="[]" (click)="deleteProject(project.id_proyecto)"><i class="fas fa-times text-warning"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <router-outlet></router-outlet>

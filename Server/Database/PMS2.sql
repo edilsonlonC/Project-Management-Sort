@@ -16,6 +16,78 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `Actividades`
+--
+
+DROP TABLE IF EXISTS `Actividades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Actividades` (
+  `id_actividades` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_actividad` varchar(45) DEFAULT NULL,
+  `descripcion` varchar(45) DEFAULT NULL,
+  `responsable` varchar(45) DEFAULT NULL,
+  `dependencia` varchar(45) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `Proyecto_id_proyecto` int(11) DEFAULT NULL,
+  `Tipo_estado_id_estado` int(11) DEFAULT NULL,
+  `Prioridad_id_prioridad` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_actividades`),
+  KEY `fk_Actividades_Proyecto1_idx` (`Proyecto_id_proyecto`),
+  KEY `fk_Actividades_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
+  KEY `fk_Actividades_Prioridad1_idx` (`Prioridad_id_prioridad`),
+  CONSTRAINT `fk_Actividades_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Actividades_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Actividades_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Actividades`
+--
+
+LOCK TABLES `Actividades` WRITE;
+/*!40000 ALTER TABLE `Actividades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Actividades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Funcionalidades`
+--
+
+DROP TABLE IF EXISTS `Funcionalidades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Funcionalidades` (
+  `id_funcionalidad` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_funcionalidad` varchar(45) DEFAULT NULL,
+  `descripcion` varchar(45) DEFAULT NULL,
+  `responsable` varchar(45) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `dependencia` varchar(45) DEFAULT NULL,
+  `Proyecto_id_proyecto` int(11) DEFAULT NULL,
+  `Tipo_estado_id_estado` int(11) DEFAULT NULL,
+  `Prioridad_id_prioridad` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_funcionalidad`),
+  KEY `fk_Funcionalidades_Proyecto1_idx` (`Proyecto_id_proyecto`),
+  KEY `fk_Funcionalidades_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
+  KEY `fk_Funcionalidades_Prioridad1_idx` (`Prioridad_id_prioridad`),
+  CONSTRAINT `fk_Funcionalidades_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Funcionalidades_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Funcionalidades_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Funcionalidades`
+--
+
+LOCK TABLES `Funcionalidades` WRITE;
+/*!40000 ALTER TABLE `Funcionalidades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Funcionalidades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Prioridad`
 --
 
@@ -35,6 +107,7 @@ CREATE TABLE `Prioridad` (
 
 LOCK TABLES `Prioridad` WRITE;
 /*!40000 ALTER TABLE `Prioridad` DISABLE KEYS */;
+INSERT INTO `Prioridad` VALUES (1,'prioridad 1');
 /*!40000 ALTER TABLE `Prioridad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,13 +122,10 @@ CREATE TABLE `Proyecto` (
   `id_proyecto` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre_Proyecto` varchar(45) DEFAULT NULL,
   `Tipo_Proyecto_id_Tipo` int(11) DEFAULT NULL,
-  `Recursos_id_recursos` int(11) DEFAULT NULL,
   `Usuarios_id_usuarios` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_proyecto`),
   KEY `fk_Proyecto_Tipo_Proyecto1_idx` (`Tipo_Proyecto_id_Tipo`),
-  KEY `fk_Proyecto_Recursos1_idx` (`Recursos_id_recursos`),
   KEY `fk_Proyecto_Usuarios1_idx` (`Usuarios_id_usuarios`),
-  CONSTRAINT `fk_Proyecto_Recursos1` FOREIGN KEY (`Recursos_id_recursos`) REFERENCES `Recursos` (`id_recursos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Proyecto_Tipo_Proyecto1` FOREIGN KEY (`Tipo_Proyecto_id_Tipo`) REFERENCES `Tipo_Proyecto` (`id_Tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Proyecto_Usuarios1` FOREIGN KEY (`Usuarios_id_usuarios`) REFERENCES `Usuarios` (`id_usuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -67,6 +137,7 @@ CREATE TABLE `Proyecto` (
 
 LOCK TABLES `Proyecto` WRITE;
 /*!40000 ALTER TABLE `Proyecto` DISABLE KEYS */;
+INSERT INTO `Proyecto` VALUES (1,'Proyecto 1',1,1);
 /*!40000 ALTER TABLE `Proyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,17 +150,20 @@ DROP TABLE IF EXISTS `Recursos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Recursos` (
   `id_recursos` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_actividad` varchar(45) DEFAULT NULL,
   `Descripcion` varchar(45) DEFAULT NULL,
   `Responsable` varchar(45) DEFAULT NULL,
   `Tipo_estado_id_estado` int(11) DEFAULT NULL,
   `Prioridad_id_prioridad` int(11) DEFAULT NULL,
+  `Proyecto_id_proyecto` int(11) DEFAULT NULL,
+  `nombre_recurso` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_recursos`),
   KEY `fk_Recursos_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
   KEY `fk_Recursos_Prioridad1_idx` (`Prioridad_id_prioridad`),
+  KEY `fk_Recursos_Proyecto1_idx` (`Proyecto_id_proyecto`),
   CONSTRAINT `fk_Recursos_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Recursos_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Recursos_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,6 +172,7 @@ CREATE TABLE `Recursos` (
 
 LOCK TABLES `Recursos` WRITE;
 /*!40000 ALTER TABLE `Recursos` DISABLE KEYS */;
+INSERT INTO `Recursos` VALUES (1,'descripcion del recurso 2','Edilson Londoño castañeda',1,1,NULL,'recurso 1'),(2,'descripcion del recurso 2','Edilson Londoño castañeda',1,1,NULL,'recurso 2');
 /*!40000 ALTER TABLE `Recursos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +187,7 @@ CREATE TABLE `Rol_Usuario` (
   `id_Rol_Usuario` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_Rol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_Rol_Usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +196,44 @@ CREATE TABLE `Rol_Usuario` (
 
 LOCK TABLES `Rol_Usuario` WRITE;
 /*!40000 ALTER TABLE `Rol_Usuario` DISABLE KEYS */;
+INSERT INTO `Rol_Usuario` VALUES (1,'ADMINISTRADOR'),(2,'USUARIO');
 /*!40000 ALTER TABLE `Rol_Usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Tareas`
+--
+
+DROP TABLE IF EXISTS `Tareas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Tareas` (
+  `id_tareas` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_tarea` varchar(45) DEFAULT NULL,
+  `descripcion` varchar(45) DEFAULT NULL,
+  `responsable` varchar(45) DEFAULT NULL,
+  `dependencia` varchar(45) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `Proyecto_id_proyecto` int(11) DEFAULT NULL,
+  `Tipo_estado_id_estado` int(11) DEFAULT NULL,
+  `Prioridad_id_prioridad` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_tareas`),
+  KEY `fk_Tareas_Proyecto1_idx` (`Proyecto_id_proyecto`),
+  KEY `fk_Tareas_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
+  KEY `fk_Tareas_Prioridad1_idx` (`Prioridad_id_prioridad`),
+  CONSTRAINT `fk_Tareas_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Tareas_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Tareas_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Tareas`
+--
+
+LOCK TABLES `Tareas` WRITE;
+/*!40000 ALTER TABLE `Tareas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Tareas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -144,7 +256,7 @@ CREATE TABLE `Tipo_Proyecto` (
 
 LOCK TABLES `Tipo_Proyecto` WRITE;
 /*!40000 ALTER TABLE `Tipo_Proyecto` DISABLE KEYS */;
-INSERT INTO `Tipo_Proyecto` VALUES (1,'Tipo 1');
+INSERT INTO `Tipo_Proyecto` VALUES (1,'tipo proyecto 1');
 /*!40000 ALTER TABLE `Tipo_Proyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +271,7 @@ CREATE TABLE `Tipo_estado` (
   `id_estado` int(11) NOT NULL AUTO_INCREMENT,
   `valor_estado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_estado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,6 +280,7 @@ CREATE TABLE `Tipo_estado` (
 
 LOCK TABLES `Tipo_estado` WRITE;
 /*!40000 ALTER TABLE `Tipo_estado` DISABLE KEYS */;
+INSERT INTO `Tipo_estado` VALUES (1,'estado 1');
 /*!40000 ALTER TABLE `Tipo_estado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +294,7 @@ DROP TABLE IF EXISTS `Usuarios`;
 CREATE TABLE `Usuarios` (
   `id_usuarios` int(11) NOT NULL AUTO_INCREMENT,
   `rol` varchar(45) DEFAULT NULL,
-  `Nombre_usuario` varchar(45) NOT NULL,
+  `Nombre_usuario` varchar(45) DEFAULT NULL,
   `contrasenia` varchar(200) DEFAULT NULL,
   `Correo` varchar(45) DEFAULT NULL,
   `Apellido_usuario` varchar(45) DEFAULT NULL,
@@ -198,7 +311,7 @@ CREATE TABLE `Usuarios` (
 
 LOCK TABLES `Usuarios` WRITE;
 /*!40000 ALTER TABLE `Usuarios` DISABLE KEYS */;
-INSERT INTO `Usuarios` VALUES (1,NULL,'Edilson','$2b$10$2FNQseGCJuz.HIchh8UUIOhFMCxoYb9edcGSXzcdjRPS1WmuO.Ygq','eddylson.londonio@gmail.com','Londoño Castañeda',NULL);
+INSERT INTO `Usuarios` VALUES (1,NULL,'Edilson','$2b$10$Pq4zW/gNOZ.oPk37Vqj2Su5PdDL8qVa5VfgQYSPxCyauUyS1taQJy','eddylson.londonio@gmailcom','Londoño',2);
 /*!40000 ALTER TABLE `Usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -211,4 +324,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-28  1:34:33
+-- Dump completed on 2019-09-29 10:47:59
