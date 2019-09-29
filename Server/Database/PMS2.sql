@@ -163,7 +163,7 @@ CREATE TABLE `Recursos` (
   CONSTRAINT `fk_Recursos_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Recursos_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Recursos_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `Recursos` (
 
 LOCK TABLES `Recursos` WRITE;
 /*!40000 ALTER TABLE `Recursos` DISABLE KEYS */;
-INSERT INTO `Recursos` VALUES (1,'descripcion del recurso 2','Edilson Londoño castañeda',1,1,NULL,'recurso 1'),(2,'descripcion del recurso 2','Edilson Londoño castañeda',1,1,NULL,'recurso 2');
+INSERT INTO `Recursos` VALUES (1,'descipcion de otro recurso','Edilson Londoño',1,1,NULL,'otro recuso2002'),(2,'descripcion del recurso 2','Edilson Londoño castañeda',1,1,NULL,'recurso 2'),(3,'descripcion del recurso 2','Edilson Londoño castañeda',1,1,NULL,'recurso 20'),(4,'descripcion del recurso 5','Edilson Londoño castañeda',1,1,1,'recurso 5'),(5,'descipcion de otro recurso','Edilson Londoño',1,1,1,'otro recuso'),(6,'descipcion de otro recurso','Edilson Londoño',1,1,1,'otro recuso2'),(7,'descipcion de otro recurso','Edilson Londoño',1,1,1,'otro recuso200');
 /*!40000 ALTER TABLE `Recursos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,4 +324,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-29 10:47:59
+-- Dump completed on 2019-09-29 14:23:53
