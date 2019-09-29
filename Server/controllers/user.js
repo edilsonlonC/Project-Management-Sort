@@ -17,7 +17,7 @@ let saveuser = async (req, res) => {
     try {
         let existingUser = await connection.query('SELECT correo FROM Usuarios where correo = ?', [email]);
         if (existingUser[0].length > 0) return res.status(404).send({ message: 'El usuario ya existe ' })
-        let userSaved = await connection.query('INSERT INTO Usuarios (Nombre_usuario,contrasenia,correo,Apellido_usuario,Rol_Usuario_id_Rol_Usuario) values (?,?,?,?,?)', [name, password, email, lastname,2])
+        let userSaved = await connection.query('INSERT INTO Usuarios (Nombre_usuario,contrasenia,correo,Apellido_usuario,Rol_Usuario_id_Rol_Usuario) values (?,?,?,?,?)', [name, password, email, lastname, 2])
         if (!userSaved) return res.status(500).send('Error al guardar usuario')
         return res.status(200).send({ userSaved })
     } catch (error) {
