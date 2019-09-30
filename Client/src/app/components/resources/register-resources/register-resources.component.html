@@ -19,9 +19,7 @@
                     </div>
                     <div class="form-group mt-3">
                       <select class="form-control" placeholder="Proyecto" formControlName="proyector" [ngClass]="{ 'is-invalid': proyector.invalid && (proyector.dirty || proyector.touched) }">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option *ngFor="let project of projects.projects">{{project.Nombre_Proyecto}}</option>
                       </select>
                       <div *ngIf="proyector.invalid && (proyector.dirty || proyector.touched)" class="invalid-feedback">
                         <div *ngIf="proyector.errors.required">Seleccione proyecto.</div>
@@ -84,9 +82,7 @@
               </div>
               <div class="form-group mt-3">
                 <select class="form-control" placeholder="Proyecto" formControlName="proyectoa" [ngClass]="{ 'is-invalid': proyectoa.invalid && (proyectoa.dirty || proyectoa.touched) }">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
+                  <option *ngFor="let project of projects.projects">{{project.Nombre_Proyecto}}</option>
                 </select>
                 <div *ngIf="proyectoa.invalid && (proyectoa.dirty || proyectoa.touched)" class="invalid-feedback">
                   <div *ngIf="proyectoa.errors.required">Seleccione proyecto.</div>
@@ -149,9 +145,7 @@
                 </div>
                 <div class="form-group mt-3">
                   <select class="form-control" placeholder="Proyecto" formControlName="proyectof" [ngClass]="{ 'is-invalid': proyectof.invalid && (proyectof.dirty || proyectof.touched) }">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option *ngFor="let project of projects.projects">{{project.Nombre_Proyecto}}</option>
                   </select>
                   <div *ngIf="proyectof.invalid && (proyectof.dirty || proyectof.touched)" class="invalid-feedback">
                     <div *ngIf="proyectof.errors.required">Seleccione proyecto.</div>
@@ -214,9 +208,7 @@
                 </div>
                 <div class="form-group mt-3">
                   <select class="form-control" placeholder="Proyecto" formControlName="proyectot" [ngClass]="{ 'is-invalid': proyectot.invalid && (proyectot.dirty || proyectot.touched) }">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option *ngFor="let project of projects.projects">{{project.Nombre_Proyecto}}</option>
                   </select>
                   <div *ngIf="proyectot.invalid && (proyectot.dirty || proyectot.touched)" class="invalid-feedback">
                     <div *ngIf="proyectot.errors.required">Seleccione proyecto.</div>

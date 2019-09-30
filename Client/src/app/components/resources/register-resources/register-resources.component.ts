@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProjectsService } from '../../../services/projects.service';
 
 @Component({
   selector: 'app-register-resources',
@@ -12,6 +13,8 @@ export class RegisterResourcesComponent implements OnInit {
   actividad: FormGroup;
   funcionalidad: FormGroup;
   tarea: FormGroup;
+
+  projects: any = {};
 
   createFormGroupR() {
     return new FormGroup({
@@ -65,14 +68,26 @@ export class RegisterResourcesComponent implements OnInit {
     });
   }
 
-  constructor() {
+  constructor(private projectsService: ProjectsService ) {
     this.recurso = this.createFormGroupR();
     this.actividad = this.createFormGroupA();
     this.funcionalidad = this.createFormGroupF();
     this.tarea = this.createFormGroupT();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getProjects();
+  }
+
+  getProjects() {
+    this.projectsService.getProjects().subscribe(
+      res => {
+        this.projects = res;
+        console.log(this.projects);
+      },
+      err => console.log(err)
+    );
+  }
 
   onResetFormR() {
     this.recurso.reset();

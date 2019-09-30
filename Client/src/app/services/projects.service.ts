@@ -29,8 +29,7 @@ export class ProjectsService {
   }
 
   saveProject(project: Project): Observable<any> {
-    console.log(this.identidad);
-    return this.http.post(`${this.API_URI}/save-project/${1}`, project);
+    return this.http.post(`${this.API_URI}/save-project/${this.identidad.id_usuarios}`, project);
   }
 
   updateProject(id: string, updateProject: Project): Observable<any> {
