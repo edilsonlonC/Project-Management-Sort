@@ -4,7 +4,7 @@ const { connection } = require('../Database/DB');
 let saveActivity = async (req, res) => {
     let date = new Date(Date.now());
     let { activityName, description, responsable, stateType, priority, idProject } = req.body
-    if (!activityName || !description || !responsable || !stateType || !priority || !idProject) return res.status(494).send({ message: 'datos incompletos' })
+    if (!activityName || !description || !responsable || !stateType || !priority || !idProject) return res.status(404).send({ message: 'datos incompletos' })
     try {
         let querySavedActivity = await connection.query('INSERT INTO Actividades (nombre_actividad,descripcion,responsable,Proyecto_id_proyecto , Tipo_estado_id_estado,Prioridad_id_prioridad,fecha) VALUES (?,?,?,?,?,?,?)',
             [activityName, description, responsable, idProject, stateType, priority, date])
