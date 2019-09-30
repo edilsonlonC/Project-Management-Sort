@@ -5,14 +5,7 @@ let saveResource = async (req, res) => {
     let { resourceName, description, responsable, stateType, priority, idProject } = req.body
     if (!resourceName || !description || !responsable || !stateType || !priority || !idProject) return res.status(200).send({ message: 'datos incompletos' })
     try {
-        let queryExistProject = await connection.query('SELECT id_proyecto FROM Proyecto WHERE id_Proyecto = ? ', [idProject]);
-        if (queryExistProject[0].length == 0) return res.status(404).send({ message: 'El proyecto que quiere aignar no existe' });
-        let queryExistResourceName = await connection.query('SELECT * FROM Recursos WHERE nombre_recurso = ?', [resourceName]);
-        if (queryExistResourceName[0].length > 0) return res.status(404).send({ message: `El nombre ${resourceName} ya se encuentra en uso` })
-        let queryExistPriorityAndSateteType = await connection.query('SELECT * FROM Tipo_estado , Prioridad WHERE id_estado = ? AND id_prioridad = ? ', [stateType, priority]);
-        if (queryExistPriorityAndSateteType[0].length === 0) return res.status(404).send({ message: 'verificar el estado y la prioridad ' })
         let querySavedResource = await connection.query('INSERT INTO Recursos (nombre_recurso,Descripcion,Responsable,Tipo_estado_id_estado,Prioridad_id_prioridad,Proyecto_id_proyecto) VALUES (?,?,?,?,?,?)', [resourceName, description, responsable, stateType, priority, idProject])
-
         return res.status(200).send({
             message: ' recurso guardado corectamente',
             querySavedResource
@@ -54,8 +47,6 @@ let updateResource = async (req, res) => {
     try {
         let queryExistActivityName = await connection.query('SELECT * FROM Recursos WHERE nombre_recurso = ? and id_recursos != ?', [resourceName, id]);
         if (queryExistActivityName[0].length > 0) return res.status(404).send({ message: `El nombre ${resourceName} ya se encuentra en uso` })
-        let queryExistPriorityAndSateteType = await connection.query('SELECT * FROM Tipo_estado , Prioridad WHERE id_estado = ? AND id_prioridad = ? ', [stateType, priority]);
-        if (queryExistPriorityAndSateteType[0].length === 0) return res.status(404).send({ message: 'verificar el estado y la prioridad ' })
         let queryUpdateresource = await connection.query('UPDATE Recursos SET nombre_recurso = ?, Descripcion = ?,Responsable = ?,Tipo_estado_id_estado = ? ,Prioridad_id_prioridad = ? WHERE id_recursos = ? ', [resourceName, description, responsable, stateType, priority, id])
         if (queryUpdateresource[0].affectedRows === 0) return res.status(404).send({ message: 'El recurso no existe' });
         return res.status(200).send({ message: 'recurso modificado' })
