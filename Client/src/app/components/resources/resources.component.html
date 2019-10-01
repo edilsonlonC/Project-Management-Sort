@@ -9,10 +9,93 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
+        <div class="container p-5">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <table class="table table-warning  text-center">
+                    <thead>
+                      <tr class="bg-warning text-white">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Responsable</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Prioridad</th>
+                        <th scope="col">Actualizar</th>
+                        <th scope="col">Eliminar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let resource of resources.resources" class="text-warning">
+                        <td>{{resource.nombre_recurso}}</td>
+                        <td>Recurso</td>
+                        <td>{{resource.Responsable}}</td>
+                        <td>1/10/2019</td>
+                        <td>{{resource.Tipo_estado_id_estado}}</td>
+                        <td>{{resource.Prioridad_id_prioridad}}</td>
+                        <td><a [routerLink]="[]"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(resource.id_recursos, 'r')"><i class="fas fa-times text-warning"></i></a></td>
+                      </tr>
+                      <tr *ngFor="let activity of activities.listAvtivities" class="text-warning">
+                        <td>{{activity.nombre_actividad}}</td>
+                        <td>Actividad</td>
+                        <td>{{activity.responsable}}</td>
+                        <td>1/10/2019</td>
+                        <td>{{activity.Tipo_estado_id_estado}}</td>
+                        <td>{{activity.Prioridad_id_prioridad}}</td>
+                        <td><a [routerLink]="[]"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(activity.id_actividades, 'a')"><i class="fas fa-times text-warning"></i></a></td>
+                      </tr>
+                      <tr *ngFor="let functionality of functionalities.listFunctionalities" class="text-warning">
+                        <td>{{functionality.nombre_funcionalidad}}</td>
+                        <td>Funcionalidad</td>
+                        <td>{{functionality.responsable}}</td>
+                        <td>1/10/2019</td>
+                        <td>{{functionality.Tipo_estado_id_estado}}</td>
+                        <td>{{functionality.Prioridad_id_prioridad}}</td>
+                        <td><a [routerLink]="[]"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(functionality.id_funcionalidad, 'f')"><i class="fas fa-times text-warning"></i></a></td>
+                      </tr>
+                      <tr *ngFor="let task of tasks.listTasks" class="text-warning">
+                        <td>{{task.nombre_tarea}}</td>
+                        <td>Tarea</td>
+                        <td>{{task.responsable}}</td>
+                        <td>1/10/2019</td>
+                        <td>{{task.Tipo_estado_id_estado}}</td>
+                        <td>{{task.Prioridad_id_prioridad}}</td>
+                        <td><a [routerLink]="[]"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(task.id_tareas, 't')"><i class="fas fa-times text-warning"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <router-outlet></router-outlet>
       </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header table-warning">
+        <h5 class="modal-title text-warning" id="exampleModalLongTitle">Eliminar Recurso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white ">
+       <p class="text-secondary">Confirma la eliminacion del recurso.</p>
+      </div>
+      <div class="modal-footer table-light">
+        <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning text-white" data-dismiss="modal" (click)="deleteResources()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

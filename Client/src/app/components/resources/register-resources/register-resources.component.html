@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group mt-3">
                       <select class="form-control" placeholder="Proyecto" formControlName="proyector" [ngClass]="{ 'is-invalid': proyector.invalid && (proyector.dirty || proyector.touched) }">
-                        <option *ngFor="let project of projects.projects">{{project.Nombre_Proyecto}}</option>
+                        <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
                       </select>
                       <div *ngIf="proyector.invalid && (proyector.dirty || proyector.touched)" class="invalid-feedback">
                         <div *ngIf="proyector.errors.required">Seleccione proyecto.</div>
@@ -41,18 +41,6 @@
                       <input type="" class="form-control mt-auto " placeholder="Prioridad" formControlName="prioridadr" [ngClass]="{ 'is-invalid': prioridadr.invalid && (prioridadr.dirty || prioridadr.touched) }"/>
                       <div *ngIf="prioridadr.invalid && (prioridadr.dirty || prioridadr.touched)" class="invalid-feedback">
                         <div *ngIf="prioridadr.errors.required">Ingrese prioridad.</div>
-                      </div>
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="" class="form-control mt-auto " placeholder="Dependencia" formControlName="dependenciar" [ngClass]="{ 'is-invalid': dependenciar.invalid && (dependenciar.dirty || dependenciar.touched) }"/>
-                      <div *ngIf="dependenciar.invalid && (dependenciar.dirty || dependenciar.touched)" class="invalid-feedback">
-                        <div *ngIf="dependenciar.errors.required">Ingrese prioridad.</div>
-                      </div>
-                    </div>
-                    <div class="form-group mt-3">
-                      <input type="date" class="form-control mt-auto text-secondary" formControlName="dater" [ngClass]="{ 'is-invalid': dater.invalid && (dater.dirty || dater.touched) }"/>
-                      <div *ngIf="dater.invalid && (dater.dirty || dater.touched)" class="invalid-feedback">
-                        <div *ngIf="dater.errors.required">Ingrese fecha.</div>
                       </div>
                     </div>
                     <div class="form-group mt-3">
@@ -82,7 +70,7 @@
               </div>
               <div class="form-group mt-3">
                 <select class="form-control" placeholder="Proyecto" formControlName="proyectoa" [ngClass]="{ 'is-invalid': proyectoa.invalid && (proyectoa.dirty || proyectoa.touched) }">
-                  <option *ngFor="let project of projects.projects">{{project.Nombre_Proyecto}}</option>
+                  <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
                 </select>
                 <div *ngIf="proyectoa.invalid && (proyectoa.dirty || proyectoa.touched)" class="invalid-feedback">
                   <div *ngIf="proyectoa.errors.required">Seleccione proyecto.</div>
@@ -104,18 +92,6 @@
                 <input type="" class="form-control mt-auto " placeholder="Prioridad" formControlName="prioridada" [ngClass]="{ 'is-invalid': prioridada.invalid && (prioridada.dirty || prioridada.touched) }"/>
                 <div *ngIf="prioridada.invalid && (prioridada.dirty || prioridada.touched)" class="invalid-feedback">
                   <div *ngIf="prioridada.errors.required">Ingrese prioridad.</div>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="" class="form-control mt-auto " placeholder="Dependencia" formControlName="dependenciaa" [ngClass]="{ 'is-invalid': dependenciaa.invalid && (dependenciaa.dirty || dependenciaa.touched) }"/>
-                <div *ngIf="dependenciaa.invalid && (dependenciaa.dirty || dependenciaa.touched)" class="invalid-feedback">
-                  <div *ngIf="dependenciaa.errors.required">Ingrese prioridad.</div>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="date" class="form-control mt-auto text-secondary" formControlName="datea" [ngClass]="{ 'is-invalid': datea.invalid && (datea.dirty || datea.touched) }"/>
-                <div *ngIf="datea.invalid && (datea.dirty || datea.touched)" class="invalid-feedback">
-                  <div *ngIf="datea.errors.required">Ingrese fecha.</div>
                 </div>
               </div>
               <div class="form-group mt-3">
@@ -145,7 +121,7 @@
                 </div>
                 <div class="form-group mt-3">
                   <select class="form-control" placeholder="Proyecto" formControlName="proyectof" [ngClass]="{ 'is-invalid': proyectof.invalid && (proyectof.dirty || proyectof.touched) }">
-                    <option *ngFor="let project of projects.projects">{{project.Nombre_Proyecto}}</option>
+                    <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
                   </select>
                   <div *ngIf="proyectof.invalid && (proyectof.dirty || proyectof.touched)" class="invalid-feedback">
                     <div *ngIf="proyectof.errors.required">Seleccione proyecto.</div>
@@ -167,18 +143,6 @@
                   <input type="" class="form-control mt-auto " placeholder="Prioridad" formControlName="prioridadf" [ngClass]="{ 'is-invalid': prioridadf.invalid && (prioridadf.dirty || prioridadf.touched) }"/>
                   <div *ngIf="prioridadf.invalid && (prioridadf.dirty || prioridadf.touched)" class="invalid-feedback">
                     <div *ngIf="prioridadf.errors.required">Ingrese prioridad.</div>
-                  </div>
-                </div>
-                <div class="form-group mt-3">
-                  <input type="" class="form-control mt-auto " placeholder="Dependencia" formControlName="dependenciaf" [ngClass]="{ 'is-invalid': dependenciaf.invalid && (dependenciaf.dirty || dependenciaf.touched) }"/>
-                  <div *ngIf="dependenciaf.invalid && (dependenciaf.dirty || dependenciaf.touched)" class="invalid-feedback">
-                    <div *ngIf="dependenciaf.errors.required">Ingrese prioridad.</div>
-                  </div>
-                </div>
-                <div class="form-group mt-3">
-                  <input type="date" class="form-control mt-auto text-secondary" formControlName="datef" [ngClass]="{ 'is-invalid': datef.invalid && (datef.dirty || datef.touched) }"/>
-                  <div *ngIf="datef.invalid && (datef.dirty || datef.touched)" class="invalid-feedback">
-                    <div *ngIf="datef.errors.required">Ingrese fecha.</div>
                   </div>
                 </div>
                 <div class="form-group mt-3">
@@ -208,7 +172,7 @@
                 </div>
                 <div class="form-group mt-3">
                   <select class="form-control" placeholder="Proyecto" formControlName="proyectot" [ngClass]="{ 'is-invalid': proyectot.invalid && (proyectot.dirty || proyectot.touched) }">
-                    <option *ngFor="let project of projects.projects">{{project.Nombre_Proyecto}}</option>
+                    <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
                   </select>
                   <div *ngIf="proyectot.invalid && (proyectot.dirty || proyectot.touched)" class="invalid-feedback">
                     <div *ngIf="proyectot.errors.required">Seleccione proyecto.</div>
@@ -230,18 +194,6 @@
                   <input type="" class="form-control mt-auto " placeholder="Prioridad" formControlName="prioridadt" [ngClass]="{ 'is-invalid': prioridadt.invalid && (prioridadt.dirty || prioridadt.touched) }"/>
                   <div *ngIf="prioridadt.invalid && (prioridadt.dirty || prioridadt.touched)" class="invalid-feedback">
                     <div *ngIf="prioridadt.errors.required">Ingrese prioridad.</div>
-                  </div>
-                </div>
-                <div class="form-group mt-3">
-                  <input type="" class="form-control mt-auto " placeholder="Dependencia" formControlName="dependenciat" [ngClass]="{ 'is-invalid': dependenciat.invalid && (dependenciat.dirty || dependenciat.touched) }"/>
-                  <div *ngIf="dependenciat.invalid && (dependenciat.dirty || dependenciat.touched)" class="invalid-feedback">
-                    <div *ngIf="dependenciat.errors.required">Ingrese prioridad.</div>
-                  </div>
-                </div>
-                <div class="form-group mt-3">
-                  <input type="date" class="form-control mt-auto text-secondary" formControlName="datet" [ngClass]="{ 'is-invalid': datet.invalid && (datet.dirty || datet.touched) }"/>
-                  <div *ngIf="datet.invalid && (datet.dirty || datet.touched)" class="invalid-feedback">
-                    <div *ngIf="datet.errors.required">Ingrese fecha.</div>
                   </div>
                 </div>
                 <div class="form-group mt-3">

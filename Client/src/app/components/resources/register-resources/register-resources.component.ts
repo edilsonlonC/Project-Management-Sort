@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '../../../services/projects.service';
+import { ResourcesService } from '../../../services/resources.service';
+import { ActivitiesService } from '../../../services/activities.service';
+import { FunctionalitiesService } from '../../../services/functionalities.service';
+import { TasksService } from '../../../services/tasks.service';
+import { Resource } from '../../../models/resource';
+import { Activity } from '../../../models/activity';
+import { Functionality } from '../../../models/functionality';
+import { Task } from '../../../models/task';
+
 
 @Component({
   selector: 'app-register-resources',
@@ -8,6 +17,42 @@ import { ProjectsService } from '../../../services/projects.service';
   styleUrls: ['./register-resources.component.css']
 })
 export class RegisterResourcesComponent implements OnInit {
+
+  resource: Resource = {
+    resourceName: '',
+    description: '',
+    responsable: '',
+    stateType: 0,
+    priority: 0,
+    idProject: 0
+  };
+
+  activity: Activity = {
+    activityName: '',
+    description: '',
+    responsable: '',
+    stateType: 0,
+    priority: 0,
+    idProject: 0
+  };
+
+  functionality: Functionality = {
+    functionalityName: '',
+    description: '',
+    responsable: '',
+    stateType: 0,
+    priority: 0,
+    idProject: 0
+  };
+
+  task: Task = {
+    taskName: '',
+    description: '',
+    responsable: '',
+    stateType: 0,
+    priority: 0,
+    idProject: 0
+  };
 
   recurso: FormGroup;
   actividad: FormGroup;
@@ -23,9 +68,7 @@ export class RegisterResourcesComponent implements OnInit {
       proyector: new FormControl('', [Validators.required]),
       responsabler: new FormControl('', [Validators.required]),
       estador: new FormControl('', [Validators.required]),
-      prioridadr: new FormControl('', [Validators.required]),
-      dependenciar: new FormControl('', [Validators.required]),
-      dater: new FormControl('', [Validators.required])
+      prioridadr: new FormControl('', [Validators.required])
     });
   }
 
@@ -36,9 +79,7 @@ export class RegisterResourcesComponent implements OnInit {
       proyectoa: new FormControl('', [Validators.required]),
       responsablea: new FormControl('', [Validators.required]),
       estadoa: new FormControl('', [Validators.required]),
-      prioridada: new FormControl('', [Validators.required]),
-      dependenciaa: new FormControl('', [Validators.required]),
-      datea: new FormControl('', [Validators.required])
+      prioridada: new FormControl('', [Validators.required])
     });
   }
 
@@ -49,9 +90,7 @@ export class RegisterResourcesComponent implements OnInit {
       proyectof: new FormControl('', [Validators.required]),
       responsablef: new FormControl('', [Validators.required]),
       estadof: new FormControl('', [Validators.required]),
-      prioridadf: new FormControl('', [Validators.required]),
-      dependenciaf: new FormControl('', [Validators.required]),
-      datef: new FormControl('', [Validators.required])
+      prioridadf: new FormControl('', [Validators.required])
     });
   }
 
@@ -62,13 +101,12 @@ export class RegisterResourcesComponent implements OnInit {
       proyectot: new FormControl('', [Validators.required]),
       responsablet: new FormControl('', [Validators.required]),
       estadot: new FormControl('', [Validators.required]),
-      prioridadt: new FormControl('', [Validators.required]),
-      dependenciat: new FormControl('', [Validators.required]),
-      datet: new FormControl('', [Validators.required])
+      prioridadt: new FormControl('', [Validators.required])
     });
   }
 
-  constructor(private projectsService: ProjectsService ) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private projectsService: ProjectsService, private resourcesService: ResourcesService, private activitiesService: ActivitiesService, private functionalitiesService: FunctionalitiesService, private tasksService: TasksService ) {
     this.recurso = this.createFormGroupR();
     this.actividad = this.createFormGroupA();
     this.funcionalidad = this.createFormGroupF();
@@ -93,49 +131,117 @@ export class RegisterResourcesComponent implements OnInit {
     this.recurso.reset();
   }
 
+  onFormR() {
+    this.resource.resourceName = this.recurso.get('namer').value;
+    this.resource.description = this.recurso.get('descripcionr').value;
+    this.resource.idProject = this.recurso.get('proyector').value;
+    this.resource.responsable = this.recurso.get('responsabler').value;
+    this.resource.stateType = this.recurso.get('estador').value;
+    this.resource.priority = this.recurso.get('prioridadr').value;
+  }
+
+  onSaveFormR() {
+    if (this.recurso.valid) {
+      this.onFormR();
+      this.resourcesService.saveResource(this.resource).subscribe(
+        res => {
+          console.log(res);
+          alert('Recurso Registrado');
+        },
+        err => console.log(err)
+      );
+      console.log('Valid');
+      this.onResetFormR();
+    } else {
+      console.log('Not Valid');
+    }
+  }
+
   onResetFormA() {
     this.actividad.reset();
+  }
+
+  onFormA() {
+    this.activity.activityName = this.actividad.get('namea').value;
+    this.activity.description = this.actividad.get('descripciona').value;
+    this.activity.idProject = this.actividad.get('proyectoa').value;
+    this.activity.responsable = this.actividad.get('responsablea').value;
+    this.activity.stateType = this.actividad.get('estadoa').value;
+    this.activity.priority = this.actividad.get('prioridada').value;
+  }
+
+  onSaveFormA() {
+    if (this.actividad.valid) {
+      this.onFormA();
+      this.activitiesService.saveActivity(this.activity).subscribe(
+        res => {
+          console.log(res);
+          alert('Actividad Registrada');
+        },
+        err => console.log(err)
+      );
+      console.log('Valid');
+      this.onResetFormA();
+    } else {
+      console.log('Not Valid');
+    }
   }
 
   onResetFormF() {
     this.funcionalidad.reset();
   }
 
-  onResetFormT() {
-    this.tarea.reset();
-  }
-
-  onSaveFormR() {
-    if (this.recurso.valid) {
-      this.onResetFormR();
-      console.log('Valid');
-    } else {
-      console.log('Not Valid');
-    }
-  }
-
-  onSaveFormA() {
-    if (this.actividad.valid) {
-      this.onResetFormA();
-      console.log('Valid');
-    } else {
-      console.log('Not Valid');
-    }
+  onFormF() {
+    this.functionality.functionalityName = this.funcionalidad.get('namef').value;
+    this.functionality.description = this.funcionalidad.get('descripcionf').value;
+    this.functionality.idProject = this.funcionalidad.get('proyectof').value;
+    this.functionality.responsable = this.funcionalidad.get('responsablef').value;
+    this.functionality.stateType = this.funcionalidad.get('estadof').value;
+    this.functionality.priority = this.funcionalidad.get('prioridadf').value;
   }
 
   onSaveFormF() {
     if (this.funcionalidad.valid) {
-      this.onResetFormF();
+      this.onFormF();
+      this.functionalitiesService.saveFunctionality(this.functionality).subscribe(
+        res => {
+          console.log(res);
+          alert('Funcionalidad Registrada');
+        },
+        err => console.log(err)
+      );
       console.log('Valid');
+      this.onResetFormF();
     } else {
       console.log('Not Valid');
     }
   }
 
+  onResetFormT() {
+    this.tarea.reset();
+  }
+
+  onFormT() {
+    this.task.taskName = this.tarea.get('namet').value;
+    this.task.description = this.tarea.get('descripciont').value;
+    this.task.idProject = this.tarea.get('proyectot').value;
+    this.task.responsable = this.tarea.get('responsablet').value;
+    this.task.stateType = this.tarea.get('estadot').value;
+    this.task.priority = this.tarea.get('prioridadt').value;
+  }
+
   onSaveFormT() {
     if (this.tarea.valid) {
-      this.onResetFormT();
+      this.onFormT();
+      this.tasksService.saveTask(this.task).subscribe(
+        res => {
+          console.log(res);
+          alert('Tarea Registrada');
+        },
+        err => console.log(err)
+      );
       console.log('Valid');
+      this.onResetFormT();
     } else {
       console.log('Not Valid');
     }
