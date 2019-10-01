@@ -2,10 +2,11 @@ const { connection } = require('../Database/DB')
 
 
 let saveResource = async (req, res) => {
+    let date = new Date(Date.now())
     let { resourceName, description, responsable, stateType, priority, idProject } = req.body
     if (!resourceName || !description || !responsable || !stateType || !priority || !idProject) return res.status(200).send({ message: 'datos incompletos' })
     try {
-        let querySavedResource = await connection.query('INSERT INTO Recursos (nombre_recurso,Descripcion,Responsable,Tipo_estado_id_estado,Prioridad_id_prioridad,Proyecto_id_proyecto) VALUES (?,?,?,?,?,?)', [resourceName, description, responsable, stateType, priority, idProject])
+        let querySavedResource = await connection.query('INSERT INTO Recursos (nombre_recurso,Descripcion,Responsable,Tipo_estado_id_estado,Prioridad_id_prioridad,Proyecto_id_proyecto,fecha) VALUES (?,?,?,?,?,?,?)', [resourceName, description, responsable, stateType, priority, idProject,date])
         return res.status(200).send({
             message: ' recurso guardado corectamente',
             querySavedResource
