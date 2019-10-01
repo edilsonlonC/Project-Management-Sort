@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   token: string;
 
   users: any = {};
+  id: any;
 
   constructor(private usersService: UsersService, private homeComponent: HomeComponent) {}
 
@@ -43,5 +44,13 @@ export class UsersComponent implements OnInit {
 
   updateUser(user: any) {
     this.homeComponent.setUser(user);
+  }
+
+  setId(id: any) {
+    this.id = id;
+  }
+
+  getId() {
+    return this.id;
   }
 }

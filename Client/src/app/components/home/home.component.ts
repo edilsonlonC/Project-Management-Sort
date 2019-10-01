@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
+import { AuthGuard } from '../../guards/auth.guard';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +14,10 @@ export class HomeComponent implements OnInit {
   user: any;
   project: any;
 
-  constructor(private usersService: UsersService, private router: Router) {
+  constructor(private usersService: UsersService, private router: Router, private authGuard: AuthGuard) {
     this.identidad = this.usersService.getIdentidad();
     this.token = this.usersService.getToken();
+    this.authGuard.canActivate();
    }
 
   ngOnInit() {}

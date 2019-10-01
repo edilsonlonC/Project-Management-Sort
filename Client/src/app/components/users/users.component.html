@@ -29,7 +29,7 @@
                       <td>{{user.Apellido_usuario}}</td>
                       <td>{{user.Correo}}</td>
                       <td><a [routerLink]="['../users-update']" (click)="updateUser(user)"><i class="fas fa-paperclip text-warning"></i></a></td>
-                      <td><a [routerLink]="[]" (click)="deleteUser(user.id_usuarios)"><i class="fas fa-times text-warning"></i></a></td>
+                      <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(user.id_usuarios)"><i class="fas fa-times text-warning"></i></a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -43,4 +43,22 @@
     </div>
   </div>
 </div>
-
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header table-warning">
+        <h5 class="modal-title text-warning" id="exampleModalLongTitle">Eliminar usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white ">
+       <p class="text-secondary">Confirma la eliminacion de usuario.</p>
+      </div>
+      <div class="modal-footer table-light">
+        <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning text-white" data-dismiss="modal" (click)="deleteUser(getId())">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,6 +10,7 @@ import { HomeComponent } from '../home/home.component';
 export class ProjectsComponent implements OnInit {
 
   projects: any = {};
+  id: any;
   constructor(private projectsService: ProjectsService, private homeComponent: HomeComponent) { }
 
   ngOnInit() {
@@ -38,5 +39,13 @@ export class ProjectsComponent implements OnInit {
 
   updateProject(project: any) {
     this.homeComponent.setProject(project);
+  }
+
+  setId(id: any) {
+    this.id = id;
+  }
+
+  getId() {
+    return this.id;
   }
 }
