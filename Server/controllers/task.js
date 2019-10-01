@@ -57,11 +57,11 @@ let updatetask = async (req, res) => {
 let deleteTask = async (req, res) => {
     let { id } = req.params
     try {
-        let queryDeleteTask = await connection.query('DELETE FROM Tareas WHERE id_tareas = ?',[id])
-        if (queryDeleteTask[0].affectedRows == 0) return res.status(404).send({message : 'la tarea no existe'})
-        return res.status(200).send({message : 'Tarea eliminada'})
+        let queryDeleteTask = await connection.query('DELETE FROM Tareas WHERE id_tareas = ?', [id])
+        if (queryDeleteTask[0].affectedRows == 0) return res.status(404).send({ message: 'la tarea no existe' })
+        return res.status(200).send({ message: 'Tarea eliminada' })
     } catch (error) {
-        return res.status(500).send({error})
+        return res.status(500).send({ error })
     }
 }
 

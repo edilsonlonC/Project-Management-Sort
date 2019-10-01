@@ -55,6 +55,19 @@ let taskNameExist = async (req,res,next) =>{
     }
 }
 
+let functionalityNameExist = async (req,res,next) =>{
+
+    let { functionalityName } = req.body
+    if (!functionalityName) return res.status(404).send({ message: 'faltan datos ' })
+    try {
+        let queryExistFunctionalityname = await connection.query('SELECT * FROM Funcionalidades WHERE nombre_funcionalidad = ?', [functionalityName]);
+        if (queryExistFunctionalityname[0].length > 0) return res.status(404).send({ message: `El nombre ${functionalityName} ya se encuentra en uso` })
+        next()
+    } catch (error) {
+        return res.status(500).send({ error });
+
+    }
+}
 
 let existPriority = async (req, res, next) => {
     let { priority } = req.body
@@ -88,5 +101,6 @@ module.exports = {
     existPriority,
     existState,
     activityNameExist,
-    taskNameExist
+    taskNameExist,
+    functionalityNameExist
 }
