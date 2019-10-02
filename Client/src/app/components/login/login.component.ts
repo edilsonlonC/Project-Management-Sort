@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private usersService: UsersService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.login = this.createFormGroup();
+    localStorage.clear();
    }
 
   ngOnInit() {}
