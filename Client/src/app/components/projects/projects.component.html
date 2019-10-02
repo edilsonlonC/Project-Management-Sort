@@ -17,6 +17,7 @@
                     <thead>
                       <tr class="bg-warning text-white">
                         <th scope="col">Nombre del Proyecto</th>
+                        <th scope="col">Fecha</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Actualizar</th>
                         <th scope="col">Eliminar</th>
@@ -25,6 +26,7 @@
                     <tbody>
                       <tr *ngFor="let project of projects.projects" class="text-warning">
                         <td>{{project.Nombre_Proyecto}}</td>
+                        <td>{{project.fecha}}</td>
                         <td>{{project.Tipo_Proyecto_id_Tipo}}</td>
                         <td><a [routerLink]="['../projects-update']" (click)="updateProject(project)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(project.id_proyecto)"><i class="fas fa-times text-warning"></i></a></td>
