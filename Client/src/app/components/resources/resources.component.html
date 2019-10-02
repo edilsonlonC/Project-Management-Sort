@@ -3,7 +3,7 @@
       <li class="nav-item">
         <a class="nav-link text-warning active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recursos</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">
         <a class="nav-link text-warning" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Registrar Recursos</a>
       </li>
     </ul>
@@ -22,8 +22,8 @@
                         <th scope="col">Fecha</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Prioridad</th>
-                        <th scope="col">Actualizar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Actualizar</th>
+                        <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Eliminar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -34,8 +34,8 @@
                         <td>{{resource.fecha}}</td>
                         <td>{{resource.Tipo_estado_id_estado}}</td>
                         <td>{{resource.Prioridad_id_prioridad}}</td>
-                        <td><a [routerLink]="['../resources-update']" (click)="updateResource(resource)"><i class="fas fa-paperclip text-warning"></i></a></td>
-                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(resource.id_recursos, 'r')"><i class="fas fa-times text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../resources-update']" (click)="updateResource(resource)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(resource.id_recursos, 'r')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                       <tr *ngFor="let activity of activities.listAvtivities" class="text-warning">
                         <td>{{activity.nombre_actividad}}</td>
@@ -44,8 +44,8 @@
                         <td>{{activity.fecha}}</td>
                         <td>{{activity.Tipo_estado_id_estado}}</td>
                         <td>{{activity.Prioridad_id_prioridad}}</td>
-                        <td><a [routerLink]="['../activities-update']" (click)="updateActivity(activity)"><i class="fas fa-paperclip text-warning"></i></a></td>
-                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(activity.id_actividades, 'a')"><i class="fas fa-times text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../activities-update']" (click)="updateActivity(activity)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(activity.id_actividades, 'a')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                       <tr *ngFor="let functionality of functionalities.listFunctionalities" class="text-warning">
                         <td>{{functionality.nombre_funcionalidad}}</td>
@@ -54,8 +54,8 @@
                         <td>{{functionality.fecha}}</td>
                         <td>{{functionality.Tipo_estado_id_estado}}</td>
                         <td>{{functionality.Prioridad_id_prioridad}}</td>
-                        <td><a [routerLink]="['../functionalities-update']" (click)="updateFunctionality(functionality)"><i class="fas fa-paperclip text-warning"></i></a></td>
-                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(functionality.id_funcionalidad, 'f')"><i class="fas fa-times text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../functionalities-update']" (click)="updateFunctionality(functionality)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(functionality.id_funcionalidad, 'f')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                       <tr *ngFor="let task of tasks.listTasks" class="text-warning">
                         <td>{{task.nombre_tarea}}</td>
@@ -64,8 +64,8 @@
                         <td>{{task.fecha}}</td>
                         <td>{{task.Tipo_estado_id_estado}}</td>
                         <td>{{task.Prioridad_id_prioridad}}</td>
-                        <td><a [routerLink]="['../tasks-update']" (click)="updateTask(task)"><i class="fas fa-paperclip text-warning"></i></a></td>
-                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(task.id_tareas, 't')"><i class="fas fa-times text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../tasks-update']" (click)="updateTask(task)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(task.id_tareas, 't')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                     </tbody>
                   </table>

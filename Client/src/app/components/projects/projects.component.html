@@ -19,8 +19,8 @@
                         <th scope="col">Nombre del Proyecto</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Tipo</th>
-                        <th scope="col">Actualizar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Actualizar</th>
+                        <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Eliminar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -28,8 +28,8 @@
                         <td>{{project.Nombre_Proyecto}}</td>
                         <td>{{project.fecha}}</td>
                         <td>{{project.Tipo_Proyecto_id_Tipo}}</td>
-                        <td><a [routerLink]="['../projects-update']" (click)="updateProject(project)"><i class="fas fa-paperclip text-warning"></i></a></td>
-                        <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(project.id_proyecto)"><i class="fas fa-times text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../projects-update']" (click)="updateProject(project)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(project.id_proyecto)"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                     </tbody>
                   </table>

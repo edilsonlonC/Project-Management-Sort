@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { RolGuard } from './guards/rol.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -35,12 +36,12 @@ const routes: Routes = [
         ]
       },
       { path: '', component: ProfileComponent },
-      { path: 'users-update', component: UpdateUsersComponent},
-      { path: 'projects-update', component: UpdateProjectsComponent},
-      { path: 'resources-update', component: UpdateResourcesComponent},
-      { path: 'activities-update', component: UpdateActivitiesComponent},
-      { path: 'functionalities-update', component: UpdateFunctionalitiesComponent},
-      { path: 'tasks-update', component: UpdateTasksComponent}
+      { path: 'users-update', component: UpdateUsersComponent, canActivate: [RolGuard]},
+      { path: 'projects-update', component: UpdateProjectsComponent, canActivate: [RolGuard]},
+      { path: 'resources-update', component: UpdateResourcesComponent, canActivate: [RolGuard]},
+      { path: 'activities-update', component: UpdateActivitiesComponent, canActivate: [RolGuard]},
+      { path: 'functionalities-update', component: UpdateFunctionalitiesComponent, canActivate: [RolGuard]},
+      { path: 'tasks-update', component: UpdateTasksComponent, canActivate: [RolGuard]}
     ]
   },
   { path: 'register', component: RegisterComponent },

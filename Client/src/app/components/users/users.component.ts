@@ -16,7 +16,10 @@ export class UsersComponent implements OnInit {
   users: any = {};
   id: any;
 
-  constructor(private usersService: UsersService, private homeComponent: HomeComponent) {}
+  constructor(private usersService: UsersService, private homeComponent: HomeComponent) {
+    this.identidad = this.usersService.getIdentidad();
+    this.token = this.usersService.getIdentidad();
+  }
 
   ngOnInit() {
       this.getUsers();

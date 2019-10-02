@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from '../../services/projects.service';
 import { HomeComponent } from '../home/home.component';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-projects',
@@ -9,9 +10,15 @@ import { HomeComponent } from '../home/home.component';
 })
 export class ProjectsComponent implements OnInit {
 
+  identidad: any;
+  token: string;
+
   projects: any = {};
   id: any;
-  constructor(private projectsService: ProjectsService, private homeComponent: HomeComponent) { }
+  constructor(private projectsService: ProjectsService, private homeComponent: HomeComponent, private usersService: UsersService ) {
+    this.identidad = this.usersService.getIdentidad();
+    this.token = this.usersService.getIdentidad();
+   }
 
   ngOnInit() {
     this.getProjects();

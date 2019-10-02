@@ -4,6 +4,7 @@ import { ActivitiesService } from '../../services/activities.service';
 import { FunctionalitiesService } from '../../services/functionalities.service';
 import { TasksService } from '../../services/tasks.service';
 import { HomeComponent } from '../home/home.component';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-resources',
@@ -11,6 +12,9 @@ import { HomeComponent } from '../home/home.component';
   styleUrls: ['./resources.component.css']
 })
 export class ResourcesComponent implements OnInit {
+
+  identidad: any;
+  token: string;
 
   resources: any = {};
   activities: any = {};
@@ -21,7 +25,10 @@ export class ResourcesComponent implements OnInit {
   bandera: any;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private resourcesService: ResourcesService, private activitiesService: ActivitiesService, private functionalitiesService: FunctionalitiesService, private tasksService: TasksService, private homeComponent: HomeComponent  ) { }
+  constructor(private resourcesService: ResourcesService, private activitiesService: ActivitiesService, private functionalitiesService: FunctionalitiesService, private tasksService: TasksService, private homeComponent: HomeComponent, private usersService: UsersService) {
+    this.identidad = this.usersService.getIdentidad();
+    this.token = this.usersService.getIdentidad();
+   }
 
   ngOnInit() {
     this.getResources();

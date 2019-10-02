@@ -3,7 +3,7 @@
     <li class="nav-item">
       <a class="nav-link text-warning active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Usuarios</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">
       <a class="nav-link text-warning" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Registrar Usuarios</a>
     </li>
   </ul>
@@ -19,8 +19,8 @@
                       <th scope="col">Nombre</th>
                       <th scope="col">Apellido</th>
                       <th scope="col">Correo Electronico</th>
-                      <th scope="col">Actualizar</th>
-                      <th scope="col">Eliminar</th>
+                      <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Actualizar</th>
+                      <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -28,8 +28,8 @@
                       <td>{{user.Nombre_usuario}}</td>
                       <td>{{user.Apellido_usuario}}</td>
                       <td>{{user.Correo}}</td>
-                      <td><a [routerLink]="['../users-update']" (click)="updateUser(user)"><i class="fas fa-paperclip text-warning"></i></a></td>
-                      <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(user.id_usuarios)"><i class="fas fa-times text-warning"></i></a></td>
+                      <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../users-update']" (click)="updateUser(user)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                      <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(user.id_usuarios)"><i class="fas fa-times text-warning"></i></a></td>
                     </tr>
                   </tbody>
                 </table>
