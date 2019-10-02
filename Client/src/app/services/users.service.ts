@@ -14,14 +14,16 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
+  tokens = localStorage.getItem('token');
   Auth = {
-    Authorization: 'Bearer' + ' ' + this.token
+    authorization: 'Bearer' + ' ' + this.tokens
   };
 
   getUsers() {
-    /*const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const params = new HttpParams().set('requestData', JSON.stringify(this.Auth));*/
-    return this.http.get(`${this.API_URI}/list-users`);
+    // tslint:disable-next-line:prefer-const
+    let headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.tokens});
+    console.log(headers);
+    return this.http.get(`${this.API_URI}/list-users`, {headers});
   }
 
   getUser(id: string) {

@@ -16,7 +16,7 @@ let isAuth = (req, res, next) => {
             next();
 
         } catch (error) {
-            return res.status(403).send({ message: ' acceso denegado' });
+            return res.status(404).send({ message: ' acceso denegado' });
         }
 
     }
