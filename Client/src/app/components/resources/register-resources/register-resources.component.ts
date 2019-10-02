@@ -9,6 +9,7 @@ import { Resource } from '../../../models/resource';
 import { Activity } from '../../../models/activity';
 import { Functionality } from '../../../models/functionality';
 import { Task } from '../../../models/task';
+import { ResourcesComponent } from '../resources.component';
 
 
 @Component({
@@ -106,7 +107,7 @@ export class RegisterResourcesComponent implements OnInit {
   }
 
   // tslint:disable-next-line:max-line-length
-  constructor(private projectsService: ProjectsService, private resourcesService: ResourcesService, private activitiesService: ActivitiesService, private functionalitiesService: FunctionalitiesService, private tasksService: TasksService ) {
+  constructor(private projectsService: ProjectsService, private resourcesService: ResourcesService, private activitiesService: ActivitiesService, private functionalitiesService: FunctionalitiesService, private tasksService: TasksService, private resourcesComponent: ResourcesComponent ) {
     this.recurso = this.createFormGroupR();
     this.actividad = this.createFormGroupA();
     this.funcionalidad = this.createFormGroupF();
@@ -146,6 +147,7 @@ export class RegisterResourcesComponent implements OnInit {
       this.resourcesService.saveResource(this.resource).subscribe(
         res => {
           console.log(res);
+          this.resourcesComponent.getResources();
           alert('Recurso Registrado');
         },
         err => console.log(err)
@@ -176,6 +178,7 @@ export class RegisterResourcesComponent implements OnInit {
       this.activitiesService.saveActivity(this.activity).subscribe(
         res => {
           console.log(res);
+          this.resourcesComponent.getActivities();
           alert('Actividad Registrada');
         },
         err => console.log(err)
@@ -206,6 +209,7 @@ export class RegisterResourcesComponent implements OnInit {
       this.functionalitiesService.saveFunctionality(this.functionality).subscribe(
         res => {
           console.log(res);
+          this.resourcesComponent.getFunctionalities();
           alert('Funcionalidad Registrada');
         },
         err => console.log(err)
@@ -236,6 +240,7 @@ export class RegisterResourcesComponent implements OnInit {
       this.tasksService.saveTask(this.task).subscribe(
         res => {
           console.log(res);
+          this.resourcesComponent.getTasks();
           alert('Tarea Registrada');
         },
         err => console.log(err)

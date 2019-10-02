@@ -34,37 +34,37 @@
                         <td>1/10/2019</td>
                         <td>{{resource.Tipo_estado_id_estado}}</td>
                         <td>{{resource.Prioridad_id_prioridad}}</td>
-                        <td><a [routerLink]="[]"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="['../resources-update']" (click)="updateResource(resource)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(resource.id_recursos, 'r')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                       <tr *ngFor="let activity of activities.listAvtivities" class="text-warning">
                         <td>{{activity.nombre_actividad}}</td>
                         <td>Actividad</td>
                         <td>{{activity.responsable}}</td>
-                        <td>1/10/2019</td>
+                        <td>{{activity.fecha}}</td>
                         <td>{{activity.Tipo_estado_id_estado}}</td>
                         <td>{{activity.Prioridad_id_prioridad}}</td>
-                        <td><a [routerLink]="[]"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="['../activities-update']" (click)="updateActivity(activity)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(activity.id_actividades, 'a')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                       <tr *ngFor="let functionality of functionalities.listFunctionalities" class="text-warning">
                         <td>{{functionality.nombre_funcionalidad}}</td>
                         <td>Funcionalidad</td>
                         <td>{{functionality.responsable}}</td>
-                        <td>1/10/2019</td>
+                        <td>{{functionality.fecha}}</td>
                         <td>{{functionality.Tipo_estado_id_estado}}</td>
                         <td>{{functionality.Prioridad_id_prioridad}}</td>
-                        <td><a [routerLink]="[]"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="['../functionalities-update']" (click)="updateFunctionality(functionality)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(functionality.id_funcionalidad, 'f')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                       <tr *ngFor="let task of tasks.listTasks" class="text-warning">
                         <td>{{task.nombre_tarea}}</td>
                         <td>Tarea</td>
                         <td>{{task.responsable}}</td>
-                        <td>1/10/2019</td>
+                        <td>{{task.fecha}}</td>
                         <td>{{task.Tipo_estado_id_estado}}</td>
                         <td>{{task.Prioridad_id_prioridad}}</td>
-                        <td><a [routerLink]="[]"><i class="fas fa-paperclip text-warning"></i></a></td>
+                        <td><a [routerLink]="['../tasks-update']" (click)="updateTask(task)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(task.id_tareas, 't')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
                     </tbody>

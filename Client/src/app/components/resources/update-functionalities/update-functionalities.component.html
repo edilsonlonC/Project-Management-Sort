@@ -1,0 +1,55 @@
+<div class="container-fluid p-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4 mt-5 mb-5">
+            <div class="card text-center border-secondary">
+                <div class="card-body">
+                    <form class=" mt-3" [formGroup]="actualizar" (ngSubmit)="onUpdateFormF()">
+                        <h5 class="card-title text-warning mt-3 ">Actualizar Funcionalidad</h5>
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control mt-auto " placeholder="Nombre de la funcionalidad" formControlName="namef" [ngClass]="{ 'is-invalid': namef.invalid && (namef.dirty || namef.touched) }"/>
+                            <div *ngIf="namef.invalid && (namef.dirty || namef.touched)" class="invalid-feedback">
+                                <div *ngIf="namef.errors.required">Ingrese nombre de la funcionalidad.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <textarea class="form-control text-secondary" rows="3" placeholder="Descripción" formControlName="descripcionf" [ngClass]="{ 'is-invalid': descripcionf.invalid && (descripcionf.dirty || descripcionf.touched) }"></textarea>
+                            <div *ngIf="descripcionf.invalid && (descripcionf.dirty || descripcionf.touched)" class="invalid-feedback">
+                                <div *ngIf="descripcionf.errors.maxlength">Descripcion muy larga.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <select class="form-control" placeholder="Proyecto" formControlName="proyectof" [ngClass]="{ 'is-invalid': proyectof.invalid && (proyectof.dirty || proyectof.touched) }">
+                                <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
+                            </select>
+                            <div *ngIf="proyectof.invalid && (proyectof.dirty || proyectof.touched)" class="invalid-feedback">
+                                <div *ngIf="proyectof.errors.required">Seleccione proyecto.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="" class="form-control mt-auto " placeholder="Responsable" formControlName="responsablef" [ngClass]="{ 'is-invalid': responsablef.invalid && (responsablef.dirty || responsablef.touched) }"/>
+                            <div *ngIf="responsablef.invalid && (responsablef.dirty || responsablef.touched)" class="invalid-feedback">
+                                <div *ngIf="responsablef.errors.required">Ingrese nombre del responsable.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="" class="form-control mt-auto " placeholder="Estado" formControlName="estadof" [ngClass]="{ 'is-invalid': estadof.invalid && (estadof.dirty || estadof.touched) }"/>
+                            <div *ngIf="estadof.invalid && (estadof.dirty || estadof.touched)" class="invalid-feedback">
+                                <div *ngIf="estadof.errors.required">Ingrese estado.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="" class="form-control mt-auto " placeholder="Prioridad" formControlName="prioridadf" [ngClass]="{ 'is-invalid': prioridadf.invalid && (prioridadf.dirty || prioridadf.touched) }"/>
+                            <div *ngIf="prioridadf.invalid && (prioridadf.dirty || prioridadf.touched)" class="invalid-feedback">
+                                <div *ngIf="prioridadf.errors.required">Ingrese prioridad.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button [disabled]="!actualizar.valid" class="btn btn-warning btn-block">Actualizar Funcionalidad</button>
+                        </div>
+                        <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

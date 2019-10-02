@@ -45,11 +45,13 @@ export class UpdateUsersComponent implements OnInit {
   ngOnInit() {
     this.onActualizar();
   }
+
   onActualizar() {
     this.actualizar.get('name').setValue(this.getUser.Nombre_usuario);
     this.actualizar.get('lastname').setValue(this.getUser.Apellido_usuario);
     this.actualizar.get('email').setValue(this.getUser.Correo);
   }
+
   onResetForm() {
     this.actualizar.reset();
   }
@@ -96,7 +98,4 @@ export class UpdateUsersComponent implements OnInit {
   get pass() {
     return this.actualizar.get('pass');
   }
-
-
-
 }

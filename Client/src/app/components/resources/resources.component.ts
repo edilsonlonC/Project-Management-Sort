@@ -3,6 +3,7 @@ import { ResourcesService } from '../../services/resources.service';
 import { ActivitiesService } from '../../services/activities.service';
 import { FunctionalitiesService } from '../../services/functionalities.service';
 import { TasksService } from '../../services/tasks.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-resources',
@@ -20,7 +21,7 @@ export class ResourcesComponent implements OnInit {
   bandera: any;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private resourcesService: ResourcesService, private activitiesService: ActivitiesService, private functionalitiesService: FunctionalitiesService, private tasksService: TasksService ) { }
+  constructor(private resourcesService: ResourcesService, private activitiesService: ActivitiesService, private functionalitiesService: FunctionalitiesService, private tasksService: TasksService, private homeComponent: HomeComponent  ) { }
 
   ngOnInit() {
     this.getResources();
@@ -128,6 +129,23 @@ export class ResourcesComponent implements OnInit {
     this.id = id;
     this.bandera = bandera;
     console.log(this.id, this.bandera);
+  }
+
+  updateResource(resource: any) {
+    this.homeComponent.setResource(resource);
+  }
+
+  updateActivity(activity: any) {
+    this.homeComponent.setActivity(activity);
+  }
+
+  updateFunctionality(functionality: any) {
+    console.log();
+    this.homeComponent.setFunctionality(functionality);
+  }
+
+  updateTask(task: any) {
+    this.homeComponent.setTask(task);
   }
 
 }

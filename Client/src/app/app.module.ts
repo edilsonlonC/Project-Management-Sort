@@ -18,6 +18,10 @@ import { RegisterUsersComponent } from './components/users/register-users/regist
 import { ProfileComponent } from './components/profile/profile.component';
 import { UpdateUsersComponent } from './components/users/update-users/update-users.component';
 import { UpdateProjectsComponent } from './components/projects/update-projects/update-projects.component';
+import { UpdateResourcesComponent } from './components/resources/update-resources/update-resources.component';
+import { UpdateActivitiesComponent } from './components/resources/update-activities/update-activities.component';
+import { UpdateFunctionalitiesComponent } from './components/resources/update-functionalities/update-functionalities.component';
+import { UpdateTasksComponent } from './components/resources/update-tasks/update-tasks.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { UpdateProjectsComponent } from './components/projects/update-projects/u
     RegisterUsersComponent,
     ProfileComponent,
     UpdateUsersComponent,
-    UpdateProjectsComponent
+    UpdateProjectsComponent,
+    UpdateResourcesComponent,
+    UpdateActivitiesComponent,
+    UpdateFunctionalitiesComponent,
+    UpdateTasksComponent
   ],
   imports: [
     BrowserModule,

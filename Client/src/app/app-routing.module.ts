@@ -13,6 +13,11 @@ import { RegisterResourcesComponent } from './components/resources/register-reso
 import { RegisterUsersComponent } from './components/users/register-users/register-users.component';
 import { UpdateUsersComponent } from './components/users/update-users/update-users.component';
 import { UpdateProjectsComponent } from './components/projects/update-projects/update-projects.component';
+import { UpdateResourcesComponent } from './components/resources/update-resources/update-resources.component';
+import { UpdateActivitiesComponent } from './components/resources/update-activities/update-activities.component';
+import { UpdateFunctionalitiesComponent } from './components/resources/update-functionalities/update-functionalities.component';
+import { UpdateTasksComponent } from './components/resources/update-tasks/update-tasks.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -29,9 +34,13 @@ const routes: Routes = [
           { path: '', component: RegisterResourcesComponent }
         ]
       },
+      { path: '', component: ProfileComponent },
       { path: 'users-update', component: UpdateUsersComponent},
       { path: 'projects-update', component: UpdateProjectsComponent},
-      { path: '', component: ProfileComponent }
+      { path: 'resources-update', component: UpdateResourcesComponent},
+      { path: 'activities-update', component: UpdateActivitiesComponent},
+      { path: 'functionalities-update', component: UpdateFunctionalitiesComponent},
+      { path: 'tasks-update', component: UpdateTasksComponent}
     ]
   },
   { path: 'register', component: RegisterComponent },

@@ -13,6 +13,10 @@ export class HomeComponent implements OnInit {
   token: string;
   user: any;
   project: any;
+  resource: any;
+  activity: any;
+  functionality: any;
+  task: any;
 
   constructor(private usersService: UsersService, private router: Router, private authGuard: AuthGuard) {
     this.identidad = this.usersService.getIdentidad();
@@ -43,6 +47,38 @@ export class HomeComponent implements OnInit {
 
   getProject() {
     return this.project;
+  }
+
+  setResource(resource: any) {
+    this.resource = resource;
+  }
+
+  getResource() {
+    return this.resource;
+  }
+
+  setActivity(activity: any) {
+    this.activity = activity;
+  }
+
+  getActivity() {
+    return this.activity;
+  }
+
+  setFunctionality(functionality: any) {
+    this.functionality = functionality;
+  }
+
+  getFunctionality() {
+    return this.functionality;
+  }
+
+  setTask(task: any) {
+    this.task = task;
+  }
+
+  getTask() {
+    return this.task;
   }
 
 }
