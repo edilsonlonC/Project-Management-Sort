@@ -89,7 +89,7 @@ export class UpdateActivitiesComponent implements OnInit {
         res => {
           console.log(res);
           this.router.navigate(['/home/resources']);
-          alert('Actividad Registrada');
+          alert('Actividad Actualizada');
         },
         err => console.log(err)
       );

@@ -87,7 +87,7 @@ export class UpdateTasksComponent implements OnInit {
         res => {
           console.log(res);
           this.router.navigate(['/home/resources']);
-          alert('Tarea Registrada');
+          alert('Tarea Actualizada');
         },
         err => console.log(err)
       );

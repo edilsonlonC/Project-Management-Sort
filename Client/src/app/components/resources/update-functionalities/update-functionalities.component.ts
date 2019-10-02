@@ -87,7 +87,7 @@ export class UpdateFunctionalitiesComponent implements OnInit {
         res => {
           console.log(res);
           this.router.navigate(['/home/resources']);
-          alert('Funcionalidad Registrada');
+          alert('Funcionalidad Actualizada');
         },
         err => console.log(err)
       );
