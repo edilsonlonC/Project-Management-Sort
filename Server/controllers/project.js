@@ -3,6 +3,7 @@ const { connection } = require('../Database/DB');
 
 /// modificar, validar primero si el usuario existe
 let saveProject = async (req, res) => {
+    let date  = new Date(Date.now())
     let { id } = req.params; // User id for relational project 
     let { projectName, type } = req.body;
 
@@ -11,7 +12,7 @@ let saveProject = async (req, res) => {
         let queryUser = await connection.query('SELECT Correo FROM Usuarios WHERE id_usuarios = ?', [id])
         let user = queryUser[0];
         if (user.length === 0) return res.status(404).send({ message: 'El usuario no existe ' })
-        let queryProjectSaved = await connection.query('INSERT INTO Proyecto (Nombre_Proyecto,Tipo_Proyecto_id_Tipo,Usuarios_id_usuarios ) values (?,?,?)', [projectName, type, id])
+        let queryProjectSaved = await connection.query('INSERT INTO Proyecto (Nombre_Proyecto,Tipo_Proyecto_id_Tipo,Usuarios_id_usuarios , fecha) values (?,?,?,?)', [projectName, type, id,date])
         return res.status(200).send({ queryProjectSaved });
     } catch (error) {
         return res.status(500).send({ error })
