@@ -14,8 +14,8 @@
                       </div>
                       <div class="form-group mt-3">
                         <select class="form-control" placeholder="Tipo de proyecto" formControlName="type" [ngClass]="{ 'is-invalid': type.invalid && (type.dirty || type.touched) }">
-                            <option value=1>tipo 1</option>
-                            <option value=2>tipo 2</option>
+                            <option value=1>Puntos de Caso de Usos</option>
+                            <option value=2>COCOMO ll</option>
                         </select>
                         <div *ngIf="type.invalid && (type.dirty || type.touched)" class="invalid-feedback">
                             <div *ngIf="type.errors.required">Seleccione proyecto.</div>

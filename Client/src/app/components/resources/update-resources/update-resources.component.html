@@ -12,13 +12,14 @@
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                        <textarea class="form-control text-secondary" rows="3" placeholder="Descripción" formControlName="descripcionr" [ngClass]="{ 'is-invalid': descripcionr.invalid && (descripcionr.dirty || descripcionr.touched) }"></textarea>
+                            <textarea class="form-control text-secondary" rows="3" placeholder="Descripción" formControlName="descripcionr" [ngClass]="{ 'is-invalid': descripcionr.invalid && (descripcionr.dirty || descripcionr.touched) }"></textarea>
                             <div *ngIf="descripcionr.invalid && (descripcionr.dirty || descripcionr.touched)" class="invalid-feedback">
                                 <div *ngIf="descripcionr.errors.maxlength">Descripcion muy larga.</div>
                             </div>
                         </div>
                         <div class="form-group mt-3">
                             <select class="form-control" placeholder="Proyecto" formControlName="proyector" [ngClass]="{ 'is-invalid': proyector.invalid && (proyector.dirty || proyector.touched) }">
+                                <option disabled>Proyectos...</option>
                                 <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
                             </select>
                             <div *ngIf="proyector.invalid && (proyector.dirty || proyector.touched)" class="invalid-feedback">
@@ -26,19 +27,30 @@
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="" class="form-control mt-auto " placeholder="Responsable" formControlName="responsabler" [ngClass]="{ 'is-invalid': responsabler.invalid && (responsabler.dirty || responsabler.touched) }"/>
+                            <input type="text" class="form-control mt-auto " placeholder="Responsable" formControlName="responsabler" [ngClass]="{ 'is-invalid': responsabler.invalid && (responsabler.dirty || responsabler.touched) }"/>
                             <div *ngIf="responsabler.invalid && (responsabler.dirty || responsabler.touched)" class="invalid-feedback">
                                 <div *ngIf="responsabler.errors.required">Ingrese nombre del responsable.</div>
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="" class="form-control mt-auto " placeholder="Estado" formControlName="estador" [ngClass]="{ 'is-invalid': estador.invalid && (estador.dirty || estador.touched) }"/>
+                            <select class="form-control mt-auto" formControlName="estador" [ngClass]="{ 'is-invalid': estador.invalid && (estador.dirty || estador.touched) }">
+                                <option disabled>Estado...</option>
+                                <option value=1>Pendiente</option>
+                                <option value=2>En progreso</option>
+                                <option value=3>Retrasado</option>
+                                <option value=4>Terminado</option>
+                            </select>
                             <div *ngIf="estador.invalid && (estador.dirty || estador.touched)" class="invalid-feedback">
                                 <div *ngIf="estador.errors.required">Ingrese estado.</div>
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="" class="form-control mt-auto " placeholder="Prioridad" formControlName="prioridadr" [ngClass]="{ 'is-invalid': prioridadr.invalid && (prioridadr.dirty || prioridadr.touched) }"/>
+                            <select class="form-control mt-auto" formControlName="prioridadr" [ngClass]="{ 'is-invalid': prioridadr.invalid && (prioridadr.dirty || prioridadr.touched) }">
+                                <option disabled>Prioridad...</option>
+                                <option value=1>Alta</option>
+                                <option value=2>Media</option>
+                                <option value=3>Baja</option>
+                            </select>
                             <div *ngIf="prioridadr.invalid && (prioridadr.dirty || prioridadr.touched)" class="invalid-feedback">
                                 <div *ngIf="prioridadr.errors.required">Ingrese prioridad.</div>
                             </div>
