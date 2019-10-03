@@ -1,328 +1,437 @@
--- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: PMS2
--- ------------------------------------------------------
--- Server version	5.7.27-0ubuntu0.16.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-10-2019 a las 19:55:18
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `Actividades`
+-- Base de datos: `pms2`
 --
 
-DROP TABLE IF EXISTS `Actividades`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Actividades` (
-  `id_actividades` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `actividades`
+--
+
+CREATE TABLE `actividades` (
+  `id_actividades` int(11) NOT NULL,
   `nombre_actividad` varchar(45) DEFAULT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   `responsable` varchar(45) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `Proyecto_id_proyecto` int(11) DEFAULT NULL,
   `Tipo_estado_id_estado` int(11) DEFAULT NULL,
-  `Prioridad_id_prioridad` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_actividades`),
-  KEY `fk_Actividades_Proyecto1_idx` (`Proyecto_id_proyecto`),
-  KEY `fk_Actividades_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
-  KEY `fk_Actividades_Prioridad1_idx` (`Prioridad_id_prioridad`),
-  CONSTRAINT `fk_Actividades_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Actividades_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Actividades_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `Prioridad_id_prioridad` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Actividades`
+-- Volcado de datos para la tabla `actividades`
 --
 
-LOCK TABLES `Actividades` WRITE;
-/*!40000 ALTER TABLE `Actividades` DISABLE KEYS */;
-INSERT INTO `Actividades` VALUES (5,'actividad 1','descipcion de una actividad','Edilson Londoño','2019-09-29',1,1,1);
-/*!40000 ALTER TABLE `Actividades` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `actividades` (`id_actividades`, `nombre_actividad`, `descripcion`, `responsable`, `fecha`, `Proyecto_id_proyecto`, `Tipo_estado_id_estado`, `Prioridad_id_prioridad`) VALUES
+(6, 'actividad 99', 'actividad n-99', 'Cristian Patiño', '2019-10-01', 1, 3, 3),
+(7, 'Actividad 98', 'Descripción  Actividad n98', 'Cristian Patiño', '2019-10-03', 1, 1, 2);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Funcionalidades`
+-- Estructura de tabla para la tabla `funcionalidades`
 --
 
-DROP TABLE IF EXISTS `Funcionalidades`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Funcionalidades` (
-  `id_funcionalidad` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `funcionalidades` (
+  `id_funcionalidad` int(11) NOT NULL,
   `nombre_funcionalidad` varchar(45) DEFAULT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   `responsable` varchar(45) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `Proyecto_id_proyecto` int(11) DEFAULT NULL,
   `Tipo_estado_id_estado` int(11) DEFAULT NULL,
-  `Prioridad_id_prioridad` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_funcionalidad`),
-  KEY `fk_Funcionalidades_Proyecto1_idx` (`Proyecto_id_proyecto`),
-  KEY `fk_Funcionalidades_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
-  KEY `fk_Funcionalidades_Prioridad1_idx` (`Prioridad_id_prioridad`),
-  CONSTRAINT `fk_Funcionalidades_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Funcionalidades_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Funcionalidades_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Funcionalidades`
---
-
-LOCK TABLES `Funcionalidades` WRITE;
-/*!40000 ALTER TABLE `Funcionalidades` DISABLE KEYS */;
-INSERT INTO `Funcionalidades` VALUES (1,'funcionalidad 2','descipcion de una funcionalidad 1','Edilson Londoño','2019-09-30',1,1,1),(2,'funcionalidad 5','descipcion de una funcionalidad 1','Edilson Londoño','2019-09-30',1,1,1);
-/*!40000 ALTER TABLE `Funcionalidades` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Prioridad`
---
-
-DROP TABLE IF EXISTS `Prioridad`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Prioridad` (
-  `id_prioridad` int(11) NOT NULL,
-  `Nombre_prioridad` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_prioridad`)
+  `Prioridad_id_prioridad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Prioridad`
+-- Volcado de datos para la tabla `funcionalidades`
 --
 
-LOCK TABLES `Prioridad` WRITE;
-/*!40000 ALTER TABLE `Prioridad` DISABLE KEYS */;
-INSERT INTO `Prioridad` VALUES (1,'prioridad 1');
-/*!40000 ALTER TABLE `Prioridad` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `funcionalidades` (`id_funcionalidad`, `nombre_funcionalidad`, `descripcion`, `responsable`, `fecha`, `Proyecto_id_proyecto`, `Tipo_estado_id_estado`, `Prioridad_id_prioridad`) VALUES
+(3, 'funcionalidad 99', 'funcionalidad n-99', 'Cristian Patiño', '2019-10-01', 1, 1, 1),
+(4, 'Funcionalidad 98', 'Descripción f 98', 'Cristian Patiño', '2019-10-03', 5, 1, 2);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Proyecto`
+-- Estructura de tabla para la tabla `prioridad`
 --
 
-DROP TABLE IF EXISTS `Proyecto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Proyecto` (
-  `id_proyecto` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `prioridad` (
+  `id_prioridad` int(11) NOT NULL,
+  `Nombre_prioridad` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `prioridad`
+--
+
+INSERT INTO `prioridad` (`id_prioridad`, `Nombre_prioridad`) VALUES
+(1, 'Alta'),
+(2, 'Media'),
+(3, 'Baja');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proyecto`
+--
+
+CREATE TABLE `proyecto` (
+  `id_proyecto` int(11) NOT NULL,
   `Nombre_Proyecto` varchar(45) DEFAULT NULL,
   `Tipo_Proyecto_id_Tipo` int(11) DEFAULT NULL,
   `Usuarios_id_usuarios` int(11) DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
-  PRIMARY KEY (`id_proyecto`),
-  KEY `fk_Proyecto_Tipo_Proyecto1_idx` (`Tipo_Proyecto_id_Tipo`),
-  KEY `fk_Proyecto_Usuarios1_idx` (`Usuarios_id_usuarios`),
-  CONSTRAINT `fk_Proyecto_Tipo_Proyecto1` FOREIGN KEY (`Tipo_Proyecto_id_Tipo`) REFERENCES `Tipo_Proyecto` (`id_Tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Proyecto_Usuarios1` FOREIGN KEY (`Usuarios_id_usuarios`) REFERENCES `Usuarios` (`id_usuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `fecha` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Proyecto`
+-- Volcado de datos para la tabla `proyecto`
 --
 
-LOCK TABLES `Proyecto` WRITE;
-/*!40000 ALTER TABLE `Proyecto` DISABLE KEYS */;
-INSERT INTO `Proyecto` VALUES (1,'Proyecto 1',1,1,NULL),(2,'Otro proyecto',1,1,'2019-10-01');
-/*!40000 ALTER TABLE `Proyecto` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `proyecto` (`id_proyecto`, `Nombre_Proyecto`, `Tipo_Proyecto_id_Tipo`, `Usuarios_id_usuarios`, `fecha`) VALUES
+(1, 'proyecto 1', 2, 1, '2019-10-01'),
+(4, 'proyecto 2', 1, 2, '2019-10-01'),
+(5, 'proyecto 3', 1, 2, '2019-10-01'),
+(7, 'proyecto 6', 1, 2, '2019-10-01'),
+(10, 'Proyecto 4', 2, 2, '2019-10-02');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Recursos`
+-- Estructura de tabla para la tabla `recursos`
 --
 
-DROP TABLE IF EXISTS `Recursos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Recursos` (
-  `id_recursos` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `recursos` (
+  `id_recursos` int(11) NOT NULL,
   `Descripcion` varchar(45) DEFAULT NULL,
   `Responsable` varchar(45) DEFAULT NULL,
   `Tipo_estado_id_estado` int(11) DEFAULT NULL,
   `Prioridad_id_prioridad` int(11) DEFAULT NULL,
   `Proyecto_id_proyecto` int(11) DEFAULT NULL,
   `nombre_recurso` varchar(45) DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
-  PRIMARY KEY (`id_recursos`),
-  KEY `fk_Recursos_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
-  KEY `fk_Recursos_Prioridad1_idx` (`Prioridad_id_prioridad`),
-  KEY `fk_Recursos_Proyecto1_idx` (`Proyecto_id_proyecto`),
-  CONSTRAINT `fk_Recursos_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Recursos_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Recursos_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `fecha` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Recursos`
+-- Volcado de datos para la tabla `recursos`
 --
 
-LOCK TABLES `Recursos` WRITE;
-/*!40000 ALTER TABLE `Recursos` DISABLE KEYS */;
-INSERT INTO `Recursos` VALUES (1,'descipcion de otro recurso','Edilson Londoño',1,1,NULL,'otro recuso2002',NULL),(2,'descripcion del recurso 2','Edilson Londoño castañeda',1,1,NULL,'recurso 2',NULL),(3,'descripcion del recurso 2','Edilson Londoño castañeda',1,1,NULL,'recurso 20',NULL),(4,'descripcion del recurso 5','Edilson Londoño castañeda',1,1,1,'recurso 5',NULL),(5,'descipcion de otro recurso','Edilson Londoño',1,1,1,'otro recuso',NULL),(6,'descipcion de otro recurso','Edilson Londoño',1,1,1,'otro recuso2',NULL),(7,'descipcion de otro recurso','Edilson Londoño',1,1,1,'otro recuso200',NULL);
-/*!40000 ALTER TABLE `Recursos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `recursos` (`id_recursos`, `Descripcion`, `Responsable`, `Tipo_estado_id_estado`, `Prioridad_id_prioridad`, `Proyecto_id_proyecto`, `nombre_recurso`, `fecha`) VALUES
+(8, 'recurso 99', 'Cristian Patiño', 1, 1, 1, 'recurso 99', '2019-10-01'),
+(9, 'Descripción Recurso 98', 'Cristian Patiño', 4, 3, 4, 'Recurso 98', '2019-10-03');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Rol_Usuario`
+-- Estructura de tabla para la tabla `rol_usuario`
 --
 
-DROP TABLE IF EXISTS `Rol_Usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Rol_Usuario` (
-  `id_Rol_Usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_Rol` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_Rol_Usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE `rol_usuario` (
+  `id_Rol_Usuario` int(11) NOT NULL,
+  `tipo_Rol` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Rol_Usuario`
+-- Volcado de datos para la tabla `rol_usuario`
 --
 
-LOCK TABLES `Rol_Usuario` WRITE;
-/*!40000 ALTER TABLE `Rol_Usuario` DISABLE KEYS */;
-INSERT INTO `Rol_Usuario` VALUES (1,'ADMINISTRADOR'),(2,'USUARIO');
-/*!40000 ALTER TABLE `Rol_Usuario` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `rol_usuario` (`id_Rol_Usuario`, `tipo_Rol`) VALUES
+(1, 'ADMINISTRADOR'),
+(2, 'USUARIO');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Tareas`
+-- Estructura de tabla para la tabla `tareas`
 --
 
-DROP TABLE IF EXISTS `Tareas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Tareas` (
-  `id_tareas` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tareas` (
+  `id_tareas` int(11) NOT NULL,
   `nombre_tarea` varchar(45) DEFAULT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   `responsable` varchar(45) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `Proyecto_id_proyecto` int(11) DEFAULT NULL,
   `Tipo_estado_id_estado` int(11) DEFAULT NULL,
-  `Prioridad_id_prioridad` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_tareas`),
-  KEY `fk_Tareas_Proyecto1_idx` (`Proyecto_id_proyecto`),
-  KEY `fk_Tareas_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
-  KEY `fk_Tareas_Prioridad1_idx` (`Prioridad_id_prioridad`),
-  CONSTRAINT `fk_Tareas_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `Prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Tareas_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `Proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Tareas_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `Tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `Prioridad_id_prioridad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Tareas`
+-- Volcado de datos para la tabla `tareas`
 --
 
-LOCK TABLES `Tareas` WRITE;
-/*!40000 ALTER TABLE `Tareas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Tareas` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tareas` (`id_tareas`, `nombre_tarea`, `descripcion`, `responsable`, `fecha`, `Proyecto_id_proyecto`, `Tipo_estado_id_estado`, `Prioridad_id_prioridad`) VALUES
+(2, 'tarea 99', 'tarea 99', 'Cristian Patiño', '2019-10-01', 1, 1, 1),
+(3, 'Tarea 98', 'Descripción 98', 'Cristian Patiño', '2019-10-03', 5, 1, 2);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Tipo_Proyecto`
+-- Estructura de tabla para la tabla `tipo_estado`
 --
 
-DROP TABLE IF EXISTS `Tipo_Proyecto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Tipo_Proyecto` (
+CREATE TABLE `tipo_estado` (
+  `id_estado` int(11) NOT NULL,
+  `valor_estado` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tipo_estado`
+--
+
+INSERT INTO `tipo_estado` (`id_estado`, `valor_estado`) VALUES
+(1, 'Pendiente'),
+(2, 'En progreso'),
+(3, 'Retrasado'),
+(4, 'Terminado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_proyecto`
+--
+
+CREATE TABLE `tipo_proyecto` (
   `id_Tipo` int(11) NOT NULL,
-  `Clase_tipo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_Tipo`)
+  `Clase_tipo` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Tipo_Proyecto`
+-- Volcado de datos para la tabla `tipo_proyecto`
 --
 
-LOCK TABLES `Tipo_Proyecto` WRITE;
-/*!40000 ALTER TABLE `Tipo_Proyecto` DISABLE KEYS */;
-INSERT INTO `Tipo_Proyecto` VALUES (1,'tipo proyecto 1');
-/*!40000 ALTER TABLE `Tipo_Proyecto` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tipo_proyecto` (`id_Tipo`, `Clase_tipo`) VALUES
+(1, 'Puntos de Caso de Usos'),
+(2, 'COCOMO ll');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `Tipo_estado`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `Tipo_estado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Tipo_estado` (
-  `id_estado` int(11) NOT NULL AUTO_INCREMENT,
-  `valor_estado` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_estado`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Tipo_estado`
---
-
-LOCK TABLES `Tipo_estado` WRITE;
-/*!40000 ALTER TABLE `Tipo_estado` DISABLE KEYS */;
-INSERT INTO `Tipo_estado` VALUES (1,'estado 1');
-/*!40000 ALTER TABLE `Tipo_estado` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Usuarios`
---
-
-DROP TABLE IF EXISTS `Usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Usuarios` (
-  `id_usuarios` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `id_usuarios` int(11) NOT NULL,
   `rol` varchar(45) DEFAULT NULL,
   `Nombre_usuario` varchar(45) DEFAULT NULL,
   `contrasenia` varchar(200) DEFAULT NULL,
   `Correo` varchar(45) DEFAULT NULL,
   `Apellido_usuario` varchar(45) DEFAULT NULL,
-  `Rol_Usuario_id_Rol_Usuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_usuarios`),
-  KEY `fk_Usuarios_Rol_Usuario_idx` (`Rol_Usuario_id_Rol_Usuario`),
-  CONSTRAINT `fk_Usuarios_Rol_Usuario` FOREIGN KEY (`Rol_Usuario_id_Rol_Usuario`) REFERENCES `Rol_Usuario` (`id_Rol_Usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `Rol_Usuario_id_Rol_Usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-LOCK TABLES `Usuarios` WRITE;
-/*!40000 ALTER TABLE `Usuarios` DISABLE KEYS */;
-INSERT INTO `Usuarios` VALUES (1,NULL,'Edilson','$2b$10$Pq4zW/gNOZ.oPk37Vqj2Su5PdDL8qVa5VfgQYSPxCyauUyS1taQJy','eddylson.londonio@gmailcom','Londoño',2);
-/*!40000 ALTER TABLE `Usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `usuarios` (`id_usuarios`, `rol`, `Nombre_usuario`, `contrasenia`, `Correo`, `Apellido_usuario`, `Rol_Usuario_id_Rol_Usuario`) VALUES
+(1, NULL, 'Edilson', '$2b$10$Pq4zW/gNOZ.oPk37Vqj2Su5PdDL8qVa5VfgQYSPxCyauUyS1taQJy', 'eddylson.londonio@gmailcom', 'Londoño', 1),
+(2, NULL, 'Admin', '$2b$10$mK7/F5fRxmHuJFLkGNpP2udLUGVT9uBHKm.l6VVHkL/6EHqZ.jhGO', 'a@a.co', 'Admin', 1),
+(4, NULL, 'Cristian ', '$2b$10$bl5zonQUa6DN7pXH/SfcVORO/PWiAfoVN3sKFBQV.m94b7UduVkQy', 'c@c.co', 'Patiño', 2);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `actividades`
+--
+ALTER TABLE `actividades`
+  ADD PRIMARY KEY (`id_actividades`),
+  ADD KEY `fk_Actividades_Proyecto1_idx` (`Proyecto_id_proyecto`),
+  ADD KEY `fk_Actividades_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
+  ADD KEY `fk_Actividades_Prioridad1_idx` (`Prioridad_id_prioridad`);
+
+--
+-- Indices de la tabla `funcionalidades`
+--
+ALTER TABLE `funcionalidades`
+  ADD PRIMARY KEY (`id_funcionalidad`),
+  ADD KEY `fk_Funcionalidades_Proyecto1_idx` (`Proyecto_id_proyecto`),
+  ADD KEY `fk_Funcionalidades_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
+  ADD KEY `fk_Funcionalidades_Prioridad1_idx` (`Prioridad_id_prioridad`);
+
+--
+-- Indices de la tabla `prioridad`
+--
+ALTER TABLE `prioridad`
+  ADD PRIMARY KEY (`id_prioridad`);
+
+--
+-- Indices de la tabla `proyecto`
+--
+ALTER TABLE `proyecto`
+  ADD PRIMARY KEY (`id_proyecto`),
+  ADD KEY `fk_Proyecto_Tipo_Proyecto1_idx` (`Tipo_Proyecto_id_Tipo`),
+  ADD KEY `fk_Proyecto_Usuarios1_idx` (`Usuarios_id_usuarios`);
+
+--
+-- Indices de la tabla `recursos`
+--
+ALTER TABLE `recursos`
+  ADD PRIMARY KEY (`id_recursos`),
+  ADD KEY `fk_Recursos_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
+  ADD KEY `fk_Recursos_Prioridad1_idx` (`Prioridad_id_prioridad`),
+  ADD KEY `fk_Recursos_Proyecto1_idx` (`Proyecto_id_proyecto`);
+
+--
+-- Indices de la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+  ADD PRIMARY KEY (`id_Rol_Usuario`);
+
+--
+-- Indices de la tabla `tareas`
+--
+ALTER TABLE `tareas`
+  ADD PRIMARY KEY (`id_tareas`),
+  ADD KEY `fk_Tareas_Proyecto1_idx` (`Proyecto_id_proyecto`),
+  ADD KEY `fk_Tareas_Tipo_estado1_idx` (`Tipo_estado_id_estado`),
+  ADD KEY `fk_Tareas_Prioridad1_idx` (`Prioridad_id_prioridad`);
+
+--
+-- Indices de la tabla `tipo_estado`
+--
+ALTER TABLE `tipo_estado`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `tipo_proyecto`
+--
+ALTER TABLE `tipo_proyecto`
+  ADD PRIMARY KEY (`id_Tipo`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuarios`),
+  ADD KEY `fk_Usuarios_Rol_Usuario_idx` (`Rol_Usuario_id_Rol_Usuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `actividades`
+--
+ALTER TABLE `actividades`
+  MODIFY `id_actividades` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `funcionalidades`
+--
+ALTER TABLE `funcionalidades`
+  MODIFY `id_funcionalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `proyecto`
+--
+ALTER TABLE `proyecto`
+  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `recursos`
+--
+ALTER TABLE `recursos`
+  MODIFY `id_recursos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+  MODIFY `id_Rol_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `tareas`
+--
+ALTER TABLE `tareas`
+  MODIFY `id_tareas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_estado`
+--
+ALTER TABLE `tipo_estado`
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `actividades`
+--
+ALTER TABLE `actividades`
+  ADD CONSTRAINT `fk_Actividades_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Actividades_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Actividades_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `funcionalidades`
+--
+ALTER TABLE `funcionalidades`
+  ADD CONSTRAINT `fk_Funcionalidades_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Funcionalidades_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Funcionalidades_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `proyecto`
+--
+ALTER TABLE `proyecto`
+  ADD CONSTRAINT `fk_Proyecto_Tipo_Proyecto1` FOREIGN KEY (`Tipo_Proyecto_id_Tipo`) REFERENCES `tipo_proyecto` (`id_Tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Proyecto_Usuarios1` FOREIGN KEY (`Usuarios_id_usuarios`) REFERENCES `usuarios` (`id_usuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `recursos`
+--
+ALTER TABLE `recursos`
+  ADD CONSTRAINT `fk_Recursos_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Recursos_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Recursos_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tareas`
+--
+ALTER TABLE `tareas`
+  ADD CONSTRAINT `fk_Tareas_Prioridad1` FOREIGN KEY (`Prioridad_id_prioridad`) REFERENCES `prioridad` (`id_prioridad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Tareas_Proyecto1` FOREIGN KEY (`Proyecto_id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Tareas_Tipo_estado1` FOREIGN KEY (`Tipo_estado_id_estado`) REFERENCES `tipo_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_Usuarios_Rol_Usuario` FOREIGN KEY (`Rol_Usuario_id_Rol_Usuario`) REFERENCES `rol_usuario` (`id_Rol_Usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2019-10-01 14:40:45
