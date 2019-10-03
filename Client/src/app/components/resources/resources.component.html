@@ -32,8 +32,17 @@
                         <td>Recurso</td>
                         <td>{{resource.Responsable}}</td>
                         <td>{{resource.fecha}}</td>
-                        <td>{{resource.Tipo_estado_id_estado}}</td>
-                        <td>{{resource.Prioridad_id_prioridad}}</td>
+                        <td>
+                          <div *ngIf='resource.Tipo_estado_id_estado == 1'>Pendiente</div>
+                          <div *ngIf='resource.Tipo_estado_id_estado == 2'>Progreso</div>
+                          <div *ngIf='resource.Tipo_estado_id_estado == 3'>Retrasado</div>
+                          <div *ngIf='resource.Tipo_estado_id_estado == 4'>Terminado</div>
+                        </td>
+                        <td>
+                          <div *ngIf='resource.Prioridad_id_prioridad == 1'>Alto</div>
+                          <div *ngIf='resource.Prioridad_id_prioridad == 2'>Medio</div>
+                          <div *ngIf='resource.Prioridad_id_prioridad == 3'>Bajo</div>
+                        </td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../resources-update']" (click)="updateResource(resource)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(resource.id_recursos, 'r')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
@@ -42,8 +51,17 @@
                         <td>Actividad</td>
                         <td>{{activity.responsable}}</td>
                         <td>{{activity.fecha}}</td>
-                        <td>{{activity.Tipo_estado_id_estado}}</td>
-                        <td>{{activity.Prioridad_id_prioridad}}</td>
+                        <td>
+                          <div *ngIf='activity.Tipo_estado_id_estado == 1'>Pendiente</div>
+                          <div *ngIf='activity.Tipo_estado_id_estado == 2'>Progreso</div>
+                          <div *ngIf='activity.Tipo_estado_id_estado == 3'>Retrasado</div>
+                          <div *ngIf='activity.Tipo_estado_id_estado == 4'>Terminado</div>
+                        </td>
+                        <td>
+                          <div *ngIf='activity.Prioridad_id_prioridad == 1'>Alto</div>
+                          <div *ngIf='activity.Prioridad_id_prioridad == 2'>Medio</div>
+                          <div *ngIf='activity.Prioridad_id_prioridad == 3'>Bajo</div>
+                        </td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../activities-update']" (click)="updateActivity(activity)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(activity.id_actividades, 'a')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
@@ -52,8 +70,17 @@
                         <td>Funcionalidad</td>
                         <td>{{functionality.responsable}}</td>
                         <td>{{functionality.fecha}}</td>
-                        <td>{{functionality.Tipo_estado_id_estado}}</td>
-                        <td>{{functionality.Prioridad_id_prioridad}}</td>
+                        <td>
+                          <div *ngIf='functionality.Tipo_estado_id_estado == 1'>Pendiente</div>
+                          <div *ngIf='functionality.Tipo_estado_id_estado == 2'>Progreso</div>
+                          <div *ngIf='functionality.Tipo_estado_id_estado == 3'>Retrasado</div>
+                          <div *ngIf='functionality.Tipo_estado_id_estado == 4'>Terminado</div>
+                        </td>
+                        <td>
+                          <div *ngIf='functionality.Prioridad_id_prioridad == 1'>Alto</div>
+                          <div *ngIf='functionality.Prioridad_id_prioridad == 2'>Medio</div>
+                          <div *ngIf='functionality.Prioridad_id_prioridad == 3'>Bajo</div>
+                        </td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../functionalities-update']" (click)="updateFunctionality(functionality)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(functionality.id_funcionalidad, 'f')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
@@ -62,8 +89,17 @@
                         <td>Tarea</td>
                         <td>{{task.responsable}}</td>
                         <td>{{task.fecha}}</td>
-                        <td>{{task.Tipo_estado_id_estado}}</td>
-                        <td>{{task.Prioridad_id_prioridad}}</td>
+                        <td>
+                          <div *ngIf='task.Tipo_estado_id_estado == 1'>Pendiente</div>
+                          <div *ngIf='task.Tipo_estado_id_estado == 2'>Progreso</div>
+                          <div *ngIf='task.Tipo_estado_id_estado == 3'>Retrasado</div>
+                          <div *ngIf='task.Tipo_estado_id_estado == 4'>Terminado</div>
+                        </td>
+                        <td>
+                          <div *ngIf='task.Prioridad_id_prioridad == 1'>Alto</div>
+                          <div *ngIf='task.Prioridad_id_prioridad == 2'>Medio</div>
+                          <div *ngIf='task.Prioridad_id_prioridad == 3'>Bajo</div>
+                        </td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../tasks-update']" (click)="updateTask(task)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(task.id_tareas, 't')"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>

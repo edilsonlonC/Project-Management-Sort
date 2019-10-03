@@ -27,7 +27,10 @@
                       <tr *ngFor="let project of projects.projects" class="text-warning">
                         <td>{{project.Nombre_Proyecto}}</td>
                         <td>{{project.fecha}}</td>
-                        <td>{{project.Tipo_Proyecto_id_Tipo}}</td>
+                        <td>
+                          <div *ngIf='project.Tipo_Proyecto_id_Tipo == 1'>Puntos de Caso de Uso</div>
+                          <div *ngIf='project.Tipo_Proyecto_id_Tipo == 2'>COCOMO ll</div>
+                        </td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../projects-update']" (click)="updateProject(project)"><i class="fas fa-paperclip text-warning"></i></a></td>
                         <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(project.id_proyecto)"><i class="fas fa-times text-warning"></i></a></td>
                       </tr>
