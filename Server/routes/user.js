@@ -4,11 +4,11 @@ const Auth = require('../middleware/Auth');
 
 // Routes 
  router.get('/', controllerUser.home);
- router.post('/save-user', controllerUser.saveuser);
+ router.post('/save-user', Auth.isAuth, controllerUser.saveuser);
  router.get('/list-users', Auth.isAuth, controllerUser.listUsers);
- router.get('/list-users/:id', controllerUser.listUser);
- router.put('/update-user/:id', controllerUser.updateUser);
- router.delete('/delete-user/:id', controllerUser.deleteUser)
+ router.get('/list-users/:id', Auth.isAuth, controllerUser.listUser);
+ router.put('/update-user/:id', Auth.isAuth, controllerUser.updateUser);
+ router.delete('/delete-user/:id', Auth.isAuth, controllerUser.deleteUser)
 
 
 module .exports = {

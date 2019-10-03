@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Activity } from '../models/activity';
 import { Observable } from 'rxjs';
+import { UsersService } from '../services/users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,26 +10,36 @@ import { Observable } from 'rxjs';
 export class ActivitiesService {
 
   API_URI = 'http://localhost:3000/api';
+  identidad: any;
+  token: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private usersService: UsersService) {
+    this.identidad = usersService.getIdentidad();
+    this.token = usersService.getToken();
+  }
 
   getActivities() {
-    return this.http.get(`${this.API_URI}/list-activities`);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.token});
+    return this.http.get(`${this.API_URI}/list-activities`, {headers});
   }
 
   getActivity(id: string) {
-    return this.http.get(`${this.API_URI}/list-activities/${id}`);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.token});
+    return this.http.get(`${this.API_URI}/list-activities/${id}`, {headers});
   }
 
   deleteActivity(id: string) {
-    return this.http.delete(`${this.API_URI}/delete-activity/${id}`);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.token});
+    return this.http.delete(`${this.API_URI}/delete-activity/${id}`, {headers});
   }
 
   saveActivity(resource: Activity): Observable<any> {
-    return this.http.post(`${this.API_URI}/save-activity`, resource);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.token});
+    return this.http.post(`${this.API_URI}/save-activity`, resource, {headers});
   }
 
   updateActivity(id: string, updateActivity: Activity): Observable<any> {
-    return this.http.put(`${this.API_URI}/update-activity/${id}`, updateActivity);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.token});
+    return this.http.put(`${this.API_URI}/update-activity/${id}`, updateActivity, {headers});
   }
 }

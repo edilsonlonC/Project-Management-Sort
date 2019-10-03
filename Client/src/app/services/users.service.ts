@@ -13,33 +13,31 @@ export class UsersService {
   token: string;
 
   constructor(private http: HttpClient) { }
-
   tokens = localStorage.getItem('token');
-  Auth = {
-    authorization: 'Bearer' + ' ' + this.tokens
-  };
 
   getUsers() {
-    // tslint:disable-next-line:prefer-const
-    let headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.tokens});
-    console.log(headers);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.tokens});
     return this.http.get(`${this.API_URI}/list-users`, {headers});
   }
 
   getUser(id: string) {
-    return this.http.get(`${this.API_URI}/list-users/${id}`);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.tokens});
+    return this.http.get(`${this.API_URI}/list-users/${id}`, {headers});
   }
 
   deleteUser(id: string) {
-    return this.http.delete(`${this.API_URI}/delete-user/${id}`);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.tokens});
+    return this.http.delete(`${this.API_URI}/delete-user/${id}`, {headers});
   }
 
   saveUser(user: User): Observable<User> {
-    return this.http.post(`${this.API_URI}/save-user`, user);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.tokens});
+    return this.http.post(`${this.API_URI}/save-user`, user, {headers});
   }
 
   updateUser(id: string, updateUser: User): Observable<User> {
-    return this.http.put(`${this.API_URI}/update-user/${id}`, updateUser);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', authorization: 'Bearer' + ' ' + this.tokens});
+    return this.http.put(`${this.API_URI}/update-user/${id}`, updateUser, {headers});
   }
 
   signUp(user: User, gettoken = null): Observable<any> {
