@@ -6,15 +6,37 @@ import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ResourcesComponent } from './components/resources/resources.component';
+<<<<<<< HEAD
+import { RegisterProjectComponent } from './components/projects/register-project/register-project.component';
+import { RegisterResourcesComponent } from './components/resources/register-resources/register-resources.component';
+=======
 
+>>>>>>> 4ccf56664803f4248c927463513aec1f5c2fe19b
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent, children: [
+<<<<<<< HEAD
+      { path: 'users', component: UsersComponent, children: [
+        { path: '', component: RegisterComponent }
+        ]
+      },
+      { path: 'projects', component: ProjectsComponent, children: [
+          { path: '', component: RegisterProjectComponent }
+        ]
+      },
+      { path: 'resources', component: ResourcesComponent, children: [
+          { path: '', component: RegisterResourcesComponent }
+        ]
+      }
+    ]
+  },
+=======
     { path: 'users', component: UsersComponent },
     { path: 'projects', component: ProjectsComponent },
     { path: 'resources', component: ResourcesComponent }
   ] },
+>>>>>>> 4ccf56664803f4248c927463513aec1f5c2fe19b
   { path: 'register', component: RegisterComponent },
   { path: '**', component: LoginComponent }
 ];
