@@ -33,7 +33,17 @@
                         <div *ngIf="email.errors.required">Ingrese correo electronico.</div>
                         <div *ngIf="email.errors.pattern">Ingrese correo electronico verdadero.</div>
                     </div>
-                </div>
+                 </div>
+                 <div class="form-group mt-3">
+                    <select class="form-control mt-auto" formControlName="rol" [ngClass]="{ 'is-invalid': rol.invalid && (rol.dirty || rol.touched) }">
+                      <option disabled>Rol...</option>
+                      <option value=1>Administrador</option>
+                      <option value=2>Empleado</option>
+                    </select>
+                    <div *ngIf="rol.invalid && (rol.dirty || rol.touched)" class="invalid-feedback">
+                      <div *ngIf="rol.errors.required">Ingrese rol.</div>
+                    </div>
+                  </div>
                   <div class="form-group mt-3">
                     <button [disabled]="!actualizar.valid" class="btn btn-warning btn-block">Actualizar Usuario</button>
                   </div>

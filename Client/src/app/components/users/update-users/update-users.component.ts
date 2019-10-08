@@ -14,7 +14,7 @@ export class UpdateUsersComponent implements OnInit {
 
   user: User = {
     id: 0,
-    rol: 'empleado',
+    rol: 0,
     name: '',
     lastname: '',
     password: '',
@@ -33,6 +33,7 @@ export class UpdateUsersComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.minLength(4)]),
       lastname: new FormControl('', [Validators.required, Validators.minLength(4)]),
       email: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern)]),
+      rol: new FormControl('', [Validators.required]),
       pass: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)])
     });
   }
@@ -50,6 +51,7 @@ export class UpdateUsersComponent implements OnInit {
     this.actualizar.get('name').setValue(this.getUser.Nombre_usuario);
     this.actualizar.get('lastname').setValue(this.getUser.Apellido_usuario);
     this.actualizar.get('email').setValue(this.getUser.Correo);
+    this.actualizar.get('rol').setValue(this.getUser.Rol_Usuario_id_Rol_Usuario);
   }
 
   onResetForm() {
@@ -61,8 +63,8 @@ export class UpdateUsersComponent implements OnInit {
     this.user.lastname = this.actualizar.get('lastname').value;
     this.user.email = this.actualizar.get('email').value;
     this.user.password = this.actualizar.get('pass').value;
+    this.user.rol = this.actualizar.get('rol').value;
     delete this.user.id;
-    delete this.user.rol;
   }
 
   onUpdateForm() {
@@ -93,6 +95,10 @@ export class UpdateUsersComponent implements OnInit {
 
   get email() {
     return this.actualizar.get('email');
+  }
+
+  get rol() {
+    return this.actualizar.get('rol');
   }
 
   get pass() {

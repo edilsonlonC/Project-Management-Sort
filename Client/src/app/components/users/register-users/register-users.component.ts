@@ -13,7 +13,7 @@ export class RegisterUsersComponent implements OnInit {
 
   user: User = {
     id: 0,
-    rol: 'empleado',
+    rol: 0,
     name: '',
     lastname: '',
     password: '',
@@ -30,6 +30,7 @@ export class RegisterUsersComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.minLength(4)]),
       lastname: new FormControl('', [Validators.required, Validators.minLength(4)]),
       email: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern)]),
+      rol: new FormControl('', [Validators.required]),
       pass: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10)])
     });
   }
@@ -49,8 +50,8 @@ export class RegisterUsersComponent implements OnInit {
     this.user.lastname = this.register.get('lastname').value;
     this.user.email = this.register.get('email').value;
     this.user.password = this.register.get('pass').value;
+    this.user.rol = this.register.get('rol').value;
     delete this.user.id;
-    delete this.user.rol;
   }
 
   onSaveForm() {
@@ -83,8 +84,11 @@ export class RegisterUsersComponent implements OnInit {
     return this.register.get('email');
   }
 
+  get rol() {
+    return this.register.get('rol');
+  }
+
   get pass() {
     return this.register.get('pass');
   }
-
 }

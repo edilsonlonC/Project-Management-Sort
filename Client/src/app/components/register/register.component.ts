@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   user: User = {
     id: 0,
-    rol: 'administrador',
+    rol: 2,
     name: '',
     lastname: '',
     password: '',
@@ -49,8 +49,6 @@ export class RegisterComponent implements OnInit {
     this.user.email = this.register.get('email').value;
     this.user.password = this.register.get('pass').value;
     delete this.user.id;
-    delete this.user.rol;
-
   }
 
   onSaveForm() {

@@ -9,15 +9,15 @@ let home = async (req, res) => {
 
 
 let saveuser = async (req, res) => {
-    let { name, lastname, password, email } = req.body;
+    let { name, lastname, password, rol, email } = req.body;
     console.log(name, lastname, password, email);
 
-    if (!name || !lastname || !password || !email) return res.status(404).send({ message: 'Faltan datos' });
+    if (!name || !lastname || !password || !rol || !email) return res.status(404).send({ message: 'Faltan datos' });
     password = await bcrypt.hash(password, 10);
     try {
         let existingUser = await connection.query('SELECT correo FROM Usuarios where correo = ?', [email]);
         if (existingUser[0].length > 0) return res.status(404).send({ message: 'El usuario ya existe ' })
-        let userSaved = await connection.query('INSERT INTO Usuarios (Nombre_usuario,contrasenia,correo,Apellido_usuario,Rol_Usuario_id_Rol_Usuario) values (?,?,?,?,?)', [name, password, email, lastname, 2])
+        let userSaved = await connection.query('INSERT INTO Usuarios (Nombre_usuario,contrasenia,correo,Apellido_usuario,Rol_Usuario_id_Rol_Usuario) values (?,?,?,?,?)', [name, password, email, lastname, rol])
         if (!userSaved) return res.status(500).send('Error al guardar usuario')
         return res.status(200).send({ userSaved })
     } catch (error) {
