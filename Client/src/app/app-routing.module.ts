@@ -18,6 +18,8 @@ import { UpdateResourcesComponent } from './components/resources/update-resource
 import { UpdateActivitiesComponent } from './components/resources/update-activities/update-activities.component';
 import { UpdateFunctionalitiesComponent } from './components/resources/update-functionalities/update-functionalities.component';
 import { UpdateTasksComponent } from './components/resources/update-tasks/update-tasks.component';
+import { CocomollComponent } from './components/cocomoll/cocomoll.component';
+import { ConfiguracionComponent } from './components/cocomoll/configuracion/configuracion.component';
 
 
 const routes: Routes = [
@@ -41,7 +43,10 @@ const routes: Routes = [
       { path: 'resources-update', component: UpdateResourcesComponent, canActivate: [RolGuard]},
       { path: 'activities-update', component: UpdateActivitiesComponent, canActivate: [RolGuard]},
       { path: 'functionalities-update', component: UpdateFunctionalitiesComponent, canActivate: [RolGuard]},
-      { path: 'tasks-update', component: UpdateTasksComponent, canActivate: [RolGuard]}
+      { path: 'tasks-update', component: UpdateTasksComponent, canActivate: [RolGuard]},
+      { path: 'cocomoll', component: CocomollComponent, children: [
+        { path: '', component: ConfiguracionComponent }
+      ]}
     ]
   },
   { path: 'register', component: RegisterComponent },

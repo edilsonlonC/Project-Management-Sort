@@ -1,0 +1,407 @@
+<div class="nav-justified">
+    <ul class=" nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link text-warning active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Estimación COCOMO II</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-warning" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Configuración COCOMO II</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="container-fluid p-4">
+          <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card text-center border-secondary">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning mt-3 ">Controladores de Escala de Software</h5>
+                        <form class="mt-3">
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-6">
+                                    <p class="text-left text-secondary">Precedencia:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-6">
+                                    <p class="text-left text-secondary">Flexibilidad de desarrollo:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-6">
+                                    <p class="text-left text-secondary">Arquitectura/Resolución de riesgos:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-6">
+                                    <p class="text-left text-secondary">Tipo de Diseño:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-6">
+                                    <p class="text-left text-secondary">Cohesión del equipo:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-6">
+                                    <p class="text-left text-secondary">Tipo de Diseño:</p>
+                                    <select class="form-control mt-auto" name="diseno" [(ngModel)]="diseno">
+                                        <option value=0 selected>Diseño Inicial</option>
+                                        <option value=1>Diseño Arquitectura Posterior</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                        </form>
+                    </div>
+                </div>              
+            </div>
+            <div *ngIf="diseno == 0" class="col-10 mt-5">
+                <div class="card text-center border-secondary">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning mt-3">Controladores de Costos de Software</h5>
+                        <h5 class="card-title text-warning mt-3">Diseño Inical</h5>
+                        <form class="mt-3">
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Confiabilidad y complejidad del producto:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Reutilización requerida:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Dificultad de plataforma:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Capacidad de personal:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Experiencia de personal:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Instalaciones disponibles:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Presión de horario:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <button class="btn btn-warning btn-block">Estimación</button>
+                            </div>
+                            <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                        </form>
+                    </div>
+                </div>              
+            </div>
+            <div *ngIf="diseno == 1" class="col-10 mt-5">
+                <div class="card text-center border-secondary">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning mt-3">Controladores de Costos de Software</h5>
+                        <h5 class="card-title text-warning mt-3">Diseño Arquitectura Posterior</h5>
+                        <form class="mt-3">
+                            <h5 class="card-title text-left text-warning mt-3">Producto:</h5>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Fiabilidad de software requerida:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Tamaño de base de datos:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Complejidad del producto:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Desarrollado para la reutilización:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Documentación del ciclo de vida:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h5 class="card-title text-left text-warning mt-3">Personal:</h5>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Capacidad de analista:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Capacidad de programador:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Continuidad de personal:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Experiencia de aplicación:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Experiencia de plataforma:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Experiencia de lenguaje y herramientas:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h5 class="card-title text-left text-warning mt-3">Plataforma:</h5>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Limitación de tiempo:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Restricción de almacenamiento:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Volatilidad de plataforma:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h5 class="card-title text-left text-warning mt-3">Proyecto:</h5>
+                            <div class="form-row">
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Uso de herramientas de software:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Desarrollo multisitio:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mt-3 col-4">
+                                    <p class="text-left text-secondary">Programa de desarrollo requerido:</p>
+                                    <select class="form-control mt-auto">
+                                        <option>Muy Bajo</option>
+                                        <option>Bajo</option>
+                                        <option selected>Nominal</option>
+                                        <option>Alto</option>
+                                        <option>Muy Alto</option>
+                                        <option>Extra Alto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <button class="btn btn-warning btn-block">Estimación</button>
+                            </div>
+                            <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                        </form>
+                    </div>
+                </div>              
+            </div>  
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>

@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   user: User = {
     id: 0,
-    rol: 'administrador',
+    rol: 0,
     name: '',
     lastname: '',
     password: '',
