@@ -10,7 +10,7 @@ export class CocomollComponent implements OnInit {
   diseno = 1;
   fecha: Date;
 
-  constructor() { 
+  constructor() {
     this.fecha = new Date();
   }
 
