@@ -18,7 +18,7 @@
             "sced": { "muyBajo": 1.43, "bajo": 1.14, "nominal": 1.00, "alto": 1.00, "muyAlto": 1.00 }
             }
         },
-        {"id":3, "fcdap": { 
+        {"id":3, "fcap": { 
             "rely": { "muyBajo": 0.82, "bajo": 0.92, "nominal": 1.00, "alto": 1.10, "muyAlto": 1.26 },
             "data": { "bajo": 0.90, "nominal": 1.00, "alto": 1.14, "muyAlto": 1.28 },
             "cplx": { "muyBajo": 0.73, "bajo": 0.87, "nominal": 1.00, "alto": 1.17, "muyAlto": 1.34, "extraAlto": 1.74 },
