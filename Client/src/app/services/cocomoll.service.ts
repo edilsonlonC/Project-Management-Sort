@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Datos } from '../models/datos';
+import { Dfs } from '../models/dfs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class CocomollService {
     return this.http.get(`${this.API_URI}/${id}`);
   }
 
-  updateJSON(id: string, updateDatos: Datos) {
+  updateJSON(id: string, updateDatos: Dfs) {
     return this.http.put(`${this.API_URI}/${id}`, updateDatos);
   }
 }

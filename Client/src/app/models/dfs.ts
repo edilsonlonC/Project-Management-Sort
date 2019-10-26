@@ -1,5 +1,5 @@
 import { FS } from './modelsAttributes/fs/fs';
-export interface Datos {
+export interface Dfs {
     id?: string;
     fs?: FS;
   }

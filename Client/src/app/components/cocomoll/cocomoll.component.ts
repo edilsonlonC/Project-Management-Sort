@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '../../services/projects.service';
 import { CocomollService } from '../../services/cocomoll.service';
-import { Datos } from 'src/app/models/datos';
+import { Dfs } from 'src/app/models/dfs';
 
 @Component({
   selector: 'app-cocomoll',
@@ -16,7 +16,7 @@ export class CocomollComponent implements OnInit {
   JSONs: any = {};
   JSON: any = {};
 
-  datos: Datos = {
+  dfs: Dfs = {
     fs: {
       prec: {
         muyBajo: 0,
@@ -99,9 +99,9 @@ export class CocomollComponent implements OnInit {
   }
 
   updateJSON(id: string) {
-    this.cocomollService.updateJSON(id, this.datos).subscribe(
+    this.cocomollService.updateJSON(id, this.dfs).subscribe(
       res => {
-        console.log(this.datos);
+        console.log(this.dfs);
       },
       err => console.log(err)
     );
