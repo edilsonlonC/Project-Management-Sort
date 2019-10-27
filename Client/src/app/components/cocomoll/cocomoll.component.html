@@ -123,23 +123,23 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Fiabilidad y complejidad del producto:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Extra Bajo</option>
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcdi.fcdi.rcpx.extraBajo">Extra Bajo</option>
+                                        <option [value]="dfcdi.fcdi.rcpx.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcdi.fcdi.rcpx.bajo">Bajo</option>
+                                        <option [value]="dfcdi.fcdi.rcpx.nominal" selected>Nominal</option>
+                                        <option [value]="dfcdi.fcdi.rcpx.alto">Alto</option>
+                                        <option [value]="dfcdi.fcdi.rcpx.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcdi.fcdi.rcpx.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollado para la reutilizacióna:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcdi.fcdi.ruse.bajo">Bajo</option>
+                                        <option [value]="dfcdi.fcdi.ruse.nominal" selected>Nominal</option>
+                                        <option [value]="dfcdi.fcdi.ruse.alto">Alto</option>
+                                        <option [value]="dfcdi.fcdi.ruse.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcdi.fcdi.ruse.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                             </div>
@@ -147,35 +147,35 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Dificultad de plataforma:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcdi.pdif.ruse.bajo">Bajo</option>
+                                        <option [value]="dfcdi.pdif.ruse.nominal" selected>Nominal</option>
+                                        <option [value]="dfcdi.pdif.ruse.alto">Alto</option>
+                                        <option [value]="dfcdi.pdif.ruse.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcdi.pdif.ruse.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de personal:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Extra Bajo</option>
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcdi.fcdi.prex.extraBajo">Extra Bajo</option>
+                                        <option [value]="dfcdi.fcdi.prex.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcdi.fcdi.prex.bajo">Bajo</option>
+                                        <option [value]="dfcdi.fcdi.prex.nominal" selected>Nominal</option>
+                                        <option [value]="dfcdi.fcdi.prex.alto">Alto</option>
+                                        <option [value]="dfcdi.fcdi.prex.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcdi.fcdi.prex.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Instalaciones:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Extra Bajo</option>
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcdi.fcdi.fcil.extraBajo">Extra Bajo</option>
+                                        <option [value]="dfcdi.fcdi.fcil.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcdi.fcdi.fcil.bajo">Bajo</option>
+                                        <option [value]="dfcdi.fcdi.fcil.nominal" selected>Nominal</option>
+                                        <option [value]="dfcdi.fcdi.fcil.alto">Alto</option>
+                                        <option [value]="dfcdi.fcdi.fcil.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcdi.fcdi.fcil.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                             </div>
@@ -183,11 +183,11 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Programa de desarrollo requerido:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcdi.fcdi.sced.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcdi.fcdi.sced.bajo">Bajo</option>
+                                        <option [value]="dfcdi.fcdi.sced.nominal" selected>Nominal</option>
+                                        <option [value]="dfcdi.fcdi.sced.alto">Alto</option>
+                                        <option [value]="dfcdi.fcdi.sced.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                             </div>
@@ -210,31 +210,31 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Fiabilidad de software requerida:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.rely.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.rely.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.rely.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.rely.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.rely.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Tamaño de base de datos:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.data.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.data.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.data.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.data.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Complejidad del producto:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcap.fcap.cplx.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.cplx.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.cplx.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.cplx.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.cplx.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcap.fcap.cplx.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                             </div>
@@ -242,21 +242,21 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollado para la reutilización:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcap.fcap.ruse.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.ruse.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.ruse.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.ruse.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcap.fcap.ruse.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Documentación del ciclo de vida:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.acap.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.acap.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.acap.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.acap.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.acap.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                             </div>
@@ -265,28 +265,28 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Restricción de tiempo de ejecución:</p>
                                     <select class="form-control mt-auto">
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcap.fcap.time.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.time.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.time.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcap.fcap.time.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Restricción de almacenamiento principal:</p>
                                     <select class="form-control mt-auto">
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcap.fcap.stor.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.stor.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.stor.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcap.fcap.stor.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Volatilidad de plataforma:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.pvol.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.pvol.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.pvol.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.pvol.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                             </div>
@@ -295,31 +295,31 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad del analista:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.acap.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.acap.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.acap.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.acap.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.acap.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad del programador:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.pcap.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.pcap.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.pcap.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.pcap.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.pcap.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Continuidad de personal:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.pcon.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.pcon.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.pcon.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.pcon.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.pcon.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                             </div>
@@ -327,31 +327,31 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de aplicación:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.apex.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.apex.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.apex.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.apex.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.apex.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de plataforma:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.plex.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.plex.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.plex.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.plex.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.plex.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de lenguaje y herramientas:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.ltex.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.ltex.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.ltex.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.ltex.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.ltex.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                             </div>
@@ -360,32 +360,32 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Uso de herramientas de software:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcap.fcap.tool.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.tool.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.tool.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.tool.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.tool.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcap.fcap.tool.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollo multisitio:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.site.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.site.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.site.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.site.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.site.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Programa de desarrollo requerido:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
+                                        <option [value]="dfcap.fcap.sced.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcap.fcap.sced.bajo">Bajo</option>
+                                        <option [value]="dfcap.fcap.sced.nominal" selected>Nominal</option>
+                                        <option [value]="dfcap.fcap.sced.alto">Alto</option>
+                                        <option [value]="dfcap.fcap.sced.muyAlto">Muy Alto</option>
                                     </select>
                                 </div>
                             </div>
