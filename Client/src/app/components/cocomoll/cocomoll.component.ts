@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '../../services/projects.service';
 import { CocomollService } from '../../services/cocomoll.service';
 import { Dfs } from 'src/app/models/dfs';
+import { Dfcdi } from 'src/app/models/dfcdi';
 
 @Component({
   selector: 'app-cocomoll',
@@ -57,6 +58,68 @@ export class CocomollComponent implements OnInit {
         alto: 0,
         muyAlto: 0,
         extraAlto: 0
+      }
+    }
+  };
+
+  dfcdi: Dfcdi = {
+    fcdi: {
+      pers: {
+        extrabajo: 0,
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      rcpx: {
+        extrabajo: 0,
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      ruse: {
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      pdif: {
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      prex: {
+        extrabajo: 0,
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      fcil: {
+        extrabajo: 0,
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      sced: {
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0
       }
     }
   };
