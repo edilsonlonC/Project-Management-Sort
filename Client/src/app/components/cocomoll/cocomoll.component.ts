@@ -63,7 +63,7 @@ export class CocomollComponent implements OnInit {
   dfcdi: Dfcdi = {
     fcdi: {
       pers: {
-        extrabajo: 0,
+        extraBajo: 0,
         muyBajo: 0,
         bajo: 0,
         nominal: 0,
@@ -72,7 +72,7 @@ export class CocomollComponent implements OnInit {
         extraAlto: 0
       },
       rcpx: {
-        extrabajo: 0,
+        extraBajo: 0,
         muyBajo: 0,
         bajo: 0,
         nominal: 0,
@@ -95,7 +95,7 @@ export class CocomollComponent implements OnInit {
         extraAlto: 0
       },
       prex: {
-        extrabajo: 0,
+        extraBajo: 0,
         muyBajo: 0,
         bajo: 0,
         nominal: 0,
@@ -104,7 +104,7 @@ export class CocomollComponent implements OnInit {
         extraAlto: 0
       },
       fcil: {
-        extrabajo: 0,
+        extraBajo: 0,
         muyBajo: 0,
         bajo: 0,
         nominal: 0,

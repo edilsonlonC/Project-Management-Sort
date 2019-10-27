@@ -1,5 +1,5 @@
 export interface FCIL {
-    extrabajo: number;
+    extraBajo: number;
     muyBajo: number;
     bajo: number;
     nominal: number;
