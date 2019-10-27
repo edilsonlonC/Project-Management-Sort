@@ -14,8 +14,6 @@ export class CocomollComponent implements OnInit {
 
   diseno = 1;
   projects: any = {};
-  JSONs: any = {};
-  JSON: any = {};
 
   dfs: Dfs = {
     fs: {
@@ -128,8 +126,8 @@ export class CocomollComponent implements OnInit {
 
   ngOnInit() {
     this.getProjects();
-    this.getJSONs();
-    this.getJSON('1');
+    this.getFS('1');
+    this.getFCDI('2');
   }
 
   getProjects() {
@@ -141,27 +139,27 @@ export class CocomollComponent implements OnInit {
     );
   }
 
-  getJSONs() {
-    this.cocomollService.getJSONs().subscribe(
-      res => {
-        this.JSONs = res;
-        console.log(this.JSONs);
-      },
-      err => console.log(err)
-    );
-  }
-
-  getJSON(id: string) {
+  getFS(id: string) {
     this.cocomollService.getJSON(id).subscribe(
       res => {
-        this.JSON = res;
-        console.log(this.JSON);
+        this.dfs = res;
+        console.log(this.dfs);
       },
       err => console.log(err)
     );
   }
 
-  updateJSON(id: string) {
+  getFCDI(id: string) {
+    this.cocomollService.getJSON(id).subscribe(
+      res => {
+        this.dfcdi = res;
+        console.log(this.dfcdi);
+      },
+      err => console.log(err)
+    );
+  }
+
+  updateFS(id: string) {
     this.cocomollService.updateJSON(id, this.dfs).subscribe(
       res => {
         console.log(this.dfs);
@@ -169,5 +167,4 @@ export class CocomollComponent implements OnInit {
       err => console.log(err)
     );
   }
-
 }
