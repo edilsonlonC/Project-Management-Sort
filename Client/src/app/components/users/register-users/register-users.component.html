@@ -6,7 +6,7 @@
           <form class="mt-3" [formGroup]="register" (ngSubmit)="onSaveForm()">
             <h5 class="card-title text-warning mt-3 ">Registrar Usuario</h5>
             <div class="form-group mt-3">
-                <input type="text" class="form-control mt-auto " placeholder="Nombre" formControlName="name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }"/>
+                <input type="text" class="form-control mt-auto" placeholder="Nombre" formControlName="name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }"/>
                 <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
                   <div *ngIf="name.errors.required">Ingrese nombre.</div>
                   <div *ngIf="name.errors.minlength">Nombre muy corto.</div>

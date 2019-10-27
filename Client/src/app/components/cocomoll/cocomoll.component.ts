@@ -5,6 +5,7 @@ import { CocomollService } from '../../services/cocomoll.service';
 import { Dfs } from 'src/app/models/dfs';
 import { Dfcdi } from 'src/app/models/dfcdi';
 import { Dfcap } from 'src/app/models/dfcap';
+import { Estimacion } from 'src/app/models/estimacion';
 
 @Component({
   selector: 'app-cocomoll',
@@ -13,7 +14,7 @@ import { Dfcap } from 'src/app/models/dfcap';
 })
 export class CocomollComponent implements OnInit {
   // json-server --watch db.json --port 3004
-  diseno = 1;
+  diseno = 0;
   projects: any = {};
 
   dfs: Dfs = {
@@ -245,9 +246,89 @@ export class CocomollComponent implements OnInit {
     }
   };
 
+  est0: Estimacion = {
+    idProject: 0,
+    linesCode: 0,
+    prec: 0,
+    flex: 0,
+    rels: 0,
+    team: 0,
+    pmat: 0,
+    pers: 0,
+    rcpx: 0,
+    ruse: 0,
+    pdif: 0,
+    prex: 0,
+    fcil: 0,
+    sced: 0
+  };
 
+  est1: Estimacion = {
+    idProject: 0,
+    linesCode: 0,
+    prec: 0,
+    flex: 0,
+    rels: 0,
+    team: 0,
+    pmat: 0,
+    rely: 0,
+    data: 0,
+    cplx: 0,
+    ruse: 0,
+    docu: 0,
+    time: 0,
+    stor: 0,
+    pvol: 0,
+    acap: 0,
+    pcap: 0,
+    pcon: 0,
+    apex: 0,
+    plex: 0,
+    ltex: 0,
+    tool: 0,
+    site: 0,
+    sced: 0
+  };
 
-  constructor(private cocomollService: CocomollService, private projectsService: ProjectsService) {}
+  estimacion: FormGroup;
+
+  createFormGroup() {
+    return new FormGroup({
+      idProject: new FormControl('', Validators.required),
+      linesCode: new FormControl('', Validators.required),
+      prec: new FormControl('', Validators.required),
+      flex: new FormControl('', Validators.required),
+      rels: new FormControl('', Validators.required),
+      team: new FormControl('', Validators.required),
+      pmat: new FormControl('', Validators.required),
+      pers: new FormControl('', Validators.required),
+      rcpx: new FormControl('', Validators.required),
+      ruse: new FormControl('', Validators.required),
+      pdif: new FormControl('', Validators.required),
+      prex: new FormControl('', Validators.required),
+      fcil: new FormControl('', Validators.required),
+      sced: new FormControl('', Validators.required),
+      rely: new FormControl('', Validators.required),
+      data: new FormControl('', Validators.required),
+      cplx: new FormControl('', Validators.required),
+      docu: new FormControl('', Validators.required),
+      time: new FormControl('', Validators.required),
+      stor: new FormControl('', Validators.required),
+      pvol: new FormControl('', Validators.required),
+      acap: new FormControl('', Validators.required),
+      pcap: new FormControl('', Validators.required),
+      pcon: new FormControl('', Validators.required),
+      apex: new FormControl('', Validators.required),
+      plex: new FormControl('', Validators.required),
+      ltex: new FormControl('', Validators.required),
+      tool: new FormControl('', Validators.required),
+      site: new FormControl('', Validators.required)
+    });
+  }
+
+  constructor(private cocomollService: CocomollService, private projectsService: ProjectsService) {
+    this.estimacion = this.createFormGroup();
+  }
 
   ngOnInit() {
     this.getProjects();
@@ -302,5 +383,59 @@ export class CocomollComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  onFormEst0() {
+    this.est0.idProject = this.estimacion.get('idProject').value;
+    this.est0.linesCode = this.estimacion.get('linesCode').value;
+    this.est0.prec = this.estimacion.get('prec').value;
+    this.est0.flex = this.estimacion.get('flex').value;
+    this.est0.rels = this.estimacion.get('rels').value;
+    this.est0.team = this.estimacion.get('team').value;
+    this.est0.pmat = this.estimacion.get('pmat').value;
+    this.est0.pers = this.estimacion.get('pers').value;
+    this.est0.rcpx = this.estimacion.get('rcpx').value;
+    this.est0.ruse = this.estimacion.get('ruse').value;
+    this.est0.pdif = this.estimacion.get('pdif').value;
+    this.est0.prex = this.estimacion.get('prex').value;
+    this.est0.fcil = this.estimacion.get('fcil').value;
+    this.est0.sced = this.estimacion.get('sced').value;
+    console.log(this.est0);
+  }
+
+  onSetFormEst0() {
+    this.onFormEst0();
+  }
+
+  onFormEst1() {
+    this.est1.idProject = this.estimacion.get('idProject').value;
+    this.est1.linesCode = this.estimacion.get('linesCode').value;
+    this.est1.prec = this.estimacion.get('prec').value;
+    this.est1.flex = this.estimacion.get('flex').value;
+    this.est1.rels = this.estimacion.get('rels').value;
+    this.est1.team = this.estimacion.get('team').value;
+    this.est1.pmat = this.estimacion.get('pmat').value;
+    this.est1.rely = this.estimacion.get('rely').value;
+    this.est1.data = this.estimacion.get('data').value;
+    this.est1.cplx = this.estimacion.get('cplx').value;
+    this.est1.ruse = this.estimacion.get('ruse').value;
+    this.est1.docu = this.estimacion.get('docu').value;
+    this.est1.time = this.estimacion.get('time').value;
+    this.est1.stor = this.estimacion.get('stor').value;
+    this.est1.pvol = this.estimacion.get('pvol').value;
+    this.est1.acap = this.estimacion.get('acap').value;
+    this.est1.pcap = this.estimacion.get('pcap').value;
+    this.est1.pcon = this.estimacion.get('pcon').value;
+    this.est1.apex = this.estimacion.get('apex').value;
+    this.est1.plex = this.estimacion.get('plex').value;
+    this.est1.ltex = this.estimacion.get('ltex').value;
+    this.est1.tool = this.estimacion.get('tool').value;
+    this.est1.site = this.estimacion.get('site').value;
+    this.est1.sced = this.estimacion.get('sced').value;
+    console.log(this.est1);
+  }
+
+  onSetFormEst1() {
+    this.onFormEst1();
   }
 }

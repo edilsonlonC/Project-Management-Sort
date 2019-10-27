@@ -14,24 +14,25 @@
             <div class="col-10 col-sm-10 col-md-6 col-lg-6 col-xl-6">
                 <div class="card text-center border-secondary">
                     <div class="card-body">
-                        <form class="mt-3">
+                        <form class="mt-3" [formGroup]="estimacion">
                             <h5 class="card-title text-warning mt-3 ">Proyecto de Software</h5>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-6">
-                                    <select class="form-control mt-auto">
-                                        <option disabled>Proyecto...</option>
+                                    <p class="text-left text-secondary">Proyectos:</p>
+                                    <select class="form-control mt-auto" formControlName="idProject">
                                         <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-6">
-                                    <input type="text" class="form-control mt-auto" placeholder="Numero de lineas de codigo">
+                                    <p class="text-left text-secondary">Numero de lineas de codigo:</p>
+                                    <input type="text" class="form-control mt-auto" formControlName="linesCode">
                                 </div>          
                             </div>
                             <h5 class="card-title text-warning mt-3 ">Valores de Factores de Escala</h5>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Precedencia:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="prec">
                                         <option [value]="dfs.fs.prec.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.prec.bajo">Bajo</option>
                                         <option [value]="dfs.fs.prec.nominal" selected>Nominal</option>
@@ -42,7 +43,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Flexibilidad de desarrollo:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="flex">
                                         <option [value]="dfs.fs.flex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.flex.bajo">Bajo</option>
                                         <option [value]="dfs.fs.flex.nominal" selected>Nominal</option>
@@ -55,7 +56,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Arquitectura/Resolución de riesgos:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="rels"> 
                                         <option [value]="dfs.fs.rels.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.rels.bajo">Bajo</option>
                                         <option [value]="dfs.fs.rels.nominal" selected>Nominal</option>
@@ -66,7 +67,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Cohesión del equipo:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="team">
                                         <option [value]="dfs.fs.team.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.team.bajo">Bajo</option>
                                         <option [value]="dfs.fs.team.nominal" selected>Nominal</option>
@@ -79,7 +80,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Madurez del proceso:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="pmat">
                                         <option [value]="dfs.fs.pmat.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.pmat.bajo">Bajo</option>
                                         <option [value]="dfs.fs.pmat.nominal" selected>Nominal</option>
@@ -90,7 +91,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Tipo de factor de costos:</p>
-                                    <select class="form-control mt-auto" name="diseno" [(ngModel)]="diseno">
+                                    <select class="form-control mt-auto" name="diseno" [(ngModel)]="diseno" [ngModelOptions]="{standalone: true}">
                                         <option value=0 selected>Diseño inicial</option>
                                         <option value=1>Arquitectura Posterior</option>
                                     </select>
@@ -106,11 +107,11 @@
                     <div class="card-body">
                         <h5 class="card-title text-warning mt-3">Factores de Costos</h5>
                         <h5 class="card-title text-warning mt-3">Diseño Inical</h5>
-                        <form class="mt-3">
+                        <form class="mt-3" [formGroup]="estimacion">
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad de personal y ejemplo de mapeo:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="pers">
                                         <option [value]="dfcdi.fcdi.pers.extraBajo">Extra Bajo</option>
                                         <option [value]="dfcdi.fcdi.pers.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.pers.bajo">Bajo</option>
@@ -122,7 +123,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Fiabilidad y complejidad del producto:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="rcpx">
                                         <option [value]="dfcdi.fcdi.rcpx.extraBajo">Extra Bajo</option>
                                         <option [value]="dfcdi.fcdi.rcpx.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.rcpx.bajo">Bajo</option>
@@ -134,7 +135,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollado para la reutilizacióna:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="ruse">
                                         <option [value]="dfcdi.fcdi.ruse.bajo">Bajo</option>
                                         <option [value]="dfcdi.fcdi.ruse.nominal" selected>Nominal</option>
                                         <option [value]="dfcdi.fcdi.ruse.alto">Alto</option>
@@ -146,17 +147,17 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Dificultad de plataforma:</p>
-                                    <select class="form-control mt-auto">
-                                        <option [value]="dfcdi.pdif.ruse.bajo">Bajo</option>
-                                        <option [value]="dfcdi.pdif.ruse.nominal" selected>Nominal</option>
-                                        <option [value]="dfcdi.pdif.ruse.alto">Alto</option>
-                                        <option [value]="dfcdi.pdif.ruse.muyAlto">Muy Alto</option>
-                                        <option [value]="dfcdi.pdif.ruse.extraAlto">Extra Alto</option>
+                                    <select class="form-control mt-auto" formControlName="pdif">
+                                        <option [value]="dfcdi.fcdi.pdif.bajo">Bajo</option>
+                                        <option [value]="dfcdi.fcdi.pdif.nominal" selected>Nominal</option>
+                                        <option [value]="dfcdi.fcdi.pdif.alto">Alto</option>
+                                        <option [value]="dfcdi.fcdi.pdif.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcdi.fcdi.pdif.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de personal:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="prex">
                                         <option [value]="dfcdi.fcdi.prex.extraBajo">Extra Bajo</option>
                                         <option [value]="dfcdi.fcdi.prex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.prex.bajo">Bajo</option>
@@ -168,7 +169,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Instalaciones:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="fcil">
                                         <option [value]="dfcdi.fcdi.fcil.extraBajo">Extra Bajo</option>
                                         <option [value]="dfcdi.fcdi.fcil.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.fcil.bajo">Bajo</option>
@@ -182,7 +183,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Programa de desarrollo requerido:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="sced">
                                         <option [value]="dfcdi.fcdi.sced.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.sced.bajo">Bajo</option>
                                         <option [value]="dfcdi.fcdi.sced.nominal" selected>Nominal</option>
@@ -192,7 +193,7 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button class="btn btn-warning btn-block">Estimación</button>
+                                <button class="btn btn-warning btn-block" (click)="onSetFormEst0()">Estimación</button>
                             </div>
                             <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
                         </form>
@@ -204,12 +205,12 @@
                     <div class="card-body">
                         <h5 class="card-title text-warning mt-3">Factores de Costos</h5>
                         <h5 class="card-title text-warning mt-3">Arquitectura Posterior</h5>
-                        <form class="mt-3">
+                        <form class="mt-3" [formGroup]="estimacion">
                             <h5 class="card-title text-left text-warning mt-3">Factores de producto:</h5>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Fiabilidad de software requerida:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="rely">
                                         <option [value]="dfcap.fcap.rely.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.rely.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.rely.nominal" selected>Nominal</option>
@@ -219,7 +220,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Tamaño de base de datos:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="data">
                                         <option [value]="dfcap.fcap.data.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.data.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.data.alto">Alto</option>
@@ -228,7 +229,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Complejidad del producto:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="cplx">
                                         <option [value]="dfcap.fcap.cplx.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.cplx.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.cplx.nominal" selected>Nominal</option>
@@ -241,7 +242,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollado para la reutilización:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="ruse">
                                         <option [value]="dfcap.fcap.ruse.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.ruse.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.ruse.alto">Alto</option>
@@ -251,7 +252,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Documentación del ciclo de vida:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="docu">
                                         <option [value]="dfcap.fcap.acap.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.acap.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.acap.nominal" selected>Nominal</option>
@@ -264,7 +265,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Restricción de tiempo de ejecución:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="time">
                                         <option [value]="dfcap.fcap.time.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.time.alto">Alto</option>
                                         <option [value]="dfcap.fcap.time.muyAlto">Muy Alto</option>
@@ -273,7 +274,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Restricción de almacenamiento principal:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="stor">
                                         <option [value]="dfcap.fcap.stor.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.stor.alto">Alto</option>
                                         <option [value]="dfcap.fcap.stor.muyAlto">Muy Alto</option>
@@ -282,7 +283,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Volatilidad de plataforma:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="pvol">
                                         <option [value]="dfcap.fcap.pvol.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.pvol.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.pvol.alto">Alto</option>
@@ -294,7 +295,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad del analista:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="acap">
                                         <option [value]="dfcap.fcap.acap.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.acap.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.acap.nominal" selected>Nominal</option>
@@ -304,7 +305,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad del programador:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="pcap">
                                         <option [value]="dfcap.fcap.pcap.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.pcap.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.pcap.nominal" selected>Nominal</option>
@@ -314,7 +315,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Continuidad de personal:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="pcon">
                                         <option [value]="dfcap.fcap.pcon.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.pcon.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.pcon.nominal" selected>Nominal</option>
@@ -326,7 +327,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de aplicación:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="apex">
                                         <option [value]="dfcap.fcap.apex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.apex.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.apex.nominal" selected>Nominal</option>
@@ -336,7 +337,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de plataforma:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="plex">
                                         <option [value]="dfcap.fcap.plex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.plex.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.plex.nominal" selected>Nominal</option>
@@ -346,7 +347,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de lenguaje y herramientas:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="ltex">
                                         <option [value]="dfcap.fcap.ltex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.ltex.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.ltex.nominal" selected>Nominal</option>
@@ -355,11 +356,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <h5 class="card-title text-left text-warning mt-3">Proyecto:</h5>
+                            <h5 class="card-title text-left text-warning mt-3">Factores de proyecto:</h5>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Uso de herramientas de software:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="tool">
                                         <option [value]="dfcap.fcap.tool.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.tool.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.tool.nominal" selected>Nominal</option>
@@ -370,7 +371,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollo multisitio:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="site">
                                         <option [value]="dfcap.fcap.site.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.site.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.site.nominal" selected>Nominal</option>
@@ -380,7 +381,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Programa de desarrollo requerido:</p>
-                                    <select class="form-control mt-auto">
+                                    <select class="form-control mt-auto" formControlName="sced">
                                         <option [value]="dfcap.fcap.sced.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.sced.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.sced.nominal" selected>Nominal</option>
@@ -390,8 +391,8 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button class="btn btn-warning btn-block">Estimación</button>
-                            </div>
+                                    <button class="btn btn-warning btn-block" (click)="onSetFormEst1()">Estimación</button>
+                                </div>
                             <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
                         </form>
                     </div>
