@@ -3,5 +3,4 @@ export interface DATA {
     nominal: number;
     alto: number;
     muyAlto: number;
-    extraAlto: number;
   }
