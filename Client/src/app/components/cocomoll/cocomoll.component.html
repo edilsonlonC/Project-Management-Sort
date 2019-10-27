@@ -111,13 +111,13 @@
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad de personal y ejemplo de mapeo:</p>
                                     <select class="form-control mt-auto">
-                                        <option>Extra Bajo</option>
-                                        <option>Muy Bajo</option>
-                                        <option>Bajo</option>
-                                        <option selected>Nominal</option>
-                                        <option>Alto</option>
-                                        <option>Muy Alto</option>
-                                        <option>Extra Alto</option>
+                                        <option [value]="dfcdi.fcdi.pers.extraBajo">Extra Bajo</option>
+                                        <option [value]="dfcdi.fcdi.pers.muyBajo">Muy Bajo</option>
+                                        <option [value]="dfcdi.fcdi.pers.bajo">Bajo</option>
+                                        <option [value]="dfcdi.fcdi.pers.nominal" selected>Nominal</option>
+                                        <option [value]="dfcdi.fcdi.pers.alto">Alto</option>
+                                        <option [value]="dfcdi.fcdi.pers.muyAlto">Muy Alto</option>
+                                        <option [value]="dfcdi.fcdi.pers.extraAlto">Extra Alto</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3 col-4">

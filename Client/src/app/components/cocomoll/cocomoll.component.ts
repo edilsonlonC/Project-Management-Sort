@@ -12,7 +12,7 @@ import { Dfcap } from 'src/app/models/dfcap';
   styleUrls: ['./cocomoll.component.css']
 })
 export class CocomollComponent implements OnInit {
-
+  // json-server --watch db.json --port 3004
   diseno = 1;
   projects: any = {};
 
