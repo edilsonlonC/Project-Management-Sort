@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '../../services/projects.service';
 import { CocomollService } from '../../services/cocomoll.service';
-import { Dps } from 'src/app/models/dps';
 import { Dfs } from 'src/app/models/dfs';
 import { Dfcdi } from 'src/app/models/dfcdi';
 import { Dfcap } from 'src/app/models/dfcap';
@@ -17,15 +16,6 @@ export class CocomollComponent implements OnInit {
   // json-server --watch db.json --port 3004
   diseno = 0;
   projects: any = {};
-
-  dps: Dps = {
-    ps: {
-      name: '',
-      hours: '',
-      salary: '',
-      quantity: ''
-    }
-  };
 
   dfs: Dfs = {
     fs: {
@@ -358,7 +348,6 @@ export class CocomollComponent implements OnInit {
 
   ngOnInit() {
     this.getProjects();
-    this.getPS('0');
     this.getFS('1');
     this.getFCDI('2');
     this.getFCAP('3');
@@ -368,16 +357,6 @@ export class CocomollComponent implements OnInit {
     this.projectsService.getProjects().subscribe(
       res => {
         this.projects = res;
-      },
-      err => console.log(err)
-    );
-  }
-
-  getPS(id: string) {
-    this.cocomollService.getJSON(id).subscribe(
-      res => {
-        this.dps = res;
-        console.log(this.dps);
       },
       err => console.log(err)
     );
@@ -408,15 +387,6 @@ export class CocomollComponent implements OnInit {
       res => {
         this.dfcap = res;
         console.log(this.dfcap);
-      },
-      err => console.log(err)
-    );
-  }
-
-  updateFS(id: string) {
-    this.cocomollService.updateJSON(id, this.dfs).subscribe(
-      res => {
-        console.log(this.dfs);
       },
       err => console.log(err)
     );
