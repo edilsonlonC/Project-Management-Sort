@@ -260,7 +260,53 @@ export class ConfiguracionComponent implements OnInit {
     }
   };
 
+  cdfs: Dfs = {
+    fs: {
+      prec: {
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      flex: {
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      rels: {
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      team: {
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      },
+      pmat: {
+        muyBajo: 0,
+        bajo: 0,
+        nominal: 0,
+        alto: 0,
+        muyAlto: 0,
+        extraAlto: 0
+      }
+    }
+  };
+
   configuracion: FormGroup;
+  configuracion0: FormGroup;
 
   createFormGroup() {
     return new FormGroup({
@@ -271,8 +317,44 @@ export class ConfiguracionComponent implements OnInit {
     });
   }
 
+  createFormGroup0() {
+    return new FormGroup({
+      precmb: new FormControl('', Validators.required),
+      precb: new FormControl('', Validators.required),
+      precn: new FormControl('', Validators.required),
+      preca: new FormControl('', Validators.required),
+      precma: new FormControl('', Validators.required),
+      precea: new FormControl('', Validators.required),
+      flexmb: new FormControl('', Validators.required),
+      flexb: new FormControl('', Validators.required),
+      flexn: new FormControl('', Validators.required),
+      flexa: new FormControl('', Validators.required),
+      flexma: new FormControl('', Validators.required),
+      flexea: new FormControl('', Validators.required),
+      relsmb: new FormControl('', Validators.required),
+      relsb: new FormControl('', Validators.required),
+      relsn: new FormControl('', Validators.required),
+      relsa: new FormControl('', Validators.required),
+      relsma: new FormControl('', Validators.required),
+      relsea: new FormControl('', Validators.required),
+      teammb: new FormControl('', Validators.required),
+      teamb: new FormControl('', Validators.required),
+      teamn: new FormControl('', Validators.required),
+      teama: new FormControl('', Validators.required),
+      teamma: new FormControl('', Validators.required),
+      teamea: new FormControl('', Validators.required),
+      pmatmb: new FormControl('', Validators.required),
+      pmatb: new FormControl('', Validators.required),
+      pmatn: new FormControl('', Validators.required),
+      pmata: new FormControl('', Validators.required),
+      pmatma: new FormControl('', Validators.required),
+      pmatea: new FormControl('', Validators.required)
+    });
+  }
+
   constructor(private cocomollService: CocomollService) {
     this.configuracion = this.createFormGroup();
+    this.configuracion0 = this.createFormGroup0();
   }
 
   ngOnInit() {
@@ -399,14 +481,137 @@ export class ConfiguracionComponent implements OnInit {
   get name() {
     return this.configuracion.get('name');
   }
+
   get hours() {
     return this.configuracion.get('hours');
   }
+
   get salary() {
     return this.configuracion.get('salary');
   }
+
   get quantity() {
     return this.configuracion.get('quantity');
+  }
+
+  get precmb() {
+    return this.configuracion0.get('precmb');
+  }
+
+  get precb() {
+    return this.configuracion0.get('precb');
+  }
+
+  get precn() {
+    return this.configuracion0.get('precn');
+  }
+
+  get preca() {
+    return this.configuracion0.get('preca');
+  }
+
+  get precma() {
+    return this.configuracion0.get('precma');
+  }
+
+  get precea() {
+    return this.configuracion0.get('precea');
+  }
+
+  get flexmb() {
+    return this.configuracion0.get('flexmb');
+  }
+
+  get flexb() {
+    return this.configuracion0.get('flexb');
+  }
+
+  get flexn() {
+    return this.configuracion0.get('flexn');
+  }
+
+  get flexa() {
+    return this.configuracion0.get('flexa');
+  }
+
+  get flexma() {
+    return this.configuracion0.get('flexma');
+  }
+
+  get flexea() {
+    return this.configuracion0.get('flexea');
+  }
+
+  get relsmb() {
+    return this.configuracion0.get('relsmb');
+  }
+
+  get relsb() {
+    return this.configuracion0.get('relsb');
+  }
+
+  get relsn() {
+    return this.configuracion0.get('relsn');
+  }
+
+  get relsa() {
+    return this.configuracion0.get('relsa');
+  }
+
+  get relsma() {
+    return this.configuracion0.get('relsma');
+  }
+
+  get relsea() {
+    return this.configuracion0.get('relsea');
+  }
+
+  get teammb() {
+    return this.configuracion0.get('teammb');
+  }
+
+  get teamb() {
+    return this.configuracion0.get('teamb');
+  }
+
+  get teamn() {
+    return this.configuracion0.get('teamn');
+  }
+
+  get teama() {
+    return this.configuracion0.get('teama');
+  }
+
+  get teamma() {
+    return this.configuracion0.get('teamma');
+  }
+
+  get teamea() {
+    return this.configuracion0.get('teamea');
+  }
+
+  get pmatmb() {
+    return this.configuracion0.get('pmatmb');
+  }
+
+  get pmatb() {
+    return this.configuracion0.get('pmatb');
+  }
+
+  get pmatn() {
+    return this.configuracion0.get('pmatn');
+  }
+
+  get pmata() {
+    return this.configuracion0.get('pmata');
+  }
+
+  get pmatma() {
+    return this.configuracion0.get('pmatma');
+  }
+
+  get pmatea() {
+    return this.configuracion0.get('pmatea');
   }
 
 }
