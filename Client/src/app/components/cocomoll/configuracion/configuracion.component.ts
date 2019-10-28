@@ -710,7 +710,7 @@ export class ConfiguracionComponent implements OnInit {
 
   onUpdateForm1() {
     this.onForm1();
-    this.updateFCDI('1', true);
+    this.updateFCDI('2', true);
   }
 
   onFormR1() {
@@ -761,7 +761,7 @@ export class ConfiguracionComponent implements OnInit {
 
   onRestablecerForm1() {
     this.onFormR1();
-    this.updateFCDI('1', false);
+    this.updateFCDI('2', false);
   }
 
   getPS(id: string) {
