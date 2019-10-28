@@ -6,4 +6,3 @@ export interface PMAT {
     muyAlto: number;
     extraAlto: number;
   }
-  

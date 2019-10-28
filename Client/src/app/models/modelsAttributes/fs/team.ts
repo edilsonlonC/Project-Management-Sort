@@ -6,4 +6,3 @@ export interface TEAM {
     muyAlto: number;
     extraAlto: number;
   }
-  

@@ -305,8 +305,71 @@ export class ConfiguracionComponent implements OnInit {
     }
   };
 
+  cdfcdi: Dfcdi = {
+    fcdi: {
+      pers: {
+        extraBajo: 2.12,
+        muyBajo: 1.62,
+        bajo: 1.26,
+        nominal: 1,
+        alto: 0.83,
+        muyAlto: 0.63,
+        extraAlto: 0.5
+      },
+      rcpx: {
+        extraBajo: 0.49,
+        muyBajo: 0.6,
+        bajo: 0.83,
+        nominal: 1,
+        alto: 1.33,
+        muyAlto: 1.91,
+        extraAlto: 2.72
+      },
+      ruse: {
+        bajo: 0.95,
+        nominal: 1,
+        alto: 1.07,
+        muyAlto: 1.15,
+        extraAlto: 1.24
+      },
+      pdif: {
+        bajo: 0.87,
+        nominal: 1,
+        alto: 1.29,
+        muyAlto: 1.81,
+        extraAlto: 2.61
+      },
+      prex: {
+        extraBajo: 1.59,
+        muyBajo: 1.33,
+        bajo: 1.12,
+        nominal: 1,
+        alto: 0.87,
+        muyAlto: 0.74,
+        extraAlto: 0.62
+      },
+      fcil: {
+        extraBajo: 1.43,
+        muyBajo: 1.3,
+        bajo: 1.1,
+        nominal: 1,
+        alto: 0.87,
+        muyAlto: 0.73,
+        extraAlto: 0.62
+      },
+      sced: {
+        muyBajo: 1.43,
+        bajo: 1.14,
+        nominal: 1,
+        alto: 1,
+        muyAlto: 1
+      }
+    }
+  };
+
   configuracion: FormGroup;
   configuracion0: FormGroup;
+  configuracion1: FormGroup;
 
   createFormGroup() {
     return new FormGroup({
@@ -352,9 +415,58 @@ export class ConfiguracionComponent implements OnInit {
     });
   }
 
+  createFormGroup1() {
+    return new FormGroup({
+      perseb: new FormControl('', Validators.required),
+      persmb: new FormControl('', Validators.required),
+      persb: new FormControl('', Validators.required),
+      persn: new FormControl('', Validators.required),
+      persa: new FormControl('', Validators.required),
+      persma: new FormControl('', Validators.required),
+      persea: new FormControl('', Validators.required),
+      rcpxeb: new FormControl('', Validators.required),
+      rcpxmb: new FormControl('', Validators.required),
+      rcpxb: new FormControl('', Validators.required),
+      rcpxn: new FormControl('', Validators.required),
+      rcpxa: new FormControl('', Validators.required),
+      rcpxma: new FormControl('', Validators.required),
+      rcpxea: new FormControl('', Validators.required),
+      ruseb: new FormControl('', Validators.required),
+      rusen: new FormControl('', Validators.required),
+      rusea: new FormControl('', Validators.required),
+      rusema: new FormControl('', Validators.required),
+      ruseea: new FormControl('', Validators.required),
+      pdifb: new FormControl('', Validators.required),
+      pdifn: new FormControl('', Validators.required),
+      pdifa: new FormControl('', Validators.required),
+      pdifma: new FormControl('', Validators.required),
+      pdifea: new FormControl('', Validators.required),
+      prexeb: new FormControl('', Validators.required),
+      prexmb: new FormControl('', Validators.required),
+      prexb: new FormControl('', Validators.required),
+      prexn: new FormControl('', Validators.required),
+      prexa: new FormControl('', Validators.required),
+      prexma: new FormControl('', Validators.required),
+      prexea: new FormControl('', Validators.required),
+      fcileb: new FormControl('', Validators.required),
+      fcilmb: new FormControl('', Validators.required),
+      fcilb: new FormControl('', Validators.required),
+      fciln: new FormControl('', Validators.required),
+      fcila: new FormControl('', Validators.required),
+      fcilma: new FormControl('', Validators.required),
+      fcilea: new FormControl('', Validators.required),
+      scedmb: new FormControl('', Validators.required),
+      scedb: new FormControl('', Validators.required),
+      scedn: new FormControl('', Validators.required),
+      sceda: new FormControl('', Validators.required),
+      scedma: new FormControl('', Validators.required)
+    });
+  }
+
   constructor(private cocomollService: CocomollService) {
     this.configuracion = this.createFormGroup();
     this.configuracion0 = this.createFormGroup0();
+    this.configuracion1 = this.createFormGroup1();
   }
 
   ngOnInit() {
@@ -504,6 +616,154 @@ export class ConfiguracionComponent implements OnInit {
     this.updateFS('1', false);
   }
 
+  onActualizar1() {
+    this.configuracion1.get('perseb').setValue(this.dfcdi.fcdi.pers.extraBajo);
+    this.configuracion1.get('persmb').setValue(this.dfcdi.fcdi.pers.muyBajo);
+    this.configuracion1.get('persb').setValue(this.dfcdi.fcdi.pers.bajo);
+    this.configuracion1.get('persn').setValue(this.dfcdi.fcdi.pers.nominal);
+    this.configuracion1.get('persa').setValue(this.dfcdi.fcdi.pers.alto);
+    this.configuracion1.get('persma').setValue(this.dfcdi.fcdi.pers.muyAlto);
+    this.configuracion1.get('persea').setValue(this.dfcdi.fcdi.pers.extraAlto);
+    this.configuracion1.get('rcpxeb').setValue(this.dfcdi.fcdi.rcpx.extraBajo);
+    this.configuracion1.get('rcpxmb').setValue(this.dfcdi.fcdi.rcpx.muyBajo);
+    this.configuracion1.get('rcpxb').setValue(this.dfcdi.fcdi.rcpx.bajo);
+    this.configuracion1.get('rcpxn').setValue(this.dfcdi.fcdi.rcpx.nominal);
+    this.configuracion1.get('rcpxa').setValue(this.dfcdi.fcdi.rcpx.alto);
+    this.configuracion1.get('rcpxma').setValue(this.dfcdi.fcdi.rcpx.muyAlto);
+    this.configuracion1.get('rcpxea').setValue(this.dfcdi.fcdi.rcpx.extraAlto);
+    this.configuracion1.get('ruseb').setValue(this.dfcdi.fcdi.ruse.bajo);
+    this.configuracion1.get('rusen').setValue(this.dfcdi.fcdi.ruse.nominal);
+    this.configuracion1.get('rusea').setValue(this.dfcdi.fcdi.ruse.alto);
+    this.configuracion1.get('rusema').setValue(this.dfcdi.fcdi.ruse.muyAlto);
+    this.configuracion1.get('ruseea').setValue(this.dfcdi.fcdi.ruse.extraAlto);
+    this.configuracion1.get('pdifb').setValue(this.dfcdi.fcdi.pdif.bajo);
+    this.configuracion1.get('pdifn').setValue(this.dfcdi.fcdi.pdif.nominal);
+    this.configuracion1.get('pdifa').setValue(this.dfcdi.fcdi.pdif.alto);
+    this.configuracion1.get('pdifma').setValue(this.dfcdi.fcdi.pdif.muyAlto);
+    this.configuracion1.get('pdifea').setValue(this.dfcdi.fcdi.pdif.extraAlto);
+    this.configuracion1.get('prexeb').setValue(this.dfcdi.fcdi.prex.extraBajo);
+    this.configuracion1.get('prexmb').setValue(this.dfcdi.fcdi.prex.muyBajo);
+    this.configuracion1.get('prexb').setValue(this.dfcdi.fcdi.prex.bajo);
+    this.configuracion1.get('prexn').setValue(this.dfcdi.fcdi.prex.nominal);
+    this.configuracion1.get('prexa').setValue(this.dfcdi.fcdi.prex.alto);
+    this.configuracion1.get('prexma').setValue(this.dfcdi.fcdi.prex.muyAlto);
+    this.configuracion1.get('prexea').setValue(this.dfcdi.fcdi.prex.extraAlto);
+    this.configuracion1.get('fcileb').setValue(this.dfcdi.fcdi.fcil.extraBajo);
+    this.configuracion1.get('fcilmb').setValue(this.dfcdi.fcdi.fcil.muyBajo);
+    this.configuracion1.get('fcilb').setValue(this.dfcdi.fcdi.fcil.bajo);
+    this.configuracion1.get('fciln').setValue(this.dfcdi.fcdi.fcil.nominal);
+    this.configuracion1.get('fcila').setValue(this.dfcdi.fcdi.fcil.alto);
+    this.configuracion1.get('fcilma').setValue(this.dfcdi.fcdi.fcil.muyAlto);
+    this.configuracion1.get('fcilea').setValue(this.dfcdi.fcdi.fcil.extraAlto);
+    this.configuracion1.get('scedmb').setValue(this.dfcdi.fcdi.sced.muyBajo);
+    this.configuracion1.get('scedb').setValue(this.dfcdi.fcdi.sced.bajo);
+    this.configuracion1.get('scedn').setValue(this.dfcdi.fcdi.sced.nominal);
+    this.configuracion1.get('sceda').setValue(this.dfcdi.fcdi.sced.alto);
+    this.configuracion1.get('scedma').setValue(this.dfcdi.fcdi.sced.muyAlto);
+  }
+
+  onForm1() {
+    this.dfcdi.fcdi.pers.extraBajo =  this.configuracion1.get('perseb').value;
+    this.dfcdi.fcdi.pers.muyBajo =  this.configuracion1.get('persmb').value;
+    this.dfcdi.fcdi.pers.bajo =  this.configuracion1.get('persb').value;
+    this.dfcdi.fcdi.pers.nominal =  this.configuracion1.get('persn').value;
+    this.dfcdi.fcdi.pers.alto =  this.configuracion1.get('persa').value;
+    this.dfcdi.fcdi.pers.muyAlto =  this.configuracion1.get('persma').value;
+    this.dfcdi.fcdi.pers.extraAlto =  this.configuracion1.get('persea').value;
+    this.dfcdi.fcdi.rcpx.extraBajo =  this.configuracion1.get('rcpxeb').value;
+    this.dfcdi.fcdi.rcpx.muyBajo =  this.configuracion1.get('rcpxmb').value;
+    this.dfcdi.fcdi.rcpx.bajo =  this.configuracion1.get('rcpxb').value;
+    this.dfcdi.fcdi.rcpx.nominal =  this.configuracion1.get('rcpxn').value;
+    this.dfcdi.fcdi.rcpx.alto =  this.configuracion1.get('rcpxa').value;
+    this.dfcdi.fcdi.rcpx.muyAlto =  this.configuracion1.get('rcpxma').value;
+    this.dfcdi.fcdi.rcpx.extraAlto =  this.configuracion1.get('rcpxea').value;
+    this.dfcdi.fcdi.ruse.bajo =  this.configuracion1.get('ruseb').value;
+    this.dfcdi.fcdi.ruse.nominal =  this.configuracion1.get('rusen').value;
+    this.dfcdi.fcdi.ruse.alto =  this.configuracion1.get('rusea').value;
+    this.dfcdi.fcdi.ruse.muyAlto =  this.configuracion1.get('rusema').value;
+    this.dfcdi.fcdi.ruse.extraAlto =  this.configuracion1.get('ruseea').value;
+    this.dfcdi.fcdi.pdif.bajo =  this.configuracion1.get('pdifb').value;
+    this.dfcdi.fcdi.pdif.nominal =  this.configuracion1.get('pdifn').value;
+    this.dfcdi.fcdi.pdif.alto =  this.configuracion1.get('pdifa').value;
+    this.dfcdi.fcdi.pdif.muyAlto =  this.configuracion1.get('pdifma').value;
+    this.dfcdi.fcdi.pdif.extraAlto =  this.configuracion1.get('pdifea').value;
+    this.dfcdi.fcdi.prex.extraBajo =  this.configuracion1.get('prexeb').value;
+    this.dfcdi.fcdi.prex.muyBajo =  this.configuracion1.get('prexmb').value;
+    this.dfcdi.fcdi.prex.bajo =  this.configuracion1.get('prexb').value;
+    this.dfcdi.fcdi.prex.nominal =  this.configuracion1.get('prexn').value;
+    this.dfcdi.fcdi.prex.alto =  this.configuracion1.get('prexa').value;
+    this.dfcdi.fcdi.prex.muyAlto =  this.configuracion1.get('prexma').value;
+    this.dfcdi.fcdi.prex.extraAlto =  this.configuracion1.get('prexea').value;
+    this.dfcdi.fcdi.fcil.extraBajo =  this.configuracion1.get('fcileb').value;
+    this.dfcdi.fcdi.fcil.muyBajo =  this.configuracion1.get('fcilmb').value;
+    this.dfcdi.fcdi.fcil.bajo =  this.configuracion1.get('fcilb').value;
+    this.dfcdi.fcdi.fcil.nominal =  this.configuracion1.get('fciln').value;
+    this.dfcdi.fcdi.fcil.alto =  this.configuracion1.get('fcila').value;
+    this.dfcdi.fcdi.fcil.muyAlto =  this.configuracion1.get('fcilma').value;
+    this.dfcdi.fcdi.fcil.extraAlto =  this.configuracion1.get('fcilea').value;
+    this.dfcdi.fcdi.sced.muyBajo =  this.configuracion1.get('scedmb').value;
+    this.dfcdi.fcdi.sced.bajo =  this.configuracion1.get('scedb').value;
+    this.dfcdi.fcdi.sced.nominal =  this.configuracion1.get('scedn').value;
+    this.dfcdi.fcdi.sced.alto =  this.configuracion1.get('sceda').value;
+    this.dfcdi.fcdi.sced.muyAlto =  this.configuracion1.get('scedma').value;
+  }
+
+  onUpdateForm1() {
+    this.onForm1();
+    this.updateFCDI('1', true);
+  }
+
+  onFormR1() {
+    this.dfcdi.fcdi.pers.extraBajo =  this.cdfcdi.fcdi.pers.extraBajo;
+    this.dfcdi.fcdi.pers.muyBajo =  this.cdfcdi.fcdi.pers.muyBajo;
+    this.dfcdi.fcdi.pers.bajo =  this.cdfcdi.fcdi.pers.bajo;
+    this.dfcdi.fcdi.pers.nominal =  this.cdfcdi.fcdi.pers.nominal;
+    this.dfcdi.fcdi.pers.alto =  this.cdfcdi.fcdi.pers.alto;
+    this.dfcdi.fcdi.pers.muyAlto =  this.cdfcdi.fcdi.pers.muyAlto;
+    this.dfcdi.fcdi.pers.extraAlto =  this.cdfcdi.fcdi.pers.extraAlto;
+    this.dfcdi.fcdi.rcpx.extraBajo =  this.cdfcdi.fcdi.rcpx.extraBajo;
+    this.dfcdi.fcdi.rcpx.muyBajo =  this.cdfcdi.fcdi.rcpx.muyBajo;
+    this.dfcdi.fcdi.rcpx.bajo =  this.cdfcdi.fcdi.rcpx.bajo;
+    this.dfcdi.fcdi.rcpx.nominal =  this.cdfcdi.fcdi.rcpx.nominal;
+    this.dfcdi.fcdi.rcpx.alto =  this.cdfcdi.fcdi.rcpx.alto;
+    this.dfcdi.fcdi.rcpx.muyAlto =  this.cdfcdi.fcdi.rcpx.muyAlto;
+    this.dfcdi.fcdi.rcpx.extraAlto =  this.cdfcdi.fcdi.rcpx.extraAlto;
+    this.dfcdi.fcdi.ruse.bajo =  this.cdfcdi.fcdi.ruse.bajo;
+    this.dfcdi.fcdi.ruse.nominal =  this.cdfcdi.fcdi.ruse.nominal;
+    this.dfcdi.fcdi.ruse.alto =  this.cdfcdi.fcdi.ruse.alto;
+    this.dfcdi.fcdi.ruse.muyAlto =  this.cdfcdi.fcdi.ruse.muyAlto;
+    this.dfcdi.fcdi.ruse.extraAlto =  this.cdfcdi.fcdi.ruse.extraAlto;
+    this.dfcdi.fcdi.pdif.bajo =  this.cdfcdi.fcdi.pdif.bajo;
+    this.dfcdi.fcdi.pdif.nominal =  this.cdfcdi.fcdi.pdif.nominal;
+    this.dfcdi.fcdi.pdif.alto =  this.cdfcdi.fcdi.pdif.alto;
+    this.dfcdi.fcdi.pdif.muyAlto =  this.cdfcdi.fcdi.pdif.muyAlto;
+    this.dfcdi.fcdi.pdif.extraAlto =  this.cdfcdi.fcdi.pdif.extraAlto;
+    this.dfcdi.fcdi.prex.extraBajo =  this.cdfcdi.fcdi.prex.extraBajo;
+    this.dfcdi.fcdi.prex.muyBajo =  this.cdfcdi.fcdi.prex.muyBajo;
+    this.dfcdi.fcdi.prex.bajo =  this.cdfcdi.fcdi.prex.bajo;
+    this.dfcdi.fcdi.prex.nominal =  this.cdfcdi.fcdi.prex.nominal;
+    this.dfcdi.fcdi.prex.alto =  this.cdfcdi.fcdi.prex.alto;
+    this.dfcdi.fcdi.prex.muyAlto =  this.cdfcdi.fcdi.prex.muyAlto;
+    this.dfcdi.fcdi.prex.extraAlto =  this.cdfcdi.fcdi.prex.extraAlto;
+    this.dfcdi.fcdi.fcil.extraBajo =  this.cdfcdi.fcdi.fcil.extraBajo;
+    this.dfcdi.fcdi.fcil.muyBajo =  this.cdfcdi.fcdi.fcil.muyBajo;
+    this.dfcdi.fcdi.fcil.bajo =  this.cdfcdi.fcdi.fcil.bajo;
+    this.dfcdi.fcdi.fcil.nominal =  this.cdfcdi.fcdi.fcil.nominal;
+    this.dfcdi.fcdi.fcil.alto =  this.cdfcdi.fcdi.fcil.alto;
+    this.dfcdi.fcdi.fcil.muyAlto =  this.cdfcdi.fcdi.fcil.muyAlto;
+    this.dfcdi.fcdi.fcil.extraAlto =  this.cdfcdi.fcdi.fcil.extraAlto;
+    this.dfcdi.fcdi.sced.muyBajo =  this.cdfcdi.fcdi.sced.muyBajo;
+    this.dfcdi.fcdi.sced.bajo =  this.cdfcdi.fcdi.sced.bajo;
+    this.dfcdi.fcdi.sced.nominal =  this.cdfcdi.fcdi.sced.nominal;
+    this.dfcdi.fcdi.sced.alto =  this.cdfcdi.fcdi.sced.alto;
+    this.dfcdi.fcdi.sced.muyAlto =  this.cdfcdi.fcdi.sced.muyAlto;
+  }
+
+  onRestablecerForm1() {
+    this.onFormR1();
+    this.updateFCDI('1', false);
+  }
+
   getPS(id: string) {
     this.cocomollService.getJSON(id).subscribe(
       res => {
@@ -531,6 +791,7 @@ export class ConfiguracionComponent implements OnInit {
       res => {
         this.dfcdi = res;
         console.log(this.dfcdi);
+        this.onActualizar1();
       },
       err => console.log(err)
     );
@@ -728,6 +989,178 @@ export class ConfiguracionComponent implements OnInit {
 
   get pmatea() {
     return this.configuracion0.get('pmatea');
+  }
+
+  get perseb() {
+    return this.configuracion1.get('perseb');
+  }
+
+  get persmb() {
+    return this.configuracion1.get('persmb');
+  }
+
+  get persb() {
+    return this.configuracion1.get('persb');
+  }
+
+  get persn() {
+    return this.configuracion1.get('persn');
+  }
+
+  get persa() {
+    return this.configuracion1.get('persa');
+  }
+
+  get persma() {
+    return this.configuracion1.get('persma');
+  }
+
+  get persea() {
+    return this.configuracion1.get('persea');
+  }
+
+  get rcpxeb() {
+    return this.configuracion1.get('rcpxeb');
+  }
+
+  get rcpxmb() {
+    return this.configuracion1.get('rcpxmb');
+  }
+
+  get rcpxb() {
+    return this.configuracion1.get('rcpxb');
+  }
+
+  get rcpxn() {
+    return this.configuracion1.get('rcpxn');
+  }
+
+  get rcpxa() {
+    return this.configuracion1.get('rcpxa');
+  }
+
+  get rcpxma() {
+    return this.configuracion1.get('rcpxma');
+  }
+
+  get rcpxea() {
+    return this.configuracion1.get('rcpxea');
+  }
+
+  get ruseb() {
+    return this.configuracion1.get('ruseb');
+  }
+
+  get rusen() {
+    return this.configuracion1.get('rusen');
+  }
+
+  get rusea() {
+    return this.configuracion1.get('rusea');
+  }
+
+  get rusema() {
+    return this.configuracion1.get('rusema');
+  }
+
+  get ruseea() {
+    return this.configuracion1.get('ruseea');
+  }
+
+  get pdifb() {
+    return this.configuracion1.get('pdifb');
+  }
+
+  get pdifn() {
+    return this.configuracion1.get('pdifn');
+  }
+
+  get pdifa() {
+    return this.configuracion1.get('pdifa');
+  }
+
+  get pdifma() {
+    return this.configuracion1.get('pdifma');
+  }
+
+  get pdifea() {
+    return this.configuracion1.get('pdifea');
+  }
+
+  get prexeb() {
+    return this.configuracion1.get('prexeb');
+  }
+
+  get prexmb() {
+    return this.configuracion1.get('prexmb');
+  }
+
+  get prexb() {
+    return this.configuracion1.get('prexb');
+  }
+
+  get prexn() {
+    return this.configuracion1.get('prexn');
+  }
+
+  get prexa() {
+    return this.configuracion1.get('prexa');
+  }
+
+  get prexma() {
+    return this.configuracion1.get('prexma');
+  }
+
+  get prexea() {
+    return this.configuracion1.get('prexea');
+  }
+
+  get fcileb() {
+    return this.configuracion1.get('fcileb');
+  }
+
+  get fcilmb() {
+    return this.configuracion1.get('fcilmb');
+  }
+
+  get fcilb() {
+    return this.configuracion1.get('fcilb');
+  }
+
+  get fciln() {
+    return this.configuracion1.get('fciln');
+  }
+
+  get fcila() {
+    return this.configuracion1.get('fcila');
+  }
+
+  get fcilma() {
+    return this.configuracion1.get('fcilma');
+  }
+
+  get fcilea() {
+    return this.configuracion1.get('fcilea');
+  }
+
+  get scedmb() {
+    return this.configuracion1.get('scedmb');
+  }
+
+  get scedb() {
+    return this.configuracion1.get('scedb');
+  }
+
+  get scedn() {
+    return this.configuracion1.get('scedn');
+  }
+
+  get sceda() {
+    return this.configuracion1.get('sceda');
+  }
+
+  get scedma() {
+    return this.configuracion1.get('scedma');
   }
 
 }
