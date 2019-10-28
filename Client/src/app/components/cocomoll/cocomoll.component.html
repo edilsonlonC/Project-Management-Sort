@@ -19,13 +19,19 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Proyectos:</p>
-                                    <select class="form-control mt-auto" formControlName="idProject">
+                                    <select class="form-control mt-auto" formControlName="idProject" [ngClass]="{ 'is-invalid': idProject.invalid && (idProject.dirty || idProject.touched) }">
                                         <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
                                     </select>
+                                    <div *ngIf="idProject.invalid && (idProject.dirty || idProject.touched)" class="invalid-feedback">
+                                        <div *ngIf="idProject.errors.required">Elija Proyecto.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Numero de lineas de codigo:</p>
-                                    <input type="text" class="form-control mt-auto" formControlName="linesCode">
+                                    <input type="text" class="form-control mt-auto" formControlName="linesCode" [ngClass]="{ 'is-invalid': linesCode.invalid && (linesCode.dirty || linesCode.touched) }">
+                                    <div *ngIf="linesCode.invalid && (linesCode.dirty || linesCode.touched)" class="invalid-feedback">
+                                        <div *ngIf="linesCode.errors.required">Digite lineas de codigo.</div>
+                                    </div>
                                 </div>          
                             </div>
                             <h5 class="card-title text-warning mt-3 ">Valores de Factores de Escala</h5>
@@ -91,7 +97,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Tipo de factor de costos:</p>
-                                    <select class="form-control mt-auto" name="diseno" [(ngModel)]="diseno" [ngModelOptions]="{standalone: true}">
+                                    <select class="form-control mt-auto" idProject="diseno" [(ngModel)]="diseno" [ngModelOptions]="{standalone: true}">
                                         <option value=0 selected>Diseño inicial</option>
                                         <option value=1>Arquitectura Posterior</option>
                                     </select>
@@ -107,7 +113,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-warning mt-3">Factores de Costos</h5>
                         <h5 class="card-title text-warning mt-3">Diseño Inical</h5>
-                        <form class="mt-3" [formGroup]="estimacion">
+                        <form class="mt-3" [formGroup]="estimacion0">
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad de personal y ejemplo de mapeo:</p>
@@ -193,7 +199,7 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button class="btn btn-warning btn-block" (click)="onSetFormEst0()">Estimación</button>
+                                <button [disabled]="!(estimacion0.valid && estimacion.valid)" class="btn btn-warning btn-block" (click)="onSetFormEst0()">Estimación</button>
                             </div>
                             <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
                         </form>
@@ -205,7 +211,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-warning mt-3">Factores de Costos</h5>
                         <h5 class="card-title text-warning mt-3">Arquitectura Posterior</h5>
-                        <form class="mt-3" [formGroup]="estimacion">
+                        <form class="mt-3" [formGroup]="estimacion1">
                             <h5 class="card-title text-left text-warning mt-3">Factores de producto:</h5>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
@@ -242,7 +248,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollado para la reutilización:</p>
-                                    <select class="form-control mt-auto" formControlName="ruse">
+                                    <select class="form-control mt-auto" formControlName="rusea">
                                         <option [value]="dfcap.fcap.ruse.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.ruse.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.ruse.alto">Alto</option>
@@ -381,7 +387,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Programa de desarrollo requerido:</p>
-                                    <select class="form-control mt-auto" formControlName="sced">
+                                    <select class="form-control mt-auto" formControlName="sceda">
                                         <option [value]="dfcap.fcap.sced.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.sced.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.sced.nominal" selected>Nominal</option>
@@ -391,8 +397,8 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                    <button class="btn btn-warning btn-block" (click)="onSetFormEst1()">Estimación</button>
-                                </div>
+                                <button [disabled]="!(estimacion1.valid && estimacion.valid)" class="btn btn-warning btn-block" (click)="onSetFormEst1()">Estimación</button>
+                            </div>
                             <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
                         </form>
                     </div>
