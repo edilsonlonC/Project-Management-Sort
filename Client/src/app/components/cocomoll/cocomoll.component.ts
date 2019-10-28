@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '../../services/projects.service';
 import { CocomollService } from '../../services/cocomoll.service';
+import { Dps } from 'src/app/models/dps';
 import { Dfs } from 'src/app/models/dfs';
 import { Dfcdi } from 'src/app/models/dfcdi';
 import { Dfcap } from 'src/app/models/dfcap';
@@ -16,6 +17,15 @@ export class CocomollComponent implements OnInit {
   // json-server --watch db.json --port 3004
   diseno = 0;
   projects: any = {};
+
+  dps: Dps = {
+    ps: {
+      name: '',
+      hours: '',
+      salary: '',
+      quantity: ''
+    }
+  };
 
   dfs: Dfs = {
     fs: {
@@ -348,6 +358,7 @@ export class CocomollComponent implements OnInit {
 
   ngOnInit() {
     this.getProjects();
+    this.getPS('0');
     this.getFS('1');
     this.getFCDI('2');
     this.getFCAP('3');
@@ -357,6 +368,16 @@ export class CocomollComponent implements OnInit {
     this.projectsService.getProjects().subscribe(
       res => {
         this.projects = res;
+      },
+      err => console.log(err)
+    );
+  }
+
+  getPS(id: string) {
+    this.cocomollService.getJSON(id).subscribe(
+      res => {
+        this.dps = res;
+        console.log(this.dps);
       },
       err => console.log(err)
     );
@@ -462,4 +483,119 @@ export class CocomollComponent implements OnInit {
   get linesCode() {
     return this.estimacion.get('linesCode');
   }
+
+  get prec() {
+    return this.estimacion.get('prec');
+  }
+
+  get flex() {
+    return this.estimacion.get('flex');
+  }
+
+  get rels() {
+    return this.estimacion.get('rels');
+  }
+
+  get team() {
+    return this.estimacion.get('team');
+  }
+
+  get pmat() {
+    return this.estimacion.get('pmat');
+  }
+
+  get pers() {
+    return this.estimacion0.get('pers');
+  }
+
+  get rcpx() {
+    return this.estimacion0.get('rcpx');
+  }
+
+  get ruse() {
+    return this.estimacion0.get('ruse');
+  }
+
+  get pdif() {
+    return this.estimacion0.get('pdif');
+  }
+
+  get prex() {
+    return this.estimacion0.get('prex');
+  }
+
+  get fcil() {
+    return this.estimacion0.get('fcil');
+  }
+
+  get sced() {
+    return this.estimacion0.get('sced');
+  }
+
+  get rely() {
+    return this.estimacion1.get('rely');
+  }
+
+  get data() {
+    return this.estimacion1.get('data');
+  }
+
+  get cplx() {
+    return this.estimacion1.get('cplx');
+  }
+
+  get rusea() {
+    return this.estimacion1.get('rusea');
+  }
+
+  get docu() {
+    return this.estimacion1.get('docu');
+  }
+  get time() {
+    return this.estimacion1.get('time');
+  }
+
+  get stor() {
+    return this.estimacion1.get('stor');
+  }
+
+  get pvol() {
+    return this.estimacion1.get('pvol');
+  }
+
+  get acap() {
+    return this.estimacion1.get('acap');
+  }
+
+  get pcap() {
+    return this.estimacion1.get('pcap');
+  }
+  get pcon() {
+    return this.estimacion1.get('pcon');
+  }
+
+  get apex() {
+    return this.estimacion1.get('apex');
+  }
+
+  get plex() {
+    return this.estimacion1.get('plex');
+  }
+
+  get ltex() {
+    return this.estimacion1.get('ltex');
+  }
+
+  get tool() {
+    return this.estimacion1.get('tool');
+  }
+
+  get site() {
+    return this.estimacion1.get('site');
+  }
+
+  get sceda() {
+    return this.estimacion1.get('sceda');
+  }
+
 }

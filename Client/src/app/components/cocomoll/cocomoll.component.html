@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Numero de lineas de codigo:</p>
-                                    <input type="text" class="form-control mt-auto" formControlName="linesCode" [ngClass]="{ 'is-invalid': linesCode.invalid && (linesCode.dirty || linesCode.touched) }">
+                                    <input type="number" class="form-control mt-auto" formControlName="linesCode" [ngClass]="{ 'is-invalid': linesCode.invalid && (linesCode.dirty || linesCode.touched) }">
                                     <div *ngIf="linesCode.invalid && (linesCode.dirty || linesCode.touched)" class="invalid-feedback">
                                         <div *ngIf="linesCode.errors.required">Digite lineas de codigo.</div>
                                     </div>
@@ -38,7 +38,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Precedencia:</p>
-                                    <select class="form-control mt-auto" formControlName="prec">
+                                    <select class="form-control mt-auto" formControlName="prec" [ngClass]="{ 'is-invalid': prec.invalid && (prec.dirty || prec.touched) }">
                                         <option [value]="dfs.fs.prec.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.prec.bajo">Bajo</option>
                                         <option [value]="dfs.fs.prec.nominal" selected>Nominal</option>
@@ -46,10 +46,13 @@
                                         <option [value]="dfs.fs.prec.muyAlto">Muy Alto</option>
                                         <option [value]="dfs.fs.prec.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="prec.invalid && (prec.dirty || prec.touched)" class="invalid-feedback">
+                                        <div *ngIf="prec.errors.required">Elija prec.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Flexibilidad de desarrollo:</p>
-                                    <select class="form-control mt-auto" formControlName="flex">
+                                    <select class="form-control mt-auto" formControlName="flex" [ngClass]="{ 'is-invalid': flex.invalid && (flex.dirty || flex.touched) }">
                                         <option [value]="dfs.fs.flex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.flex.bajo">Bajo</option>
                                         <option [value]="dfs.fs.flex.nominal" selected>Nominal</option>
@@ -57,12 +60,15 @@
                                         <option [value]="dfs.fs.flex.muyAlto">Muy Alto</option>
                                         <option [value]="dfs.fs.flex.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="flex.invalid && (flex.dirty || flex.touched)" class="invalid-feedback">
+                                        <div *ngIf="flex.errors.required">Elija flex.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Arquitectura/Resolución de riesgos:</p>
-                                    <select class="form-control mt-auto" formControlName="rels"> 
+                                    <select class="form-control mt-auto" formControlName="rels" [ngClass]="{ 'is-invalid': rels.invalid && (rels.dirty || rels.touched) }"> 
                                         <option [value]="dfs.fs.rels.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.rels.bajo">Bajo</option>
                                         <option [value]="dfs.fs.rels.nominal" selected>Nominal</option>
@@ -70,10 +76,13 @@
                                         <option [value]="dfs.fs.rels.muyAlto">Muy Alto</option>
                                         <option [value]="dfs.fs.rels.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="rels.invalid && (rels.dirty || rels.touched)" class="invalid-feedback">
+                                        <div *ngIf="rels.errors.required">Elija rels.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Cohesión del equipo:</p>
-                                    <select class="form-control mt-auto" formControlName="team">
+                                    <select class="form-control mt-auto" formControlName="team" [ngClass]="{ 'is-invalid': team.invalid && (team.dirty || team.touched) }">
                                         <option [value]="dfs.fs.team.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.team.bajo">Bajo</option>
                                         <option [value]="dfs.fs.team.nominal" selected>Nominal</option>
@@ -81,12 +90,15 @@
                                         <option [value]="dfs.fs.team.muyAlto">Muy Alto</option>
                                         <option [value]="dfs.fs.team.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="team.invalid && (team.dirty || team.touched)" class="invalid-feedback">
+                                        <div *ngIf="team.errors.required">Elija team.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Madurez del proceso:</p>
-                                    <select class="form-control mt-auto" formControlName="pmat">
+                                    <select class="form-control mt-auto" formControlName="pmat" [ngClass]="{ 'is-invalid': pmat.invalid && (pmat.dirty || pmat.touched) }">
                                         <option [value]="dfs.fs.pmat.muyBajo">Muy Bajo</option>
                                         <option [value]="dfs.fs.pmat.bajo">Bajo</option>
                                         <option [value]="dfs.fs.pmat.nominal" selected>Nominal</option>
@@ -94,6 +106,9 @@
                                         <option [value]="dfs.fs.pmat.muyAlto">Muy Alto</option>
                                         <option [value]="dfs.fs.pmat.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="pmat.invalid && (pmat.dirty || pmat.touched)" class="invalid-feedback">
+                                        <div *ngIf="pmat.errors.required">Elija pmat.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-6">
                                     <p class="text-left text-secondary">Tipo de factor de costos:</p>
@@ -117,7 +132,7 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad de personal y ejemplo de mapeo:</p>
-                                    <select class="form-control mt-auto" formControlName="pers">
+                                    <select class="form-control mt-auto" formControlName="pers" [ngClass]="{ 'is-invalid': pers.invalid && (pers.dirty || pers.touched) }">
                                         <option [value]="dfcdi.fcdi.pers.extraBajo">Extra Bajo</option>
                                         <option [value]="dfcdi.fcdi.pers.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.pers.bajo">Bajo</option>
@@ -126,10 +141,13 @@
                                         <option [value]="dfcdi.fcdi.pers.muyAlto">Muy Alto</option>
                                         <option [value]="dfcdi.fcdi.pers.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="pers.invalid && (pers.dirty || pers.touched)" class="invalid-feedback">
+                                        <div *ngIf="pers.errors.required">Elija pers.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Fiabilidad y complejidad del producto:</p>
-                                    <select class="form-control mt-auto" formControlName="rcpx">
+                                    <select class="form-control mt-auto" formControlName="rcpx" [ngClass]="{ 'is-invalid': rcpx.invalid && (rcpx.dirty || rcpx.touched) }">
                                         <option [value]="dfcdi.fcdi.rcpx.extraBajo">Extra Bajo</option>
                                         <option [value]="dfcdi.fcdi.rcpx.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.rcpx.bajo">Bajo</option>
@@ -138,32 +156,41 @@
                                         <option [value]="dfcdi.fcdi.rcpx.muyAlto">Muy Alto</option>
                                         <option [value]="dfcdi.fcdi.rcpx.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="rcpx.invalid && (rcpx.dirty || rcpx.touched)" class="invalid-feedback">
+                                        <div *ngIf="rcpx.errors.required">Elija rcpx.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollado para la reutilizacióna:</p>
-                                    <select class="form-control mt-auto" formControlName="ruse">
+                                    <select class="form-control mt-auto" formControlName="ruse" [ngClass]="{ 'is-invalid': ruse.invalid && (ruse.dirty || ruse.touched) }">
                                         <option [value]="dfcdi.fcdi.ruse.bajo">Bajo</option>
                                         <option [value]="dfcdi.fcdi.ruse.nominal" selected>Nominal</option>
                                         <option [value]="dfcdi.fcdi.ruse.alto">Alto</option>
                                         <option [value]="dfcdi.fcdi.ruse.muyAlto">Muy Alto</option>
                                         <option [value]="dfcdi.fcdi.ruse.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="ruse.invalid && (ruse.dirty || ruse.touched)" class="invalid-feedback">
+                                        <div *ngIf="ruse.errors.required">Elija ruse.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Dificultad de plataforma:</p>
-                                    <select class="form-control mt-auto" formControlName="pdif">
+                                    <select class="form-control mt-auto" formControlName="pdif" [ngClass]="{ 'is-invalid': pdif.invalid && (pdif.dirty || pdif.touched) }">
                                         <option [value]="dfcdi.fcdi.pdif.bajo">Bajo</option>
                                         <option [value]="dfcdi.fcdi.pdif.nominal" selected>Nominal</option>
                                         <option [value]="dfcdi.fcdi.pdif.alto">Alto</option>
                                         <option [value]="dfcdi.fcdi.pdif.muyAlto">Muy Alto</option>
                                         <option [value]="dfcdi.fcdi.pdif.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="pdif.invalid && (pdif.dirty || pdif.touched)" class="invalid-feedback">
+                                        <div *ngIf="pdif.errors.required">Elija pdif.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de personal:</p>
-                                    <select class="form-control mt-auto" formControlName="prex">
+                                    <select class="form-control mt-auto" formControlName="prex" [ngClass]="{ 'is-invalid': prex.invalid && (prex.dirty || prex.touched) }">
                                         <option [value]="dfcdi.fcdi.prex.extraBajo">Extra Bajo</option>
                                         <option [value]="dfcdi.fcdi.prex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.prex.bajo">Bajo</option>
@@ -172,10 +199,13 @@
                                         <option [value]="dfcdi.fcdi.prex.muyAlto">Muy Alto</option>
                                         <option [value]="dfcdi.fcdi.prex.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="prex.invalid && (prex.dirty || prex.touched)" class="invalid-feedback">
+                                        <div *ngIf="prex.errors.required">Elija prex.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Instalaciones:</p>
-                                    <select class="form-control mt-auto" formControlName="fcil">
+                                    <select class="form-control mt-auto" formControlName="fcil" [ngClass]="{ 'is-invalid': fcil.invalid && (fcil.dirty || fcil.touched) }">
                                         <option [value]="dfcdi.fcdi.fcil.extraBajo">Extra Bajo</option>
                                         <option [value]="dfcdi.fcdi.fcil.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.fcil.bajo">Bajo</option>
@@ -184,18 +214,24 @@
                                         <option [value]="dfcdi.fcdi.fcil.muyAlto">Muy Alto</option>
                                         <option [value]="dfcdi.fcdi.fcil.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="fcil.invalid && (fcil.dirty || fcil.touched)" class="invalid-feedback">
+                                        <div *ngIf="fcil.errors.required">Elija fcil.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Programa de desarrollo requerido:</p>
-                                    <select class="form-control mt-auto" formControlName="sced">
+                                    <select class="form-control mt-auto" formControlName="sced" [ngClass]="{ 'is-invalid': sced.invalid && (sced.dirty || sced.touched) }">
                                         <option [value]="dfcdi.fcdi.sced.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcdi.fcdi.sced.bajo">Bajo</option>
                                         <option [value]="dfcdi.fcdi.sced.nominal" selected>Nominal</option>
                                         <option [value]="dfcdi.fcdi.sced.alto">Alto</option>
                                         <option [value]="dfcdi.fcdi.sced.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="sced.invalid && (sced.dirty || sced.touched)" class="invalid-feedback">
+                                        <div *ngIf="sced.errors.required">Elija sced.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
@@ -216,26 +252,32 @@
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Fiabilidad de software requerida:</p>
-                                    <select class="form-control mt-auto" formControlName="rely">
+                                    <select class="form-control mt-auto" formControlName="rely" [ngClass]="{ 'is-invalid': rely.invalid && (rely.dirty || rely.touched) }">
                                         <option [value]="dfcap.fcap.rely.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.rely.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.rely.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.rely.alto">Alto</option>
                                         <option [value]="dfcap.fcap.rely.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="rely.invalid && (rely.dirty || rely.touched)" class="invalid-feedback">
+                                        <div *ngIf="rely.errors.required">Elija rely.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Tamaño de base de datos:</p>
-                                    <select class="form-control mt-auto" formControlName="data">
+                                    <select class="form-control mt-auto" formControlName="data" [ngClass]="{ 'is-invalid': data.invalid && (data.dirty || data.touched) }">
                                         <option [value]="dfcap.fcap.data.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.data.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.data.alto">Alto</option>
                                         <option [value]="dfcap.fcap.data.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="data.invalid && (data.dirty || data.touched)" class="invalid-feedback">
+                                        <div *ngIf="data.errors.required">Elija data.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Complejidad del producto:</p>
-                                    <select class="form-control mt-auto" formControlName="cplx">
+                                    <select class="form-control mt-auto" formControlName="cplx" [ngClass]="{ 'is-invalid': cplx.invalid && (cplx.dirty || cplx.touched) }">
                                         <option [value]="dfcap.fcap.cplx.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.cplx.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.cplx.nominal" selected>Nominal</option>
@@ -243,130 +285,166 @@
                                         <option [value]="dfcap.fcap.cplx.muyAlto">Muy Alto</option>
                                         <option [value]="dfcap.fcap.cplx.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="cplx.invalid && (cplx.dirty || cplx.touched)" class="invalid-feedback">
+                                        <div *ngIf="cplx.errors.required">Elija cplx.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollado para la reutilización:</p>
-                                    <select class="form-control mt-auto" formControlName="rusea">
+                                    <select class="form-control mt-auto" formControlName="rusea" [ngClass]="{ 'is-invalid': rusea.invalid && (rusea.dirty || rusea.touched) }">
                                         <option [value]="dfcap.fcap.ruse.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.ruse.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.ruse.alto">Alto</option>
                                         <option [value]="dfcap.fcap.ruse.muyAlto">Muy Alto</option>
                                         <option [value]="dfcap.fcap.ruse.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="rusea.invalid && (rusea.dirty || rusea.touched)" class="invalid-feedback">
+                                        <div *ngIf="rusea.errors.required">Elija ruse.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Documentación del ciclo de vida:</p>
-                                    <select class="form-control mt-auto" formControlName="docu">
+                                    <select class="form-control mt-auto" formControlName="docu" [ngClass]="{ 'is-invalid': docu.invalid && (docu.dirty || docu.touched) }">
                                         <option [value]="dfcap.fcap.acap.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.acap.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.acap.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.acap.alto">Alto</option>
                                         <option [value]="dfcap.fcap.acap.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="docu.invalid && (docu.dirty || docu.touched)" class="invalid-feedback">
+                                        <div *ngIf="docu.errors.required">Elija docu.</div>
+                                    </div>
                                 </div>
                             </div>
                             <h5 class="card-title text-left text-warning mt-3">Factores de plataforma:</h5>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Restricción de tiempo de ejecución:</p>
-                                    <select class="form-control mt-auto" formControlName="time">
+                                    <select class="form-control mt-auto" formControlName="time" [ngClass]="{ 'is-invalid': time.invalid && (time.dirty || time.touched) }">
                                         <option [value]="dfcap.fcap.time.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.time.alto">Alto</option>
                                         <option [value]="dfcap.fcap.time.muyAlto">Muy Alto</option>
                                         <option [value]="dfcap.fcap.time.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="time.invalid && (time.dirty || time.touched)" class="invalid-feedback">
+                                        <div *ngIf="time.errors.required">Elija time.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Restricción de almacenamiento principal:</p>
-                                    <select class="form-control mt-auto" formControlName="stor">
+                                    <select class="form-control mt-auto" formControlName="stor" [ngClass]="{ 'is-invalid': stor.invalid && (stor.dirty || stor.touched) }">
                                         <option [value]="dfcap.fcap.stor.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.stor.alto">Alto</option>
                                         <option [value]="dfcap.fcap.stor.muyAlto">Muy Alto</option>
                                         <option [value]="dfcap.fcap.stor.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="stor.invalid && (stor.dirty || stor.touched)" class="invalid-feedback">
+                                        <div *ngIf="stor.errors.required">Elija stor.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Volatilidad de plataforma:</p>
-                                    <select class="form-control mt-auto" formControlName="pvol">
+                                    <select class="form-control mt-auto" formControlName="pvol" [ngClass]="{ 'is-invalid': pvol.invalid && (pvol.dirty || pvol.touched) }">
                                         <option [value]="dfcap.fcap.pvol.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.pvol.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.pvol.alto">Alto</option>
                                         <option [value]="dfcap.fcap.pvol.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="pvol.invalid && (pvol.dirty || pvol.touched)" class="invalid-feedback">
+                                        <div *ngIf="pvol.errors.required">Elija pvol.</div>
+                                    </div>
                                 </div>
                             </div>
                             <h5 class="card-title text-left text-warning mt-3">Factores de personal:</h5>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad del analista:</p>
-                                    <select class="form-control mt-auto" formControlName="acap">
+                                    <select class="form-control mt-auto" formControlName="acap" [ngClass]="{ 'is-invalid': acap.invalid && (acap.dirty || acap.touched) }">
                                         <option [value]="dfcap.fcap.acap.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.acap.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.acap.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.acap.alto">Alto</option>
                                         <option [value]="dfcap.fcap.acap.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="acap.invalid && (acap.dirty || acap.touched)" class="invalid-feedback">
+                                        <div *ngIf="acap.errors.required">Elija acap.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Capacidad del programador:</p>
-                                    <select class="form-control mt-auto" formControlName="pcap">
+                                    <select class="form-control mt-auto" formControlName="pcap" [ngClass]="{ 'is-invalid': pcap.invalid && (pcap.dirty || pcap.touched) }">
                                         <option [value]="dfcap.fcap.pcap.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.pcap.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.pcap.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.pcap.alto">Alto</option>
                                         <option [value]="dfcap.fcap.pcap.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="pcap.invalid && (pcap.dirty || pcap.touched)" class="invalid-feedback">
+                                        <div *ngIf="pcap.errors.required">Elija pcap.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Continuidad de personal:</p>
-                                    <select class="form-control mt-auto" formControlName="pcon">
+                                    <select class="form-control mt-auto" formControlName="pcon" [ngClass]="{ 'is-invalid': pcon.invalid && (pcon.dirty || pcon.touched) }">
                                         <option [value]="dfcap.fcap.pcon.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.pcon.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.pcon.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.pcon.alto">Alto</option>
                                         <option [value]="dfcap.fcap.pcon.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="pcon.invalid && (pcon.dirty || pcon.touched)" class="invalid-feedback">
+                                        <div *ngIf="pcon.errors.required">Elija pcon.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de aplicación:</p>
-                                    <select class="form-control mt-auto" formControlName="apex">
+                                    <select class="form-control mt-auto" formControlName="apex" [ngClass]="{ 'is-invalid': apex.invalid && (apex.dirty || apex.touched) }">
                                         <option [value]="dfcap.fcap.apex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.apex.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.apex.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.apex.alto">Alto</option>
                                         <option [value]="dfcap.fcap.apex.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="apex.invalid && (apex.dirty || apex.touched)" class="invalid-feedback">
+                                        <div *ngIf="apex.errors.required">Elija apex.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de plataforma:</p>
-                                    <select class="form-control mt-auto" formControlName="plex">
+                                    <select class="form-control mt-auto" formControlName="plex" [ngClass]="{ 'is-invalid': plex.invalid && (plex.dirty || plex.touched) }">
                                         <option [value]="dfcap.fcap.plex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.plex.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.plex.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.plex.alto">Alto</option>
                                         <option [value]="dfcap.fcap.plex.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="plex.invalid && (plex.dirty || plex.touched)" class="invalid-feedback">
+                                        <div *ngIf="plex.errors.required">Elija plex.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Experiencia de lenguaje y herramientas:</p>
-                                    <select class="form-control mt-auto" formControlName="ltex">
+                                    <select class="form-control mt-auto" formControlName="ltex" [ngClass]="{ 'is-invalid': ltex.invalid && (ltex.dirty || ltex.touched) }">
                                         <option [value]="dfcap.fcap.ltex.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.ltex.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.ltex.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.ltex.alto">Alto</option>
                                         <option [value]="dfcap.fcap.ltex.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="ltex.invalid && (ltex.dirty || ltex.touched)" class="invalid-feedback">
+                                        <div *ngIf="ltex.errors.required">Elija ltex.</div>
+                                    </div>
                                 </div>
                             </div>
                             <h5 class="card-title text-left text-warning mt-3">Factores de proyecto:</h5>
                             <div class="form-row">
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Uso de herramientas de software:</p>
-                                    <select class="form-control mt-auto" formControlName="tool">
+                                    <select class="form-control mt-auto" formControlName="tool" [ngClass]="{ 'is-invalid': tool.invalid && (tool.dirty || tool.touched) }">
                                         <option [value]="dfcap.fcap.tool.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.tool.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.tool.nominal" selected>Nominal</option>
@@ -374,26 +452,35 @@
                                         <option [value]="dfcap.fcap.tool.muyAlto">Muy Alto</option>
                                         <option [value]="dfcap.fcap.tool.extraAlto">Extra Alto</option>
                                     </select>
+                                    <div *ngIf="tool.invalid && (tool.dirty || tool.touched)" class="invalid-feedback">
+                                        <div *ngIf="tool.errors.required">Elija rely.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Desarrollo multisitio:</p>
-                                    <select class="form-control mt-auto" formControlName="site">
+                                    <select class="form-control mt-auto" formControlName="site" [ngClass]="{ 'is-invalid': site.invalid && (site.dirty || site.touched) }">
                                         <option [value]="dfcap.fcap.site.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.site.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.site.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.site.alto">Alto</option>
                                         <option [value]="dfcap.fcap.site.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="site.invalid && (site.dirty || site.touched)" class="invalid-feedback">
+                                        <div *ngIf="site.errors.required">Elija site.</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3 col-4">
                                     <p class="text-left text-secondary">Programa de desarrollo requerido:</p>
-                                    <select class="form-control mt-auto" formControlName="sceda">
+                                    <select class="form-control mt-auto" formControlName="sceda" [ngClass]="{ 'is-invalid': sceda.invalid && (sceda.dirty || sceda.touched) }">
                                         <option [value]="dfcap.fcap.sced.muyBajo">Muy Bajo</option>
                                         <option [value]="dfcap.fcap.sced.bajo">Bajo</option>
                                         <option [value]="dfcap.fcap.sced.nominal" selected>Nominal</option>
                                         <option [value]="dfcap.fcap.sced.alto">Alto</option>
                                         <option [value]="dfcap.fcap.sced.muyAlto">Muy Alto</option>
                                     </select>
+                                    <div *ngIf="sceda.invalid && (sceda.dirty || sceda.touched)" class="invalid-feedback">
+                                        <div *ngIf="sceda.errors.required">Elija sced.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group mt-3">

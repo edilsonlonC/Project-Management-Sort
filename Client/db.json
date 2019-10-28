@@ -1,5 +1,12 @@
 {
     "datos": [
+        { "id":0, "ps": { 
+            "name": "Estandar",
+            "hours": "Estandar",
+            "salary": "Estandar",
+            "quantity": "Estandar"
+            }
+        },
         { "id":1, "fs": { 
             "prec": { "muyBajo": 6.20, "bajo": 4.96, "nominal": 3.72, "alto": 2.48, "muyAlto": 1.24, "extraAlto": 0.00 },
             "flex": { "muyBajo": 5.07, "bajo": 4.05, "nominal": 3.04, "alto": 2.03, "muyAlto": 1.01, "extraAlto": 0.00 },
