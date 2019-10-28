@@ -251,7 +251,29 @@ export class ConfiguracionComponent implements OnInit {
     }
   };
 
-  constructor(private cocomollService: CocomollService) { }
+  cdps: Dps = {
+    ps: {
+      name: 'Estandar',
+      hours: 'Estandar',
+      salary: 'Estandar',
+      quantity: 'Estandar'
+    }
+  };
+
+  configuracion: FormGroup;
+
+  createFormGroup() {
+    return new FormGroup({
+      name: new FormControl('', Validators.required),
+      hours: new FormControl('', Validators.required),
+      salary: new FormControl('', Validators.required),
+      quantity: new FormControl('', Validators.required)
+    });
+  }
+
+  constructor(private cocomollService: CocomollService) {
+    this.configuracion = this.createFormGroup();
+  }
 
   ngOnInit() {
     this.getPS('0');
@@ -260,11 +282,43 @@ export class ConfiguracionComponent implements OnInit {
     this.getFCAP('3');
   }
 
+  onActualizar() {
+    this.configuracion.get('name').setValue(this.dps.ps.name);
+    this.configuracion.get('hours').setValue(this.dps.ps.hours);
+    this.configuracion.get('salary').setValue(this.dps.ps.salary);
+    this.configuracion.get('quantity').setValue(this.dps.ps.quantity);
+  }
+
+  onForm() {
+    this.dps.ps.name = this.configuracion.get('name').value;
+    this.dps.ps.hours = this.configuracion.get('hours').value;
+    this.dps.ps.salary = this.configuracion.get('salary').value;
+    this.dps.ps.quantity = this.configuracion.get('quantity').value;
+  }
+
+  onUpdateForm() {
+    this.onForm();
+    this.updatePS('0', true);
+  }
+
+  onFormR() {
+    this.dps.ps.name = this.cdps.ps.name;
+    this.dps.ps.hours = this.cdps.ps.hours;
+    this.dps.ps.salary = this.cdps.ps.salary;
+    this.dps.ps.quantity = this.cdps.ps.quantity;
+  }
+
+  onRestablecerForm() {
+    this.onFormR();
+    this.updatePS('0', false);
+  }
+
   getPS(id: string) {
     this.cocomollService.getJSON(id).subscribe(
       res => {
         this.dps = res;
         console.log(this.dps);
+        this.onActualizar();
       },
       err => console.log(err)
     );
@@ -300,10 +354,12 @@ export class ConfiguracionComponent implements OnInit {
     );
   }
 
-  updatePS(id: string) {
+  updatePS(id: string, bandera: boolean) {
     this.cocomollService.updateJSON(id, this.dps).subscribe(
       res => {
-        console.log(this.dps);
+        if (bandera) {
+          alert('Configuracion Exitosa');
+        }
         this.getPS('0');
       },
       err => console.log(err)
@@ -338,6 +394,19 @@ export class ConfiguracionComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  get name() {
+    return this.configuracion.get('name');
+  }
+  get hours() {
+    return this.configuracion.get('hours');
+  }
+  get salary() {
+    return this.configuracion.get('salary');
+  }
+  get quantity() {
+    return this.configuracion.get('quantity');
   }
 
 }
