@@ -1524,4 +1524,336 @@ export class ConfiguracionComponent implements OnInit {
     return this.configuracion1.get('scedma');
   }
 
+  get relymb() {
+    return this.configuracion2.get('relymb');
+  }
+
+  get relyb() {
+    return this.configuracion2.get('relyb');
+  }
+
+  get relyn() {
+    return this.configuracion2.get('relyn');
+  }
+
+  get relya() {
+    return this.configuracion2.get('relya');
+  }
+
+  get relyma() {
+    return this.configuracion2.get('relyma');
+  }
+
+  get datab() {
+    return this.configuracion2.get('datab');
+  }
+
+  get databn() {
+    return this.configuracion2.get('databn');
+  }
+
+  get databa() {
+    return this.configuracion2.get('databa');
+  }
+
+  get databma() {
+    return this.configuracion2.get('databma');
+  }
+
+  get cplxmb() {
+    return this.configuracion2.get('cplxmb');
+  }
+
+  get cplxb() {
+    return this.configuracion2.get('cplxb');
+  }
+
+  get cplxn() {
+    return this.configuracion2.get('cplxn');
+  }
+
+  get cplxa() {
+    return this.configuracion2.get('cplxa');
+  }
+
+  get cplxma() {
+    return this.configuracion2.get('cplxma');
+  }
+
+  get cplxea() {
+    return this.configuracion2.get('cplxea');
+  }
+
+  get ruseab() {
+    return this.configuracion2.get('ruseab');
+  }
+
+  get rusean() {
+    return this.configuracion2.get('rusean');
+  }
+
+  get ruseaa() {
+    return this.configuracion2.get('ruseaa');
+  }
+
+  get ruseama() {
+    return this.configuracion2.get('ruseama');
+  }
+
+  get ruseaea() {
+    return this.configuracion2.get('ruseaea');
+  }
+
+  get documb() {
+    return this.configuracion2.get('documb');
+  }
+
+  get docub() {
+    return this.configuracion2.get('docub');
+  }
+
+  get docun() {
+    return this.configuracion2.get('docun');
+  }
+
+  get docua() {
+    return this.configuracion2.get('docua');
+  }
+
+  get documa() {
+    return this.configuracion2.get('documa');
+  }
+
+  get timen() {
+    return this.configuracion2.get('timen');
+  }
+
+  get timea() {
+    return this.configuracion2.get('timea');
+  }
+
+  get timema() {
+    return this.configuracion2.get('timema');
+  }
+
+  get timeea() {
+    return this.configuracion2.get('timeea');
+  }
+
+  get storn() {
+    return this.configuracion2.get('storn');
+  }
+
+  get stora() {
+    return this.configuracion2.get('stora');
+  }
+
+  get storma() {
+    return this.configuracion2.get('storma');
+  }
+
+  get storea() {
+    return this.configuracion2.get('storea');
+  }
+
+  get pvolb() {
+    return this.configuracion2.get('pvolb');
+  }
+
+  get pvoln() {
+    return this.configuracion2.get('pvoln');
+  }
+
+  get pvola() {
+    return this.configuracion2.get('pvola');
+  }
+
+  get pvolma() {
+    return this.configuracion2.get('pvolma');
+  }
+
+  get acapmb() {
+    return this.configuracion2.get('acapmb');
+  }
+
+  get acapb() {
+    return this.configuracion2.get('acapb');
+  }
+
+  get acapn() {
+    return this.configuracion2.get('acapn');
+  }
+
+  get acapa() {
+    return this.configuracion2.get('acapa');
+  }
+
+  get acapma() {
+    return this.configuracion2.get('acapma');
+  }
+
+  get pcapmb() {
+    return this.configuracion2.get('acapmb');
+  }
+
+  get pcapb() {
+    return this.configuracion2.get('acapb');
+  }
+
+  get pcapn() {
+    return this.configuracion2.get('acapn');
+  }
+
+  get pcapa() {
+    return this.configuracion2.get('acapa');
+  }
+
+  get pcapma() {
+    return this.configuracion2.get('acapma');
+  }
+
+  get pconmb() {
+    return this.configuracion2.get('pconmb');
+  }
+
+  get pconb() {
+    return this.configuracion2.get('pconb');
+  }
+
+  get pconn() {
+    return this.configuracion2.get('pconn');
+  }
+
+  get pcona() {
+    return this.configuracion2.get('pcona');
+  }
+
+  get pconma() {
+    return this.configuracion2.get('pconma');
+  }
+
+  get apexmb() {
+    return this.configuracion2.get('apexmb');
+  }
+
+  get apexb() {
+    return this.configuracion2.get('apexb');
+  }
+
+  get apexn() {
+    return this.configuracion2.get('apexn');
+  }
+
+  get apexa() {
+    return this.configuracion2.get('apexa');
+  }
+
+  get apexma() {
+    return this.configuracion2.get('apexma');
+  }
+
+  get plexmb() {
+    return this.configuracion2.get('plexmb');
+  }
+
+  get plexb() {
+    return this.configuracion2.get('plexb');
+  }
+
+  get plexn() {
+    return this.configuracion2.get('plexn');
+  }
+
+  get plexa() {
+    return this.configuracion2.get('plexa');
+  }
+
+  get plexma() {
+    return this.configuracion2.get('plexma');
+  }
+
+  get ltexmb() {
+    return this.configuracion2.get('ltexmb');
+  }
+
+  get ltexb() {
+    return this.configuracion2.get('ltexb');
+  }
+
+  get ltexn() {
+    return this.configuracion2.get('ltexn');
+  }
+
+  get ltexa() {
+    return this.configuracion2.get('ltexa');
+  }
+
+  get ltexma() {
+    return this.configuracion2.get('ltexma');
+  }
+
+  get toolmb() {
+    return this.configuracion2.get('toolmb');
+  }
+
+  get toolb() {
+    return this.configuracion2.get('toolb');
+  }
+
+  get tooln() {
+    return this.configuracion2.get('tooln');
+  }
+
+  get toola() {
+    return this.configuracion2.get('toola');
+  }
+
+  get toolma() {
+    return this.configuracion2.get('toolma');
+  }
+
+  get sitemb() {
+    return this.configuracion2.get('sitemb');
+  }
+
+  get siteb() {
+    return this.configuracion2.get('siteb');
+  }
+
+  get siten() {
+    return this.configuracion2.get('siten');
+  }
+
+  get sitea() {
+    return this.configuracion2.get('sitea');
+  }
+
+  get sitema() {
+    return this.configuracion2.get('sitema');
+  }
+
+  get siteea() {
+    return this.configuracion2.get('siteea');
+  }
+
+  get scedamb() {
+    return this.configuracion2.get('scedamb');
+  }
+
+  get scedab() {
+    return this.configuracion2.get('scedab');
+  }
+
+  get scedan() {
+    return this.configuracion2.get('scedan');
+  }
+
+  get scedaa() {
+    return this.configuracion2.get('scedaa');
+  }
+
+  get scedama() {
+    return this.configuracion2.get('scedama');
+  }
+
 }
