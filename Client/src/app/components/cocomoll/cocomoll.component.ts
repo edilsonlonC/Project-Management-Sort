@@ -6,6 +6,7 @@ import { Dfs } from 'src/app/models/dfs';
 import { Dfcdi } from 'src/app/models/dfcdi';
 import { Dfcap } from 'src/app/models/dfcap';
 import { Estimacion } from 'src/app/models/estimacion';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-cocomoll',
@@ -14,6 +15,9 @@ import { Estimacion } from 'src/app/models/estimacion';
 })
 export class CocomollComponent implements OnInit {
   // json-server --watch db.json --port 3004
+  identidad: any;
+  token: string;
+
   diseno = 0;
   projects: any = {};
 
@@ -242,7 +246,7 @@ export class CocomollComponent implements OnInit {
         nominal: 0,
         alto: 0,
         muyAlto: 0
-      },
+      }
     }
   };
 
@@ -340,10 +344,12 @@ export class CocomollComponent implements OnInit {
     });
   }
 
-  constructor(private cocomollService: CocomollService, private projectsService: ProjectsService) {
+  constructor(private cocomollService: CocomollService, private projectsService: ProjectsService, private usersService: UsersService) {
     this.estimacion = this.createFormGroup();
     this.estimacion0 = this.createFormGroup0();
     this.estimacion1 = this.createFormGroup1();
+    this.identidad = this.usersService.getIdentidad();
+    this.token = this.usersService.getIdentidad();
   }
 
   ngOnInit() {
