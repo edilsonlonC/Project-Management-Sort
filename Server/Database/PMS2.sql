@@ -1,6 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
+
+-- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
 -- Servidor: 127.0.0.1
 -- Tiempo de generación: 03-10-2019 a las 19:55:18
@@ -435,3 +434,19 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-10-01 14:40:45
+CREATE TABLE Estimacion (
+
+    id_estimacion int(11) NOT NULL AUTO_INCREMENT,
+    PM FLOAT , 
+    E  FLOAT ,
+    TDEV FLOAT,
+    F FLOAT,
+    proyecto_id_estimacion int(11),
+    PRIMARY KEY (id_estimacion),
+    FOREIGN KEY (proyecto_id_estimacion) REFERENCES Proyecto(id_proyecto)
+
+
+)
