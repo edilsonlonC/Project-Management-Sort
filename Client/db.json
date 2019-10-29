@@ -50,7 +50,7 @@
           "nominal": 4.68,
           "alto": 3.12,
           "muyAlto": 1.56,
-          "extraAlto": 0
+          "extraAlto": 4
         }
       }
     },
@@ -118,7 +118,7 @@
     },
     {
       "id": 3,
-      "fcdap": {
+      "fcap": {
         "rely": {
           "muyBajo": 0.82,
           "bajo": 0.92,
@@ -144,7 +144,7 @@
           "bajo": 0.95,
           "nominal": 1,
           "alto": 1.07,
-          "muyAlto": 1.15,
+          "muyAlto": 1.24,
           "extraAlto": 1.24
         },
         "docu": {
@@ -157,13 +157,13 @@
         "time": {
           "nominal": 1,
           "alto": 1.11,
-          "muyAlto": 1.29,
+          "muyAlto": 1.63,
           "extraAlto": 1.63
         },
         "stor": {
           "nominal": 1,
           "alto": 1.05,
-          "muyAlto": 1.17,
+          "muyAlto": 1.46,
           "extraAlto": 1.46
         },
         "pvol": {

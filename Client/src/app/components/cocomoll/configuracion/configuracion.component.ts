@@ -5,6 +5,7 @@ import { Dps } from 'src/app/models/dps';
 import { Dfs } from 'src/app/models/dfs';
 import { Dfcdi } from 'src/app/models/dfcdi';
 import { Dfcap } from 'src/app/models/dfcap';
+import { CocomollComponent } from '../cocomoll.component';
 
 @Component({
   selector: 'app-configuracion',
@@ -594,9 +595,9 @@ export class ConfiguracionComponent implements OnInit {
       relya: new FormControl('', Validators.required),
       relyma: new FormControl('', Validators.required),
       datab: new FormControl('', Validators.required),
-      databn: new FormControl('', Validators.required),
-      databa: new FormControl('', Validators.required),
-      databma: new FormControl('', Validators.required),
+      datan: new FormControl('', Validators.required),
+      dataa: new FormControl('', Validators.required),
+      datama: new FormControl('', Validators.required),
       cplxmb: new FormControl('', Validators.required),
       cplxb: new FormControl('', Validators.required),
       cplxn: new FormControl('', Validators.required),
@@ -674,7 +675,7 @@ export class ConfiguracionComponent implements OnInit {
     });
   }
 
-  constructor(private cocomollService: CocomollService) {
+  constructor(private cocomollService: CocomollService, private cocomollComponent: CocomollComponent) {
     this.configuracion = this.createFormGroup();
     this.configuracion0 = this.createFormGroup0();
     this.configuracion1 = this.createFormGroup1();
@@ -682,10 +683,10 @@ export class ConfiguracionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getFCAP('3');
     this.getPS('0');
     this.getFS('1');
     this.getFCDI('2');
-    this.getFCAP('3');
   }
 
   onActualizar() {
@@ -977,95 +978,175 @@ export class ConfiguracionComponent implements OnInit {
   }
 
   onActualizar2() {
-    this.configuracion1.get('perseb').setValue(this.dfcdi.fcdi.pers.extraBajo);
-    this.configuracion1.get('persmb').setValue(this.dfcdi.fcdi.pers.muyBajo);
-    this.configuracion1.get('persb').setValue(this.dfcdi.fcdi.pers.bajo);
-    this.configuracion1.get('persn').setValue(this.dfcdi.fcdi.pers.nominal);
-    this.configuracion1.get('persa').setValue(this.dfcdi.fcdi.pers.alto);
-    this.configuracion1.get('persma').setValue(this.dfcdi.fcdi.pers.muyAlto);
-    this.configuracion1.get('persea').setValue(this.dfcdi.fcdi.pers.extraAlto);
-    this.configuracion1.get('rcpxeb').setValue(this.dfcdi.fcdi.rcpx.extraBajo);
-    this.configuracion1.get('rcpxmb').setValue(this.dfcdi.fcdi.rcpx.muyBajo);
-    this.configuracion1.get('rcpxb').setValue(this.dfcdi.fcdi.rcpx.bajo);
-    this.configuracion1.get('rcpxn').setValue(this.dfcdi.fcdi.rcpx.nominal);
-    this.configuracion1.get('rcpxa').setValue(this.dfcdi.fcdi.rcpx.alto);
-    this.configuracion1.get('rcpxma').setValue(this.dfcdi.fcdi.rcpx.muyAlto);
-    this.configuracion1.get('rcpxea').setValue(this.dfcdi.fcdi.rcpx.extraAlto);
-    this.configuracion1.get('ruseb').setValue(this.dfcdi.fcdi.ruse.bajo);
-    this.configuracion1.get('rusen').setValue(this.dfcdi.fcdi.ruse.nominal);
-    this.configuracion1.get('rusea').setValue(this.dfcdi.fcdi.ruse.alto);
-    this.configuracion1.get('rusema').setValue(this.dfcdi.fcdi.ruse.muyAlto);
-    this.configuracion1.get('ruseea').setValue(this.dfcdi.fcdi.ruse.extraAlto);
-    this.configuracion1.get('pdifb').setValue(this.dfcdi.fcdi.pdif.bajo);
-    this.configuracion1.get('pdifn').setValue(this.dfcdi.fcdi.pdif.nominal);
-    this.configuracion1.get('pdifa').setValue(this.dfcdi.fcdi.pdif.alto);
-    this.configuracion1.get('pdifma').setValue(this.dfcdi.fcdi.pdif.muyAlto);
-    this.configuracion1.get('pdifea').setValue(this.dfcdi.fcdi.pdif.extraAlto);
-    this.configuracion1.get('prexeb').setValue(this.dfcdi.fcdi.prex.extraBajo);
-    this.configuracion1.get('prexmb').setValue(this.dfcdi.fcdi.prex.muyBajo);
-    this.configuracion1.get('prexb').setValue(this.dfcdi.fcdi.prex.bajo);
-    this.configuracion1.get('prexn').setValue(this.dfcdi.fcdi.prex.nominal);
-    this.configuracion1.get('prexa').setValue(this.dfcdi.fcdi.prex.alto);
-    this.configuracion1.get('prexma').setValue(this.dfcdi.fcdi.prex.muyAlto);
-    this.configuracion1.get('prexea').setValue(this.dfcdi.fcdi.prex.extraAlto);
-    this.configuracion1.get('fcileb').setValue(this.dfcdi.fcdi.fcil.extraBajo);
-    this.configuracion1.get('fcilmb').setValue(this.dfcdi.fcdi.fcil.muyBajo);
-    this.configuracion1.get('fcilb').setValue(this.dfcdi.fcdi.fcil.bajo);
-    this.configuracion1.get('fciln').setValue(this.dfcdi.fcdi.fcil.nominal);
-    this.configuracion1.get('fcila').setValue(this.dfcdi.fcdi.fcil.alto);
-    this.configuracion1.get('fcilma').setValue(this.dfcdi.fcdi.fcil.muyAlto);
-    this.configuracion1.get('fcilea').setValue(this.dfcdi.fcdi.fcil.extraAlto);
-    this.configuracion1.get('scedmb').setValue(this.dfcdi.fcdi.sced.muyBajo);
-    this.configuracion1.get('scedb').setValue(this.dfcdi.fcdi.sced.bajo);
-    this.configuracion1.get('scedn').setValue(this.dfcdi.fcdi.sced.nominal);
-    this.configuracion1.get('sceda').setValue(this.dfcdi.fcdi.sced.alto);
-    this.configuracion1.get('scedma').setValue(this.dfcdi.fcdi.sced.muyAlto);
+    this.configuracion2.get('relymb').setValue(this.dfcap.fcap.rely.muyBajo);
+    this.configuracion2.get('relyb').setValue(this.dfcap.fcap.rely.bajo);
+    this.configuracion2.get('relyn').setValue(this.dfcap.fcap.rely.nominal);
+    this.configuracion2.get('relya').setValue(this.dfcap.fcap.rely.alto);
+    this.configuracion2.get('relyma').setValue(this.dfcap.fcap.rely.muyAlto);
+    this.configuracion2.get('datab').setValue(this.dfcap.fcap.data.bajo);
+    this.configuracion2.get('datan').setValue(this.dfcap.fcap.data.nominal);
+    this.configuracion2.get('dataa').setValue(this.dfcap.fcap.data.alto);
+    this.configuracion2.get('datama').setValue(this.dfcap.fcap.data.muyAlto);
+    this.configuracion2.get('cplxmb').setValue(this.dfcap.fcap.cplx.muyBajo);
+    this.configuracion2.get('cplxb').setValue(this.dfcap.fcap.cplx.bajo);
+    this.configuracion2.get('cplxn').setValue(this.dfcap.fcap.cplx.nominal);
+    this.configuracion2.get('cplxa').setValue(this.dfcap.fcap.cplx.alto);
+    this.configuracion2.get('cplxma').setValue(this.dfcap.fcap.cplx.muyAlto);
+    this.configuracion2.get('cplxea').setValue(this.dfcap.fcap.cplx.extraAlto);
+    this.configuracion2.get('ruseab').setValue(this.dfcap.fcap.ruse.bajo);
+    this.configuracion2.get('rusean').setValue(this.dfcap.fcap.ruse.nominal);
+    this.configuracion2.get('ruseaa').setValue(this.dfcap.fcap.ruse.alto);
+    this.configuracion2.get('ruseama').setValue(this.dfcap.fcap.ruse.muyAlto);
+    this.configuracion2.get('ruseaea').setValue(this.dfcap.fcap.ruse.extraAlto);
+    this.configuracion2.get('documb').setValue(this.dfcap.fcap.docu.muyBajo);
+    this.configuracion2.get('docub').setValue(this.dfcap.fcap.docu.bajo);
+    this.configuracion2.get('docun').setValue(this.dfcap.fcap.docu.nominal);
+    this.configuracion2.get('docua').setValue(this.dfcap.fcap.docu.alto);
+    this.configuracion2.get('documa').setValue(this.dfcap.fcap.docu.muyAlto);
+    this.configuracion2.get('timen').setValue(this.dfcap.fcap.time.nominal);
+    this.configuracion2.get('timea').setValue(this.dfcap.fcap.time.alto);
+    this.configuracion2.get('timema').setValue(this.dfcap.fcap.time.muyAlto);
+    this.configuracion2.get('timeea').setValue(this.dfcap.fcap.time.extraAlto);
+    this.configuracion2.get('storn').setValue(this.dfcap.fcap.stor.nominal);
+    this.configuracion2.get('stora').setValue(this.dfcap.fcap.stor.alto);
+    this.configuracion2.get('storma').setValue(this.dfcap.fcap.stor.muyAlto);
+    this.configuracion2.get('storea').setValue(this.dfcap.fcap.stor.extraAlto);
+    this.configuracion2.get('pvolb').setValue(this.dfcap.fcap.pvol.bajo);
+    this.configuracion2.get('pvoln').setValue(this.dfcap.fcap.pvol.nominal);
+    this.configuracion2.get('pvola').setValue(this.dfcap.fcap.pvol.alto);
+    this.configuracion2.get('pvolma').setValue(this.dfcap.fcap.pvol.muyAlto);
+    this.configuracion2.get('acapmb').setValue(this.dfcap.fcap.acap.muyBajo);
+    this.configuracion2.get('acapb').setValue(this.dfcap.fcap.acap.bajo);
+    this.configuracion2.get('acapn').setValue(this.dfcap.fcap.acap.nominal);
+    this.configuracion2.get('acapa').setValue(this.dfcap.fcap.acap.alto);
+    this.configuracion2.get('acapma').setValue(this.dfcap.fcap.acap.muyAlto);
+    this.configuracion2.get('pcapmb').setValue(this.dfcap.fcap.pcap.muyBajo);
+    this.configuracion2.get('pcapb').setValue(this.dfcap.fcap.pcap.bajo);
+    this.configuracion2.get('pcapn').setValue(this.dfcap.fcap.pcap.nominal);
+    this.configuracion2.get('pcapa').setValue(this.dfcap.fcap.pcap.alto);
+    this.configuracion2.get('pcapma').setValue(this.dfcap.fcap.pcap.muyAlto);
+    this.configuracion2.get('pconmb').setValue(this.dfcap.fcap.pcon.muyBajo);
+    this.configuracion2.get('pconb').setValue(this.dfcap.fcap.pcon.bajo);
+    this.configuracion2.get('pconn').setValue(this.dfcap.fcap.pcon.nominal);
+    this.configuracion2.get('pcona').setValue(this.dfcap.fcap.pcon.alto);
+    this.configuracion2.get('pconma').setValue(this.dfcap.fcap.pcon.muyAlto);
+    this.configuracion2.get('apexmb').setValue(this.dfcap.fcap.apex.muyBajo);
+    this.configuracion2.get('apexb').setValue(this.dfcap.fcap.apex.bajo);
+    this.configuracion2.get('apexn').setValue(this.dfcap.fcap.apex.nominal);
+    this.configuracion2.get('apexa').setValue(this.dfcap.fcap.apex.alto);
+    this.configuracion2.get('apexma').setValue(this.dfcap.fcap.apex.muyAlto);
+    this.configuracion2.get('plexmb').setValue(this.dfcap.fcap.plex.muyBajo);
+    this.configuracion2.get('plexb').setValue(this.dfcap.fcap.plex.bajo);
+    this.configuracion2.get('plexn').setValue(this.dfcap.fcap.plex.nominal);
+    this.configuracion2.get('plexa').setValue(this.dfcap.fcap.plex.alto);
+    this.configuracion2.get('plexma').setValue(this.dfcap.fcap.plex.muyAlto);
+    this.configuracion2.get('ltexmb').setValue(this.dfcap.fcap.ltex.muyBajo);
+    this.configuracion2.get('ltexb').setValue(this.dfcap.fcap.ltex.bajo);
+    this.configuracion2.get('ltexn').setValue(this.dfcap.fcap.ltex.nominal);
+    this.configuracion2.get('ltexa').setValue(this.dfcap.fcap.ltex.alto);
+    this.configuracion2.get('ltexma').setValue(this.dfcap.fcap.ltex.muyAlto);
+    this.configuracion2.get('toolmb').setValue(this.dfcap.fcap.tool.muyBajo);
+    this.configuracion2.get('toolb').setValue(this.dfcap.fcap.tool.bajo);
+    this.configuracion2.get('tooln').setValue(this.dfcap.fcap.tool.nominal);
+    this.configuracion2.get('toola').setValue(this.dfcap.fcap.tool.alto);
+    this.configuracion2.get('toolma').setValue(this.dfcap.fcap.tool.muyAlto);
+    this.configuracion2.get('sitemb').setValue(this.dfcap.fcap.site.muyBajo);
+    this.configuracion2.get('siteb').setValue(this.dfcap.fcap.site.bajo);
+    this.configuracion2.get('siten').setValue(this.dfcap.fcap.site.nominal);
+    this.configuracion2.get('sitea').setValue(this.dfcap.fcap.site.alto);
+    this.configuracion2.get('sitema').setValue(this.dfcap.fcap.site.muyAlto);
+    this.configuracion2.get('siteea').setValue(this.dfcap.fcap.site.extraAlto);
+    this.configuracion2.get('scedamb').setValue(this.dfcap.fcap.sced.muyBajo);
+    this.configuracion2.get('scedab').setValue(this.dfcap.fcap.sced.bajo);
+    this.configuracion2.get('scedan').setValue(this.dfcap.fcap.sced.nominal);
+    this.configuracion2.get('scedaa').setValue(this.dfcap.fcap.sced.alto);
+    this.configuracion2.get('scedama').setValue(this.dfcap.fcap.sced.muyAlto);
   }
 
   onForm2() {
-    this.dfcdi.fcdi.pers.extraBajo =  this.configuracion1.get('perseb').value;
-    this.dfcdi.fcdi.pers.muyBajo =  this.configuracion1.get('persmb').value;
-    this.dfcdi.fcdi.pers.bajo =  this.configuracion1.get('persb').value;
-    this.dfcdi.fcdi.pers.nominal =  this.configuracion1.get('persn').value;
-    this.dfcdi.fcdi.pers.alto =  this.configuracion1.get('persa').value;
-    this.dfcdi.fcdi.pers.muyAlto =  this.configuracion1.get('persma').value;
-    this.dfcdi.fcdi.pers.extraAlto =  this.configuracion1.get('persea').value;
-    this.dfcdi.fcdi.rcpx.extraBajo =  this.configuracion1.get('rcpxeb').value;
-    this.dfcdi.fcdi.rcpx.muyBajo =  this.configuracion1.get('rcpxmb').value;
-    this.dfcdi.fcdi.rcpx.bajo =  this.configuracion1.get('rcpxb').value;
-    this.dfcdi.fcdi.rcpx.nominal =  this.configuracion1.get('rcpxn').value;
-    this.dfcdi.fcdi.rcpx.alto =  this.configuracion1.get('rcpxa').value;
-    this.dfcdi.fcdi.rcpx.muyAlto =  this.configuracion1.get('rcpxma').value;
-    this.dfcdi.fcdi.rcpx.extraAlto =  this.configuracion1.get('rcpxea').value;
-    this.dfcdi.fcdi.ruse.bajo =  this.configuracion1.get('ruseb').value;
-    this.dfcdi.fcdi.ruse.nominal =  this.configuracion1.get('rusen').value;
-    this.dfcdi.fcdi.ruse.alto =  this.configuracion1.get('rusea').value;
-    this.dfcdi.fcdi.ruse.muyAlto =  this.configuracion1.get('rusema').value;
-    this.dfcdi.fcdi.ruse.extraAlto =  this.configuracion1.get('ruseea').value;
-    this.dfcdi.fcdi.pdif.bajo =  this.configuracion1.get('pdifb').value;
-    this.dfcdi.fcdi.pdif.nominal =  this.configuracion1.get('pdifn').value;
-    this.dfcdi.fcdi.pdif.alto =  this.configuracion1.get('pdifa').value;
-    this.dfcdi.fcdi.pdif.muyAlto =  this.configuracion1.get('pdifma').value;
-    this.dfcdi.fcdi.pdif.extraAlto =  this.configuracion1.get('pdifea').value;
-    this.dfcdi.fcdi.prex.extraBajo =  this.configuracion1.get('prexeb').value;
-    this.dfcdi.fcdi.prex.muyBajo =  this.configuracion1.get('prexmb').value;
-    this.dfcdi.fcdi.prex.bajo =  this.configuracion1.get('prexb').value;
-    this.dfcdi.fcdi.prex.nominal =  this.configuracion1.get('prexn').value;
-    this.dfcdi.fcdi.prex.alto =  this.configuracion1.get('prexa').value;
-    this.dfcdi.fcdi.prex.muyAlto =  this.configuracion1.get('prexma').value;
-    this.dfcdi.fcdi.prex.extraAlto =  this.configuracion1.get('prexea').value;
-    this.dfcdi.fcdi.fcil.extraBajo =  this.configuracion1.get('fcileb').value;
-    this.dfcdi.fcdi.fcil.muyBajo =  this.configuracion1.get('fcilmb').value;
-    this.dfcdi.fcdi.fcil.bajo =  this.configuracion1.get('fcilb').value;
-    this.dfcdi.fcdi.fcil.nominal =  this.configuracion1.get('fciln').value;
-    this.dfcdi.fcdi.fcil.alto =  this.configuracion1.get('fcila').value;
-    this.dfcdi.fcdi.fcil.muyAlto =  this.configuracion1.get('fcilma').value;
-    this.dfcdi.fcdi.fcil.extraAlto =  this.configuracion1.get('fcilea').value;
-    this.dfcdi.fcdi.sced.muyBajo =  this.configuracion1.get('scedmb').value;
-    this.dfcdi.fcdi.sced.bajo =  this.configuracion1.get('scedb').value;
-    this.dfcdi.fcdi.sced.nominal =  this.configuracion1.get('scedn').value;
-    this.dfcdi.fcdi.sced.alto =  this.configuracion1.get('sceda').value;
-    this.dfcdi.fcdi.sced.muyAlto =  this.configuracion1.get('scedma').value;
+    this.dfcap.fcap.rely.muyBajo =  this.configuracion2.get('relymb').value;
+    this.dfcap.fcap.rely.bajo =  this.configuracion2.get('relyb').value;
+    this.dfcap.fcap.rely.nominal =  this.configuracion2.get('relyn').value;
+    this.dfcap.fcap.rely.alto =  this.configuracion2.get('relya').value;
+    this.dfcap.fcap.rely.muyAlto =  this.configuracion2.get('relyma').value;
+    this.dfcap.fcap.data.bajo =  this.configuracion2.get('datab').value;
+    this.dfcap.fcap.data.nominal =  this.configuracion2.get('datan').value;
+    this.dfcap.fcap.data.alto =  this.configuracion2.get('dataa').value;
+    this.dfcap.fcap.data.muyAlto =  this.configuracion2.get('datama').value;
+    this.dfcap.fcap.cplx.muyBajo =  this.configuracion2.get('cplxmb').value;
+    this.dfcap.fcap.cplx.bajo =  this.configuracion2.get('cplxb').value;
+    this.dfcap.fcap.cplx.nominal =  this.configuracion2.get('cplxn').value;
+    this.dfcap.fcap.cplx.alto =  this.configuracion2.get('cplxa').value;
+    this.dfcap.fcap.cplx.muyAlto =  this.configuracion2.get('cplxma').value;
+    this.dfcap.fcap.cplx.extraAlto =  this.configuracion2.get('cplxea').value;
+    this.dfcap.fcap.ruse.bajo =  this.configuracion2.get('ruseab').value;
+    this.dfcap.fcap.ruse.nominal =  this.configuracion2.get('rusean').value;
+    this.dfcap.fcap.ruse.alto =  this.configuracion2.get('ruseaa').value;
+    this.dfcap.fcap.ruse.muyAlto =  this.configuracion2.get('ruseama').value;
+    this.dfcap.fcap.ruse.extraAlto =  this.configuracion2.get('ruseaea').value;
+    this.dfcap.fcap.docu.muyBajo =  this.configuracion2.get('documb').value;
+    this.dfcap.fcap.docu.bajo =  this.configuracion2.get('docub').value;
+    this.dfcap.fcap.docu.nominal =  this.configuracion2.get('docun').value;
+    this.dfcap.fcap.docu.alto =  this.configuracion2.get('docua').value;
+    this.dfcap.fcap.docu.muyAlto =  this.configuracion2.get('documa').value;
+    this.dfcap.fcap.time.nominal =  this.configuracion2.get('timen').value;
+    this.dfcap.fcap.time.alto =  this.configuracion2.get('timea').value;
+    this.dfcap.fcap.time.muyAlto =  this.configuracion2.get('timema').value;
+    this.dfcap.fcap.time.extraAlto =  this.configuracion2.get('timeea').value;
+    this.dfcap.fcap.stor.nominal =  this.configuracion2.get('storn').value;
+    this.dfcap.fcap.stor.alto =  this.configuracion2.get('stora').value;
+    this.dfcap.fcap.stor.muyAlto =  this.configuracion2.get('storma').value;
+    this.dfcap.fcap.stor.extraAlto =  this.configuracion2.get('storea').value;
+    this.dfcap.fcap.pvol.bajo =  this.configuracion2.get('pvolb').value;
+    this.dfcap.fcap.pvol.nominal =  this.configuracion2.get('pvoln').value;
+    this.dfcap.fcap.pvol.alto =  this.configuracion2.get('pvola').value;
+    this.dfcap.fcap.pvol.muyAlto =  this.configuracion2.get('pvolma').value;
+    this.dfcap.fcap.acap.muyBajo =  this.configuracion2.get('acapmb').value;
+    this.dfcap.fcap.acap.bajo =  this.configuracion2.get('acapb').value;
+    this.dfcap.fcap.acap.nominal =  this.configuracion2.get('acapn').value;
+    this.dfcap.fcap.acap.alto =  this.configuracion2.get('acapa').value;
+    this.dfcap.fcap.acap.muyAlto =  this.configuracion2.get('acapma').value;
+    this.dfcap.fcap.pcap.muyBajo =  this.configuracion2.get('pcapmb').value;
+    this.dfcap.fcap.pcap.bajo =  this.configuracion2.get('pcapb').value;
+    this.dfcap.fcap.pcap.nominal =  this.configuracion2.get('pcapn').value;
+    this.dfcap.fcap.pcap.alto =  this.configuracion2.get('pcapa').value;
+    this.dfcap.fcap.pcap.muyAlto =  this.configuracion2.get('pcapma').value;
+    this.dfcap.fcap.pcon.muyBajo =  this.configuracion2.get('pconmb').value;
+    this.dfcap.fcap.pcon.bajo =  this.configuracion2.get('pconb').value;
+    this.dfcap.fcap.pcon.nominal =  this.configuracion2.get('pconn').value;
+    this.dfcap.fcap.pcon.alto =  this.configuracion2.get('pcona').value;
+    this.dfcap.fcap.pcon.muyAlto =  this.configuracion2.get('pconma').value;
+    this.dfcap.fcap.apex.muyBajo =  this.configuracion2.get('apexmb').value;
+    this.dfcap.fcap.apex.bajo =  this.configuracion2.get('apexb').value;
+    this.dfcap.fcap.apex.nominal =  this.configuracion2.get('apexn').value;
+    this.dfcap.fcap.apex.alto =  this.configuracion2.get('apexa').value;
+    this.dfcap.fcap.apex.muyAlto =  this.configuracion2.get('apexma').value;
+    this.dfcap.fcap.plex.muyBajo =  this.configuracion2.get('plexmb').value;
+    this.dfcap.fcap.plex.bajo =  this.configuracion2.get('plexb').value;
+    this.dfcap.fcap.plex.nominal =  this.configuracion2.get('plexn').value;
+    this.dfcap.fcap.plex.alto =  this.configuracion2.get('plexa').value;
+    this.dfcap.fcap.plex.muyAlto =  this.configuracion2.get('plexma').value;
+    this.dfcap.fcap.ltex.muyBajo =  this.configuracion2.get('ltexmb').value;
+    this.dfcap.fcap.ltex.bajo =  this.configuracion2.get('ltexb').value;
+    this.dfcap.fcap.ltex.nominal =  this.configuracion2.get('ltexn').value;
+    this.dfcap.fcap.ltex.alto =  this.configuracion2.get('ltexa').value;
+    this.dfcap.fcap.ltex.muyAlto =  this.configuracion2.get('ltexma').value;
+    this.dfcap.fcap.tool.muyBajo =  this.configuracion2.get('toolmb').value;
+    this.dfcap.fcap.tool.bajo =  this.configuracion2.get('toolb').value;
+    this.dfcap.fcap.tool.nominal =  this.configuracion2.get('tooln').value;
+    this.dfcap.fcap.tool.alto =  this.configuracion2.get('toola').value;
+    this.dfcap.fcap.tool.muyAlto =  this.configuracion2.get('toolma').value;
+    this.dfcap.fcap.site.muyBajo =  this.configuracion2.get('sitemb').value;
+    this.dfcap.fcap.site.bajo =  this.configuracion2.get('siteb').value;
+    this.dfcap.fcap.site.nominal =  this.configuracion2.get('siten').value;
+    this.dfcap.fcap.site.alto =  this.configuracion2.get('sitea').value;
+    this.dfcap.fcap.site.muyAlto =  this.configuracion2.get('sitema').value;
+    this.dfcap.fcap.site.extraAlto =  this.configuracion2.get('siteea').value;
+    this.dfcap.fcap.sced.muyBajo =  this.configuracion2.get('scedamb').value;
+    this.dfcap.fcap.sced.bajo =  this.configuracion2.get('scedab').value;
+    this.dfcap.fcap.sced.nominal =  this.configuracion2.get('scedan').value;
+    this.dfcap.fcap.sced.alto =  this.configuracion2.get('scedaa').value;
+    this.dfcap.fcap.sced.muyAlto =  this.configuracion2.get('scedama').value;
   }
 
   onUpdateForm2() {
@@ -1074,49 +1155,89 @@ export class ConfiguracionComponent implements OnInit {
   }
 
   onFormR2() {
-    this.dfcdi.fcdi.pers.extraBajo =  this.cdfcdi.fcdi.pers.extraBajo;
-    this.dfcdi.fcdi.pers.muyBajo =  this.cdfcdi.fcdi.pers.muyBajo;
-    this.dfcdi.fcdi.pers.bajo =  this.cdfcdi.fcdi.pers.bajo;
-    this.dfcdi.fcdi.pers.nominal =  this.cdfcdi.fcdi.pers.nominal;
-    this.dfcdi.fcdi.pers.alto =  this.cdfcdi.fcdi.pers.alto;
-    this.dfcdi.fcdi.pers.muyAlto =  this.cdfcdi.fcdi.pers.muyAlto;
-    this.dfcdi.fcdi.pers.extraAlto =  this.cdfcdi.fcdi.pers.extraAlto;
-    this.dfcdi.fcdi.rcpx.extraBajo =  this.cdfcdi.fcdi.rcpx.extraBajo;
-    this.dfcdi.fcdi.rcpx.muyBajo =  this.cdfcdi.fcdi.rcpx.muyBajo;
-    this.dfcdi.fcdi.rcpx.bajo =  this.cdfcdi.fcdi.rcpx.bajo;
-    this.dfcdi.fcdi.rcpx.nominal =  this.cdfcdi.fcdi.rcpx.nominal;
-    this.dfcdi.fcdi.rcpx.alto =  this.cdfcdi.fcdi.rcpx.alto;
-    this.dfcdi.fcdi.rcpx.muyAlto =  this.cdfcdi.fcdi.rcpx.muyAlto;
-    this.dfcdi.fcdi.rcpx.extraAlto =  this.cdfcdi.fcdi.rcpx.extraAlto;
-    this.dfcdi.fcdi.ruse.bajo =  this.cdfcdi.fcdi.ruse.bajo;
-    this.dfcdi.fcdi.ruse.nominal =  this.cdfcdi.fcdi.ruse.nominal;
-    this.dfcdi.fcdi.ruse.alto =  this.cdfcdi.fcdi.ruse.alto;
-    this.dfcdi.fcdi.ruse.muyAlto =  this.cdfcdi.fcdi.ruse.muyAlto;
-    this.dfcdi.fcdi.ruse.extraAlto =  this.cdfcdi.fcdi.ruse.extraAlto;
-    this.dfcdi.fcdi.pdif.bajo =  this.cdfcdi.fcdi.pdif.bajo;
-    this.dfcdi.fcdi.pdif.nominal =  this.cdfcdi.fcdi.pdif.nominal;
-    this.dfcdi.fcdi.pdif.alto =  this.cdfcdi.fcdi.pdif.alto;
-    this.dfcdi.fcdi.pdif.muyAlto =  this.cdfcdi.fcdi.pdif.muyAlto;
-    this.dfcdi.fcdi.pdif.extraAlto =  this.cdfcdi.fcdi.pdif.extraAlto;
-    this.dfcdi.fcdi.prex.extraBajo =  this.cdfcdi.fcdi.prex.extraBajo;
-    this.dfcdi.fcdi.prex.muyBajo =  this.cdfcdi.fcdi.prex.muyBajo;
-    this.dfcdi.fcdi.prex.bajo =  this.cdfcdi.fcdi.prex.bajo;
-    this.dfcdi.fcdi.prex.nominal =  this.cdfcdi.fcdi.prex.nominal;
-    this.dfcdi.fcdi.prex.alto =  this.cdfcdi.fcdi.prex.alto;
-    this.dfcdi.fcdi.prex.muyAlto =  this.cdfcdi.fcdi.prex.muyAlto;
-    this.dfcdi.fcdi.prex.extraAlto =  this.cdfcdi.fcdi.prex.extraAlto;
-    this.dfcdi.fcdi.fcil.extraBajo =  this.cdfcdi.fcdi.fcil.extraBajo;
-    this.dfcdi.fcdi.fcil.muyBajo =  this.cdfcdi.fcdi.fcil.muyBajo;
-    this.dfcdi.fcdi.fcil.bajo =  this.cdfcdi.fcdi.fcil.bajo;
-    this.dfcdi.fcdi.fcil.nominal =  this.cdfcdi.fcdi.fcil.nominal;
-    this.dfcdi.fcdi.fcil.alto =  this.cdfcdi.fcdi.fcil.alto;
-    this.dfcdi.fcdi.fcil.muyAlto =  this.cdfcdi.fcdi.fcil.muyAlto;
-    this.dfcdi.fcdi.fcil.extraAlto =  this.cdfcdi.fcdi.fcil.extraAlto;
-    this.dfcdi.fcdi.sced.muyBajo =  this.cdfcdi.fcdi.sced.muyBajo;
-    this.dfcdi.fcdi.sced.bajo =  this.cdfcdi.fcdi.sced.bajo;
-    this.dfcdi.fcdi.sced.nominal =  this.cdfcdi.fcdi.sced.nominal;
-    this.dfcdi.fcdi.sced.alto =  this.cdfcdi.fcdi.sced.alto;
-    this.dfcdi.fcdi.sced.muyAlto =  this.cdfcdi.fcdi.sced.muyAlto;
+    this.dfcap.fcap.rely.muyBajo =  this.cdfcap.fcap.rely.muyBajo;
+    this.dfcap.fcap.rely.bajo =  this.cdfcap.fcap.rely.bajo;
+    this.dfcap.fcap.rely.nominal =  this.cdfcap.fcap.rely.nominal;
+    this.dfcap.fcap.rely.alto =  this.cdfcap.fcap.rely.alto;
+    this.dfcap.fcap.rely.muyAlto =  this.cdfcap.fcap.rely.muyAlto;
+    this.dfcap.fcap.data.bajo =  this.cdfcap.fcap.data.bajo;
+    this.dfcap.fcap.data.nominal =  this.cdfcap.fcap.data.nominal;
+    this.dfcap.fcap.data.alto =  this.cdfcap.fcap.data.alto;
+    this.dfcap.fcap.data.muyAlto =  this.cdfcap.fcap.data.muyAlto;
+    this.dfcap.fcap.cplx.muyBajo =  this.cdfcap.fcap.cplx.muyBajo;
+    this.dfcap.fcap.cplx.bajo =  this.cdfcap.fcap.cplx.bajo;
+    this.dfcap.fcap.cplx.nominal =  this.cdfcap.fcap.cplx.nominal;
+    this.dfcap.fcap.cplx.alto =  this.cdfcap.fcap.cplx.alto;
+    this.dfcap.fcap.cplx.muyAlto =  this.cdfcap.fcap.cplx.muyAlto;
+    this.dfcap.fcap.cplx.extraAlto =  this.cdfcap.fcap.cplx.extraAlto;
+    this.dfcap.fcap.ruse.bajo =  this.cdfcap.fcap.ruse.bajo;
+    this.dfcap.fcap.ruse.nominal =  this.cdfcap.fcap.ruse.nominal;
+    this.dfcap.fcap.ruse.alto =  this.cdfcap.fcap.ruse.alto;
+    this.dfcap.fcap.ruse.muyAlto =  this.cdfcap.fcap.ruse.muyAlto;
+    this.dfcap.fcap.ruse.muyAlto =  this.cdfcap.fcap.ruse.extraAlto;
+    this.dfcap.fcap.docu.muyBajo =  this.cdfcap.fcap.docu.muyBajo;
+    this.dfcap.fcap.docu.bajo =  this.cdfcap.fcap.docu.bajo;
+    this.dfcap.fcap.docu.nominal =  this.cdfcap.fcap.docu.nominal;
+    this.dfcap.fcap.docu.alto =  this.cdfcap.fcap.docu.alto;
+    this.dfcap.fcap.docu.muyAlto =  this.cdfcap.fcap.docu.muyAlto;
+    this.dfcap.fcap.time.nominal =  this.cdfcap.fcap.time.nominal;
+    this.dfcap.fcap.time.alto =  this.cdfcap.fcap.time.alto;
+    this.dfcap.fcap.time.muyAlto =  this.cdfcap.fcap.time.muyAlto;
+    this.dfcap.fcap.time.muyAlto =  this.cdfcap.fcap.time.extraAlto;
+    this.dfcap.fcap.stor.nominal =  this.cdfcap.fcap.stor.nominal;
+    this.dfcap.fcap.stor.alto =  this.cdfcap.fcap.stor.alto;
+    this.dfcap.fcap.stor.muyAlto =  this.cdfcap.fcap.stor.muyAlto;
+    this.dfcap.fcap.stor.muyAlto =  this.cdfcap.fcap.stor.extraAlto;
+    this.dfcap.fcap.pvol.bajo =  this.cdfcap.fcap.pvol.bajo;
+    this.dfcap.fcap.pvol.nominal =  this.cdfcap.fcap.pvol.nominal;
+    this.dfcap.fcap.pvol.alto =  this.cdfcap.fcap.pvol.alto;
+    this.dfcap.fcap.pvol.muyAlto =  this.cdfcap.fcap.pvol.muyAlto;
+    this.dfcap.fcap.acap.muyBajo =  this.cdfcap.fcap.acap.muyBajo;
+    this.dfcap.fcap.acap.bajo =  this.cdfcap.fcap.acap.bajo;
+    this.dfcap.fcap.acap.nominal =  this.cdfcap.fcap.acap.nominal;
+    this.dfcap.fcap.acap.alto =  this.cdfcap.fcap.acap.alto;
+    this.dfcap.fcap.acap.muyAlto =  this.cdfcap.fcap.acap.muyAlto;
+    this.dfcap.fcap.pcap.muyBajo =  this.cdfcap.fcap.pcap.muyBajo;
+    this.dfcap.fcap.pcap.bajo =  this.cdfcap.fcap.pcap.bajo;
+    this.dfcap.fcap.pcap.nominal =  this.cdfcap.fcap.pcap.nominal;
+    this.dfcap.fcap.pcap.alto =  this.cdfcap.fcap.pcap.alto;
+    this.dfcap.fcap.pcap.muyAlto =  this.cdfcap.fcap.pcap.muyAlto;
+    this.dfcap.fcap.pcon.muyBajo =  this.cdfcap.fcap.pcon.muyBajo;
+    this.dfcap.fcap.pcon.bajo =  this.cdfcap.fcap.pcon.bajo;
+    this.dfcap.fcap.pcon.nominal =  this.cdfcap.fcap.pcon.nominal;
+    this.dfcap.fcap.pcon.alto =  this.cdfcap.fcap.pcon.alto;
+    this.dfcap.fcap.pcon.muyAlto =  this.cdfcap.fcap.pcon.muyAlto;
+    this.dfcap.fcap.apex.muyBajo =  this.cdfcap.fcap.apex.muyBajo;
+    this.dfcap.fcap.apex.bajo =  this.cdfcap.fcap.apex.bajo;
+    this.dfcap.fcap.apex.nominal =  this.cdfcap.fcap.apex.nominal;
+    this.dfcap.fcap.apex.alto =  this.cdfcap.fcap.apex.alto;
+    this.dfcap.fcap.apex.muyAlto =  this.cdfcap.fcap.apex.muyAlto;
+    this.dfcap.fcap.plex.muyBajo =  this.cdfcap.fcap.plex.muyBajo;
+    this.dfcap.fcap.plex.bajo =  this.cdfcap.fcap.plex.bajo;
+    this.dfcap.fcap.plex.nominal =  this.cdfcap.fcap.plex.nominal;
+    this.dfcap.fcap.plex.alto =  this.cdfcap.fcap.plex.alto;
+    this.dfcap.fcap.plex.muyAlto =  this.cdfcap.fcap.plex.muyAlto;
+    this.dfcap.fcap.ltex.muyBajo =  this.cdfcap.fcap.ltex.muyBajo;
+    this.dfcap.fcap.ltex.bajo =  this.cdfcap.fcap.ltex.bajo;
+    this.dfcap.fcap.ltex.nominal =  this.cdfcap.fcap.ltex.nominal;
+    this.dfcap.fcap.ltex.alto =  this.cdfcap.fcap.ltex.alto;
+    this.dfcap.fcap.ltex.muyAlto =  this.cdfcap.fcap.ltex.muyAlto;
+    this.dfcap.fcap.tool.muyBajo =  this.cdfcap.fcap.tool.muyBajo;
+    this.dfcap.fcap.tool.bajo =  this.cdfcap.fcap.tool.bajo;
+    this.dfcap.fcap.tool.nominal =  this.cdfcap.fcap.tool.nominal;
+    this.dfcap.fcap.tool.alto =  this.cdfcap.fcap.tool.alto;
+    this.dfcap.fcap.tool.muyAlto =  this.cdfcap.fcap.tool.muyAlto;
+    this.dfcap.fcap.site.muyBajo =  this.cdfcap.fcap.site.muyBajo;
+    this.dfcap.fcap.site.bajo =  this.cdfcap.fcap.site.bajo;
+    this.dfcap.fcap.site.nominal =  this.cdfcap.fcap.site.nominal;
+    this.dfcap.fcap.site.alto =  this.cdfcap.fcap.site.alto;
+    this.dfcap.fcap.site.muyAlto =  this.cdfcap.fcap.site.muyAlto;
+    this.dfcap.fcap.site.extraAlto =  this.cdfcap.fcap.site.extraAlto;
+    this.dfcap.fcap.sced.muyBajo =  this.cdfcap.fcap.sced.muyBajo;
+    this.dfcap.fcap.sced.bajo =  this.cdfcap.fcap.sced.bajo;
+    this.dfcap.fcap.sced.nominal =  this.cdfcap.fcap.sced.nominal;
+    this.dfcap.fcap.sced.alto =  this.cdfcap.fcap.sced.alto;
+    this.dfcap.fcap.sced.muyAlto =  this.cdfcap.fcap.sced.muyAlto;
   }
 
   onRestablecerForm2() {
@@ -1187,6 +1308,7 @@ export class ConfiguracionComponent implements OnInit {
           alert('Configuracion Exitosa');
         }
         this.getFS('1');
+        this.cocomollComponent.getFS('1');
       },
       err => console.log(err)
     );
@@ -1199,6 +1321,7 @@ export class ConfiguracionComponent implements OnInit {
           alert('Configuracion Exitosa');
         }
         this.getFCDI('2');
+        this.cocomollComponent.getFCDI('2');
       },
       err => console.log(err)
     );
@@ -1211,6 +1334,7 @@ export class ConfiguracionComponent implements OnInit {
           alert('Configuracion Exitosa');
         }
         this.getFCAP('3');
+        this.cocomollComponent.getFCAP('3');
       },
       err => console.log(err)
     );
@@ -1548,16 +1672,16 @@ export class ConfiguracionComponent implements OnInit {
     return this.configuracion2.get('datab');
   }
 
-  get databn() {
-    return this.configuracion2.get('databn');
+  get datan() {
+    return this.configuracion2.get('datan');
   }
 
-  get databa() {
-    return this.configuracion2.get('databa');
+  get dataa() {
+    return this.configuracion2.get('dataa');
   }
 
-  get databma() {
-    return this.configuracion2.get('databma');
+  get datama() {
+    return this.configuracion2.get('datama');
   }
 
   get cplxmb() {
