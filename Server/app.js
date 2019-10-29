@@ -6,8 +6,9 @@ const { routerProject } = require('./routes/project');
 const { routerProjectTypes } = require('./routes/project-types');
 const { routerResources } = require('./routes/resources');
 const { routerActivity } = require('./routes/activity');
-const { routerTask} = require('./routes/task')
-const { routerFunctionality }  = require('./routes/functionality')
+const { routerTask } = require('./routes/task')
+const { routerFunctionality } = require('./routes/functionality')
+const { routerEstimate } = require('./routes/estimate')
 
 const morgan = require('morgan');
 //  local and cloud port 
@@ -35,7 +36,7 @@ app.use('/api', routerResources);
 app.use('/api', routerActivity);
 app.use('/api', routerTask);
 app.use('/api', routerFunctionality);
-
+app.use('/api', routerEstimate);
 
 // server started
 app.listen(port, (err) => {
