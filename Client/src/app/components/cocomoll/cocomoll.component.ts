@@ -411,8 +411,8 @@ export class CocomollComponent implements OnInit {
     this.cocomollService.saveEstimateDI(this.est0).subscribe(
       res => {
         console.log(res);
-        this.estimacion2.get('pm').setValue('5');
-        this.estimacion2.get('tdev').setValue('5');
+        this.estimacion2.get('pm').setValue(res.resultEstimate.PM);
+        this.estimacion2.get('tdev').setValue(res.resultEstimate.TDEV);
       },
       err => console.log(err)
     );
@@ -422,8 +422,8 @@ export class CocomollComponent implements OnInit {
     this.cocomollService.saveEstimateAP(this.est1).subscribe(
       res => {
         console.log(res);
-        this.estimacion2.get('pm').setValue('5');
-        this.estimacion2.get('tdev').setValue('5');
+        this.estimacion2.get('pm').setValue(res.resultEstimate.PM);
+        this.estimacion2.get('tdev').setValue(res.resultEstimate.TDEV);
       },
       err => console.log(err)
     );
