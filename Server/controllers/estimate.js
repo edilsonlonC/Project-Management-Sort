@@ -11,11 +11,18 @@ let createEstimateInitialModel = async (req, res) => {
     if (!idProject) return res.status(404).send({ok  : false ,message : 'proyecto no existe'})
     // multiplicadores de esfuerzo diseño inicial 
     let { rcpx, ruse, pdif, pers, prex, fcil, sced } = req.body
+    prec = parseFloat(prec)
+    flex = parseFloat(flex)
+    resl = parseFloat(resl)
+    team = parseFloat(team)
+    pmat= parseFloat(pmat)
+    codeLines = Number(codeLines)
+
     let ems = [rcpx, ruse, pdif, pers, prex, fcil, sced]
     let EMS = []
     for (let pos in ems) {
         if (typeof ems[pos] !== 'undefined') {
-            EMS.push(ems[pos])
+            EMS.push(parseFloat(ems[pos]))
         }
     }
     //[prec, flex, resl, team, pmat]
@@ -42,11 +49,19 @@ let createEstimatePostArchitecture = async (req, res) => {
     if (!idProject) return res.status(404).send({ok  : false ,message : 'proyecto no existe'})
     // multiplicadores de esfuerzo post Arquitectura 
     let { rely,data,docu,cplx,reuse,time,stor,pvol,acap,alexp,pcap,pexp,lexp,pcon,tool,site,sced } = req.body
+    prec = parseFloat(prec)
+    flex = parseFloat(flex)
+    resl = parseFloat(resl)
+    team = parseFloat(team)
+    pmat= parseFloat(pmat)
+    codeLines = Number(codeLines)
+    console.log('prec',prec);
+    
     let ems = [rely,data,docu,cplx,reuse,time,stor,pvol,acap,alexp,pcap,pexp,lexp,pcon,tool,site,sced]
     let EMS = []
     for (let pos in ems) {
         if (typeof ems[pos] !== 'undefined') {
-            EMS.push(ems[pos])
+            EMS.push(parseFloat(ems[pos]))
         }
     }
     //[prec, flex, resl, team, pmat]
