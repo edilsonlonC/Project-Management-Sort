@@ -7,13 +7,15 @@
                         <h5 class="card-title text-warning mt-3 ">Configuración de Proyecto</h5>
                         <div class="form-row">
                             <div class="form-group mt-3 col-6">
-                                <input type="text" class="form-control mt-auto" placeholder="Nombre" formControlName="name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }">
+                                <p class="text-left text-secondary">Nombre:</p>
+                                <input type="text" class="form-control mt-auto" formControlName="name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }">
                                 <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
                                     <div *ngIf="name.errors.required">Digite nombre.</div>
                                 </div>
                             </div>
                             <div class="form-group mt-3 col-6">
-                                <input type="text" class="form-control mt-auto" placeholder="Horas Laborales" formControlName="hours" [ngClass]="{ 'is-invalid': hours.invalid && (hours.dirty || hours.touched) }">
+                                <p class="text-left text-secondary">Horas laborales:</p>
+                                <input type="text" class="form-control mt-auto" formControlName="hours" [ngClass]="{ 'is-invalid': hours.invalid && (hours.dirty || hours.touched) }">
                                 <div *ngIf="hours.invalid && (hours.dirty || hours.touched)" class="invalid-feedback">
                                     <div *ngIf="hours.errors.required">Digite horas laborales.</div>
                                 </div>
@@ -21,13 +23,15 @@
                         </div>                    
                         <div class="form-row">
                             <div class="form-group mt-3 col-6">
-                                <input type="text" class="form-control mt-auto" placeholder="Salario Mes/Persona" formControlName="salary" [ngClass]="{ 'is-invalid': salary.invalid && (salary.dirty || salary.touched) }">
+                                <p class="text-left text-secondary">Salario Mes/Persona:</p>
+                                <input type="text" class="form-control mt-auto" formControlName="salary" [ngClass]="{ 'is-invalid': salary.invalid && (salary.dirty || salary.touched) }">
                                 <div *ngIf="salary.invalid && (salary.dirty || salary.touched)" class="invalid-feedback">
                                     <div *ngIf="salary.errors.required">Digite salario mes/persona.</div>
                                 </div>
                             </div>
                             <div class="form-group mt-3 col-6">
-                                <input type="text" class="form-control mt-auto" placeholder="Cantidad de Empleados" formControlName="quantity" [ngClass]="{ 'is-invalid': quantity.invalid && (quantity.dirty || quantity.touched) }">
+                                <p class="text-left text-secondary">Cantidad de empleados:</p>
+                                <input type="text" class="form-control mt-auto" formControlName="quantity" [ngClass]="{ 'is-invalid': quantity.invalid && (quantity.dirty || quantity.touched) }">
                                 <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="invalid-feedback">
                                     <div *ngIf="quantity.errors.required">Digite cantidad de empleados.</div>
                                 </div>

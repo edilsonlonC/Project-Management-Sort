@@ -297,6 +297,7 @@ export class CocomollComponent implements OnInit {
   estimacion: FormGroup;
   estimacion0: FormGroup;
   estimacion1: FormGroup;
+  estimacion2: FormGroup;
 
   createFormGroup() {
     return new FormGroup({
@@ -344,10 +345,18 @@ export class CocomollComponent implements OnInit {
     });
   }
 
+  createFormGroup2() {
+    return new FormGroup({
+      pm: new FormControl('', Validators.required),
+      tdev: new FormControl('', Validators.required)
+    });
+  }
+
   constructor(private cocomollService: CocomollService, private projectsService: ProjectsService, private usersService: UsersService) {
     this.estimacion = this.createFormGroup();
     this.estimacion0 = this.createFormGroup0();
     this.estimacion1 = this.createFormGroup1();
+    this.estimacion2 = this.createFormGroup2();
     this.identidad = this.usersService.getIdentidad();
     this.token = this.usersService.getIdentidad();
   }
@@ -398,6 +407,28 @@ export class CocomollComponent implements OnInit {
     );
   }
 
+  saveEstimateDI() {
+    this.cocomollService.saveEstimateDI(this.est0).subscribe(
+      res => {
+        console.log(res);
+        this.estimacion2.get('pm').setValue('5');
+        this.estimacion2.get('tdev').setValue('5');
+      },
+      err => console.log(err)
+    );
+  }
+
+  saveEstimateAP() {
+    this.cocomollService.saveEstimateAP(this.est1).subscribe(
+      res => {
+        console.log(res);
+        this.estimacion2.get('pm').setValue('5');
+        this.estimacion2.get('tdev').setValue('5');
+      },
+      err => console.log(err)
+    );
+  }
+
   onFormEst0() {
     this.est0.idProject = this.estimacion.get('idProject').value;
     this.est0.linesCode = this.estimacion.get('linesCode').value;
@@ -413,11 +444,11 @@ export class CocomollComponent implements OnInit {
     this.est0.prex = this.estimacion0.get('prex').value;
     this.est0.fcil = this.estimacion0.get('fcil').value;
     this.est0.sced = this.estimacion0.get('sced').value;
-    console.log(this.est0);
   }
 
   onSetFormEst0() {
     this.onFormEst0();
+    this.saveEstimateDI();
   }
 
   onFormEst1() {
@@ -445,11 +476,11 @@ export class CocomollComponent implements OnInit {
     this.est1.tool = this.estimacion1.get('tool').value;
     this.est1.site = this.estimacion1.get('site').value;
     this.est1.sced = this.estimacion1.get('sceda').value;
-    console.log(this.est1);
   }
 
   onSetFormEst1() {
     this.onFormEst1();
+    this.saveEstimateAP();
   }
 
   get idProject() {

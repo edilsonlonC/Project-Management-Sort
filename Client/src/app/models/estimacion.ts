@@ -28,4 +28,6 @@ export interface Estimacion {
     ltex?: number;
     tool?: number;
     site?: number;
+    pm?: number;
+    tdev?: number;
  }
