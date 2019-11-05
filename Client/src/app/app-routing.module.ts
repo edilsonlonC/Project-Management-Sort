@@ -20,6 +20,7 @@ import { UpdateFunctionalitiesComponent } from './components/resources/update-fu
 import { UpdateTasksComponent } from './components/resources/update-tasks/update-tasks.component';
 import { CocomollComponent } from './components/cocomoll/cocomoll.component';
 import { ConfiguracionComponent } from './components/cocomoll/configuracion/configuracion.component';
+import { CasosDeUsoComponent } from './components/casos-de-uso/casos-de-uso.component';
 
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
       { path: 'tasks-update', component: UpdateTasksComponent, canActivate: [RolGuard]},
       { path: 'cocomoll', component: CocomollComponent, children: [
         { path: '', component: ConfiguracionComponent }
-      ]}
+      ]},
+      { path: 'casos-de-uso', component: CasosDeUsoComponent }
     ]
   },
   { path: 'register', component: RegisterComponent },

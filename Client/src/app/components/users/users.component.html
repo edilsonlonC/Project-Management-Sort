@@ -24,7 +24,7 @@
                           <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Eliminar</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody *ngIf="users.listUsers?.length>0">
                         <tr *ngFor="let user of users.listUsers" class="text-warning">
                           <td>{{user.Nombre_usuario}}</td>
                           <td>{{user.Apellido_usuario}}</td>
