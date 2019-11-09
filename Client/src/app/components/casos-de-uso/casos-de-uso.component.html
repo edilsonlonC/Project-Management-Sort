@@ -145,7 +145,7 @@
                                                 <input type="text" class="form-control mt-auto" readonly="readonly" idProject="UUCP" [(ngModel)]="UUCP" [ngModelOptions]="{standalone: true}">
                                             </div>
                                             <div class="form-group mt-2 col-4">
-                                                <button [disabled]="!(formUAW.valid && formUUCW.valid)" class="btn btn-warning btn-block" (click)="onSetForm()">Calcular</button>
+                                                <button [disabled]="!(formUAW.valid && formUUCW.valid)" class="btn btn-warning btn-block" (click)="onSetFormUUCP()">Calcular</button>
                                             </div>           
                                         </div>
                                     </form>
@@ -164,19 +164,19 @@
                         <div class="col-10 col-sm-10 col-md-6 col-lg-6  col-xl-6 mt-5">
                             <div class="card text-center border-secondary">
                                 <div class="card-body">
-                                    <form class="mt-3">
+                                    <form class="mt-3" [formGroup]="formTFC">
                                         <h5 class="card-title text-warning mt-3 ">Factores de Complejidad Tecnica (TFC)</h5>
                                         <div class="form-row">
                                             <div class="form-group mt-2 col-2">
                                                 <p class="text-secondary">Factor</p>
                                             </div>
-                                            <div class="form-group mt-2 col-7">
+                                            <div class="form-group mt-2 col-6">
                                                 <p class="text-secondary">Descripción</p>
                                             </div>
                                             <div class="form-group mt-2 col-2">
                                                 <p class="text-secondary">Peso</p>
                                             </div>
-                                            <div class="form-group mt-2 col-1">
+                                            <div class="form-group mt-2 col-2">
                                                 <p class="text-secondary">Valor</p>
                                             </div>          
                                         </div>
@@ -184,198 +184,211 @@
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T1</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class="text-left text-secondary">Sistema distribuido</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">2</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t1" [ngClass]="{ 'is-invalid': t1.invalid && (t1.dirty || t1.touched) }">
+                                                <div *ngIf="t1.invalid && (t1.dirty || t1.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T2</p>
                                             </div>
-                                            <div class="form-group col-7">
-                                                <p class=" text-left text-secondary">Objetivos de performance o tiempo de respuesta</p>
+                                            <div class="form-group col-6">
+                                                <p class=" text-left text-secondary">Objetivos de performance o respuesta</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t2" [ngClass]="{ 'is-invalid': t2.invalid && (t2.dirty || t2.touched) }">
+                                                <div *ngIf="t2.invalid && (t2.dirty || t2.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T3</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Eficiencia del usuario final</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t3" [ngClass]="{ 'is-invalid': t3.invalid && (t3.dirty || t3.touched) }">
+                                                <div *ngIf="t3.invalid && (t3.dirty || t3.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T4</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Procesamiento interno complejo</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t4" [ngClass]="{ 'is-invalid': t4.invalid && (t4.dirty || t4.touched) }">
+                                                <div *ngIf="t4.invalid && (t4.dirty || t4.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T5</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">El codigo debe ser reutilizable</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t5" [ngClass]="{ 'is-invalid': t5.invalid && (t5.dirty || t5.touched) }">
+                                                <div *ngIf="t5.invalid && (t5.dirty || t5.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T6</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Facilidad de instalacion</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">0.5</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t6" [ngClass]="{ 'is-invalid': t6.invalid && (t6.dirty || t6.touched) }">
+                                                <div *ngIf="t6.invalid && (t6.dirty || t6.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T7</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Facilidad de uso</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">0.5</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t7" [ngClass]="{ 'is-invalid': t7.invalid && (t7.dirty || t7.touched) }">
+                                                <div *ngIf="t7.invalid && (t7.dirty || t7.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T8</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Portabilidad</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">2</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t8" [ngClass]="{ 'is-invalid': t8.invalid && (t8.dirty || t8.touched) }">
+                                                <div *ngIf="t8.invalid && (t8.dirty || t8.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T9</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Facilidad de cambio</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t9" [ngClass]="{ 'is-invalid': t9.invalid && (t9.dirty || t9.touched) }">
+                                                <div *ngIf="t9.invalid && (t9.dirty || t9.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T10</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Concurrencia</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t10" [ngClass]="{ 'is-invalid': t10.invalid && (t10.dirty || t10.touched) }">
+                                                <div *ngIf="t10.invalid && (t10.dirty || t10.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T11</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Incluye Objetivos especiales de seguridad</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t11" [ngClass]="{ 'is-invalid': t11.invalid && (t11.dirty || t11.touched) }">
+                                                <div *ngIf="t11.invalid && (t11.dirty || t11.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T12</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Provee acceso directo a terceras partes</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t12" [ngClass]="{ 'is-invalid': t12.invalid && (t12.dirty || t12.touched) }">
+                                                <div *ngIf="t12.invalid && (t12.dirty || t12.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">T13</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Facilidades especiales de entrenamiento a usuario</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="t13" [ngClass]="{ 'is-invalid': t13.invalid && (t13.dirty || t13.touched) }">
+                                                <div *ngIf="t13.invalid && (t13.dirty || t13.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group mt-1 col-9">
+                                            <div class="form-group mt-1 col-8">
                                                 <p class="text-secondary">TFactor:</p>
                                             </div>
-                                            <div class="form-group mt-1 col-3">
-                                                <input type="text" class="form-control mt-auto" readonly="readonly">
+                                            <div class="form-group mt-1 col-4">
+                                                <input type="text" class="form-control mt-auto" readonly="readonly" formControlName="tFactor">
                                             </div>        
                                         </div>
                                         <div class="form-row">
-                                                <div class="form-group mt-1 col-9">
+                                                <div class="form-group mt-1 col-8">
                                                     <p class="text-secondary">TFC:</p>
                                                 </div>
-                                                <div class="form-group mt-1 col-3">
-                                                    <input type="text" class="form-control mt-auto" readonly="readonly">
+                                                <div class="form-group mt-1 col-4">
+                                                    <input type="text" class="form-control mt-auto" readonly="readonly" formControlName="resultTFC">
                                                 </div>        
                                             </div>
                                     </form>
@@ -385,19 +398,19 @@
                         <div class="col-10 col-sm-10 col-md-6 col-lg-6  col-xl-6 mt-5">
                             <div class="card text-center border-secondary">
                                 <div class="card-body">
-                                    <form class="mt-3">
+                                    <form class="mt-3" [formGroup]="formEF">
                                         <h5 class="card-title text-warning mt-3 ">Factores Ambientales (EF)</h5>
                                         <div class="form-row">
                                             <div class="form-group mt-2 col-2">
                                                 <p class="text-secondary">Factor</p>
                                             </div>
-                                            <div class="form-group mt-2 col-7">
+                                            <div class="form-group mt-2 col-6">
                                                 <p class="text-secondary">Descripción</p>
                                             </div>
                                             <div class="form-group mt-2 col-2">
                                                 <p class="text-secondary">Peso</p>
                                             </div>
-                                            <div class="form-group mt-2 col-1">
+                                            <div class="form-group mt-2 col-2">
                                                 <p class="text-secondary">Valor</p>
                                             </div>          
                                         </div>
@@ -405,128 +418,136 @@
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">E1</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class="text-left text-secondary">Familiaridad del equipo con el modelo</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1.5</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="e1" [ngClass]="{ 'is-invalid': e1.invalid && (e1.dirty || e1.touched) }">
+                                                <div *ngIf="e1.invalid && (e1.dirty || e1.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">E2</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Experiencia del equipo en tipo de apps</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">0.5</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="e2" [ngClass]="{ 'is-invalid': e2.invalid && (e2.dirty || e2.touched) }">
+                                                <div *ngIf="e2.invalid && (e2.dirty || e2.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">E3</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class="text-left text-secondary">Experiencia del equipo en POO</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="e3" [ngClass]="{ 'is-invalid': e3.invalid && (e3.dirty || e3.touched) }">
+                                                <div *ngIf="e3.invalid && (e3.dirty || e3.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">E4</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class="text-left text-secondary">Capacidad del lider de desarrollo</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">0.5</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="e4" [ngClass]="{ 'is-invalid': e4.invalid && (e4.dirty || e4.touched) }">
+                                                <div *ngIf="e4.invalid && (e4.dirty || e4.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">E5</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class="text-left text-secondary">Motivacion del equipo</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="e5" [ngClass]="{ 'is-invalid': e5.invalid && (e5.dirty || e5.touched) }">
+                                                <div *ngIf="e5.invalid && (e5.dirty || e5.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">E6</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class=" text-left text-secondary">Estabilidad de los requerimientos</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">2</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="e6" [ngClass]="{ 'is-invalid': e6.invalid && (e6.dirty || e6.touched) }">
+                                                <div *ngIf="e6.invalid && (e6.dirty || e6.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">E7</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class="text-left text-secondary">Personal medio tiempo</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">-1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="e7" [ngClass]="{ 'is-invalid': e7.invalid && (e7.dirty || e7.touched) }">
+                                                <div *ngIf="e7.invalid && (e7.dirty || e7.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">E8</p>
                                             </div>
-                                            <div class="form-group col-7">
+                                            <div class="form-group col-6">
                                                 <p class="text-left text-secondary">Dificultad del lenguaje de programacion</p>
                                             </div>
                                             <div class="form-group col-2">
                                                 <p class="text-secondary">-1</p>
                                             </div>
-                                            <div class="form-group col-1">
-                                                <input type="text" class="form-control mt-auto">
+                                            <div class="form-group col-2">
+                                                <input type="number" class="form-control mt-auto" formControlName="e8" [ngClass]="{ 'is-invalid': e8.invalid && (e8.dirty || e8.touched) }">
+                                                <div *ngIf="e8.invalid && (e8.dirty || e8.touched)" class="invalid-feedback"></div>
                                             </div>        
                                         </div>                     
                                         <div class="form-row">
-                                            <div class="form-group mt-1 col-9">
+                                            <div class="form-group mt-1 col-8">
                                                 <p class="text-secondary">EFactor:</p>
                                             </div>
-                                            <div class="form-group mt-1 col-3">
-                                                <input type="text" class="form-control mt-auto" readonly="readonly">
+                                            <div class="form-group mt-1 col-4">
+                                                <input type="text" class="form-control mt-auto" readonly="readonly" formControlName="eFactor">
                                             </div>        
                                         </div>
                                         <div class="form-row">
-                                                <div class="form-group mt-1 col-9">
+                                                <div class="form-group mt-1 col-8">
                                                     <p class="text-secondary">EF:</p>
                                                 </div>
-                                                <div class="form-group mt-1 col-3">
-                                                    <input type="text" class="form-control mt-auto" readonly="readonly">
+                                                <div class="form-group mt-1 col-4">
+                                                    <input type="text" class="form-control mt-auto" readonly="readonly" formControlName="resultEF">
                                                 </div>        
                                             </div>
                                     </form>
@@ -542,10 +563,10 @@
                                                 <p class="text-secondary">UCP:</p>
                                             </div>
                                             <div class="form-group mt-2 col-4">
-                                                <input type="text" class="form-control mt-auto" readonly="readonly">
+                                                <input type="text" class="form-control mt-auto" readonly="readonly" idProject="UCP" [(ngModel)]="UCP" [ngModelOptions]="{standalone: true}">
                                             </div>
                                             <div class="form-group mt-2 col-4">
-                                                <button class="btn btn-warning btn-block">Calcular</button>
+                                                <button [disabled]="!(formTFC.valid && formEF.valid && banderaUUCP)" class="btn btn-warning btn-block" (click)="onSetFormUCP()">Calcular</button>
                                             </div>           
                                         </div>
                                     </form>
