@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { UAW } from 'src/app/models/uaw';
 import { UUCW } from 'src/app/models/uucw';
 import { TFC } from 'src/app/models/tfc';
 import { EF } from 'src/app/models/ef';
+import { E } from 'src/app/models/e';
+import { ETCVDS } from 'src/app/models/etcvds';
+import { PuntosCasosUsos } from 'src/app/models/pcu';
 
 @Component({
   selector: 'app-casos-de-uso',
@@ -11,6 +15,8 @@ import { EF } from 'src/app/models/ef';
   styleUrls: ['./casos-de-uso.component.css']
 })
 export class CasosDeUsoComponent implements OnInit {
+
+  projects: any = {};
 
   uaw: UAW = {
     simpleUAW: 0,
@@ -61,11 +67,39 @@ export class CasosDeUsoComponent implements OnInit {
   };
 
   UCP: number;
+  banderaUCP = false;
+
+  e: E = {
+    f1: 0,
+    f2: 0,
+    total: 0,
+    resultPF: 0
+  };
+
+  E: number;
+
+  etcvds: ETCVDS = {
+    analisis: 0,
+    diseno: 0,
+    desarrollo: 0,
+    pruebas: 0,
+    gestion: 0,
+    eTotal: 0
+  };
+
+  pcu: PuntosCasosUsos = {
+    idProject: 0,
+    UUCP: 0,
+    UCP: 0,
+    E: 0
+  };
 
   formUAW: FormGroup;
   formUUCW: FormGroup;
   formTFC: FormGroup;
   formEF: FormGroup;
+  formE: FormGroup;
+  formP: FormGroup;
 
   createFormGroup() {
     return new FormGroup({
@@ -120,14 +154,41 @@ export class CasosDeUsoComponent implements OnInit {
     });
   }
 
-  constructor() {
+  createFormGroup3() {
+    return new FormGroup({
+      f1: new FormControl(0, Validators.required),
+      f2: new FormControl(0, Validators.required),
+      total: new FormControl(0, Validators.required),
+      resultPF: new FormControl(0, Validators.required)
+    });
+  }
+
+  createFormGroup4() {
+    return new FormGroup({
+      idProject: new FormControl(0, Validators.required)
+    });
+  }
+
+  constructor(private projectsService: ProjectsService) {
     this.formUAW = this.createFormGroup();
     this.formUUCW = this.createFormGroup0();
     this.formTFC = this.createFormGroup1();
     this.formEF = this.createFormGroup2();
+    this.formE = this.createFormGroup3();
+    this.formP = this.createFormGroup4();
   }
 
   ngOnInit() {
+    this.getProjects();
+  }
+
+  getProjects() {
+    this.projectsService.getProjects().subscribe(
+      res => {
+        this.projects = res;
+      },
+      err => console.log(err)
+    );
   }
 
   onSetFormUUCP() {
@@ -173,11 +234,42 @@ export class CasosDeUsoComponent implements OnInit {
     this.ef.e7 = this.formEF.get('e7').value;
     this.ef.e8 = this.formEF.get('e8').value;
     // tslint:disable-next-line:max-line-length
-    this.ef.eFactor = (1.5 * this.ef.e1) + (0.5 * this.ef.e2) + (1 * this.ef.e3) + (0.5 * this.ef.e4) + (1 * this.ef.e5) + (-2 * this.ef.e6) + (-1 * this.ef.e7) + (-1 * this.ef.e8);
+    this.ef.eFactor = (1.5 * this.ef.e1) + (0.5 * this.ef.e2) + (1 * this.ef.e3) + (0.5 * this.ef.e4) + (1 * this.ef.e5) + (2 * this.ef.e6) + (-1 * this.ef.e7) + (-1 * this.ef.e8);
     this.ef.resultEF = 1.4 + (-0.03 * this.ef.eFactor);
     this.formEF.get('eFactor').setValue(this.ef.eFactor);
     this.formEF.get('resultEF').setValue( this.ef.resultEF);
     this.UCP = this.UUCP * this.tfc.resultTFC * this.ef.resultEF;
+    this.banderaUCP = true;
+  }
+
+  onSetFormE() {
+    this.e.f1 = this.formE.get('f1').value;
+    this.e.f2 = this.formE.get('f2').value;
+    this.e.total = this.e.f1 + this.e.f2;
+    this.formE.get('total').setValue(this.e.total);
+    if ((this.e.total >= 0 ) && (this.e.total <= 2)) {
+      this.e.resultPF = 10;
+      this.formE.get('resultPF').setValue(this.e.resultPF);
+    } else if ((this.e.total === 3 ) || (this.e.total === 4)) {
+      this.e.resultPF = 14;
+      this.formE.get('resultPF').setValue(this.e.resultPF);
+    } else {
+      this.e.resultPF = 18;
+      this.formE.get('resultPF').setValue(this.e.resultPF);
+    }
+    this.E = Math.round(this.e.resultPF * this.UCP);
+    this.etcvds.analisis = Math.round((0.1 * this.E) / 0.4);
+    this.etcvds.diseno = Math.round((0.2 * this.E) / 0.4);
+    this.etcvds.desarrollo = this.E;
+    this.etcvds.pruebas = Math.round((0.15 * this.E) / 0.4);
+    this.etcvds.gestion = Math.round((0.15 * this.E) / 0.4);
+    this.etcvds.eTotal = this.etcvds.analisis + this.etcvds.diseno + this.etcvds.desarrollo + this.etcvds.pruebas + this.etcvds.gestion;
+    // tslint:disable-next-line:radix
+    this.pcu.idProject = parseInt(this.formP.get('idProject').value);
+    this.pcu.UUCP = this.UUCP;
+    this.pcu.UCP = this.UCP;
+    this.pcu.E = this.E;
+    console.log(this.pcu);
   }
 
   get simpleUAW() {
@@ -310,6 +402,26 @@ export class CasosDeUsoComponent implements OnInit {
 
   get resultEF() {
     return this.formEF.get('resultEF');
+  }
+
+  get f1() {
+    return this.formE.get('f1');
+  }
+
+  get f2() {
+    return this.formE.get('f2');
+  }
+
+  get total() {
+    return this.formE.get('total');
+  }
+
+  get resultPF() {
+    return this.formE.get('resultPF');
+  }
+
+  get idProject() {
+    return this.formP.get('idProject');
   }
 
 }
