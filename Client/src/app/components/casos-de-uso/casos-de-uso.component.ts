@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from 'src/app/services/projects.service';
+import { CasosDeUsoService } from 'src/app/services/casos-de-uso.service';
 import { UAW } from 'src/app/models/uaw';
 import { UUCW } from 'src/app/models/uucw';
 import { TFC } from 'src/app/models/tfc';
@@ -169,7 +170,7 @@ export class CasosDeUsoComponent implements OnInit {
     });
   }
 
-  constructor(private projectsService: ProjectsService) {
+  constructor(private projectsService: ProjectsService, private casosDeUsoService: CasosDeUsoService) {
     this.formUAW = this.createFormGroup();
     this.formUUCW = this.createFormGroup0();
     this.formTFC = this.createFormGroup1();
@@ -184,6 +185,15 @@ export class CasosDeUsoComponent implements OnInit {
 
   getProjects() {
     this.projectsService.getProjects().subscribe(
+      res => {
+        this.projects = res;
+      },
+      err => console.log(err)
+    );
+  }
+
+  saveEstimate() {
+    this.casosDeUsoService.saveEstimate(this.pcu).subscribe(
       res => {
         this.projects = res;
       },
@@ -270,6 +280,7 @@ export class CasosDeUsoComponent implements OnInit {
     this.pcu.UCP = this.UCP;
     this.pcu.E = this.E;
     console.log(this.pcu);
+    this.saveEstimate();
   }
 
   get simpleUAW() {
