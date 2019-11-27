@@ -3,9 +3,7 @@ const fs = require('fs')
 const path = require('path')
 let pdf = require('html-pdf')
 const { connection } = require('../Database/DB')
-let template = {
 
-}
 let createReport = async(req, res) => {
   let { id } = req.params
   console.log(id);
@@ -30,18 +28,18 @@ let createReport = async(req, res) => {
      html= html.replace('{{idProject}}',id_proyecto)
      html = html.replace('{{Nombre}}',Nombre_Proyecto)
      if(estimateQuery[0].length > 0) {
-      html = html.replace('{{cocomoII_tiempo}}',estimateQuery[0][0].TDEV)
-      html = html.replace('{{cocomoII_costo}}',estimateQuery[0][0].PM) 
+      html = html.replace('{{{cocomoII_tiempo_calendario}}}',Math.round(estimateQuery[0][0].TDEV))
+      html = html.replace('{{cocomoII_persona_mes}}',Math.round(estimateQuery[0][0].PM)) 
     }else {
-      html = html.replace('{{cocomoII_tiempo}}','-')
-      html = html.replace('{{cocomoII_costo}}','-') 
+      html = html.replace('{{cocomoII_tiempo_calendario}}','no aplica')
+      html = html.replace('{{cocomoII_persona_mes}}','no aplica') 
     }
     if (useCaseQuery[0].length > 0){
-      html = html.replace('{{caso_uso_tiempo}}',useCaseQuery[0][0].UUCP)
-      html = html.replace('{{caso_uso_costo}}',useCaseQuery[0][0].UCP) 
+      html = html.replace('{{casos_uso_esfuerzo}}',Math.round(useCaseQuery[0][0].E))
+     //html = html.replace('{{caso_uso_costo}}',useCaseQuery[0][0].UCP) 
     }else {
-      html = html.replace('{{caso_uso_tiempo}}','-')
-      html = html.replace('{{caso_uso_costo}}','-') 
+      html = html.replace('{{casos_uso_esfuerzo}}','no aplica')
+      //html = html.replace('{{caso_uso_costo}}','-') 
     }
     pdf.create(html, options).toFile('test.pdf', function (err, r) {
       if (err) return res.send(err)

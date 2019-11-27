@@ -28,23 +28,30 @@
                <th> {{Nombre}} </th>
            </tr>
         </table >
-
         <table class="M-table">
+ 
             <tr>
                 <th>Metrica usada</th>
-                <th>Tiempo estimado</th>
-                <th>Costo estimado</th>
+                <th>Esfuerzo en persona-mes</th>
+                <th>Tiempo calendario</th>
             </tr>
-            <tr>
-                <th>Puntos de caso de uso </th>
-                <th>{{caso_uso_tiempo}}</th>
-                <th>{{caso_uso_costo}}</th>
-                
-            </tr>
+           
             <tr>
                 <th>COCOMO II</th>
-                <th>{{cocomoII_tiempo}}</th>
-                <th>{{cocomoII_costo}}</th>
+                <th>{{cocomoII_persona_mes}}</th>
+                <th>{{cocomoII_tiempo_calendario}}</th>
             </tr>
         </table>
+        <table class="M-table">
+                <tr>
+                    <th> Métrica usada </th>
+                    <th>Esfuerzo </th>
+                </tr>
+                <tr>
+                        <th>Puntos de caso de uso </th>
+                        <th>{{casos_uso_esfuerzo}}</th>
+                        
+                        
+                    </tr>
+            </table>
     </html>
