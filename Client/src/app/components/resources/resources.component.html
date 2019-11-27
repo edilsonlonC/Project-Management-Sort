@@ -1,22 +1,139 @@
-<<<<<<< HEAD
 <div class="nav-justified">
     <ul class=" nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link text-warning active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recursos</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-warning" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Registrar Recurso</a>
+      <li class="nav-item" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">
+        <a class="nav-link text-warning" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Registrar Recursos</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
+        <div class="container p-5">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="table-responsive">
+                    <table class="table table-warning  text-center">
+                      <thead>
+                        <tr class="bg-warning text-white">
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Tipo</th>
+                          <th scope="col">Responsable</th>
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Estado</th>
+                          <th scope="col">Prioridad</th>
+                          <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Actualizar</th>
+                          <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Eliminar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let resource of resources.resources" class="text-warning">
+                          <td>{{resource.nombre_recurso}}</td>
+                          <td>Recurso</td>
+                          <td>{{resource.Responsable}}</td>
+                          <td>{{resource.fecha}}</td>
+                          <td>
+                            <div *ngIf='resource.Tipo_estado_id_estado == 1'>Pendiente</div>
+                            <div *ngIf='resource.Tipo_estado_id_estado == 2'>Progreso</div>
+                            <div *ngIf='resource.Tipo_estado_id_estado == 3'>Retrasado</div>
+                            <div *ngIf='resource.Tipo_estado_id_estado == 4'>Terminado</div>
+                          </td>
+                          <td>
+                            <div *ngIf='resource.Prioridad_id_prioridad == 1'>Alto</div>
+                            <div *ngIf='resource.Prioridad_id_prioridad == 2'>Medio</div>
+                            <div *ngIf='resource.Prioridad_id_prioridad == 3'>Bajo</div>
+                          </td>
+                          <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../resources-update']" (click)="updateResource(resource)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                          <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(resource.id_recursos, 'r')"><i class="fas fa-times text-warning"></i></a></td>
+                        </tr>
+                        <tr *ngFor="let activity of activities.listAvtivities" class="text-warning">
+                          <td>{{activity.nombre_actividad}}</td>
+                          <td>Actividad</td>
+                          <td>{{activity.responsable}}</td>
+                          <td>{{activity.fecha}}</td>
+                          <td>
+                            <div *ngIf='activity.Tipo_estado_id_estado == 1'>Pendiente</div>
+                            <div *ngIf='activity.Tipo_estado_id_estado == 2'>Progreso</div>
+                            <div *ngIf='activity.Tipo_estado_id_estado == 3'>Retrasado</div>
+                            <div *ngIf='activity.Tipo_estado_id_estado == 4'>Terminado</div>
+                          </td>
+                          <td>
+                            <div *ngIf='activity.Prioridad_id_prioridad == 1'>Alto</div>
+                            <div *ngIf='activity.Prioridad_id_prioridad == 2'>Medio</div>
+                            <div *ngIf='activity.Prioridad_id_prioridad == 3'>Bajo</div>
+                          </td>
+                          <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../activities-update']" (click)="updateActivity(activity)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                          <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(activity.id_actividades, 'a')"><i class="fas fa-times text-warning"></i></a></td>
+                        </tr>
+                        <tr *ngFor="let functionality of functionalities.listFunctionalities" class="text-warning">
+                          <td>{{functionality.nombre_funcionalidad}}</td>
+                          <td>Funcionalidad</td>
+                          <td>{{functionality.responsable}}</td>
+                          <td>{{functionality.fecha}}</td>
+                          <td>
+                            <div *ngIf='functionality.Tipo_estado_id_estado == 1'>Pendiente</div>
+                            <div *ngIf='functionality.Tipo_estado_id_estado == 2'>Progreso</div>
+                            <div *ngIf='functionality.Tipo_estado_id_estado == 3'>Retrasado</div>
+                            <div *ngIf='functionality.Tipo_estado_id_estado == 4'>Terminado</div>
+                          </td>
+                          <td>
+                            <div *ngIf='functionality.Prioridad_id_prioridad == 1'>Alto</div>
+                            <div *ngIf='functionality.Prioridad_id_prioridad == 2'>Medio</div>
+                            <div *ngIf='functionality.Prioridad_id_prioridad == 3'>Bajo</div>
+                          </td>
+                          <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../functionalities-update']" (click)="updateFunctionality(functionality)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                          <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(functionality.id_funcionalidad, 'f')"><i class="fas fa-times text-warning"></i></a></td>
+                        </tr>
+                        <tr *ngFor="let task of tasks.listTasks" class="text-warning">
+                          <td>{{task.nombre_tarea}}</td>
+                          <td>Tarea</td>
+                          <td>{{task.responsable}}</td>
+                          <td>{{task.fecha}}</td>
+                          <td>
+                            <div *ngIf='task.Tipo_estado_id_estado == 1'>Pendiente</div>
+                            <div *ngIf='task.Tipo_estado_id_estado == 2'>Progreso</div>
+                            <div *ngIf='task.Tipo_estado_id_estado == 3'>Retrasado</div>
+                            <div *ngIf='task.Tipo_estado_id_estado == 4'>Terminado</div>
+                          </td>
+                          <td>
+                            <div *ngIf='task.Prioridad_id_prioridad == 1'>Alto</div>
+                            <div *ngIf='task.Prioridad_id_prioridad == 2'>Medio</div>
+                            <div *ngIf='task.Prioridad_id_prioridad == 3'>Bajo</div>
+                          </td>
+                          <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../tasks-update']" (click)="updateTask(task)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                          <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setIdT(task.id_tareas, 't')"><i class="fas fa-times text-warning"></i></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>                
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
+        <router-outlet></router-outlet>
       </div>
     </div>
 </div>
-=======
-<p>resources works!</p>
->>>>>>> 4ccf56664803f4248c927463513aec1f5c2fe19b
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header table-warning">
+        <h5 class="modal-title text-warning" id="exampleModalLongTitle">Eliminar Recurso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white ">
+       <p class="text-secondary">Confirma la eliminacion del recurso.</p>
+      </div>
+      <div class="modal-footer table-light">
+        <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning text-white" data-dismiss="modal" (click)="deleteResources()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,1338 @@
+<div class="container-fluid p-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-sm-12 col-md-6 col-xl-6">
+            <div class="card text-center border-secondary">
+                <div class="card-body">
+                    <form class="mt-3" [formGroup]="configuracion">
+                        <h5 class="card-title text-warning mt-3 ">Configuración de Proyecto</h5>
+                        <div class="form-row">
+                            <div class="form-group mt-3 col-6">
+                                <p class="text-left text-secondary">Nombre:</p>
+                                <input type="text" class="form-control mt-auto" formControlName="name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }">
+                                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+                                    <div *ngIf="name.errors.required">Digite nombre.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-6">
+                                <p class="text-left text-secondary">Horas laborales:</p>
+                                <input type="text" class="form-control mt-auto" formControlName="hours" [ngClass]="{ 'is-invalid': hours.invalid && (hours.dirty || hours.touched) }">
+                                <div *ngIf="hours.invalid && (hours.dirty || hours.touched)" class="invalid-feedback">
+                                    <div *ngIf="hours.errors.required">Digite horas laborales.</div>
+                                </div>
+                            </div>       
+                        </div>                    
+                        <div class="form-row">
+                            <div class="form-group mt-3 col-6">
+                                <p class="text-left text-secondary">Salario Mes/Persona:</p>
+                                <input type="text" class="form-control mt-auto" formControlName="salary" [ngClass]="{ 'is-invalid': salary.invalid && (salary.dirty || salary.touched) }">
+                                <div *ngIf="salary.invalid && (salary.dirty || salary.touched)" class="invalid-feedback">
+                                    <div *ngIf="salary.errors.required">Digite salario mes/persona.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-6">
+                                <p class="text-left text-secondary">Cantidad de empleados:</p>
+                                <input type="text" class="form-control mt-auto" formControlName="quantity" [ngClass]="{ 'is-invalid': quantity.invalid && (quantity.dirty || quantity.touched) }">
+                                <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="invalid-feedback">
+                                    <div *ngIf="quantity.errors.required">Digite cantidad de empleados.</div>
+                                </div>
+                            </div>       
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-6">
+                                <button class="btn btn-warning btn-block" (click)="onRestablecerForm()">Restablecer</button>
+                            </div>  
+                            <div class="form-group mt-3 col-6">
+                                <button [disabled]="!configuracion.valid" class="btn btn-warning btn-block" (click)="onUpdateForm()">Modificar</button>
+                            </div>  
+                        </div>
+                        <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                    </form>
+                </div>
+            </div>              
+        </div>
+        <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 mt-5">
+            <div class="card text-center border-secondary">
+                <div class="card-body">
+                    <form class="mt-3" [formGroup]="configuracion0">
+                        <h5 class="card-title text-warning mt-3">Configuración Factores de Escala</h5>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">FS</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Muy Bajo</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Bajo</p>
+                            </div> 
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Nominal</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Alto</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Muy Alto</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Extra Alto</p>
+                            </div>          
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PREC</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="precmb" [ngClass]="{ 'is-invalid': precmb.invalid && (precmb.dirty || precmb.touched) }">
+                                <div *ngIf="precmb.invalid && (precmb.dirty || precmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="precmb.errors.required">Digite precmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="precb" [ngClass]="{ 'is-invalid': precb.invalid && (precb.dirty || precb.touched) }">
+                                <div *ngIf="precb.invalid && (precb.dirty || precb.touched)" class="invalid-feedback">
+                                    <div *ngIf="precb.errors.required">Digite precb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="precn" [ngClass]="{ 'is-invalid': precn.invalid && (precn.dirty || precn.touched) }">
+                                <div *ngIf="precn.invalid && (precn.dirty || precn.touched)" class="invalid-feedback">
+                                    <div *ngIf="precn.errors.required">Digite precn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="preca" [ngClass]="{ 'is-invalid': preca.invalid && (preca.dirty || preca.touched) }">
+                                <div *ngIf="preca.invalid && (preca.dirty || preca.touched)" class="invalid-feedback">
+                                    <div *ngIf="preca.errors.required">Digite preca.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="precma" [ngClass]="{ 'is-invalid': precma.invalid && (precma.dirty || precma.touched) }">
+                                <div *ngIf="precma.invalid && (precma.dirty || precma.touched)" class="invalid-feedback">
+                                    <div *ngIf="precma.errors.required">Digite precma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="precea" [ngClass]="{ 'is-invalid': precea.invalid && (precea.dirty || precea.touched) }">
+                                <div *ngIf="precea.invalid && (precea.dirty || precea.touched)" class="invalid-feedback">
+                                    <div *ngIf="precea.errors.required">Digite precea.</div>
+                                </div>
+                            </div>                                        
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">FLEX</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="flexmb" [ngClass]="{ 'is-invalid': flexmb.invalid && (flexmb.dirty || flexmb.touched) }">
+                                <div *ngIf="flexmb.invalid && (flexmb.dirty || flexmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="flexmb.errors.required">Digite flexmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="flexb" [ngClass]="{ 'is-invalid': flexb.invalid && (flexb.dirty || flexb.touched) }">
+                                <div *ngIf="flexb.invalid && (flexb.dirty || flexb.touched)" class="invalid-feedback">
+                                    <div *ngIf="flexb.errors.required">Digite flexb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="flexn" [ngClass]="{ 'is-invalid': flexn.invalid && (flexn.dirty || flexn.touched) }">
+                                <div *ngIf="flexn.invalid && (flexn.dirty || flexn.touched)" class="invalid-feedback">
+                                    <div *ngIf="flexn.errors.required">Digite flexn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="flexa" [ngClass]="{ 'is-invalid': flexa.invalid && (flexa.dirty || flexa.touched) }">
+                                <div *ngIf="flexa.invalid && (flexa.dirty || flexa.touched)" class="invalid-feedback">
+                                    <div *ngIf="flexa.errors.required">Digite flexa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="flexma" [ngClass]="{ 'is-invalid': flexma.invalid && (flexma.dirty || flexma.touched) }">
+                                <div *ngIf="flexma.invalid && (flexma.dirty || flexma.touched)" class="invalid-feedback">
+                                    <div *ngIf="flexma.errors.required">Digite precma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="flexea" [ngClass]="{ 'is-invalid': flexea.invalid && (flexea.dirty || flexea.touched) }">
+                                <div *ngIf="flexea.invalid && (flexea.dirty || flexea.touched)" class="invalid-feedback">
+                                    <div *ngIf="flexea.errors.required">Digite flexea.</div>
+                                </div>
+                            </div>                                     
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">RELS</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relsmb" [ngClass]="{ 'is-invalid': relsmb.invalid && (relsmb.dirty || relsmb.touched) }">
+                                <div *ngIf="relsmb.invalid && (relsmb.dirty || relsmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="relsmb.errors.required">Digite relsmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relsb" [ngClass]="{ 'is-invalid': relsb.invalid && (relsb.dirty || relsb.touched) }">
+                                <div *ngIf="relsb.invalid && (relsb.dirty || relsb.touched)" class="invalid-feedback">
+                                    <div *ngIf="relsb.errors.required">Digite relsb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relsn" [ngClass]="{ 'is-invalid': relsn.invalid && (relsn.dirty || relsn.touched) }">
+                                <div *ngIf="relsn.invalid && (relsn.dirty || relsn.touched)" class="invalid-feedback">
+                                    <div *ngIf="relsn.errors.required">Digite relsn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relsa" [ngClass]="{ 'is-invalid': relsa.invalid && (relsa.dirty || relsa.touched) }">
+                                <div *ngIf="relsa.invalid && (relsa.dirty || relsa.touched)" class="invalid-feedback">
+                                    <div *ngIf="relsa.errors.required">Digite relsa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relsma" [ngClass]="{ 'is-invalid': relsma.invalid && (relsma.dirty || relsma.touched) }">
+                                <div *ngIf="relsma.invalid && (relsma.dirty || relsma.touched)" class="invalid-feedback">
+                                    <div *ngIf="relsma.errors.required">Digite relsma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relsea" [ngClass]="{ 'is-invalid': relsea.invalid && (relsea.dirty || relsea.touched) }">
+                                <div *ngIf="relsea.invalid && (relsea.dirty || relsea.touched)" class="invalid-feedback">
+                                    <div *ngIf="relsea.errors.required">Digite relsea.</div>
+                                </div>
+                            </div>                                     
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">TEAM</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="teammb" [ngClass]="{ 'is-invalid': teammb.invalid && (teammb.dirty || teammb.touched) }">
+                                <div *ngIf="teammb.invalid && (teammb.dirty || teammb.touched)" class="invalid-feedback">
+                                    <div *ngIf="teammb.errors.required">Digite teammb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="teamb" [ngClass]="{ 'is-invalid': teamb.invalid && (teamb.dirty || teamb.touched) }">
+                                <div *ngIf="teamb.invalid && (teamb.dirty || teamb.touched)" class="invalid-feedback">
+                                    <div *ngIf="teamb.errors.required">Digite teamb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="teamn" [ngClass]="{ 'is-invalid': teamn.invalid && (teamn.dirty || teamn.touched) }">
+                                <div *ngIf="teamn.invalid && (teamn.dirty || teamn.touched)" class="invalid-feedback">
+                                    <div *ngIf="teamn.errors.required">Digite teamn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="teama" [ngClass]="{ 'is-invalid': teama.invalid && (teama.dirty || teama.touched) }">
+                                <div *ngIf="teama.invalid && (teama.dirty || teama.touched)" class="invalid-feedback">
+                                    <div *ngIf="teama.errors.required">Digite teama.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="teamma" [ngClass]="{ 'is-invalid': teamma.invalid && (teamma.dirty || teamma.touched) }">
+                                <div *ngIf="teamma.invalid && (teamma.dirty || teamma.touched)" class="invalid-feedback">
+                                    <div *ngIf="teamma.errors.required">Digite teamma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="teamea" [ngClass]="{ 'is-invalid': teamea.invalid && (teamea.dirty || teamea.touched) }">
+                                <div *ngIf="teamea.invalid && (teamea.dirty || teamea.touched)" class="invalid-feedback">
+                                    <div *ngIf="teamea.errors.required">Digite teamea.</div>
+                                </div>
+                            </div>                                     
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PMAT</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pmatmb" [ngClass]="{ 'is-invalid': pmatmb.invalid && (pmatmb.dirty || pmatmb.touched) }">
+                                <div *ngIf="pmatmb.invalid && (pmatmb.dirty || pmatmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="pmatmb.errors.required">Digite pmatmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pmatb" [ngClass]="{ 'is-invalid': pmatb.invalid && (pmatb.dirty || pmatb.touched) }">
+                                <div *ngIf="pmatb.invalid && (pmatb.dirty || pmatb.touched)" class="invalid-feedback">
+                                    <div *ngIf="pmatb.errors.required">Digite pmatb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pmatn" [ngClass]="{ 'is-invalid': pmatn.invalid && (pmatn.dirty || pmatn.touched) }">
+                                <div *ngIf="pmatn.invalid && (pmatn.dirty || pmatn.touched)" class="invalid-feedback">
+                                    <div *ngIf="pmatn.errors.required">Digite pmatn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pmata" [ngClass]="{ 'is-invalid': pmata.invalid && (pmata.dirty || pmata.touched) }">
+                                <div *ngIf="pmata.invalid && (pmata.dirty || pmata.touched)" class="invalid-feedback">
+                                    <div *ngIf="pmata.errors.required">Digite pmata.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pmatma" [ngClass]="{ 'is-invalid': pmatma.invalid && (pmatma.dirty || pmatma.touched) }">
+                                <div *ngIf="pmatma.invalid && (pmatma.dirty || pmatma.touched)" class="invalid-feedback">
+                                    <div *ngIf="pmatma.errors.required">Digite pmatma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pmatea" [ngClass]="{ 'is-invalid': pmatea.invalid && (pmatea.dirty || pmatea.touched) }">
+                                <div *ngIf="pmatea.invalid && (pmatea.dirty || pmatea.touched)" class="invalid-feedback">
+                                    <div *ngIf="pmatea.errors.required">Digite pmatea.</div>
+                                </div>
+                            </div>                                     
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-4">
+                                <button class="btn btn-warning btn-block" (click)="onRestablecerForm0()">Restablecer</button>
+                            </div>  
+                            <div class="form-group mt-3 col-4">
+                                <button [disabled]="!configuracion0.valid" class="btn btn-warning btn-block" (click)="onUpdateForm0()">Modificar</button>
+                            </div>  
+                        </div>                     
+                        <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                    </form>
+                </div>
+            </div>              
+        </div>
+        <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 mt-5">
+            <div class="card text-center border-secondary">
+                <div class="card-body">
+                    <form class="mt-3" [formGroup]="configuracion1">
+                        <h5 class="card-title text-warning mt-3">Configuración Factores de Costos</h5>
+                        <h5 class="card-title text-warning mt-3">Diseño Inical</h5>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">FCDI</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Extra Bajo</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Muy Bajo</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Bajo</p>
+                            </div> 
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Nominal</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Alto</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Muy Alto</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Extra Alto</p>
+                            </div>          
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PERS</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="perseb" [ngClass]="{ 'is-invalid': perseb.invalid && (perseb.dirty || perseb.touched) }">
+                                <div *ngIf="perseb.invalid && (perseb.dirty || perseb.touched)" class="invalid-feedback">
+                                    <div *ngIf="perseb.errors.required">Digite perseb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="persmb" [ngClass]="{ 'is-invalid': persmb.invalid && (persmb.dirty || persmb.touched) }">
+                                <div *ngIf="persmb.invalid && (persmb.dirty || persmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="persmb.errors.required">Digite persmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="persb" [ngClass]="{ 'is-invalid': persb.invalid && (persb.dirty || persb.touched) }">
+                                <div *ngIf="persb.invalid && (persb.dirty || persb.touched)" class="invalid-feedback">
+                                    <div *ngIf="persb.errors.required">Digite persb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="persn" [ngClass]="{ 'is-invalid': persn.invalid && (persn.dirty || persn.touched) }">
+                                <div *ngIf="persn.invalid && (persn.dirty || persn.touched)" class="invalid-feedback">
+                                    <div *ngIf="persn.errors.required">Digite persn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="persa" [ngClass]="{ 'is-invalid': persa.invalid && (persa.dirty || persa.touched) }">
+                                <div *ngIf="persa.invalid && (persa.dirty || persa.touched)" class="invalid-feedback">
+                                    <div *ngIf="persa.errors.required">Digite persa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="persma" [ngClass]="{ 'is-invalid': persma.invalid && (persma.dirty || persma.touched) }">
+                                <div *ngIf="persma.invalid && (persma.dirty || persma.touched)" class="invalid-feedback">
+                                    <div *ngIf="persma.errors.required">Digite persma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="persea" [ngClass]="{ 'is-invalid': persea.invalid && (persea.dirty || persea.touched) }">
+                                <div *ngIf="persea.invalid && (persea.dirty || persea.touched)" class="invalid-feedback">
+                                    <div *ngIf="persea.errors.required">Digite persea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">RCPX</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rcpxeb" [ngClass]="{ 'is-invalid': rcpxeb.invalid && (rcpxeb.dirty || rcpxeb.touched) }">
+                                <div *ngIf="rcpxeb.invalid && (rcpxeb.dirty || rcpxeb.touched)" class="invalid-feedback">
+                                    <div *ngIf="rcpxeb.errors.required">Digite rcpxeb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rcpxmb" [ngClass]="{ 'is-invalid': rcpxmb.invalid && (rcpxmb.dirty || rcpxmb.touched) }">
+                                <div *ngIf="rcpxmb.invalid && (rcpxmb.dirty || rcpxmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="rcpxmb.errors.required">Digite rcpxmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rcpxb" [ngClass]="{ 'is-invalid': rcpxb.invalid && (rcpxb.dirty || rcpxb.touched) }">
+                                <div *ngIf="rcpxb.invalid && (rcpxb.dirty || rcpxb.touched)" class="invalid-feedback">
+                                    <div *ngIf="rcpxb.errors.required">Digite rcpxb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rcpxn" [ngClass]="{ 'is-invalid': rcpxn.invalid && (rcpxn.dirty || rcpxn.touched) }">
+                                <div *ngIf="rcpxn.invalid && (rcpxn.dirty || rcpxn.touched)" class="invalid-feedback">
+                                    <div *ngIf="rcpxn.errors.required">Digite rcpxn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rcpxa" [ngClass]="{ 'is-invalid': rcpxa.invalid && (rcpxa.dirty || rcpxa.touched) }">
+                                <div *ngIf="rcpxa.invalid && (rcpxa.dirty || rcpxa.touched)" class="invalid-feedback">
+                                    <div *ngIf="rcpxa.errors.required">Digite rcpxa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rcpxma" [ngClass]="{ 'is-invalid': rcpxma.invalid && (rcpxma.dirty || rcpxma.touched) }">
+                                <div *ngIf="rcpxma.invalid && (rcpxma.dirty || rcpxma.touched)" class="invalid-feedback">
+                                    <div *ngIf="rcpxma.errors.required">Digite rcpxma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rcpxea" [ngClass]="{ 'is-invalid': rcpxea.invalid && (rcpxea.dirty || rcpxea.touched) }">
+                                <div *ngIf="rcpxea.invalid && (rcpxea.dirty || rcpxea.touched)" class="invalid-feedback">
+                                    <div *ngIf="rcpxea.errors.required">Digite rcpxea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">RUSE</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ruseb" [ngClass]="{ 'is-invalid': ruseb.invalid && (ruseb.dirty || ruseb.touched) }">
+                                <div *ngIf="ruseb.invalid && (ruseb.dirty || ruseb.touched)" class="invalid-feedback">
+                                    <div *ngIf="ruseb.errors.required">Digite ruseb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rusen" [ngClass]="{ 'is-invalid': rusen.invalid && (rusen.dirty || rusen.touched) }">
+                                <div *ngIf="rusen.invalid && (rusen.dirty || rusen.touched)" class="invalid-feedback">
+                                    <div *ngIf="rusen.errors.required">Digite rusen.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rusea" [ngClass]="{ 'is-invalid': rusea.invalid && (rusea.dirty || rusea.touched) }">
+                                <div *ngIf="rusea.invalid && (rusea.dirty || rusea.touched)" class="invalid-feedback">
+                                    <div *ngIf="rusea.errors.required">Digite rusea.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rusema" [ngClass]="{ 'is-invalid': rusema.invalid && (rusema.dirty || rusema.touched) }">
+                                <div *ngIf="rusema.invalid && (rusema.dirty || rusema.touched)" class="invalid-feedback">
+                                    <div *ngIf="rusema.errors.required">Digite rusema.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ruseea" [ngClass]="{ 'is-invalid': ruseea.invalid && (ruseea.dirty || ruseea.touched) }">
+                                <div *ngIf="ruseea.invalid && (ruseea.dirty || ruseea.touched)" class="invalid-feedback">
+                                    <div *ngIf="ruseea.errors.required">Digite ruseea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PDIF</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pdifb" [ngClass]="{ 'is-invalid': pdifb.invalid && (pdifb.dirty || pdifb.touched) }">
+                                <div *ngIf="pdifb.invalid && (pdifb.dirty || pdifb.touched)" class="invalid-feedback">
+                                    <div *ngIf="pdifb.errors.required">Digite pdifb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pdifn" [ngClass]="{ 'is-invalid': pdifn.invalid && (pdifn.dirty || pdifn.touched) }">
+                                <div *ngIf="pdifn.invalid && (pdifn.dirty || pdifn.touched)" class="invalid-feedback">
+                                    <div *ngIf="pdifn.errors.required">Digite pdifn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pdifa" [ngClass]="{ 'is-invalid': pdifa.invalid && (pdifa.dirty || pdifa.touched) }">
+                                <div *ngIf="pdifa.invalid && (pdifa.dirty || pdifa.touched)" class="invalid-feedback">
+                                    <div *ngIf="pdifa.errors.required">Digite pdifa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pdifma" [ngClass]="{ 'is-invalid': pdifma.invalid && (pdifma.dirty || pdifma.touched) }">
+                                <div *ngIf="pdifma.invalid && (pdifma.dirty || pdifma.touched)" class="invalid-feedback">
+                                    <div *ngIf="pdifma.errors.required">Digite pdifma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pdifea" [ngClass]="{ 'is-invalid': pdifea.invalid && (pdifea.dirty || pdifea.touched) }">
+                                <div *ngIf="pdifea.invalid && (pdifea.dirty || pdifea.touched)" class="invalid-feedback">
+                                    <div *ngIf="pdifea.errors.required">Digite pdifea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PREX</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="prexeb" [ngClass]="{ 'is-invalid': prexeb.invalid && (prexeb.dirty || prexeb.touched) }">
+                                <div *ngIf="prexeb.invalid && (prexeb.dirty || prexeb.touched)" class="invalid-feedback">
+                                    <div *ngIf="prexeb.errors.required">Digite prexeb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="prexmb" [ngClass]="{ 'is-invalid': prexmb.invalid && (prexmb.dirty || prexmb.touched) }">
+                                <div *ngIf="prexmb.invalid && (prexmb.dirty || prexmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="prexmb.errors.required">Digite prexmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="prexb" [ngClass]="{ 'is-invalid': prexb.invalid && (prexb.dirty || prexb.touched) }">
+                                <div *ngIf="prexb.invalid && (prexb.dirty || prexb.touched)" class="invalid-feedback">
+                                    <div *ngIf="prexb.errors.required">Digite prexb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="prexn" [ngClass]="{ 'is-invalid': prexn.invalid && (prexn.dirty || prexn.touched) }">
+                                <div *ngIf="prexn.invalid && (prexn.dirty || prexn.touched)" class="invalid-feedback">
+                                    <div *ngIf="prexn.errors.required">Digite prexn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="prexa" [ngClass]="{ 'is-invalid': prexa.invalid && (prexa.dirty || prexa.touched) }">
+                                <div *ngIf="prexa.invalid && (prexa.dirty || prexa.touched)" class="invalid-feedback">
+                                    <div *ngIf="prexa.errors.required">Digite prexa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="prexma" [ngClass]="{ 'is-invalid': prexma.invalid && (prexma.dirty || prexma.touched) }">
+                                <div *ngIf="prexma.invalid && (prexma.dirty || prexma.touched)" class="invalid-feedback">
+                                    <div *ngIf="prexma.errors.required">Digite prexma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="prexea" [ngClass]="{ 'is-invalid': prexea.invalid && (prexea.dirty || prexea.touched) }">
+                                <div *ngIf="prexea.invalid && (prexea.dirty || prexea.touched)" class="invalid-feedback">
+                                    <div *ngIf="prexea.errors.required">Digite prexea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">FCIL</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="fcileb" [ngClass]="{ 'is-invalid': fcileb.invalid && (fcileb.dirty || fcileb.touched) }">
+                                <div *ngIf="fcileb.invalid && (fcileb.dirty || fcileb.touched)" class="invalid-feedback">
+                                    <div *ngIf="fcileb.errors.required">Digite fcileb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="fcilmb" [ngClass]="{ 'is-invalid': fcilmb.invalid && (fcilmb.dirty || fcilmb.touched) }">
+                                <div *ngIf="fcilmb.invalid && (fcilmb.dirty || fcilmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="fcilmb.errors.required">Digite fcilmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="fcilb" [ngClass]="{ 'is-invalid': fcilb.invalid && (fcilb.dirty || fcilb.touched) }">
+                                <div *ngIf="fcilb.invalid && (fcilb.dirty || fcilb.touched)" class="invalid-feedback">
+                                    <div *ngIf="fcilb.errors.required">Digite fcilb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="fciln" [ngClass]="{ 'is-invalid': fciln.invalid && (fciln.dirty || fciln.touched) }">
+                                <div *ngIf="fciln.invalid && (fciln.dirty || fciln.touched)" class="invalid-feedback">
+                                    <div *ngIf="fciln.errors.required">Digite fciln.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="fcila" [ngClass]="{ 'is-invalid': fcila.invalid && (fcila.dirty || fcila.touched) }">
+                                <div *ngIf="fcila.invalid && (fcila.dirty || fcila.touched)" class="invalid-feedback">
+                                    <div *ngIf="fcila.errors.required">Digite fcila.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="fcilma" [ngClass]="{ 'is-invalid': fcilma.invalid && (fcilma.dirty || fcilma.touched) }">
+                                <div *ngIf="fcilma.invalid && (fcilma.dirty || fcilma.touched)" class="invalid-feedback">
+                                    <div *ngIf="fcilma.errors.required">Digite fcilma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="fcilea" [ngClass]="{ 'is-invalid': fcilea.invalid && (fcilea.dirty || fcilea.touched) }">
+                                <div *ngIf="fcilea.invalid && (fcilea.dirty || fcilea.touched)" class="invalid-feedback">
+                                    <div *ngIf="fcilea.errors.required">Digite fcilea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">SCED</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedmb" [ngClass]="{ 'is-invalid': scedmb.invalid && (scedmb.dirty || scedmb.touched) }">
+                                <div *ngIf="scedmb.invalid && (scedmb.dirty || scedmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedmb.errors.required">Digite scedmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedb" [ngClass]="{ 'is-invalid': scedb.invalid && (scedb.dirty || scedb.touched) }">
+                                <div *ngIf="scedb.invalid && (scedb.dirty || scedb.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedb.errors.required">Digite scedb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedn" [ngClass]="{ 'is-invalid': scedn.invalid && (scedn.dirty || scedn.touched) }">
+                                <div *ngIf="scedn.invalid && (scedn.dirty || scedn.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedn.errors.required">Digite scedn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="sceda" [ngClass]="{ 'is-invalid': sceda.invalid && (sceda.dirty || sceda.touched) }">
+                                <div *ngIf="sceda.invalid && (sceda.dirty || sceda.touched)" class="invalid-feedback">
+                                    <div *ngIf="sceda.errors.required">Digite sceda.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedma" [ngClass]="{ 'is-invalid': scedma.invalid && (scedma.dirty || scedma.touched) }">
+                                <div *ngIf="scedma.invalid && (scedma.dirty || scedma.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedma.errors.required">Digite scedma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-4">
+                                <button class="btn btn-warning btn-block" (click)="onRestablecerForm1()">Restablecer</button>
+                            </div>  
+                            <div class="form-group mt-3 col-4">
+                                <button [disabled]="!configuracion1.valid" class="btn btn-warning btn-block" (click)="onUpdateForm1()">Modificar</button>
+                            </div>  
+                        </div>                      
+                        <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                    </form>
+                </div>
+            </div>              
+        </div>
+        <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 mt-5 mb-4">
+            <div class="card text-center border-secondary">
+                <div class="card-body">
+                    <form class="mt-3" [formGroup]="configuracion2">
+                        <h5 class="card-title text-warning mt-3">Configuración Factores de Costos de Software</h5>
+                        <h5 class="card-title text-warning mt-3">Diseño Arquitectura Posterior</h5>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">FCAP</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Muy Bajo</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Bajo</p>
+                            </div> 
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Nominal</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Alto</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Muy Alto</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">Extra Alto</p>
+                            </div>          
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">RELY</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relymb" [ngClass]="{ 'is-invalid': relymb.invalid && (relymb.dirty || relymb.touched) }">
+                                <div *ngIf="relymb.invalid && (relymb.dirty || relymb.touched)" class="invalid-feedback">
+                                    <div *ngIf="relymb.errors.required">Digite relymb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relyb" [ngClass]="{ 'is-invalid': relyb.invalid && (relyb.dirty || relyb.touched) }">
+                                <div *ngIf="relyb.invalid && (relyb.dirty || relyb.touched)" class="invalid-feedback">
+                                    <div *ngIf="relyb.errors.required">Digite relyb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relyn" [ngClass]="{ 'is-invalid': relyn.invalid && (relyn.dirty || relyn.touched) }">
+                                <div *ngIf="relyn.invalid && (relyn.dirty || relyn.touched)" class="invalid-feedback">
+                                    <div *ngIf="relyn.errors.required">Digite relyn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relya" [ngClass]="{ 'is-invalid': relya.invalid && (relya.dirty || relya.touched) }">
+                                <div *ngIf="relya.invalid && (relya.dirty || relya.touched)" class="invalid-feedback">
+                                    <div *ngIf="relya.errors.required">Digite relya.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="relyma" [ngClass]="{ 'is-invalid': relyma.invalid && (relyma.dirty || relyma.touched) }">
+                                <div *ngIf="relyma.invalid && (relyma.dirty || relyma.touched)" class="invalid-feedback">
+                                    <div *ngIf="relyma.errors.required">Digite relyma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">DATA</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="datab" [ngClass]="{ 'is-invalid': datab.invalid && (datab.dirty || datab.touched) }">
+                                <div *ngIf="datab.invalid && (datab.dirty || datab.touched)" class="invalid-feedback">
+                                    <div *ngIf="datab.errors.required">Digite datab.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="datan" [ngClass]="{ 'is-invalid': datan.invalid && (datan.dirty || datan.touched) }">
+                                <div *ngIf="datan.invalid && (datan.dirty || datan.touched)" class="invalid-feedback">
+                                    <div *ngIf="datan.errors.required">Digite datan.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="dataa" [ngClass]="{ 'is-invalid': dataa.invalid && (dataa.dirty || dataa.touched) }">
+                                <div *ngIf="dataa.invalid && (dataa.dirty || dataa.touched)" class="invalid-feedback">
+                                    <div *ngIf="dataa.errors.required">Digite dataa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="datama" [ngClass]="{ 'is-invalid': datama.invalid && (datama.dirty || datama.touched) }">
+                                <div *ngIf="datama.invalid && (datama.dirty || datama.touched)" class="invalid-feedback">
+                                    <div *ngIf="datama.errors.required">Digite datama.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">CPLX</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="cplxmb" [ngClass]="{ 'is-invalid': cplxmb.invalid && (cplxmb.dirty || cplxmb.touched) }">
+                                <div *ngIf="cplxmb.invalid && (cplxmb.dirty || cplxmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="cplxmb.errors.required">Digite cplxmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="cplxb" [ngClass]="{ 'is-invalid': cplxb.invalid && (cplxb.dirty || cplxb.touched) }">
+                                <div *ngIf="cplxb.invalid && (cplxb.dirty || cplxb.touched)" class="invalid-feedback">
+                                    <div *ngIf="cplxb.errors.required">Digite cplxb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="cplxn" [ngClass]="{ 'is-invalid': cplxn.invalid && (cplxn.dirty || cplxn.touched) }">
+                                <div *ngIf="cplxn.invalid && (cplxn.dirty || cplxn.touched)" class="invalid-feedback">
+                                    <div *ngIf="cplxn.errors.required">Digite cplxn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="cplxa" [ngClass]="{ 'is-invalid': cplxa.invalid && (cplxa.dirty || cplxa.touched) }">
+                                <div *ngIf="cplxa.invalid && (cplxa.dirty || cplxa.touched)" class="invalid-feedback">
+                                    <div *ngIf="cplxa.errors.required">Digite cplxa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="cplxma" [ngClass]="{ 'is-invalid': cplxma.invalid && (cplxma.dirty || cplxma.touched) }">
+                                <div *ngIf="cplxma.invalid && (cplxma.dirty || cplxma.touched)" class="invalid-feedback">
+                                    <div *ngIf="cplxma.errors.required">Digite cplxma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="cplxea" [ngClass]="{ 'is-invalid': cplxea.invalid && (cplxea.dirty || cplxea.touched) }">
+                                <div *ngIf="cplxea.invalid && (cplxea.dirty || cplxea.touched)" class="invalid-feedback">
+                                    <div *ngIf="cplxea.errors.required">Digite cplxea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">RUSE</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ruseab" [ngClass]="{ 'is-invalid': ruseab.invalid && (ruseab.dirty || ruseab.touched) }">
+                                <div *ngIf="ruseab.invalid && (ruseab.dirty || ruseab.touched)" class="invalid-feedback">
+                                    <div *ngIf="ruseab.errors.required">Digite ruseab.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="rusean" [ngClass]="{ 'is-invalid': rusean.invalid && (rusean.dirty || rusean.touched) }">
+                                <div *ngIf="rusean.invalid && (rusean.dirty || rusean.touched)" class="invalid-feedback">
+                                    <div *ngIf="rusean.errors.required">Digite rusean.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ruseaa" [ngClass]="{ 'is-invalid': ruseaa.invalid && (ruseaa.dirty || ruseaa.touched) }">
+                                <div *ngIf="ruseaa.invalid && (ruseaa.dirty || ruseaa.touched)" class="invalid-feedback">
+                                    <div *ngIf="ruseaa.errors.required">Digite ruseaa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ruseama" [ngClass]="{ 'is-invalid': ruseama.invalid && (ruseama.dirty || ruseama.touched) }">
+                                <div *ngIf="ruseama.invalid && (ruseama.dirty || ruseama.touched)" class="invalid-feedback">
+                                    <div *ngIf="ruseama.errors.required">Digite ruseama.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ruseaea" [ngClass]="{ 'is-invalid': ruseaea.invalid && (ruseaea.dirty || ruseaea.touched) }">
+                                <div *ngIf="ruseaea.invalid && (ruseaea.dirty || ruseaea.touched)" class="invalid-feedback">
+                                    <div *ngIf="ruseaea.errors.required">Digite ruseaea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">DOCU</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="documb" [ngClass]="{ 'is-invalid': documb.invalid && (documb.dirty || documb.touched) }">
+                                <div *ngIf="documb.invalid && (documb.dirty || documb.touched)" class="invalid-feedback">
+                                    <div *ngIf="documb.errors.required">Digite documb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="docub" [ngClass]="{ 'is-invalid': docub.invalid && (docub.dirty || docub.touched) }">
+                                <div *ngIf="docub.invalid && (docub.dirty || docub.touched)" class="invalid-feedback">
+                                    <div *ngIf="docub.errors.required">Digite docub.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="docun" [ngClass]="{ 'is-invalid': docun.invalid && (docun.dirty || docun.touched) }">
+                                <div *ngIf="docun.invalid && (docun.dirty || docun.touched)" class="invalid-feedback">
+                                    <div *ngIf="docun.errors.required">Digite docun.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="docua" [ngClass]="{ 'is-invalid': docua.invalid && (docua.dirty || docua.touched) }">
+                                <div *ngIf="docua.invalid && (docua.dirty || docua.touched)" class="invalid-feedback">
+                                    <div *ngIf="docua.errors.required">Digite docua.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="documa" [ngClass]="{ 'is-invalid': documa.invalid && (documa.dirty || documa.touched) }">
+                                <div *ngIf="documa.invalid && (documa.dirty || documa.touched)" class="invalid-feedback">
+                                    <div *ngIf="documa.errors.required">Digite documa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">TIME</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="timen" [ngClass]="{ 'is-invalid': timen.invalid && (timen.dirty || timen.touched) }">
+                                <div *ngIf="timen.invalid && (timen.dirty || timen.touched)" class="invalid-feedback">
+                                    <div *ngIf="timen.errors.required">Digite timen.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="timea" [ngClass]="{ 'is-invalid': timea.invalid && (timea.dirty || timea.touched) }">
+                                <div *ngIf="timea.invalid && (timea.dirty || timea.touched)" class="invalid-feedback">
+                                    <div *ngIf="timea.errors.required">Digite timea.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="timema" [ngClass]="{ 'is-invalid': timema.invalid && (timema.dirty || timema.touched) }">
+                                <div *ngIf="timema.invalid && (timema.dirty || timema.touched)" class="invalid-feedback">
+                                    <div *ngIf="timema.errors.required">Digite timema.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="timeea" [ngClass]="{ 'is-invalid': timeea.invalid && (timeea.dirty || timeea.touched) }">
+                                <div *ngIf="timeea.invalid && (timeea.dirty || timeea.touched)" class="invalid-feedback">
+                                    <div *ngIf="timeea.errors.required">Digite timeea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">STOR</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="storn" [ngClass]="{ 'is-invalid': storn.invalid && (storn.dirty || storn.touched) }">
+                                <div *ngIf="storn.invalid && (storn.dirty || storn.touched)" class="invalid-feedback">
+                                    <div *ngIf="storn.errors.required">Digite storn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="stora" [ngClass]="{ 'is-invalid': stora.invalid && (stora.dirty || stora.touched) }">
+                                <div *ngIf="stora.invalid && (stora.dirty || stora.touched)" class="invalid-feedback">
+                                    <div *ngIf="stora.errors.required">Digite stora.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="storma" [ngClass]="{ 'is-invalid': storma.invalid && (storma.dirty || storma.touched) }">
+                                <div *ngIf="storma.invalid && (storma.dirty || storma.touched)" class="invalid-feedback">
+                                    <div *ngIf="storma.errors.required">Digite storma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="storea" [ngClass]="{ 'is-invalid': storea.invalid && (storea.dirty || storea.touched) }">
+                                <div *ngIf="storea.invalid && (storea.dirty || storea.touched)" class="invalid-feedback">
+                                    <div *ngIf="storea.errors.required">Digite storea.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PVOL</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pvolb" [ngClass]="{ 'is-invalid': pvolb.invalid && (pvolb.dirty || pvolb.touched) }">
+                                <div *ngIf="pvolb.invalid && (pvolb.dirty || pvolb.touched)" class="invalid-feedback">
+                                    <div *ngIf="pvolb.errors.required">Digite pvolb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pvoln" [ngClass]="{ 'is-invalid': pvoln.invalid && (pvoln.dirty || pvoln.touched) }">
+                                <div *ngIf="pvoln.invalid && (pvoln.dirty || pvoln.touched)" class="invalid-feedback">
+                                    <div *ngIf="pvoln.errors.required">Digite pvoln.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pvola" [ngClass]="{ 'is-invalid': pvola.invalid && (pvola.dirty || pvola.touched) }">
+                                <div *ngIf="pvola.invalid && (pvola.dirty || pvola.touched)" class="invalid-feedback">
+                                    <div *ngIf="pvola.errors.required">Digite pvola.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pvolma" [ngClass]="{ 'is-invalid': pvolma.invalid && (pvolma.dirty || pvolma.touched) }">
+                                <div *ngIf="pvolma.invalid && (pvolma.dirty || pvolma.touched)" class="invalid-feedback">
+                                    <div *ngIf="pvolma.errors.required">Digite pvolma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">ACAP</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="acapmb" [ngClass]="{ 'is-invalid': acapmb.invalid && (acapmb.dirty || acapmb.touched) }">
+                                <div *ngIf="acapmb.invalid && (acapmb.dirty || acapmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="acapmb.errors.required">Digite acapmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="acapb" [ngClass]="{ 'is-invalid': acapb.invalid && (acapb.dirty || acapb.touched) }">
+                                <div *ngIf="acapb.invalid && (acapb.dirty || acapb.touched)" class="invalid-feedback">
+                                    <div *ngIf="acapb.errors.required">Digite acapb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="acapn" [ngClass]="{ 'is-invalid': acapn.invalid && (acapn.dirty || acapn.touched) }">
+                                <div *ngIf="acapn.invalid && (acapn.dirty || acapn.touched)" class="invalid-feedback">
+                                    <div *ngIf="acapn.errors.required">Digite acapn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="acapa" [ngClass]="{ 'is-invalid': acapa.invalid && (acapa.dirty || acapa.touched) }">
+                                <div *ngIf="acapa.invalid && (acapa.dirty || acapa.touched)" class="invalid-feedback">
+                                    <div *ngIf="acapa.errors.required">Digite acapa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="acapma" [ngClass]="{ 'is-invalid': acapma.invalid && (acapma.dirty || acapma.touched) }">
+                                <div *ngIf="acapma.invalid && (acapma.dirty || acapma.touched)" class="invalid-feedback">
+                                    <div *ngIf="acapma.errors.required">Digite acapma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PCAP</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pcapmb" [ngClass]="{ 'is-invalid': pcapmb.invalid && (pcapmb.dirty || pcapmb.touched) }">
+                                <div *ngIf="pcapmb.invalid && (pcapmb.dirty || pcapmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="pcapmb.errors.required">Digite pcapmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pcapb" [ngClass]="{ 'is-invalid': pcapb.invalid && (pcapb.dirty || pcapb.touched) }">
+                                <div *ngIf="pcapb.invalid && (pcapb.dirty || pcapb.touched)" class="invalid-feedback">
+                                    <div *ngIf="pcapb.errors.required">Digite pcapb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pcapn" [ngClass]="{ 'is-invalid': pcapn.invalid && (pcapn.dirty || pcapn.touched) }">
+                                <div *ngIf="pcapn.invalid && (pcapn.dirty || pcapn.touched)" class="invalid-feedback">
+                                    <div *ngIf="pcapn.errors.required">Digite pcapn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pcapa" [ngClass]="{ 'is-invalid': pcapa.invalid && (pcapa.dirty || pcapa.touched) }">
+                                <div *ngIf="pcapa.invalid && (pcapa.dirty || pcapa.touched)" class="invalid-feedback">
+                                    <div *ngIf="pcapa.errors.required">Digite pcapa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pcapma" [ngClass]="{ 'is-invalid': pcapma.invalid && (pcapma.dirty || pcapma.touched) }">
+                                <div *ngIf="pcapma.invalid && (pcapma.dirty || pcapma.touched)" class="invalid-feedback">
+                                    <div *ngIf="pcapma.errors.required">Digite pcapma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PCON</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pconmb" [ngClass]="{ 'is-invalid': pconmb.invalid && (pconmb.dirty || pconmb.touched) }">
+                                <div *ngIf="pconmb.invalid && (pconmb.dirty || pconmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="pconmb.errors.required">Digite pconmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pconb" [ngClass]="{ 'is-invalid': pconb.invalid && (pconb.dirty || pconb.touched) }">
+                                <div *ngIf="pconb.invalid && (pconb.dirty || pconb.touched)" class="invalid-feedback">
+                                    <div *ngIf="pconb.errors.required">Digite pconb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pconn" [ngClass]="{ 'is-invalid': pconn.invalid && (pconn.dirty || pconn.touched) }">
+                                <div *ngIf="pconn.invalid && (pconn.dirty || pconn.touched)" class="invalid-feedback">
+                                    <div *ngIf="pconn.errors.required">Digite pconn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pcona" [ngClass]="{ 'is-invalid': pcona.invalid && (pcona.dirty || pcona.touched) }">
+                                <div *ngIf="pcona.invalid && (pcona.dirty || pcona.touched)" class="invalid-feedback">
+                                    <div *ngIf="pcona.errors.required">Digite pcona.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="pconma" [ngClass]="{ 'is-invalid': pconma.invalid && (pconma.dirty || pconma.touched) }">
+                                <div *ngIf="pconma.invalid && (pconma.dirty || pconma.touched)" class="invalid-feedback">
+                                    <div *ngIf="pconma.errors.required">Digite pconma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">APEX</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="apexmb" [ngClass]="{ 'is-invalid': apexmb.invalid && (apexmb.dirty || apexmb.touched) }">
+                                <div *ngIf="apexmb.invalid && (apexmb.dirty || apexmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="apexmb.errors.required">Digite apexmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="apexb" [ngClass]="{ 'is-invalid': apexb.invalid && (apexb.dirty || apexb.touched) }">
+                                <div *ngIf="apexb.invalid && (apexb.dirty || apexb.touched)" class="invalid-feedback">
+                                    <div *ngIf="apexb.errors.required">Digite apexb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="apexn" [ngClass]="{ 'is-invalid': apexn.invalid && (apexn.dirty || apexn.touched) }">
+                                <div *ngIf="apexn.invalid && (apexn.dirty || apexn.touched)" class="invalid-feedback">
+                                    <div *ngIf="apexn.errors.required">Digite apexn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="apexa" [ngClass]="{ 'is-invalid': apexa.invalid && (apexa.dirty || apexa.touched) }">
+                                <div *ngIf="apexa.invalid && (apexa.dirty || apexa.touched)" class="invalid-feedback">
+                                    <div *ngIf="apexa.errors.required">Digite apexa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="apexma" [ngClass]="{ 'is-invalid': apexma.invalid && (apexma.dirty || apexma.touched) }">
+                                <div *ngIf="apexma.invalid && (apexma.dirty || apexma.touched)" class="invalid-feedback">
+                                    <div *ngIf="apexma.errors.required">Digite apexma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">PLEX</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="plexmb" [ngClass]="{ 'is-invalid': plexmb.invalid && (plexmb.dirty || plexmb.touched) }">
+                                <div *ngIf="plexmb.invalid && (plexmb.dirty || plexmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="plexmb.errors.required">Digite plexmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="plexb" [ngClass]="{ 'is-invalid': plexb.invalid && (plexb.dirty || plexb.touched) }">
+                                <div *ngIf="plexb.invalid && (plexb.dirty || plexb.touched)" class="invalid-feedback">
+                                    <div *ngIf="plexb.errors.required">Digite plexb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="plexn" [ngClass]="{ 'is-invalid': plexn.invalid && (plexn.dirty || plexn.touched) }">
+                                <div *ngIf="plexn.invalid && (plexn.dirty || plexn.touched)" class="invalid-feedback">
+                                    <div *ngIf="plexn.errors.required">Digite plexn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="plexa" [ngClass]="{ 'is-invalid': plexa.invalid && (plexa.dirty || plexa.touched) }">
+                                <div *ngIf="plexa.invalid && (plexa.dirty || plexa.touched)" class="invalid-feedback">
+                                    <div *ngIf="plexa.errors.required">Digite plexa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="plexma" [ngClass]="{ 'is-invalid': plexma.invalid && (plexma.dirty || plexma.touched) }">
+                                <div *ngIf="plexma.invalid && (plexma.dirty || plexma.touched)" class="invalid-feedback">
+                                    <div *ngIf="plexma.errors.required">Digite plexma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">LTEX</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ltexmb" [ngClass]="{ 'is-invalid': ltexmb.invalid && (ltexmb.dirty || ltexmb.touched) }">
+                                <div *ngIf="ltexmb.invalid && (ltexmb.dirty || ltexmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="ltexmb.errors.required">Digite ltexmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ltexb" [ngClass]="{ 'is-invalid': ltexb.invalid && (ltexb.dirty || ltexb.touched) }">
+                                <div *ngIf="ltexb.invalid && (ltexb.dirty || ltexb.touched)" class="invalid-feedback">
+                                    <div *ngIf="ltexb.errors.required">Digite ltexb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ltexn" [ngClass]="{ 'is-invalid': ltexn.invalid && (ltexn.dirty || ltexn.touched) }">
+                                <div *ngIf="ltexn.invalid && (ltexn.dirty || ltexn.touched)" class="invalid-feedback">
+                                    <div *ngIf="ltexn.errors.required">Digite ltexn.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ltexa" [ngClass]="{ 'is-invalid': ltexa.invalid && (ltexa.dirty || ltexa.touched) }">
+                                <div *ngIf="ltexa.invalid && (ltexa.dirty || ltexa.touched)" class="invalid-feedback">
+                                    <div *ngIf="ltexa.errors.required">Digite ltexa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="ltexma" [ngClass]="{ 'is-invalid': ltexma.invalid && (ltexma.dirty || ltexma.touched) }">
+                                <div *ngIf="ltexma.invalid && (ltexma.dirty || ltexma.touched)" class="invalid-feedback">
+                                    <div *ngIf="ltexma.errors.required">Digite ltexma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">TOOL</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="toolmb" [ngClass]="{ 'is-invalid': toolmb.invalid && (toolmb.dirty || toolmb.touched) }">
+                                <div *ngIf="toolmb.invalid && (toolmb.dirty || toolmb.touched)" class="invalid-feedback">
+                                    <div *ngIf="toolmb.errors.required">Digite toolmb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="toolb" [ngClass]="{ 'is-invalid': toolb.invalid && (toolb.dirty || toolb.touched) }">
+                                <div *ngIf="toolb.invalid && (toolb.dirty || toolb.touched)" class="invalid-feedback">
+                                    <div *ngIf="toolb.errors.required">Digite toolb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="tooln" [ngClass]="{ 'is-invalid': tooln.invalid && (tooln.dirty || tooln.touched) }">
+                                <div *ngIf="tooln.invalid && (tooln.dirty || tooln.touched)" class="invalid-feedback">
+                                    <div *ngIf="tooln.errors.required">Digite tooln.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="toola" [ngClass]="{ 'is-invalid': toola.invalid && (toola.dirty || toola.touched) }">
+                                <div *ngIf="toola.invalid && (toola.dirty || toola.touched)" class="invalid-feedback">
+                                    <div *ngIf="toola.errors.required">Digite toola.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="toolma" [ngClass]="{ 'is-invalid': toolma.invalid && (toolma.dirty || toolma.touched) }">
+                                <div *ngIf="toolma.invalid && (toolma.dirty || toolma.touched)" class="invalid-feedback">
+                                    <div *ngIf="toolma.errors.required">Digite toolma.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="sitemb" [ngClass]="{ 'is-invalid': sitemb.invalid && (sitemb.dirty || sitemb.touched) }">
+                                <div *ngIf="sitemb.invalid && (sitemb.dirty || sitemb.touched)" class="invalid-feedback">
+                                    <div *ngIf="sitemb.errors.required">Digite sitemb.</div>
+                                </div>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">SITE</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="siteb" [ngClass]="{ 'is-invalid': siteb.invalid && (siteb.dirty || siteb.touched) }">
+                                <div *ngIf="siteb.invalid && (siteb.dirty || siteb.touched)" class="invalid-feedback">
+                                    <div *ngIf="siteb.errors.required">Digite siteb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="siten" [ngClass]="{ 'is-invalid': siten.invalid && (siten.dirty || siten.touched) }">
+                                <div *ngIf="siten.invalid && (siten.dirty || siten.touched)" class="invalid-feedback">
+                                    <div *ngIf="siten.errors.required">Digite siten.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="sitea" [ngClass]="{ 'is-invalid': sitea.invalid && (sitea.dirty || sitea.touched) }">
+                                <div *ngIf="sitea.invalid && (sitea.dirty || sitea.touched)" class="invalid-feedback">
+                                    <div *ngIf="sitea.errors.required">Digite sitea.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="sitema" [ngClass]="{ 'is-invalid': sitema.invalid && (sitema.dirty || sitema.touched) }">
+                                <div *ngIf="sitema.invalid && (sitema.dirty || sitema.touched)" class="invalid-feedback">
+                                    <div *ngIf="sitema.errors.required">Digite sitema.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="siteea" [ngClass]="{ 'is-invalid': siteea.invalid && (siteea.dirty || siteea.touched) }">
+                                <div *ngIf="siteea.invalid && (siteea.dirty || siteea.touched)" class="invalid-feedback">
+                                    <div *ngIf="siteea.errors.required">Digite siteea.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-1">
+                                <p class="text-secondary">SCED</p>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedamb" [ngClass]="{ 'is-invalid': scedamb.invalid && (scedamb.dirty || scedamb.touched) }">
+                                <div *ngIf="scedamb.invalid && (scedamb.dirty || scedamb.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedamb.errors.required">Digite scedamb.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedab" [ngClass]="{ 'is-invalid': scedab.invalid && (scedab.dirty || scedab.touched) }">
+                                <div *ngIf="scedab.invalid && (scedab.dirty || scedab.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedab.errors.required">Digite scedab.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedan" [ngClass]="{ 'is-invalid': scedan.invalid && (scedan.dirty || scedan.touched) }">
+                                <div *ngIf="scedan.invalid && (scedan.dirty || scedan.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedan.errors.required">Digite scedan.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedaa" [ngClass]="{ 'is-invalid': scedaa.invalid && (scedaa.dirty || scedaa.touched) }">
+                                <div *ngIf="scedaa.invalid && (scedaa.dirty || scedaa.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedaa.errors.required">Digite scedaa.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" formControlName="scedama" [ngClass]="{ 'is-invalid': scedama.invalid && (scedama.dirty || scedama.touched) }">
+                                <div *ngIf="scedama.invalid && (scedama.dirty || scedama.touched)" class="invalid-feedback">
+                                    <div *ngIf="scedama.errors.required">Digite scedama.</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 col-1">
+                                <input type="number" class="form-control mt-auto" disabled>
+                            </div>                                    
+                        </div>
+                        <div class="form-row justify-content-center align-items-center">
+                            <div class="form-group mt-3 col-4">
+                                <button class="btn btn-warning btn-block" (click)="onRestablecerForm2()">Restablecer</button>
+                            </div>  
+                            <div class="form-group mt-3 col-4">
+                                <button [disabled]="!configuracion2.valid" class="btn btn-warning btn-block" (click)="onUpdateForm2()">Modificar</button>
+                            </div>  
+                        </div>                      
+                        <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                    </form>
+                </div>
+            </div>              
+        </div>
+    </div>
+</div>

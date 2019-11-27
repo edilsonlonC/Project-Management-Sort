@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="nav-justified">
     <ul class=" nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
@@ -10,13 +9,61 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
+        <div class="container p-5">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="table-responsive">
+                    <table class="table table-warning  text-center">
+                      <thead>
+                        <tr class="bg-warning text-white">
+                          <th scope="col">Nombre del Proyecto</th>
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Tipo</th>
+                          <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Actualizar</th>
+                          <th scope="col" *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1">Eliminar</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="projects.projects?.length>0">
+                        <tr *ngFor="let project of projects.projects" class="text-warning">
+                            <td>{{project.Nombre_Proyecto}}</td>
+                            <td>{{project.fecha}}</td>
+                            <td>
+                              <div *ngIf='project.Tipo_Proyecto_id_Tipo == 1'>Puntos de Caso de Uso</div>
+                              <div *ngIf='project.Tipo_Proyecto_id_Tipo == 2'>COCOMO ll</div>
+                            </td>
+                            <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="['../projects-update']" (click)="updateProject(project)"><i class="fas fa-paperclip text-warning"></i></a></td>
+                            <td *ngIf="identidad.Rol_Usuario_id_Rol_Usuario == 1"><a [routerLink]="[]" data-toggle="modal" data-target="#exampleModalCenter" (click)="setId(project.id_proyecto)"><i class="fas fa-times text-warning"></i></a></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <router-outlet></router-outlet>
       </div>
     </div>
 </div>
-=======
-<p>projects works!</p>
->>>>>>> 4ccf56664803f4248c927463513aec1f5c2fe19b
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header table-warning">
+        <h5 class="modal-title text-warning" id="exampleModalLongTitle">Eliminar proyecto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-white ">
+       <p class="text-secondary">Confirma la eliminacion del projecto.</p>
+      </div>
+      <div class="modal-footer table-light">
+        <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning text-white" data-dismiss="modal" (click)="deleteProject(getId())">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

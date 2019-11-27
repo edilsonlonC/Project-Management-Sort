@@ -1,0 +1,70 @@
+<div class="container-fluid p-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4 mt-5 mb-5">
+            <div class="card text-center border-secondary">
+                <div class="card-body">
+                    <form class=" mt-3" [formGroup]="actualizar" (ngSubmit)="onUpdateFormA()">
+                        <h5 class="card-title text-warning mt-3 ">Actualizar Actividad</h5>
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control mt-auto " placeholder="Nombre de la actividad" formControlName="namea" [ngClass]="{ 'is-invalid': namea.invalid && (namea.dirty || namea.touched) }"/>
+                            <div *ngIf="namea.invalid && (namea.dirty || namea.touched)" class="invalid-feedback">
+                                <div *ngIf="namea.errors.required">Ingrese nombre de la actividad.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <textarea class="form-control text-secondary" rows="3" placeholder="Descripción" formControlName="descripciona" [ngClass]="{ 'is-invalid': descripciona.invalid && (descripciona.dirty || descripciona.touched) }"></textarea>
+                            <div *ngIf="descripciona.invalid && (descripciona.dirty || descripciona.touched)" class="invalid-feedback">
+                                <div *ngIf="descripciona.errors.maxlength">Descripcion muy larga.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <select class="form-control" placeholder="Proyecto" formControlName="proyectoa" [ngClass]="{ 'is-invalid': proyectoa.invalid && (proyectoa.dirty || proyectoa.touched) }">
+                                <option disabled>Proyectos...</option>
+                                <option *ngFor="let project of projects.projects" [value]=project.id_proyecto>{{project.Nombre_Proyecto}}</option>
+                            </select>
+                            <div *ngIf="proyectoa.invalid && (proyectoa.dirty || proyectoa.touched)" class="invalid-feedback">
+                                <div *ngIf="proyectoa.errors.required">Seleccione proyecto.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control mt-auto " placeholder="Responsable" formControlName="responsablea" [ngClass]="{ 'is-invalid': responsablea.invalid && (responsablea.dirty || responsablea.touched) }"/>
+                            <div *ngIf="responsablea.invalid && (responsablea.dirty || responsablea.touched)" class="invalid-feedback">
+                                <div *ngIf="responsablea.errors.required">Ingrese nombre del responsable.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <select type="" class="form-control mt-auto" formControlName="estadoa" [ngClass]="{ 'is-invalid': estadoa.invalid && (estadoa.dirty || estadoa.touched) }">
+                                <option disabled>Estado...</option>
+                                <option value=1>Pendiente</option>
+                                <option value=2>En progreso</option>
+                                <option value=3>Retrasado</option>
+                                <option value=4>Terminado</option>
+                            </select>
+                            <div *ngIf="estadoa.invalid && (estadoa.dirty || estadoa.touched)" class="invalid-feedback">
+                                <div *ngIf="estadoa.errors.required">Ingrese estado.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <select class="form-control mt-auto" formControlName="prioridada" [ngClass]="{ 'is-invalid': prioridada.invalid && (prioridada.dirty || prioridada.touched) }">
+                                <option disabled>Prioridad...</option>
+                                <option value=1>Alta</option>
+                                <option value=2>Media</option>
+                                <option value=3>Baja</option>
+                            </select>
+                            <div *ngIf="prioridada.invalid && (prioridada.dirty || prioridada.touched)" class="invalid-feedback">
+                                <div *ngIf="prioridada.errors.required">Ingrese prioridad.</div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button [disabled]="!actualizar.valid" class="btn btn-warning btn-block">Actualizar Actividad</button>
+                        </div>
+                        <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                        <button class="btn btn-warning" type="button" [routerLink]="['/home/resources']">
+                            <i class="fas fa-reply"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

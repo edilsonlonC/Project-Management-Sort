@@ -1,0 +1,59 @@
+<div class="container-fluid p-4">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-9 col-sm-9 col-md-4 col-lg-4 col-xl-4">
+          <div class="card text-center border-secondary">
+              <div class="card-body">
+                <form class="mt-3" [formGroup]="actualizar" (ngSubmit)="onUpdateForm()">
+                  <h5 class="card-title text-warning mt-3 ">Actualizar Usuario</h5>
+                  <div class="form-group mt-3">
+                      <input type="text" class="form-control mt-auto " placeholder="Actualice nombre" formControlName="name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }"/>
+                      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+                        <div *ngIf="name.errors.required">Ingrese nombre.</div>
+                        <div *ngIf="name.errors.minlength">Nombre muy corto.</div>
+                      </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <input type="text" class="form-control mt-auto" placeholder="Actualice apellido" formControlName="lastname" [ngClass]="{ 'is-invalid': lastname.invalid && (lastname.dirty || lastname.touched) }"/>
+                    <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="invalid-feedback">
+                      <div *ngIf="lastname.errors.required">Ingrese apellido.</div>
+                      <div *ngIf="lastname.errors.minlength">Apellido muy corto.</div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                      <input type="password" class="form-control mt-auto " placeholder="Actualice Contraseña" formControlName="pass" [ngClass]="{ 'is-invalid': pass.invalid && (pass.dirty || pass.touched) }"/>
+                      <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="invalid-feedback">
+                          <div *ngIf="pass.errors.required">Ingrese contraseña.</div>
+                          <div *ngIf="pass.errors.minlength">Contraseña muy corta.</div>
+                          <div *ngIf="pass.errors.maxlength">Contraseña muy larga.</div>
+                      </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <input type="email" class="form-control mt-auto " placeholder=" Actualice Correo" formControlName="email" [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }"/>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                        <div *ngIf="email.errors.required">Ingrese correo electronico.</div>
+                        <div *ngIf="email.errors.pattern">Ingrese correo electronico verdadero.</div>
+                    </div>
+                 </div>
+                 <div class="form-group mt-3">
+                    <select class="form-control mt-auto" formControlName="rol" [ngClass]="{ 'is-invalid': rol.invalid && (rol.dirty || rol.touched) }">
+                      <option disabled>Rol...</option>
+                      <option value=1>Administrador</option>
+                      <option value=2>Empleado</option>
+                    </select>
+                    <div *ngIf="rol.invalid && (rol.dirty || rol.touched)" class="invalid-feedback">
+                      <div *ngIf="rol.errors.required">Ingrese rol.</div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <button [disabled]="!actualizar.valid" class="btn btn-warning btn-block">Actualizar Usuario</button>
+                  </div>
+                  <p class="mt-3 mb-2 text-muted">Project Management Sort © PMS 2019</p>
+                  <button class="btn btn-warning" type="button" [routerLink]="['/home/users']">
+                    <i class="fas fa-reply"></i>
+                  </button>
+                </form>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>

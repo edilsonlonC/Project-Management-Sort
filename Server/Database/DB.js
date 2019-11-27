@@ -1,9 +1,10 @@
 const mysql = require('mysql-promise');
-const {DBconfig} = require('../config/DB');
+const { DBconfig } = require('../config/DB');
 //const connection = mysql.createConnection(DBconfig);
 const connection = mysql();
 
 connection.configure(DBconfig);
+
 
 
 /* connection.connect((err) => {

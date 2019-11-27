@@ -6,10 +6,10 @@ let projectExist = async (req, res, next) => {
     if (!idProject) return res.status(404).send({ message: 'faltan datos ' })
     try {
         let queryExistProject = await connection.query('SELECT id_proyecto FROM Proyecto WHERE id_Proyecto = ? ', [idProject]);
-        if (queryExistProject[0].length == 0) return res.status(404).send({ message: 'El proyecto que quiere aignar no existe' });
+        if (queryExistProject[0].length == 0) return res.status(404).send({ message: 'El proyecto que quiere asignar no existe' });
         next()
     } catch (error) {
-        return res.status(200).send({ error });
+        return res.status(500).send({ error });
     }
 }
 

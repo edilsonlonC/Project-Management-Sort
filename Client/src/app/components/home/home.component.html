@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ccf56664803f4248c927463513aec1f5c2fe19b
 <div class="container-fluid p-1">
   <div class="row justify-content-center no-gutters">
       <div class="col-4 col-sm-4 col-md-2 col.lg-2">
@@ -18,18 +14,26 @@
                   <hr class="sidebar-divider my-0">
                   <ul class="nav navbar-nav text-light" id="accordionSidebar">
                       <li class="nav-item" role="presentation">
-                          <a class="nav-link active" [routerLink]="['/home/users']">
-                              <i class="fas fa-users"></i>&nbsp;
-                              <span>Usuarios</span>
-                          </a>
-                          <a class="nav-link active" [routerLink]="['/home/projects']">
-                              <i class="fas fa-project-diagram"></i>&nbsp;
-                              <span>Proyectos</span>
-                          </a>
-                          <a class="nav-link active" [routerLink]="['/home/resources']">
-                              <i class="fas fa-cubes"></i>&nbsp;
-                              <span>Recursos</span>
-                          </a>
+                        <a class="nav-link active" [routerLink]="['/home/users']">
+                            <i class="fas fa-users"></i>&nbsp;
+                            <span>Usuarios</span>
+                        </a>
+                        <a class="nav-link active" [routerLink]="['/home/projects']">
+                            <i class="fas fa-project-diagram"></i>&nbsp;
+                            <span>Proyectos</span>
+                        </a>
+                        <a class="nav-link active" [routerLink]="['/home/resources']">
+                            <i class="fas fa-cube"></i>&nbsp;
+                            <span>Recursos</span>
+                        </a>
+                        <a class="nav-link active" [routerLink]="['/home/cocomoll']">
+                            <i class="fas fa-calendar-alt"></i>&nbsp;
+                            <span>COCOMO ll</span>
+                        </a>
+                        <a class="nav-link active" [routerLink]="['/home/casos-de-uso']">
+                            <i class="fas fa-calculator"></i>&nbsp;
+                            <span>Puntos de Casos de Uso</span>
+                        </a>
                       </li>
                   </ul>
               </div>
@@ -41,7 +45,7 @@
                   <div class="d-flex justify-content-center bg-white">
                       <img src="/../../assets/logo" class="img-fluid" alt="logo">
                   </div>
-                  <nav class="navbar navbar-light navbar-expand bg-white shadow topbar static-top">
+                  <nav class="navbar navbar-light navbar-expand bg-white static-top shadow border-bottom-0 border border-light">
                       <div class="container-fluid">
                           <button class="btn d-md-none" type="button">
                               <i class="fas fa-bars"></i>
@@ -81,18 +85,15 @@
                               <li class="nav-item dropdown no-arrow">
                                   <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"
                                       href="#">
-                                      <span class="d-none d-lg-inline mr-2 text-gray-600 small">Nombre Apellido</span>
+                                      <span class="d-none d-lg-inline mr-2 text-gray-600 small">{{identidad.Nombre_usuario}} {{identidad.Apellido_usuario}}</span>
                                       <i class="fas fa-user"></i>
                                   </a>
                                   <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
-                                      <a class="dropdown-item" role="presentation">
+                                      <a class="dropdown-item pointer" role="presentation" [routerLink]="['/home']">
                                           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Perfil
                                       </a>
-                                      <a class="dropdown-item" role="presentation">
-                                          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Configuracion
-                                      </a>
                                       <div class="dropdown-divider"></div>
-                                      <a class="dropdown-item" role="presentation" [routerLink]="['/']">
+                                      <a class="dropdown-item pointer" role="presentation" (click)="logOut()" >
                                           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Cerrar Sesión
                                       </a>
                                   </div>
