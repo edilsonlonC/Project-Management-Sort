@@ -10,7 +10,6 @@ let home = async (req, res) => {
 
 let saveuser = async (req, res) => {
     let { name, lastname, password, email } = req.body;
-    console.log(name, lastname, password, email);
 
     if (!name || !lastname || !password || !email) return res.status(404).send({ message: 'Faltan datos' });
     password = await bcrypt.hash(password, 10);

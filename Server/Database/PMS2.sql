@@ -327,6 +327,7 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-10-01 14:40:45
+DROP TABLE IF EXISTS `Estimacion`;
 CREATE TABLE Estimacion (
 
     id_estimacion int(11) NOT NULL AUTO_INCREMENT,
@@ -339,4 +340,16 @@ CREATE TABLE Estimacion (
     FOREIGN KEY (proyecto_id_estimacion) REFERENCES Proyecto(id_proyecto)
 
 
-)
+);
+
+  CREATE TABLE Casos_uso (
+
+    id_caso int(11) NOT NULL AUTO_INCREMENT,
+    UUCP FLOAT,
+    UCP FLOAT,
+    E FLOAT,
+    proyecto_id_casos_uso int(11),
+    PRIMARY KEY (id_caso),
+    FOREIGN KEY(proyecto_id_casos_uso) REFERENCES Proyecto(id_proyecto)
+
+  );
