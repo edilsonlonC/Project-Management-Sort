@@ -1,0 +1,50 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="http://localhost:3000/css/style.css">
+    </head>
+    <body>
+        <div class="page">
+            <img src="http://localhost:3000/images/logo.png"  class="logo">
+        </div>
+        <h1>Reporte</h1>
+        <h2>{{date}}</h2>
+        <h2>{{admin}}</h2>
+
+        
+        <table class="info-table">
+           <tr>
+               <th>id Proyecto</th>
+               <th>Nombre</th>
+               
+           </tr>
+           <tr>
+               <th>{{idProject}}</th>
+               <th> {{Nombre}} </th>
+           </tr>
+        </table >
+
+        <table class="M-table">
+            <tr>
+                <th>Metrica usada</th>
+                <th>Tiempo estimado</th>
+                <th>Costo estimado</th>
+            </tr>
+            <tr>
+                <th>Puntos de caso de uso </th>
+                <th>{{caso_uso_tiempo}}</th>
+                <th>{{caso_uso_costo}}</th>
+                
+            </tr>
+            <tr>
+                <th>COCOMO II</th>
+                <th>{{cocomoII_tiempo}}</th>
+                <th>{{cocomoII_costo}}</th>
+            </tr>
+        </table>
+    </html>

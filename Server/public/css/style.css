@@ -1,0 +1,31 @@
+*{
+    margin: 0px auto;
+    padding: 0px auto;
+    font-family: Marker Felt, fantasy;
+}
+table{
+    border: 1px solid #000;
+    border-radius: 1px 1px 1px;
+    box-shadow: 2px 2px #000;
+}
+h1 , h2 , h3 {
+    position: relative;
+    left: 20%;
+}
+table ,th{
+    
+    margin: 20px;
+    border: 1px solid #000;
+}
+th{
+    background: #fff;
+    
+}
+.info-table{
+    position: relative;
+    left: 30%;
+}
+.M-table{
+    position: relative;
+    left: 8%;
+}

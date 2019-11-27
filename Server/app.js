@@ -10,6 +10,7 @@ const { routerTask } = require('./routes/task')
 const { routerFunctionality } = require('./routes/functionality')
 const { routerEstimate } = require('./routes/estimate')
 const { routerCases } = require('./routes/use-case')
+const { routerReport} = require('./routes/report')
 
 const morgan = require('morgan');
 //  local and cloud port 
@@ -18,6 +19,7 @@ const port = process.env.PORT || 3000;
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'))
 
 // cors 
 app.use((req, res, next) => {
@@ -39,6 +41,7 @@ app.use('/api', routerTask);
 app.use('/api', routerFunctionality);
 app.use('/api', routerEstimate);
 app.use('/api', routerCases);
+app.use('/api', routerReport);
 
 // server started
 app.listen(port, (err) => {
