@@ -11,15 +11,8 @@ export class ReportsService {
   constructor(private http: HttpClient) { }
 
   getReport(id: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/pdf',
-        responseType : 'blob',
-        Accept : 'application/pdf',
-        observe : 'response'
-      })
-    };
-    return this.http.get(`${this.API_URI}/report/${id}`, httpOptions);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get(`${this.API_URI}/report/${id}`, {headers});
   }
 
 }
