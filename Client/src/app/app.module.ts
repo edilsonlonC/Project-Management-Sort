@@ -25,6 +25,7 @@ import { UpdateTasksComponent } from './components/resources/update-tasks/update
 import { CocomollComponent } from './components/cocomoll/cocomoll.component';
 import { ConfiguracionComponent } from './components/cocomoll/configuracion/configuracion.component';
 import { CasosDeUsoComponent } from './components/casos-de-uso/casos-de-uso.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CasosDeUsoComponent } from './components/casos-de-uso/casos-de-uso.comp
     UpdateTasksComponent,
     CocomollComponent,
     ConfiguracionComponent,
-    CasosDeUsoComponent
+    CasosDeUsoComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,

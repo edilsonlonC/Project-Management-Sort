@@ -21,6 +21,7 @@ import { UpdateTasksComponent } from './components/resources/update-tasks/update
 import { CocomollComponent } from './components/cocomoll/cocomoll.component';
 import { ConfiguracionComponent } from './components/cocomoll/configuracion/configuracion.component';
 import { CasosDeUsoComponent } from './components/casos-de-uso/casos-de-uso.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
       { path: 'cocomoll', component: CocomollComponent, children: [
         { path: '', component: ConfiguracionComponent }
       ]},
-      { path: 'casos-de-uso', component: CasosDeUsoComponent }
+      { path: 'casos-de-uso', component: CasosDeUsoComponent },
+      { path: 'reports', component: ReportsComponent }
     ]
   },
   { path: 'register', component: RegisterComponent },
