@@ -53,7 +53,7 @@ export class ReportsComponent implements OnInit {
   onSetReport() {
     this.id =  this.formP.get('idProject').value;
     console.log(this.id);
-    this.getReport();
+    window.open(`http://localhost:3000/api/report/${this.id}`);
   }
 
 }

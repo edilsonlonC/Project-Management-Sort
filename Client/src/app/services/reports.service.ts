@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,15 @@ export class ReportsService {
   constructor(private http: HttpClient) { }
 
   getReport(id: any) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.get(`${this.API_URI}/report/${id}`, {headers});
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/pdf',
+        responseType : 'blob',
+        Accept : 'application/pdf',
+        observe : 'response'
+      })
+    };
+    return this.http.get(`${this.API_URI}/report/${id}`, httpOptions);
   }
 
 }

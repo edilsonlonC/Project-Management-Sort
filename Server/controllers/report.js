@@ -28,7 +28,7 @@ let createReport = async(req, res) => {
      html= html.replace('{{idProject}}',id_proyecto)
      html = html.replace('{{Nombre}}',Nombre_Proyecto)
      if(estimateQuery[0].length > 0) {
-      html = html.replace('{{{cocomoII_tiempo_calendario}}}',Math.round(estimateQuery[0][0].TDEV))
+      html = html.replace('{{cocomoII_tiempo_calendario}}',Math.round(estimateQuery[0][0].TDEV))
       html = html.replace('{{cocomoII_persona_mes}}',Math.round(estimateQuery[0][0].PM)) 
     }else {
       html = html.replace('{{cocomoII_tiempo_calendario}}','no aplica')
@@ -42,7 +42,7 @@ let createReport = async(req, res) => {
       //html = html.replace('{{caso_uso_costo}}','-') 
     }
     pdf.create(html, options).toFile('test.pdf', function (err, r) {
-      if (err) return res.send(err)
+      if (err) return res.status(500).send(err)
       return res.download('test.pdf', 'reporte.pdf')
     })
     
