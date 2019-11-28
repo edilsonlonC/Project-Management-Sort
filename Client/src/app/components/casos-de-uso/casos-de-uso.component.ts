@@ -196,6 +196,9 @@ export class CasosDeUsoComponent implements OnInit {
     this.casosDeUsoService.saveEstimate(this.pcu).subscribe(
       res => {
         this.projects = res;
+        console.log(res);
+        alert('Estimacion Realizada');
+        this.getProjects();
       },
       err => console.log(err)
     );
