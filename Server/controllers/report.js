@@ -3,7 +3,14 @@ const fs = require('fs')
 const path = require('path')
 let pdf = require('html-pdf')
 const { connection } = require('../Database/DB')
-
+var weekday = new Array(7);
+weekday[0] = "Domingo";
+weekday[1] = "Lunes";
+weekday[2] = "Martes";
+weekday[3] = "Miercoles";
+weekday[4] = "Jueves";
+weekday[5] = "Viernes";
+weekday[6] = "Sabado";
 let createReport = async(req, res) => {
   let { id } = req.params
   console.log(id);
@@ -23,7 +30,7 @@ let createReport = async(req, res) => {
     let options = {
       format: 'letter',
     }
-     html = html.replace('{{date}}',`${new Date(Date.now()).getDay()}-${new Date(Date.now()).getMonth()}-${new Date(Date.now()).getFullYear()}`)
+     html = html.replace('{{date}}',`${ new Date(Date.now()).getDate()}-${new Date(Date.now()).getMonth() + 1 }-${new Date(Date.now()).getFullYear()}`)
      html = html.replace('{{admin}}',admin) 
      html= html.replace('{{idProject}}',id_proyecto)
      html = html.replace('{{Nombre}}',Nombre_Proyecto)
