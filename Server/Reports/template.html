@@ -12,23 +12,24 @@
         <div class="page">
             <img src="http://localhost:3000/images/logo.png"  class="logo">
         </div>
+        <div class="info-reporte">
         <h1>Reporte</h1>
-        <h2>{{date}}</h2>
-        <h2>{{admin}}</h2>
+        <h2>Fecha : {{date}}</h2>
+        <h2>Admin : {{admin}}</h2>
+    </div>
 
+
+        <div class="info">
+
+            <h2>id Proyecto : {{idProject}}</h2>
+            <h3></h3>
+            <h2>Nombre del proyecto: {{Nombre}} </h2>
+            <h3></h3> 
+
+        </div>
         
-        <table class="info-table">
-           <tr>
-               <th>id Proyecto</th>
-               <th>Nombre</th>
-               
-           </tr>
-           <tr>
-               <th>{{idProject}}</th>
-               <th> {{Nombre}} </th>
-           </tr>
-        </table >
-        <table class="M-table">
+        <div class="tables">
+        <table class="M-table M-table1">
  
             <tr>
                 <th>Metrica usada</th>
@@ -42,7 +43,7 @@
                 <th>{{cocomoII_tiempo_calendario}}</th>
             </tr>
         </table>
-        <table class="M-table">
+        <table class="M-table M-table2">
                 <tr>
                     <th> Métrica usada </th>
                     <th>Esfuerzo </th>
@@ -54,4 +55,6 @@
                         
                     </tr>
             </table>
+        </div>
+    </body>
     </html>

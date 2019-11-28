@@ -1,31 +1,69 @@
 *{
     margin: 0px auto;
     padding: 0px auto;
-    font-family: Marker Felt, fantasy;
+    color: #333;
+    
+}
+
+.info-reporte{
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: .7em;
+}
+
+.info{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: .7em;
 }
 table{
-    border: 1px solid #000;
-    border-radius: 1px 1px 1px;
-    box-shadow: 2px 2px #000;
+   
+   
+   
+    margin-bottom: 20px;
 }
-h1 , h2 , h3 {
+h1  h2  h3 {
     position: relative;
     left: 20%;
 }
-table ,th{
+table th{
     
     margin: 20px;
-    border: 1px solid #000;
+   
 }
 th{
     background: #fff;
     
 }
 .info-table{
-    position: relative;
-    left: 30%;
+    position: absolute;
+   
 }
-.M-table{
-    position: relative;
+
+
+.M-table th:nth-child(odd){
+    background:rgba(255, 195, 0, .7);
+    
+}
+
+.M-table th:nth-child(even){
+    background:rgba(212, 206, 205,.9);
+    
+}
+
+.M-table1{
+    
     left: 8%;
+    
+}
+
+.M-table2{
+   
+    left: 20%;
+
+}
+.tables{
+    position: relative;
+    left: 1%;
 }
